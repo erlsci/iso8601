@@ -4,6 +4,8 @@
          format/1,
          parse/1]).
 
+-export_types([datetime/0]).
+
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
