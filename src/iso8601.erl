@@ -4,12 +4,14 @@
          format/1,
          parse/1]).
 
--export_types([datetime/0]).
+-export_types([datetime/0,
+               timestamp/0]).
 
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
--type datetime() :: {calendar:date(), calendar:time()}.
+-type datetime() :: tuple(calendar:date(), calendar:time()).
+-type timestamp() :: tuple(integer(), integer(), integer()).
 
 %% API
 
@@ -18,7 +20,7 @@
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
 
--spec format (util:timestamp()) -> binary().
+-spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
 %% tuple to an ISO 8601 formatted string. Note that this function always
 %% returns a string with no offset (i.e., ending in "Z").
