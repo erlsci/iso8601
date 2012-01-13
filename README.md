@@ -5,7 +5,6 @@ Formats and parses ISO 8601 dates.
 ## Known deficiencies ##
 
 * Does not support expanded year representation.
-* Does not support week/weekday format.
 * Does not support fractional times.
 * Does not support ordinal dates.
 * Does not support intervals.

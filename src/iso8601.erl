@@ -181,10 +181,23 @@ make_date(Year, Month, undefined, Plist) ->
     Date = {Year, Month, ?V(month_day, Plist, 1)},
     {Date, 0};
 make_date(Year, _, Week, Plist) ->
-    Date = {Year, 1, 1},
     Weekday = ?V(week_day, Plist, 1),
     OffsetH = ((Week-1)*7 + (Weekday-1))*24, % week/weekday offset in hours
-    {Date, OffsetH}.
+    {date_at_w01_1(Year), OffsetH}.
+
+-spec date_at_w01_1(pos_integer()) -> calendar:date().
+%% @doc Calculate the `calendar:date()' at ISO week 1, day 1 in the supplied
+%% year.
+date_at_w01_1(Year) ->
+    case calendar:day_of_the_week({Year,1,1}) of
+        1 -> {Year, 1, 1};
+        2 -> {Year-1, 12, 31};
+        3 -> {Year-1, 12, 30};
+        4 -> {Year-1, 12, 29};
+        5 -> {Year, 1, 4};
+        6 -> {Year, 1, 3};
+        7 -> {Year, 1, 2}
+    end.
 
 apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
