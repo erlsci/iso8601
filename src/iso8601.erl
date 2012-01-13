@@ -10,8 +10,14 @@
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
--type datetime() :: tuple(calendar:date(), calendar:time()).
--type timestamp() :: tuple(integer(), integer(), integer()).
+
+-type datetime() :: tuple(Date::calendar:date(),
+                          Time::calendar:time()).
+-type datetime_plist() :: list(tuple(atom(), integer())).
+-type maybe(A) :: undefined | A.
+-type timestamp() :: tuple(MegaSecs::integer(),
+                           Secs::integer(),
+                           MicroSecs::integer()).
 
 %% API
 
@@ -41,22 +47,49 @@ parse(Str) ->
 %% Private functions
 
 year([Y1,Y2,Y3,Y4|Rest], Acc) ->
-    acc([Y1,Y2,Y3,Y4], Rest, year, Acc, fun month/2);
+    acc([Y1,Y2,Y3,Y4], Rest, year, Acc, fun month_or_week/2);
 year(_, _) ->
     erlang:error(badarg).
 
-month([], Acc) ->
+month_or_week([], Acc) ->
     datetime(Acc);
-month([$-,M1,M2|Rest], Acc) ->
-    acc([M1,M2], Rest, month, Acc, fun day/2);
-month(_, _) ->
+month_or_week([$-,$W,W1,W2|Rest], Acc) ->
+    acc([W1,W2], Rest, week, Acc, fun week_day/2);
+month_or_week([$-,M1,M2|Rest], Acc) ->
+    acc([M1,M2], Rest, month, Acc, fun month_day/2);
+month_or_week([$W,W1,W2|Rest], Acc) ->
+    acc([W1,W2], Rest, week, Acc, fun week_day_no_hyphen/2);
+month_or_week([M1,M2|Rest], Acc) ->
+    acc([M1,M2], Rest, month, Acc, fun month_day_no_hyphen/2);
+month_or_week(_, _) ->
     erlang:error(badarg).
 
-day([], Acc) ->
+week_day([], Acc) ->
     datetime(Acc);
-day([$-,D1,D2|Rest], Acc) ->
-    acc([D1,D2], Rest, day, Acc, fun hour/2);
-day(_, _) ->
+week_day([$-,D|Rest], Acc) ->
+    acc([D], Rest, week_day, Acc, fun hour/2);
+week_day(_, _) ->
+    erlang:error(badarg).
+
+week_day_no_hyphen([], Acc) ->
+    datetime(Acc);
+week_day_no_hyphen([D|Rest], Acc) ->
+    acc([D], Rest, week_day, Acc, fun hour/2);
+week_day_no_hyphen(_, _) ->
+    erlang:error(badarg).
+
+month_day([], Acc) ->
+    datetime(Acc);
+month_day([$-,D1,D2|Rest], Acc) ->
+    acc([D1,D2], Rest, month_day, Acc, fun hour/2);
+month_day(_, _) ->
+    erlang:error(badarg).
+
+month_day_no_hyphen([], _) ->
+    erlang:error(badarg); % omission of day disallowed by spec in this case
+month_day_no_hyphen([D1,D2|Rest], Acc) ->
+    acc([D1,D2], Rest, month_day, Acc, fun hour/2);
+month_day_no_hyphen(_, _) ->
     erlang:error(badarg).
 
 hour([], Acc) ->
@@ -70,6 +103,8 @@ minute([], Acc) ->
     datetime(Acc);
 minute([$:,M1,M2|Rest], Acc) ->
     acc([M1,M2], Rest, minute, Acc, fun second/2);
+minute([M1,M2|Rest], Acc) ->
+    acc([M1,M2], Rest, minute, Acc, fun second_no_colon/2);
 minute(_, _) ->
     erlang:error(badarg).
 
@@ -78,6 +113,13 @@ second([], Acc) ->
 second([$:,S1,S2|Rest], Acc) ->
     acc([S1,S2], Rest, second, Acc, fun offset_hour/2);
 second(_, _) ->
+    erlang:error(badarg).
+
+second_no_colon([], Acc) ->
+    datetime(Acc);
+second_no_colon([S1,S2|Rest], Acc) ->
+    acc([S1,S2], Rest, second, Acc, fun offset_hour/2);
+second_no_colon(_, _) ->
     erlang:error(badarg).
 
 offset_hour([], Acc) ->
@@ -93,9 +135,9 @@ offset_hour(_, _) ->
 
 offset_minute([], Acc) ->
     datetime(Acc);
-offset_minute([M1,M2], Acc) ->
-    acc([M1,M2], [], offset_minute, Acc, fun datetime/2);
 offset_minute([$:,M1,M2], Acc) ->
+    acc([M1,M2], [], offset_minute, Acc, fun datetime/2);
+offset_minute([M1,M2], Acc) ->
     acc([M1,M2], [], offset_minute, Acc, fun datetime/2);
 offset_minute(_, _) ->
     erlang:error(badarg).
@@ -105,17 +147,44 @@ acc(IntStr, Rest, Key, Acc, NextF) ->
     NextF(Rest, Acc1).
 
 datetime(Plist) ->
-    Year = ?V(year, Plist),
-    Year =/= undefined orelse erlang:error(badarg),
-    Date = {Year, ?V(month, Plist, 1), ?V(day, Plist, 1)},
+    {Date, WeekOffsetH} = make_date(Plist),
     Time = {?V(hour, Plist, 0), ?V(minute, Plist, 0), ?V(second, Plist, 0)},
     OffsetSign = ?V(offset_sign, Plist, 1),
     OffsetH = OffsetSign * ?V(offset_hour, Plist, 0),
     OffsetM = OffsetSign * ?V(offset_minute, Plist, 0),
-    apply_offset({Date, Time}, OffsetH, OffsetM, 0).
+    apply_offset({Date, Time}, WeekOffsetH+OffsetH, OffsetM, 0).
 
 datetime(_, Plist) ->
     datetime(Plist).
+
+-spec make_date (datetime_plist())
+                -> tuple(Date::calendar:date(), WeekOffsetH::non_neg_integer()).
+%% @doc Return a `tuple' containing a date and, if the date is in week format,
+%% an offset in hours that can be applied to the date to adjust it to midnight
+%% of the day specified. If month format is used, the offset will be zero.
+make_date(Plist) ->
+    Year = ?V(year, Plist),
+    Year =/= undefined orelse erlang:error(badarg),
+    make_date(Year, ?V(month, Plist, 1), ?V(week, Plist), Plist).
+
+-spec make_date (non_neg_integer(),
+                 maybe(pos_integer()),
+                 maybe(pos_integer()),
+                 datetime_plist())
+                -> tuple(calendar:date(), non_neg_integer()).
+%% @doc Return a `tuple' containing a date and - if the date is in week format
+%% (i.e., `Month' is undefined, `Week' is not) - an offset in hours that can be
+%% applied to the date to adjust it to midnight of the day specified. If month
+%% format is used (i.e., `Week' is undefined, `Month' is not), the offset will
+%% be zero.
+make_date(Year, Month, undefined, Plist) ->
+    Date = {Year, Month, ?V(month_day, Plist, 1)},
+    {Date, 0};
+make_date(Year, _, Week, Plist) ->
+    Date = {Year, 1, 1},
+    Weekday = ?V(week_day, Plist, 1),
+    OffsetH = ((Week-1)*7 + (Weekday-1))*24, % week/weekday offset in hours
+    {Date, OffsetH}.
 
 apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
