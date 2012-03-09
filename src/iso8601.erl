@@ -10,7 +10,6 @@
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
-
 -type datetime() :: tuple(Date::calendar:date(),
                           Time::calendar:time()).
 -type datetime_plist() :: list(tuple(atom(), integer())).
@@ -49,7 +48,7 @@ parse(Str) ->
 year([Y1,Y2,Y3,Y4|Rest], Acc) ->
     acc([Y1,Y2,Y3,Y4], Rest, year, Acc, fun month_or_week/2);
 year(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
 
 month_or_week([], Acc) ->
     datetime(Acc);
@@ -62,76 +61,116 @@ month_or_week([$W,W1,W2|Rest], Acc) ->
 month_or_week([M1,M2|Rest], Acc) ->
     acc([M1,M2], Rest, month, Acc, fun month_day_no_hyphen/2);
 month_or_week(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
 
 week_day([], Acc) ->
     datetime(Acc);
 week_day([$-,D|Rest], Acc) ->
     acc([D], Rest, week_day, Acc, fun hour/2);
 week_day(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
 
 week_day_no_hyphen([], Acc) ->
     datetime(Acc);
 week_day_no_hyphen([D|Rest], Acc) ->
     acc([D], Rest, week_day, Acc, fun hour/2);
 week_day_no_hyphen(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
 
 month_day([], Acc) ->
     datetime(Acc);
 month_day([$-,D1,D2|Rest], Acc) ->
     acc([D1,D2], Rest, month_day, Acc, fun hour/2);
 month_day(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
 
 month_day_no_hyphen([], _) ->
-    erlang:error(badarg); % omission of day disallowed by spec in this case
+    error(badarg); % omission of day disallowed by spec in this case
 month_day_no_hyphen([D1,D2|Rest], Acc) ->
     acc([D1,D2], Rest, month_day, Acc, fun hour/2);
 month_day_no_hyphen(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
 
 hour([], Acc) ->
     datetime(Acc);
+hour([$T,H1,H2,$.|Rest], Acc) ->
+    acc([H1,H2], Rest, hour, Acc, fun hour_decimal/2);
+hour([$T,H1,H2,$,|Rest], Acc) ->
+    acc([H1,H2], Rest, hour, Acc, fun hour_decimal/2);
 hour([$T,H1,H2|Rest], Acc) ->
     acc([H1,H2], Rest, hour, Acc, fun minute/2);
 hour(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
+
+hour_decimal(Str, Acc) ->
+    decimal(Str, Acc, hour_decimal).
 
 minute([], Acc) ->
     datetime(Acc);
+minute([$:,M1,M2,$.|Rest], Acc) ->
+    acc([M1,M2], Rest, minute, Acc, fun minute_decimal/2);
+minute([$:,M1,M2,$,|Rest], Acc) ->
+    acc([M1,M2], Rest, minute, Acc, fun minute_decimal/2);
 minute([$:,M1,M2|Rest], Acc) ->
     acc([M1,M2], Rest, minute, Acc, fun second/2);
+minute([M1,M2,$.|Rest], Acc) ->
+    acc([M1,M2], Rest, minute, Acc, fun minute_decimal/2);
+minute([M1,M2,$,|Rest], Acc) ->
+    acc([M1,M2], Rest, minute, Acc, fun minute_decimal/2);
 minute([M1,M2|Rest], Acc) ->
     acc([M1,M2], Rest, minute, Acc, fun second_no_colon/2);
 minute(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
+
+minute_decimal(Str, Acc) ->
+    decimal(Str, Acc, minute_decimal).
 
 second([], Acc) ->
     datetime(Acc);
+second([$:,S1,S2,$.|Rest], Acc) ->
+    acc([S1,S2], Rest, second, Acc, fun second_decimal/2);
+second([$:,S1,S2,$,|Rest], Acc) ->
+    acc([S1,S2], Rest, second, Acc, fun second_decimal/2);
 second([$:,S1,S2|Rest], Acc) ->
     acc([S1,S2], Rest, second, Acc, fun offset_hour/2);
 second(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
 
 second_no_colon([], Acc) ->
     datetime(Acc);
+second_no_colon([S1,S2,$.|Rest], Acc) ->
+    acc([S1,S2], Rest, second, Acc, fun second_decimal/2);
+second_no_colon([S1,S2,$,|Rest], Acc) ->
+    acc([S1,S2], Rest, second, Acc, fun second_decimal/2);
 second_no_colon([S1,S2|Rest], Acc) ->
     acc([S1,S2], Rest, second, Acc, fun offset_hour/2);
 second_no_colon(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
+
+second_decimal(Str, Acc) ->
+    decimal(Str, Acc, second_decimal).
+
+decimal([], _, _) ->
+    error(badarg);
+decimal(Str, Acc, Key) ->
+    F = fun(X) when is_integer(X), X >= $0, X =< $9 ->
+                true;
+           (_) ->
+                false
+        end,
+    {Parts, Rest} = lists:splitwith(F, Str),
+    acc_float([$0,$.|Parts], Rest, Key, Acc, fun offset_hour/2).    
 
 offset_hour([], Acc) ->
     datetime(Acc);
 offset_hour([$Z], Acc) ->
-    acc([$0], [], offset, Acc, fun datetime/2);
+    datetime(Acc);
 offset_hour([$+,H1,H2|Rest], Acc) ->
     acc([H1,H2], Rest, offset_hour, Acc, fun offset_minute/2);
 offset_hour([$-,H1,H2|Rest], Acc) ->
     acc([H1,H2], Rest, offset_hour, [{offset_sign, -1}|Acc], fun offset_minute/2);
 offset_hour(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
 
 offset_minute([], Acc) ->
     datetime(Acc);
@@ -140,19 +179,30 @@ offset_minute([$:,M1,M2], Acc) ->
 offset_minute([M1,M2], Acc) ->
     acc([M1,M2], [], offset_minute, Acc, fun datetime/2);
 offset_minute(_, _) ->
-    erlang:error(badarg).
+    error(badarg).
 
 acc(IntStr, Rest, Key, Acc, NextF) ->
-    Acc1 = [{Key, erlang:list_to_integer(IntStr)}|Acc],
+    Acc1 = [{Key, list_to_integer(IntStr)}|Acc],
     NextF(Rest, Acc1).
+
+acc_float(FloatStr, Rest, Key, Acc, NextF) ->
+    Acc1 = [{Key, list_to_float(FloatStr)}|Acc],
+    NextF(Rest, Acc1).
+
+add_decimal(Datetime, Plist) ->
+    HDecimal = ?V(hour_decimal, Plist, 0.0),
+    MDecimal = ?V(minute_decimal, Plist, 0.0),
+    SDecimal = ?V(second_decimal, Plist, 0.0),
+    apply_offset(Datetime, HDecimal, MDecimal, SDecimal).
 
 datetime(Plist) ->
     {Date, WeekOffsetH} = make_date(Plist),
     Time = {?V(hour, Plist, 0), ?V(minute, Plist, 0), ?V(second, Plist, 0)},
+    Datetime = add_decimal({Date, Time}, Plist),
     OffsetSign = ?V(offset_sign, Plist, 1),
     OffsetH = OffsetSign * ?V(offset_hour, Plist, 0),
     OffsetM = OffsetSign * ?V(offset_minute, Plist, 0),
-    apply_offset({Date, Time}, WeekOffsetH+OffsetH, OffsetM, 0).
+    apply_offset(Datetime, WeekOffsetH+OffsetH, OffsetM, 0).
 
 datetime(_, Plist) ->
     datetime(Plist).
@@ -164,7 +214,7 @@ datetime(_, Plist) ->
 %% of the day specified. If month format is used, the offset will be zero.
 make_date(Plist) ->
     Year = ?V(year, Plist),
-    Year =/= undefined orelse erlang:error(badarg),
+    Year =/= undefined orelse error(badarg),
     make_date(Year, ?V(month, Plist, 1), ?V(week, Plist), Plist).
 
 -spec make_date (non_neg_integer(),
@@ -199,7 +249,11 @@ date_at_w01_1(Year) ->
         7 -> {Year, 1, 2}
     end.
 
+-spec apply_offset (datetime(), number(), number(), number()) -> datetime().
+%% @doc Add the specified number of hours, minutes and seconds to `Datetime'.
+%% Punts on sub-second precision for now by rounding the total of the number of
+%% seconds in the offset before adding.
 apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
-    Gs = OffsetS + calendar:datetime_to_gregorian_seconds(Datetime),
+    Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
     calendar:gregorian_seconds_to_datetime(Gs).
