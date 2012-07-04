@@ -113,6 +113,6 @@ parse_offset_test_() ->
     [{"parses YYYYMMDDTHHMMSS.ssZ",
       ?_assertMatch({{2012,2,3},{4,5,7}}, F("20120203T040506.50Z"))},
      {"parses YYYYMMDDTHHMMSS.ss+0400",
-      ?_assertMatch({{2012,2,4},{1,1,7}}, F("20120203T200506.50+0456"))},
+      ?_assertMatch({{2012,2,3},{15,9,7}}, F("20120203T200506.50+0456"))},
      {"parses YYYYMMDDTHHMMSS.ss+0400",
-      ?_assertMatch({{2012,2,2},{14,59,7}}, F("20120203T040506.50-1306"))}].
+      ?_assertMatch({{2012,2,3},{17,11,7}}, F("20120203T040506.50-1306"))}].

@@ -200,8 +200,8 @@ datetime(Plist) ->
     Time = {?V(hour, Plist, 0), ?V(minute, Plist, 0), ?V(second, Plist, 0)},
     Datetime = add_decimal({Date, Time}, Plist),
     OffsetSign = ?V(offset_sign, Plist, 1),
-    OffsetH = OffsetSign * ?V(offset_hour, Plist, 0),
-    OffsetM = OffsetSign * ?V(offset_minute, Plist, 0),
+    OffsetH = -1 * OffsetSign * ?V(offset_hour, Plist, 0),
+    OffsetM = -1 * OffsetSign * ?V(offset_minute, Plist, 0),
     apply_offset(Datetime, WeekOffsetH+OffsetH, OffsetM, 0).
 
 datetime(_, Plist) ->
