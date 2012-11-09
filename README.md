@@ -6,7 +6,7 @@ Formats and parses ISO 8601 dates.
 
 Add it to your `rebar.config` deps:
 
-    {'iso8601',    ".*",    {git, "git@github.com:seansawyer/erlang_iso8601.git", {tag, "1.1"}}}
+    {'iso8601',    ".*",    {git, "git@github.com:seansawyer/erlang_iso8601.git", {tag, "1.1.1"}}}
 
 Format a timestamp or calendar datetime tuple:
 
