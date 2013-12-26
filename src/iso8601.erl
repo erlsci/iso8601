@@ -2,7 +2,8 @@
 
 -export([add_time/4,
          format/1,
-         parse/1]).
+         parse/1,
+         parse_durations/1]).
 
 -export_types([datetime/0,
                timestamp/0]).
@@ -42,6 +43,26 @@ parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
 parse(Str) ->
     year(Str, []).
+
+-spec parse_durations(string()) ->datetime_plist().
+%% @doc Convert an ISO 8601 Durations string to a
+parse_durations(Bin) when is_binary(Bin)->
+    parse_durations(binary_to_list(Bin));
+parse_durations(Str) ->    
+    case re:run(Str,"^(?<sign>-|\\+)?P"
+    "(?:(?<years>[0-9]+)Y)?"
+    "(?:(?<months>[0-9]+)M)?"
+    "(?:(?<days>[0-9]+)D)?"
+    "(T(?:(?<hours>[0-9]+)H)?"
+    "(?:(?<minutes>[0-9]+)M)?"
+    "(?:(?<seconds>[0-9]+(?:\\.[0-9]+)?)S)?)?$",
+    [{capture,[sign,years,months,days,hours,minutes,seconds],list}]) of
+    {match,[Sign,Years,Months,Days,Hours,Minutes,Seconds]} ->
+    [{sign,Sign},{years,Years},{months,Months},
+     {days,Days},{hours,Hours},{minutes,Minutes},
+     {seconds,Seconds}];
+    nomatch -> error(badarg)
+    end.
 
 %% Private functions
 
