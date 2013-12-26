@@ -1,6 +1,7 @@
 -module(iso8601).
 
 -export([add_time/4,
+         add_dates/4,
          format/1,
          parse/1,
          parse_durations/1]).
@@ -20,11 +21,19 @@
                            MicroSecs::integer()).
 
 %% API
-
--spec add_time (datetime(), integer(), integer(), integer()) -> datetime().
+-spec add_time (datetime() | timestamp(), integer(), integer(), integer()) -> datetime().
 %% @doc Add some time to the supplied `datetime()'.
+add_time({_,_,_}=Timestamp, H, M, S) ->
+        add_time(calendar:now_to_datetime(Timestamp),H,M,S);
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
+
+-spec add_dates (datetime() | timestamp(), integer(), integer(), integer()) -> datetime().
+%% @doc Add some dates to the supplied `datetime()'.
+add_dates({_,_,_}=Timestamp, Y, M, D) ->
+        add_dates(calendar:now_to_datetime(Timestamp),Y,M,D);
+add_dates(Datetime, Y, M, D) ->
+    apply_dates_offset(Datetime, Y, M, D).
 
 -spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
@@ -276,5 +285,12 @@ date_at_w01_1(Year) ->
 %% seconds in the offset before adding.
 apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
+    Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
+    calendar:gregorian_seconds_to_datetime(Gs).
+    
+-spec apply_dates_offset((datetime(), number(), number(), number()) -> datetime().
+%% @doc Add the specified number of years, months and days to `Datetime'.
+apply_date_offset(Datetime, Y, M, D) ->
+    OffsetS=calendar:date_to_gregorian_days(Y, M ,D)*86400,
     Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
     calendar:gregorian_seconds_to_datetime(Gs).
