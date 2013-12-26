@@ -138,7 +138,7 @@ parse_durations_test_() ->
       
 parse_durations_fail_test_() ->
      F = fun iso8601:parse_durations/1,
-     [{"fails to parses mispeled durations string", 
+     [{"fails to parses misspelled string", 
       ?_assertError(badarg, F("PIY"))}].
      
      
