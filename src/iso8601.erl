@@ -290,7 +290,7 @@ apply_offset(Datetime, H, M, S) ->
     
 -spec apply_dates_offset((datetime(), number(), number(), number()) -> datetime().
 %% @doc Add the specified number of years, months and days to `Datetime'.
-apply_date_offset(Datetime, Y, M, D) ->
+apply_dates_offset(Datetime, Y, M, D) ->
     OffsetS=calendar:date_to_gregorian_days(Y, M ,D)*86400,
     Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
     calendar:gregorian_seconds_to_datetime(Gs).
