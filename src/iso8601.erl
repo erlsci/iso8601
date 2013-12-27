@@ -1,7 +1,9 @@
 -module(iso8601).
 
 -export([add_time/4,
-         add_days/4,
+         add_days/2,
+         add_months/2,
+         apply_month_offset/1,
          format/1,
          parse/1,
          parse_durations/1]).
@@ -28,12 +30,19 @@ add_time({_,_,_}=Timestamp, H, M, S) ->
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
 
--spec add_days (datetime() | timestamp(), integer(), integer(), integer()) -> datetime().
+-spec add_days (datetime() | timestamp(), integer()) -> datetime().
 %% @doc Add some days to the supplied `datetime()'.
-add_days({_,_,_}=Timestamp, Y, M, D) ->
-        add_days(calendar:now_to_datetime(Timestamp),Y,M,D);
-add_days(Datetime, Y, M, D) ->
-    apply_days_offset(Datetime, Y, M, D).
+add_days({_,_,_}=Timestamp, D) ->
+        add_days(calendar:now_to_datetime(Timestamp),D);
+add_days(Datetime,  D) ->
+    apply_days_offset(Datetime,D).
+
+-spec add_months (datetime() | timestamp(), integer()) -> datetime().
+%% @doc Add some months to the supplied `datetime()'.
+add_months({_,_,_}=Timestamp, M) ->
+        add_months(calendar:now_to_datetime(Timestamp),M);
+add_months(Datetime,  M) ->
+    apply_months_offset(Datetime,M).
 
 -spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
@@ -287,11 +296,39 @@ apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
     Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
     calendar:gregorian_seconds_to_datetime(Gs).
-    
--spec apply_days_offset (datetime(), number(), number(), number()) -> datetime().
+
+-spec apply_month_offset (datetime()) -> datetime().
+apply_month_offset({{_, _, 0},{_,_,_}}) ->
+           "ooops";
+apply_month_offset(Datetime) ->
+    {{Y,M,D},{H,MM,S}} = Datetime,
+  if M == 12 ->
+    case calendar:valid_date({Y+1,1,D}) of
+        true -> {{Y+1, 1, D},{H,MM,S}};
+        false -> apply_month_offset({{Y, M, D-1},{H,MM,S}})
+    end;
+    M<12 ->             
+    case calendar:valid_date({Y,M+1,D}) of
+        true -> {{Y, M+1, D},{H,MM,S}};
+        false -> apply_month_offset({{Y, M, D-1},{H,MM,S}})
+    end
+  end.
+
+
+-spec apply_months_offset (datetime(), number()) -> datetime().
 %% @doc Add the specified number of years, months and days to `Datetime'.
-apply_days_offset(Datetime, Y, M, D) -> %TODO 0 0-11 0-31 / modulo
-    OffsetS=calendar:date_to_gregorian_days(Y+1900, M ,D)*86400,
-    % Works for dates after 1900
-    Gs = round(OffsetS) + (calendar:datetime_to_gregorian_seconds(Datetime)-(calendar:datetime_to_gregorian_seconds({{1900,1,1},{0,0,0}}))),
-    calendar:gregorian_seconds_to_datetime(Gs).
+apply_months_offset(Datetime, 0) ->
+       Datetime;
+apply_months_offset(Datetime, AM) -> %TODO 0 0-11 0-31 / modulo
+    NewDatetime=apply_month_offset(Datetime),
+    %ean oi meres diaferoun...... dld.. an oi arxikes meres einai pano apo 
+    %28... 
+    %tote prepei na elenxo an prepei na prostheso 
+    apply_months_offset(NewDatetime, AM-1).
+
+-spec apply_days_offset (datetime(), number()) -> datetime().
+%% @doc Add the specified number of years, months and days to `Datetime'.
+apply_days_offset(Datetime, AD) -> %TODO 0 0-11 0-31 / modulo
+    {{Y,M,D},{_,_,_}} = Datetime,
+    DaysTotal=calendar:date_to_gregorian_days({Y,M,D})+AD,
+    calendar:gregorian_days_to_date(DaysTotal).
