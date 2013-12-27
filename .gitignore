@@ -1,2 +1,4 @@
 .eunit
 ebin/*.beam
+Makefile
+rebar

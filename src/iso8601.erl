@@ -1,7 +1,7 @@
 -module(iso8601).
 
 -export([add_time/4,
-         add_dates/4,
+         add_days/4,
          format/1,
          parse/1,
          parse_durations/1]).
@@ -28,12 +28,12 @@ add_time({_,_,_}=Timestamp, H, M, S) ->
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
 
--spec add_dates (datetime() | timestamp(), integer(), integer(), integer()) -> datetime().
-%% @doc Add some dates to the supplied `datetime()'.
-add_dates({_,_,_}=Timestamp, Y, M, D) ->
-        add_dates(calendar:now_to_datetime(Timestamp),Y,M,D);
-add_dates(Datetime, Y, M, D) ->
-    apply_dates_offset(Datetime, Y, M, D).
+-spec add_days (datetime() | timestamp(), integer(), integer(), integer()) -> datetime().
+%% @doc Add some days to the supplied `datetime()'.
+add_days({_,_,_}=Timestamp, Y, M, D) ->
+        add_days(calendar:now_to_datetime(Timestamp),Y,M,D);
+add_days(Datetime, Y, M, D) ->
+    apply_days_offset(Datetime, Y, M, D).
 
 -spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
@@ -288,9 +288,10 @@ apply_offset(Datetime, H, M, S) ->
     Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
     calendar:gregorian_seconds_to_datetime(Gs).
     
--spec apply_dates_offset (datetime(), number(), number(), number()) -> datetime().
+-spec apply_days_offset (datetime(), number(), number(), number()) -> datetime().
 %% @doc Add the specified number of years, months and days to `Datetime'.
-apply_dates_offset(Datetime, Y, M, D) ->
-    OffsetS=calendar:date_to_gregorian_days(Y, M ,D)*86400,
-    Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
+apply_days_offset(Datetime, Y, M, D) -> %TODO 0 0-11 0-31 / modulo
+    OffsetS=calendar:date_to_gregorian_days(Y+1900, M ,D)*86400,
+    % Works for dates after 1900
+    Gs = round(OffsetS) + (calendar:datetime_to_gregorian_seconds(Datetime)-(calendar:datetime_to_gregorian_seconds({{1900,1,1},{0,0,0}}))),
     calendar:gregorian_seconds_to_datetime(Gs).
