@@ -299,7 +299,10 @@ apply_offset(Datetime, H, M, S) ->
 
 -spec apply_month_offset (datetime()) -> datetime().
 apply_month_offset({{_, _, 0},{_,_,_}}) ->
-           "ooops";
+           "ooops";%mipos na girizo thn hmera sto 1?.... 
+                   %kai meta afou telioso me olous tous mhnes na prostheto kai tis imeres....
+                   %kai analogos ton mhna pou tha peso na koitazo an einai valid....
+                   %xmmmm
 apply_month_offset(Datetime) ->
     {{Y,M,D},{H,MM,S}} = Datetime,
   if M == 12 ->
@@ -307,28 +310,25 @@ apply_month_offset(Datetime) ->
         true -> {{Y+1, 1, D},{H,MM,S}};
         false -> apply_month_offset({{Y, M, D-1},{H,MM,S}})
     end;
-    M<12 ->             
+     M<12 ->             
     case calendar:valid_date({Y,M+1,D}) of
         true -> {{Y, M+1, D},{H,MM,S}};
         false -> apply_month_offset({{Y, M, D-1},{H,MM,S}})
     end
   end.
 
-
 -spec apply_months_offset (datetime(), number()) -> datetime().
 %% @doc Add the specified number of years, months and days to `Datetime'.
 apply_months_offset(Datetime, 0) ->
        Datetime;
-apply_months_offset(Datetime, AM) -> %TODO 0 0-11 0-31 / modulo
-    NewDatetime=apply_month_offset(Datetime),
-    %ean oi meres diaferoun...... dld.. an oi arxikes meres einai pano apo 
-    %28... 
-    %tote prepei na elenxo an prepei na prostheso 
-    apply_months_offset(NewDatetime, AM-1).
+apply_months_offset(Datetime, AM) -> 
+    {{Y,M,D},{H,MM,S}} = Datetime,
+    NewDatetime=apply_month_offset({{Y,M,1},{H,MM,S}}),
+    apply_months_offset(apply_days_offset(NewDatetime, D), AM-1).
 
 -spec apply_days_offset (datetime(), number()) -> datetime().
 %% @doc Add the specified number of years, months and days to `Datetime'.
-apply_days_offset(Datetime, AD) -> %TODO 0 0-11 0-31 / modulo
-    {{Y,M,D},{_,_,_}} = Datetime,
+apply_days_offset(Datetime, AD) ->
+    {{Y,M,D},{H,MM,S}} = Datetime,
     DaysTotal=calendar:date_to_gregorian_days({Y,M,D})+AD,
-    calendar:gregorian_days_to_date(DaysTotal).
+    {calendar:gregorian_days_to_date(DaysTotal),{H,MM,S}}.
