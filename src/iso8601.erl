@@ -304,44 +304,19 @@ apply_offset(Datetime, H, M, S) ->
     Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
     calendar:gregorian_seconds_to_datetime(Gs).
 
--spec apply_month_offset (datetime()) -> datetime().
-apply_month_offset({{_, _, 0},{_,_,_}}) ->
-           "ooops";
-apply_month_offset(Datetime) ->
-    {{Y,M,D},{H,MM,S}} = Datetime,
-  if M == 12 ->
-    case calendar:valid_date({Y+1,1,D}) of
-        true -> {{Y+1, 1, D},{H,MM,S}};
-        false -> apply_month_offset({{Y, M, D-1},{H,MM,S}})
-    end;
-     M<12 ->             
-    case calendar:valid_date({Y,M+1,D}) of
-        true -> {{Y, M+1, D},{H,MM,S}};
-        false -> apply_month_offset({{Y, M, D-1},{H,MM,S}})
-    end
-  end.
-
 -spec apply_months_offset (datetime(), number()) -> datetime().
-%% @doc Add the specified number of years, months and days to `Datetime'.
+%% @doc Add the specified number of months to `Datetime'.
 apply_months_offset(Datetime, 0) ->
-       find_last_valid_date(Datetime);
-apply_months_offset(Datetime, AM) -> 
-    {{Y,M,D},{H,MM,S}} = Datetime,
-    {{NY,NM,_},{NH,NMM,NS}}=apply_month_offset({{Y,M,1},{H,MM,S}}),
-    apply_months_offset({{NY,NM,D},{NH,NMM,NS}}, AM-1).
-
--spec find_last_valid_date(datetime()) -> datetime().
-find_last_valid_date(Datetime)->
-          {{Y,M,D},{H,MM,S}} = Datetime,
-          case calendar:valid_date({Y,M,D}) of
-          true ->Datetime;
-          false -> find_last_valid_date({{Y,M,D-1},{H,MM,S}})
-          end.
-
--spec apply_days_to_month (datetime(), number()) -> datetime().
-apply_days_to_month(Datetime,AD)->
-      {{Y,M,D},{H,MM,S}} = Datetime,
-      find_last_valid_date({{Y,M,D+AD},{H,MM,S}}).
+        Datetime;
+apply_months_offset(Datetime, AM) ->
+       {{Y,M,D},{H,MM,S}} = Datetime,
+       AY = (Y*12)+M+AM,
+       Year = (AY div 12),
+       case (AY rem 12) of
+        0 ->Month=12;
+        _ ->Month=(AY rem 12)
+        end,       
+        find_last_valid_date({{Year,Month,D},{H,MM,S}}).   
 
 -spec apply_days_offset (datetime(), number()) -> datetime().
 %% @doc Add the specified number of years, months and days to `Datetime'.
@@ -350,8 +325,15 @@ apply_days_offset(Datetime, AD) ->
     DaysTotal=calendar:date_to_gregorian_days({Y,M,D})+AD,
     {calendar:gregorian_days_to_date(DaysTotal),{H,MM,S}}.
 
-
 -spec apply_years_offset (datetime(), number()) -> datetime().
 apply_years_offset(Datetime, AY) -> 
        {{Y,M,D},{H,MM,S}}=Datetime,
        {{Y+AY,M,D},{H,MM,S}}.
+
+-spec find_last_valid_date(datetime()) -> datetime().
+find_last_valid_date(Datetime)->
+          {{Y,M,D},{H,MM,S}} = Datetime,
+          case calendar:valid_date({Y,M,D}) of
+          true ->Datetime;
+          false -> find_last_valid_date({{Y,M,D-1},{H,MM,S}})
+          end.
