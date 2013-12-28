@@ -299,10 +299,7 @@ apply_offset(Datetime, H, M, S) ->
 
 -spec apply_month_offset (datetime()) -> datetime().
 apply_month_offset({{_, _, 0},{_,_,_}}) ->
-           "ooops";%mipos na girizo thn hmera sto 1?.... 
-                   %kai meta afou telioso me olous tous mhnes na prostheto kai tis imeres....
-                   %kai analogos ton mhna pou tha peso na koitazo an einai valid....
-                   %xmmmm
+           "ooops";
 apply_month_offset(Datetime) ->
     {{Y,M,D},{H,MM,S}} = Datetime,
   if M == 12 ->
@@ -320,11 +317,27 @@ apply_month_offset(Datetime) ->
 -spec apply_months_offset (datetime(), number()) -> datetime().
 %% @doc Add the specified number of years, months and days to `Datetime'.
 apply_months_offset(Datetime, 0) ->
-       Datetime;
+       find_last_valid_date(Datetime);
 apply_months_offset(Datetime, AM) -> 
     {{Y,M,D},{H,MM,S}} = Datetime,
-    NewDatetime=apply_month_offset({{Y,M,1},{H,MM,S}}),
-    apply_months_offset(apply_days_offset(NewDatetime, D), AM-1).
+    {{NY,NM,_},{NH,NMM,NS}}=apply_month_offset({{Y,M,1},{H,MM,S}}),
+    apply_months_offset({{NY,NM,D},{NH,NMM,NS}}, AM-1).
+
+-spec find_last_valid_date(datetime()) -> datetime().
+find_last_valid_date(Datetime)->
+          {{Y,M,D},{H,MM,S}} = Datetime,
+          case calendar:valid_date({Y,M,D}) of
+          true ->Datetime;
+          false -> find_last_valid_date({{Y,M,D-1},{H,MM,S}})
+          end.
+
+-spec apply_days_to_month (datetime(), number()) -> datetime().
+apply_days_to_month(Datetime,AD)->
+      {{Y,M,D},{H,MM,S}} = Datetime,
+      case calendar:valid_date({Y,M,D+AD}) of
+      true ->{{Y,M,D+AD},{H,MM,S}};
+      false -> apply_days_to_month(Datetime,AD-1)
+      end.
 
 -spec apply_days_offset (datetime(), number()) -> datetime().
 %% @doc Add the specified number of years, months and days to `Datetime'.
