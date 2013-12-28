@@ -3,7 +3,7 @@
 -export([add_time/4,
          add_days/2,
          add_months/2,
-         apply_month_offset/1,
+         add_years/2,
          format/1,
          parse/1,
          parse_durations/1]).
@@ -43,6 +43,13 @@ add_months({_,_,_}=Timestamp, M) ->
         add_months(calendar:now_to_datetime(Timestamp),M);
 add_months(Datetime,  M) ->
     apply_months_offset(Datetime,M).
+
+-spec add_years (datetime() | timestamp(), integer()) -> datetime().
+%% @doc Add some years to the supplied `datetime()'.
+add_years({_,_,_}=Timestamp, Y) ->
+        add_years(calendar:now_to_datetime(Timestamp),Y);
+add_years(Datetime,  Y) ->
+    apply_years_offset(Datetime,Y).
 
 -spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
@@ -334,10 +341,7 @@ find_last_valid_date(Datetime)->
 -spec apply_days_to_month (datetime(), number()) -> datetime().
 apply_days_to_month(Datetime,AD)->
       {{Y,M,D},{H,MM,S}} = Datetime,
-      case calendar:valid_date({Y,M,D+AD}) of
-      true ->{{Y,M,D+AD},{H,MM,S}};
-      false -> apply_days_to_month(Datetime,AD-1)
-      end.
+      find_last_valid_date({{Y,M,D+AD},{H,MM,S}}).
 
 -spec apply_days_offset (datetime(), number()) -> datetime().
 %% @doc Add the specified number of years, months and days to `Datetime'.
@@ -345,3 +349,9 @@ apply_days_offset(Datetime, AD) ->
     {{Y,M,D},{H,MM,S}} = Datetime,
     DaysTotal=calendar:date_to_gregorian_days({Y,M,D})+AD,
     {calendar:gregorian_days_to_date(DaysTotal),{H,MM,S}}.
+
+
+-spec apply_years_offset (datetime(), number()) -> datetime().
+apply_years_offset(Datetime, AY) -> 
+       {{Y,M,D},{H,MM,S}}=Datetime,
+       {{Y+AY,M,D},{H,MM,S}}.
