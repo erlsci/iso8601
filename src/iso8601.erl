@@ -6,7 +6,8 @@
          add_years/2,
          format/1,
          parse/1,
-         parse_durations/1]).
+         parse_durations/1,
+         parse_Start_and_duration/1]).
 
 -export_types([datetime/0,
                timestamp/0]).
@@ -69,9 +70,19 @@ parse(Bin) when is_binary(Bin) ->
 parse(Str) ->
     year(Str, []).
 
+
+-spec gi(string()) ->integer().
+%doc get string and return integer part or 0 on error
+gi(DS)->
+   {Int,_Rest} = string:to_integer(DS),
+    case Int of
+    error->0;
+    _->Int
+    end.
+
 -spec parse_durations(string()) ->datetime_plist().
 %% @doc Convert an ISO 8601 Durations string to a
-parse_durations(Bin) when is_binary(Bin)->
+parse_durations(Bin) when is_binary(Bin)-> %TODO extended format 
     parse_durations(binary_to_list(Bin));
 parse_durations(Str) ->    
     case re:run(Str,"^(?<sign>-|\\+)?P"
@@ -83,9 +94,9 @@ parse_durations(Str) ->
     "(?:(?<seconds>[0-9]+(?:\\.[0-9]+)?)S)?)?$",
     [{capture,[sign,years,months,days,hours,minutes,seconds],list}]) of
     {match,[Sign,Years,Months,Days,Hours,Minutes,Seconds]} ->
-    [{sign,Sign},{years,Years},{months,Months},
-     {days,Days},{hours,Hours},{minutes,Minutes},
-     {seconds,Seconds}];
+    [{sign,Sign},{years,gi(Years)},{months,gi(Months)},
+     {days,gi(Days)},{hours,gi(Hours)},{minutes,gi(Minutes)},
+     {seconds,gi(Seconds)}];
     nomatch -> error(badarg)
     end.
 
@@ -307,33 +318,46 @@ apply_offset(Datetime, H, M, S) ->
 -spec apply_months_offset (datetime(), number()) -> datetime().
 %% @doc Add the specified number of months to `Datetime'.
 apply_months_offset(Datetime, 0) ->
-        Datetime;
+    Datetime;
 apply_months_offset(Datetime, AM) ->
-       {{Y,M,D},{H,MM,S}} = Datetime,
-       AY = (Y*12)+M+AM,
-       Year = (AY div 12),
-       case (AY rem 12) of
+    {{Y,M,D},{H,MM,S}} = Datetime,
+    AY = (Y*12)+M+AM,
+    Year = (AY div 12),
+    case (AY rem 12) of
         0 ->Month=12;
         _ ->Month=(AY rem 12)
-        end,       
-        find_last_valid_date({{Year,Month,D},{H,MM,S}}).   
+    end,       
+    find_last_valid_date({{Year,Month,D},{H,MM,S}}).   
 
 -spec apply_days_offset (datetime(), number()) -> datetime().
-%% @doc Add the specified number of years, months and days to `Datetime'.
+%% @doc Add the specified days to `Datetime'.
 apply_days_offset(Datetime, AD) ->
     {{Y,M,D},{H,MM,S}} = Datetime,
     DaysTotal=calendar:date_to_gregorian_days({Y,M,D})+AD,
     {calendar:gregorian_days_to_date(DaysTotal),{H,MM,S}}.
 
 -spec apply_years_offset (datetime(), number()) -> datetime().
+%% @doc Add the specified years to `Datetime'.
 apply_years_offset(Datetime, AY) -> 
-       {{Y,M,D},{H,MM,S}}=Datetime,
-       {{Y+AY,M,D},{H,MM,S}}.
+    {{Y,M,D},{H,MM,S}}=Datetime,
+    {{Y+AY,M,D},{H,MM,S}}.
 
 -spec find_last_valid_date(datetime()) -> datetime().
+%% @doc Decrease days until found valid date'.
 find_last_valid_date(Datetime)->
-          {{Y,M,D},{H,MM,S}} = Datetime,
-          case calendar:valid_date({Y,M,D}) of
-          true ->Datetime;
-          false -> find_last_valid_date({{Y,M,D-1},{H,MM,S}})
-          end.
+    {{Y,M,D},{H,MM,S}} = Datetime,
+    case calendar:valid_date({Y,M,D}) of
+       true ->Datetime;
+       false ->find_last_valid_date({{Y,M,D-1},{H,MM,S}})
+    end.
+
+parse_Start_and_duration(StartAndDuration) -> 
+       [Start,Duration] = string:tokens(StartAndDuration, "/"),
+       Datetime =parse(Start), 
+       [{sign,S},{years,Y},{months,M},{days,D},{hours,H},%Todo..negatives?
+       {minutes,MM},{seconds,SS}] = parse_durations(Duration),
+       %do it in the stupid way.. and then make it clever...
+       D1=apply_years_offset(Datetime,Y),
+       D2=apply_months_offset(D1,M),
+       D3=apply_days_offset(D2,D),
+       apply_offset(D3, H, MM, SS).       
