@@ -6,8 +6,11 @@
          add_years/2,
          format/1,
          parse/1,
-         parse_durations/1,
-         parse_Start_and_duration/1]).
+         parse_duration/1,
+         apply_duration/2,
+         detect_interval/1,
+         is_duration/1,
+         is_datetime/1]).
 
 -export_types([datetime/0,
                timestamp/0]).
@@ -70,7 +73,6 @@ parse(Bin) when is_binary(Bin) ->
 parse(Str) ->
     year(Str, []).
 
-
 -spec gi(string()) ->integer().
 %doc get string and return integer part or 0 on error
 gi(DS)->
@@ -80,11 +82,11 @@ gi(DS)->
     _->Int
     end.
 
--spec parse_durations(string()) ->datetime_plist().
+-spec parse_duration(string()) ->datetime_plist().
 %% @doc Convert an ISO 8601 Durations string to a
-parse_durations(Bin) when is_binary(Bin)-> %TODO extended format 
-    parse_durations(binary_to_list(Bin));
-parse_durations(Str) ->    
+parse_duration(Bin) when is_binary(Bin)-> %TODO extended format 
+    parse_duration(binary_to_list(Bin));
+parse_duration(Str) ->    
     case re:run(Str,"^(?<sign>-|\\+)?P"
     "(?:(?<years>[0-9]+)Y)?"
     "(?:(?<months>[0-9]+)M)?"
@@ -351,13 +353,85 @@ find_last_valid_date(Datetime)->
        false ->find_last_valid_date({{Y,M,D-1},{H,MM,S}})
     end.
 
-parse_Start_and_duration(StartAndDuration) -> 
-       [Start,Duration] = string:tokens(StartAndDuration, "/"),
-       Datetime =parse(Start), 
-       [{sign,S},{years,Y},{months,M},{days,D},{hours,H},%Todo..negatives?
-       {minutes,MM},{seconds,SS}] = parse_durations(Duration),
-       %do it in the stupid way.. and then make it clever...
+
+
+apply_duration(Datetime,Duration) ->
+      [{sign,_S},{years,Y},{months,M},{days,D},{hours,H},
+       {minutes,MM},{seconds,SS}] = parse_duration(Duration),
        D1=apply_years_offset(Datetime,Y),
        D2=apply_months_offset(D1,M),
        D3=apply_days_offset(D2,D),
-       apply_offset(D3, H, MM, SS).       
+       apply_offset(D3, H, MM, SS).
+
+apply_durations(_Datetime,_Duration,DatetimeList,0)->
+                DatetimeList;
+apply_durations(Datetime,Duration,DatetimeList,Count)->
+       NewDate=apply_duration(Datetime,Duration),
+       NewList=lists:append(DatetimeList, [NewDate]),
+       apply_durations(NewDate,Duration,NewList,Count-1).  
+
+is_datetime(Datetime) ->%is datetime str?
+   case try parse(Datetime) catch error:badarg -> 
+                            'maybe_duration' 
+                            end       
+   of
+   'maybe_duration'->false;        
+    _->true
+    end.
+
+is_duration(Duration) ->
+   case try parse_duration(Duration) catch error:badarg -> 
+                                     'maybe_datetime' 
+                                     end       
+   of
+   'maybe_datetime'->false;        
+    _->true
+  end.
+
+detect_interval(TimeInterval)->%"R2/P1Y3M22DT3H/2014-01-01T16:46:45Z"
+    Tokens  = string:tokens(TimeInterval, "/"),
+    [R,S,E]=case string:substr(TimeInterval,1,1) of
+     "R"->
+          [RS|StartEnd] = Tokens,
+          [Start|Endd] = StartEnd,           
+          Repeat=list_to_integer(string:substr(RS,2)),
+          End=binary_to_list(list_to_binary(Endd)),
+          if 
+           End==[]->[Repeat,binary_to_list(format(now())),Start];
+           true->[Repeat,Start,End]
+          end;
+     "P"->[End|Startt] = Tokens,
+           Start=binary_to_list(list_to_binary(Startt)),
+          if 
+           Start==[]->[1,binary_to_list(format(now())),End];
+           true->[1,Start,End]
+          end;
+       _->[Start|Endd] = Tokens,
+           End=binary_to_list(list_to_binary(Endd)),
+           if 
+           End==[]->[1,binary_to_list(format(now())),Start];
+           true->[1,Start,End]
+           end     
+          end,
+      [R,Datetime,Duration]=case is_datetime(S) of
+             true->  case is_datetime(E) of 
+                     true->"Can't handle this yet (Date,Date)";
+                     false-> case is_duration(E) of
+                              true->[R,S,E];
+                              false-> error(badarg)
+                              end
+                     end;  
+             false-> case is_duration(S) of 
+                     true->  case is_datetime(E) of
+                             true-> [R,E,S];%"Duration Date";
+                             false-> error(badarg)
+                             end;
+                     false-> error(badarg)
+                     end
+          end,
+        apply_durations(parse(Datetime),Duration,[],R).       
+
+
+       
+       
+              
