@@ -117,28 +117,28 @@ parse_offset_test_() ->
      {"parses YYYYMMDDTHHMMSS.ss+0400",
       ?_assertMatch({{2012,2,3},{17,11,7}}, F("20120203T040506.50-1306"))}].
 
-parse_durations_test_() ->
-     F = fun iso8601:parse_durations/1,
+parse_duration_test_() ->
+     F = fun iso8601:parse_duration/1,
      [{"parses with pos sign",
-      ?_assertMatch([{sign,"+"},{years,"6"},{months,"3"},{days,"1"},
-                     {hours,"1"},{minutes,"1"},{seconds,"1.1"}], 
+      ?_assertMatch([{sign,"+"},{years,6},{months,3},{days,1},
+                     {hours,1},{minutes,1},{seconds,1}], 
                      F("+P6Y3M1DT1H1M1.1S"))},
      {"parses without sign",
-      ?_assertMatch([{sign,[]},{years,"6"},{months,"3"},{days,"1"},
-                     {hours,"1"},{minutes,"1"},{seconds,"1.1"}], 
+      ?_assertMatch([{sign,[]},{years,6},{months,3},{days,1},
+                     {hours,1},{minutes,1},{seconds,1}], 
                      F("P6Y3M1DT1H1M1.1S"))},
      {"parses only years",
-      ?_assertMatch([{sign,[]},{years,"6"},{months,[]},{days,[]},
-                     {hours,[]},{minutes,[]},{seconds,[]}], 
+      ?_assertMatch([{sign,[]},{years,6},{months,0},{days,0},
+                     {hours,0},{minutes,0},{seconds,0}], 
                      F("P6Y"))},
      {"parses only minutes",
-      ?_assertMatch([{sign,[]},{years,[]},{months,[]},{days,[]},
-                     {hours,[]},{minutes,"6"},{seconds,[]}], 
+      ?_assertMatch([{sign,[]},{years,0},{months,0},{days,0},
+                     {hours,0},{minutes,6},{seconds,0}], 
                      F("PT6M"))}].
       
-parse_durations_fail_test_() ->
-     F = fun iso8601:parse_durations/1,
+parse_duration_fail_test_() ->
+     F = fun iso8601:parse_duration/1,
      [{"fails to parses misspelled string", 
       ?_assertError(badarg, F("PIY"))}].
-     
-     
+
+ 

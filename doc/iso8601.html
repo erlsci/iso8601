@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Module iso8601</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module iso8601</h1>
+<ul class="index"><li><a href="#types">Data Types</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+
+
+<h2><a name="types">Data Types</a></h2>
+
+<h3 class="typedecl"><a name="type-datetime">datetime()</a></h3>
+<p><tt>datetime() = {Date::<a href="calendar.html#type-date">calendar:date()</a>, Time::<a href="calendar.html#type-time">calendar:time()</a>}</tt></p>
+
+
+<h3 class="typedecl"><a name="type-datetime_plist">datetime_plist()</a></h3>
+<p><tt>datetime_plist() = [{atom(), integer()}]</tt></p>
+
+
+<h3 class="typedecl"><a name="type-timestamp">timestamp()</a></h3>
+<p><tt>timestamp() = {MegaSecs::integer(), Secs::integer(), MicroSecs::integer()}</tt></p>
+
+
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_days-2">add_days/2</a></td><td>Add some days to the supplied <code>datetime()</code>.</td></tr>
+<tr><td valign="top"><a href="#add_months-2">add_months/2</a></td><td>Add some months to the supplied <code>datetime()</code>.</td></tr>
+<tr><td valign="top"><a href="#add_time-4">add_time/4</a></td><td>Add some time to the supplied <code>datetime()</code>.</td></tr>
+<tr><td valign="top"><a href="#add_years-2">add_years/2</a></td><td>Add some years to the supplied <code>datetime()</code>.</td></tr>
+<tr><td valign="top"><a href="#apply_duration-2">apply_duration/2</a></td><td>Return new datetime after apply duration.</td></tr>
+<tr><td valign="top"><a href="#format-1">format/1</a></td><td>Convert a <code>util:timestamp()</code> or a calendar-style <code>{date(), time()}</code>
+  tuple to an ISO 8601 formatted string.</td></tr>
+<tr><td valign="top"><a href="#is_datetime-1">is_datetime/1</a></td><td>Return true atom if datetime is valid.</td></tr>
+<tr><td valign="top"><a href="#is_duration-1">is_duration/1</a></td><td>Return true atom if duration is valid.</td></tr>
+<tr><td valign="top"><a href="#parse-1">parse/1</a></td><td>Convert an ISO 8601 formatted string to a.</td></tr>
+<tr><td valign="top"><a href="#parse_duration-1">parse_duration/1</a></td><td>Convert an ISO 8601 Durations string to a.</td></tr>
+<tr><td valign="top"><a href="#parse_interval-1">parse_interval/1</a></td><td>Return new list with datetime tuples.</td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_days-2">add_days/2</a></h3>
+<div class="spec">
+<p><tt>add_days(Timestamp::<a href="#type-datetime">datetime()</a> | <a href="#type-timestamp">timestamp()</a>, D::integer()) -&gt; <a href="#type-datetime">datetime()</a></tt><br></p>
+</div><p>Add some days to the supplied <code>datetime()</code>.</p>
+
+<h3 class="function"><a name="add_months-2">add_months/2</a></h3>
+<div class="spec">
+<p><tt>add_months(Timestamp::<a href="#type-datetime">datetime()</a> | <a href="#type-timestamp">timestamp()</a>, M::integer()) -&gt; <a href="#type-datetime">datetime()</a></tt><br></p>
+</div><p>Add some months to the supplied <code>datetime()</code>.</p>
+
+<h3 class="function"><a name="add_time-4">add_time/4</a></h3>
+<div class="spec">
+<p><tt>add_time(Timestamp::<a href="#type-datetime">datetime()</a> | <a href="#type-timestamp">timestamp()</a>, H::integer(), M::integer(), S::integer()) -&gt; <a href="#type-datetime">datetime()</a></tt><br></p>
+</div><p>Add some time to the supplied <code>datetime()</code>.</p>
+
+<h3 class="function"><a name="add_years-2">add_years/2</a></h3>
+<div class="spec">
+<p><tt>add_years(Timestamp::<a href="#type-datetime">datetime()</a> | <a href="#type-timestamp">timestamp()</a>, Y::integer()) -&gt; <a href="#type-datetime">datetime()</a></tt><br></p>
+</div><p>Add some years to the supplied <code>datetime()</code>.</p>
+
+<h3 class="function"><a name="apply_duration-2">apply_duration/2</a></h3>
+<div class="spec">
+<p><tt>apply_duration(Datetime::<a href="#type-datetime">datetime()</a>, Duration::string()) -&gt; <a href="#type-datetime">datetime()</a></tt><br></p>
+</div><p>Return new datetime after apply duration.</p>
+
+<h3 class="function"><a name="format-1">format/1</a></h3>
+<div class="spec">
+<p><tt>format(Timestamp::<a href="#type-datetime">datetime()</a> | <a href="#type-timestamp">timestamp()</a>) -&gt; binary()</tt><br></p>
+</div><p>Convert a <code>util:timestamp()</code> or a calendar-style <code>{date(), time()}</code>
+  tuple to an ISO 8601 formatted string. Note that this function always
+  returns a string with no offset (i.e., ending in "Z").</p>
+
+<h3 class="function"><a name="is_datetime-1">is_datetime/1</a></h3>
+<div class="spec">
+<p><tt>is_datetime(Datetime::string()) -&gt; atom()</tt><br></p>
+</div><p>Return true atom if datetime is valid.</p>
+
+<h3 class="function"><a name="is_duration-1">is_duration/1</a></h3>
+<div class="spec">
+<p><tt>is_duration(Duration::string()) -&gt; atom()</tt><br></p>
+</div><p>Return true atom if duration is valid.</p>
+
+<h3 class="function"><a name="parse-1">parse/1</a></h3>
+<div class="spec">
+<p><tt>parse(Bin::string()) -&gt; <a href="#type-datetime">datetime()</a></tt><br></p>
+</div><p>Convert an ISO 8601 formatted string to a</p>
+
+<h3 class="function"><a name="parse_duration-1">parse_duration/1</a></h3>
+<div class="spec">
+<p><tt>parse_duration(Bin::string()) -&gt; <a href="#type-datetime_plist">datetime_plist()</a></tt><br></p>
+</div><p>Convert an ISO 8601 Durations string to a</p>
+
+<h3 class="function"><a name="parse_interval-1">parse_interval/1</a></h3>
+<div class="spec">
+<p><tt>parse_interval(Bin::string()) -&gt; list()</tt><br></p>
+</div><p>Return new list with datetime tuples.</p>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, Jan 2 2014, 15:20:54.</i></p>
+</body>
+</html>
