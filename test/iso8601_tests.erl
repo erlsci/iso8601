@@ -140,5 +140,22 @@ parse_duration_fail_test_() ->
      F = fun iso8601:parse_duration/1,
      [{"fails to parses misspelled string", 
       ?_assertError(badarg, F("PIY"))}].
-
  
+ parse_interval_test_() ->
+     F = fun iso8601:parse_interval/1,
+     [{"parses date duration with repeat",
+      ?_assertMatch([{{2009,5,11},{15,30,0}},
+                      {{2010,7,21},{18,0,0}},
+                      {{2011,10,1},{20,30,0}},
+                      {{2013,12,11},{23,0,0}},
+                      {{2015,2,22},{1,30,0}}], 
+                     F("R5/2008-03-01T13:00:00Z/P1Y2M10DT2H30M"))},
+      {"parses  duration date with repeat",
+      ?_assertMatch([{{2009,5,11},{15,30,0}},
+                      {{2010,7,21},{18,0,0}},
+                      {{2011,10,1},{20,30,0}},
+                      {{2013,12,11},{23,0,0}},
+                      {{2015,2,22},{1,30,0}}], 
+                     F("R5/P1Y2M10DT2H30M/2008-03-01T13:00:00Z"))}
+                     ].
+%TODO test Repeat/duration
