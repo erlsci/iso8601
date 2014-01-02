@@ -8,7 +8,7 @@
          parse/1,
          parse_duration/1,
          apply_duration/2,
-         detect_interval/1,
+         parse_interval/1,
          is_duration/1,
          is_datetime/1]).
 
@@ -353,8 +353,8 @@ find_last_valid_date(Datetime)->
        false ->find_last_valid_date({{Y,M,D-1},{H,MM,S}})
     end.
 
-
-
+-spec apply_duration(datetime(),string()) -> datetime().
+%% @doc Return new datetime after apply duration.
 apply_duration(Datetime,Duration) ->
       [{sign,_S},{years,Y},{months,M},{days,D},{hours,H},
        {minutes,MM},{seconds,SS}] = parse_duration(Duration),
@@ -363,6 +363,8 @@ apply_duration(Datetime,Duration) ->
        D3=apply_days_offset(D2,D),
        apply_offset(D3, H, MM, SS).
 
+-spec apply_durations(datetime(),string(),list(),integer()) -> list().
+%% @doc Return new list with datetime tuples.
 apply_durations(_Datetime,_Duration,DatetimeList,0)->
                 DatetimeList;
 apply_durations(Datetime,Duration,DatetimeList,Count)->
@@ -370,7 +372,9 @@ apply_durations(Datetime,Duration,DatetimeList,Count)->
        NewList=lists:append(DatetimeList, [NewDate]),
        apply_durations(NewDate,Duration,NewList,Count-1).  
 
-is_datetime(Datetime) ->%is datetime str?
+-spec is_datetime(string()) -> atom().
+%% @doc Return true atom if datetime is valid.
+is_datetime(Datetime) ->
    case try parse(Datetime) catch error:badarg -> 
                             'maybe_duration' 
                             end       
@@ -379,6 +383,8 @@ is_datetime(Datetime) ->%is datetime str?
     _->true
     end.
 
+-spec is_duration(string()) -> atom().
+%% @doc Return true atom if duration is valid.
 is_duration(Duration) ->
    case try parse_duration(Duration) catch error:badarg -> 
                                      'maybe_datetime' 
@@ -388,7 +394,11 @@ is_duration(Duration) ->
     _->true
   end.
 
-detect_interval(TimeInterval)->%"R2/P1Y3M22DT3H/2014-01-01T16:46:45Z"
+-spec parse_interval(string()) -> list().
+%% @doc Return new list with datetime tuples.
+parse_interval(Bin) when is_binary(Bin) ->
+    parse_interval(binary_to_list(Bin));
+parse_interval(TimeInterval)->%"R2/P1Y3M22DT3H/2014-01-01T16:46:45Z"
     Tokens  = string:tokens(TimeInterval, "/"),
     [R,S,E]=case string:substr(TimeInterval,1,1) of
      "R"->
@@ -430,8 +440,3 @@ detect_interval(TimeInterval)->%"R2/P1Y3M22DT3H/2014-01-01T16:46:45Z"
                      end
           end,
         apply_durations(parse(Datetime),Duration,[],R).       
-
-
-       
-       
-              

@@ -1,4 +1,4 @@
 .eunit
 ebin/*.beam
-Makefile
-rebar
+ebin/*.app
+
