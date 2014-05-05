@@ -1,2 +1,2 @@
 .eunit
-ebin/*.beam
+ebin
