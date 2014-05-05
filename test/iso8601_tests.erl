@@ -116,3 +116,46 @@ parse_offset_test_() ->
       ?_assertMatch({{2012,2,3},{15,9,7}}, F("20120203T200506.50+0456"))},
      {"parses YYYYMMDDTHHMMSS.ss+0400",
       ?_assertMatch({{2012,2,3},{17,11,7}}, F("20120203T040506.50-1306"))}].
+
+parse_duration_test_() ->
+     F = fun iso8601:parse_duration/1,
+     [{"parses with pos sign",
+      ?_assertMatch([{sign,"+"},{years,6},{months,3},{days,1},
+                     {hours,1},{minutes,1},{seconds,1}],
+                     F("+P6Y3M1DT1H1M1.1S"))},
+     {"parses without sign",
+      ?_assertMatch([{sign,[]},{years,6},{months,3},{days,1},
+                     {hours,1},{minutes,1},{seconds,1}],
+                     F("P6Y3M1DT1H1M1.1S"))},
+     {"parses only years",
+      ?_assertMatch([{sign,[]},{years,6},{months,0},{days,0},
+                     {hours,0},{minutes,0},{seconds,0}],
+                     F("P6Y"))},
+     {"parses only minutes",
+      ?_assertMatch([{sign,[]},{years,0},{months,0},{days,0},
+                     {hours,0},{minutes,6},{seconds,0}],
+                     F("PT6M"))}].
+
+parse_duration_fail_test_() ->
+     F = fun iso8601:parse_duration/1,
+     [{"fails to parses misspelled string",
+      ?_assertError(badarg, F("PIY"))}].
+
+ parse_interval_test_() ->
+     F = fun iso8601:parse_interval/1,
+     [{"parses date duration with repeat",
+      ?_assertMatch([{{2009,5,11},{15,30,0}},
+                      {{2010,7,21},{18,0,0}},
+                      {{2011,10,1},{20,30,0}},
+                      {{2013,12,11},{23,0,0}},
+                      {{2015,2,22},{1,30,0}}],
+                     F("R5/2008-03-01T13:00:00Z/P1Y2M10DT2H30M"))},
+      {"parses  duration date with repeat",
+      ?_assertMatch([{{2009,5,11},{15,30,0}},
+                      {{2010,7,21},{18,0,0}},
+                      {{2011,10,1},{20,30,0}},
+                      {{2013,12,11},{23,0,0}},
+                      {{2015,2,22},{1,30,0}}],
+                     F("R5/P1Y2M10DT2H30M/2008-03-01T13:00:00Z"))}
+                     ].
+%TODO test Repeat/duration
