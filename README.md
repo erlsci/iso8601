@@ -1,6 +1,8 @@
 # erlang_iso8601 #
 
-Formats and parses ISO 8601 dates.
+Formats and parses ISO 8601 dates. This fork incorporates various improvements
+such as [sl45sms](https://www.github.com/sl45sms) parse durations patch aswell
+as [tsloughter](https://www.github.com/tsloughter) decimal seconds patch
 
 ## Usage ##
 
