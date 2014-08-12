@@ -330,10 +330,11 @@ apply_months_offset(Datetime, AM) ->
     {{Y,M,D},{H,MM,S}} = Datetime,
     AY = (Y*12)+M+AM,
     Year = (AY div 12),
-    case (AY rem 12) of
-        0 ->Month=12;
-        _ ->Month=(AY rem 12)
-    end,
+    Month =
+        case (AY rem 12) of
+            0 -> 12;
+            _ -> AY rem 12
+        end,
     find_last_valid_date({{Year,Month,D},{H,MM,S}}).
 
 -spec apply_days_offset (datetime(), number()) -> datetime().
