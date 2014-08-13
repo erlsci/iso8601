@@ -158,12 +158,20 @@ month_day_no_hyphen(_, _) ->
 hour([], Acc) ->
     datetime(Acc);
 hour([$T,H1,H2,$.|Rest], Acc) ->
-    acc([H1,H2], Rest, hour, Acc, fun hour_decimal/2);
+    check_hour( list_to_integer([H1,H2])
+              , acc([H1,H2], Rest, hour, Acc, fun hour_decimal/2) );
 hour([$T,H1,H2,$,|Rest], Acc) ->
-    acc([H1,H2], Rest, hour, Acc, fun hour_decimal/2);
+    check_hour( list_to_integer([H1,H2])
+              , acc([H1,H2], Rest, hour, Acc, fun hour_decimal/2));
 hour([$T,H1,H2|Rest], Acc) ->
-    acc([H1,H2], Rest, hour, Acc, fun minute/2);
+    check_hour( list_to_integer([H1,H2])
+              , acc([H1,H2], Rest, hour, Acc, fun minute/2));
 hour(_, _) ->
+    error(badarg).
+
+check_hour(H, F) when H >= 0 andalso H =< 24 ->
+    F;
+check_hour(_, _) ->
     error(badarg).
 
 hour_decimal(Str, Acc) ->
