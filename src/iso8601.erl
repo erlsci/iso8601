@@ -1,8 +1,16 @@
 -module(iso8601).
 
 -export([add_time/4,
+         add_days/2,
+         add_months/2,
+         add_years/2,
          format/1,
-         parse/1]).
+         parse/1,
+         parse_duration/1,
+         apply_duration/2,
+         parse_interval/1,
+         is_duration/1,
+         is_datetime/1]).
 
 -export_types([datetime/0,
                timestamp/0]).
@@ -19,11 +27,33 @@
                            MicroSecs::integer() | float()).
 
 %% API
-
--spec add_time (datetime(), integer(), integer(), integer()) -> datetime().
+-spec add_time (datetime() | timestamp(), integer(), integer(), integer()) -> datetime().
 %% @doc Add some time to the supplied `datetime()'.
+add_time({_,_,_}=Timestamp, H, M, S) ->
+        add_time(calendar:now_to_datetime(Timestamp),H,M,S);
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
+
+-spec add_days (datetime() | timestamp(), integer()) -> datetime().
+%% @doc Add some days to the supplied `datetime()'.
+add_days({_,_,_}=Timestamp, D) ->
+        add_days(calendar:now_to_datetime(Timestamp),D);
+add_days(Datetime,  D) ->
+    apply_days_offset(Datetime,D).
+
+-spec add_months (datetime() | timestamp(), integer()) -> datetime().
+%% @doc Add some months to the supplied `datetime()'.
+add_months({_,_,_}=Timestamp, M) ->
+        add_months(calendar:now_to_datetime(Timestamp),M);
+add_months(Datetime,  M) ->
+    apply_months_offset(Datetime,M).
+
+-spec add_years (datetime() | timestamp(), integer()) -> datetime().
+%% @doc Add some years to the supplied `datetime()'.
+add_years({_,_,_}=Timestamp, Y) ->
+        add_years(calendar:now_to_datetime(Timestamp),Y);
+add_years(Datetime,  Y) ->
+    apply_years_offset(Datetime,Y).
 
 -spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
@@ -46,6 +76,35 @@ parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
 parse(Str) ->
     year(Str, []).
+
+-spec gi(string()) ->integer().
+%doc get string and return integer part or 0 on error
+gi(DS)->
+   {Int,_Rest} = string:to_integer(DS),
+    case Int of
+    error->0;
+    _->Int
+    end.
+
+-spec parse_duration(string()) ->datetime_plist().
+%% @doc Convert an ISO 8601 Durations string to a
+parse_duration(Bin) when is_binary(Bin)-> %TODO extended format 
+    parse_duration(binary_to_list(Bin));
+parse_duration(Str) ->    
+    case re:run(Str,"^(?<sign>-|\\+)?P"
+    "(?:(?<years>[0-9]+)Y)?"
+    "(?:(?<months>[0-9]+)M)?"
+    "(?:(?<days>[0-9]+)D)?"
+    "(T(?:(?<hours>[0-9]+)H)?"
+    "(?:(?<minutes>[0-9]+)M)?"
+    "(?:(?<seconds>[0-9]+(?:\\.[0-9]+)?)S)?)?$",
+    [{capture,[sign,years,months,days,hours,minutes,seconds],list}]) of
+    {match,[Sign,Years,Months,Days,Hours,Minutes,Seconds]} ->
+    [{sign,Sign},{years,gi(Years)},{months,gi(Months)},
+     {days,gi(Days)},{hours,gi(Hours)},{minutes,gi(Minutes)},
+     {seconds,gi(Seconds)}];
+    nomatch -> error(badarg)
+    end.
 
 %% Private functions
 
@@ -261,3 +320,127 @@ apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
     Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
     calendar:gregorian_seconds_to_datetime(Gs).
+
+-spec apply_months_offset (datetime(), number()) -> datetime().
+%% @doc Add the specified number of months to `Datetime'.
+apply_months_offset(Datetime, 0) ->
+    Datetime;
+apply_months_offset(Datetime, AM) ->
+    {{Y,M,D},{H,MM,S}} = Datetime,
+    AY = (Y*12)+M+AM,
+    Year = (AY div 12),
+    case (AY rem 12) of
+        0 ->Month=12;
+        _ ->Month=(AY rem 12)
+    end,       
+    find_last_valid_date({{Year,Month,D},{H,MM,S}}).   
+
+-spec apply_days_offset (datetime(), number()) -> datetime().
+%% @doc Add the specified days to `Datetime'.
+apply_days_offset(Datetime, AD) ->
+    {{Y,M,D},{H,MM,S}} = Datetime,
+    DaysTotal=calendar:date_to_gregorian_days({Y,M,D})+AD,
+    {calendar:gregorian_days_to_date(DaysTotal),{H,MM,S}}.
+
+-spec apply_years_offset (datetime(), number()) -> datetime().
+%% @doc Add the specified years to `Datetime'.
+apply_years_offset(Datetime, AY) -> 
+    {{Y,M,D},{H,MM,S}}=Datetime,
+    {{Y+AY,M,D},{H,MM,S}}.
+
+-spec find_last_valid_date(datetime()) -> datetime().
+%% @doc Decrease days until found valid date'.
+find_last_valid_date(Datetime)->
+    {{Y,M,D},{H,MM,S}} = Datetime,
+    case calendar:valid_date({Y,M,D}) of
+       true ->Datetime;
+       false ->find_last_valid_date({{Y,M,D-1},{H,MM,S}})
+    end.
+
+-spec apply_duration(datetime(),string()) -> datetime().
+%% @doc Return new datetime after apply duration.
+apply_duration(Datetime,Duration) ->
+      [{sign,_S},{years,Y},{months,M},{days,D},{hours,H},
+       {minutes,MM},{seconds,SS}] = parse_duration(Duration),
+       D1=apply_years_offset(Datetime,Y),
+       D2=apply_months_offset(D1,M),
+       D3=apply_days_offset(D2,D),
+       apply_offset(D3, H, MM, SS).
+
+-spec apply_durations(datetime(),string(),list(),integer()) -> list().
+%% @doc Return new list with datetime tuples.
+apply_durations(_Datetime,_Duration,DatetimeList,0)->
+                DatetimeList;
+apply_durations(Datetime,Duration,DatetimeList,Count)->
+       NewDate=apply_duration(Datetime,Duration),
+       NewList=lists:append(DatetimeList, [NewDate]),
+       apply_durations(NewDate,Duration,NewList,Count-1).  
+
+-spec is_datetime(string()) -> atom().
+%% @doc Return true atom if datetime is valid.
+is_datetime(Datetime) ->
+   case try parse(Datetime) catch error:badarg -> 
+                            'maybe_duration' 
+                            end       
+   of
+   'maybe_duration'->false;        
+    _->true
+    end.
+
+-spec is_duration(string()) -> atom().
+%% @doc Return true atom if duration is valid.
+is_duration(Duration) ->
+   case try parse_duration(Duration) catch error:badarg -> 
+                                     'maybe_datetime' 
+                                     end       
+   of
+   'maybe_datetime'->false;        
+    _->true
+  end.
+
+-spec parse_interval(string()) -> list().
+%% @doc Return new list with datetime tuples.
+parse_interval(Bin) when is_binary(Bin) ->
+    parse_interval(binary_to_list(Bin));
+parse_interval(TimeInterval)->%"R2/P1Y3M22DT3H/2014-01-01T16:46:45Z"
+    Tokens  = string:tokens(TimeInterval, "/"),
+    [R,S,E]=case string:substr(TimeInterval,1,1) of
+     "R"->
+          [RS|StartEnd] = Tokens,
+          [Start|Endd] = StartEnd,           
+          Repeat=list_to_integer(string:substr(RS,2)),
+          End=binary_to_list(list_to_binary(Endd)),
+          if 
+           End==[]->[Repeat,binary_to_list(format(now())),Start];
+           true->[Repeat,Start,End]
+          end;
+     "P"->[End|Startt] = Tokens,
+           Start=binary_to_list(list_to_binary(Startt)),
+          if 
+           Start==[]->[1,binary_to_list(format(now())),End];
+           true->[1,Start,End]
+          end;
+       _->[Start|Endd] = Tokens,
+           End=binary_to_list(list_to_binary(Endd)),
+           if 
+           End==[]->[1,binary_to_list(format(now())),Start];
+           true->[1,Start,End]
+           end     
+          end,
+      [R,Datetime,Duration]=case is_datetime(S) of
+             true->  case is_datetime(E) of 
+                     true->"Can't handle this yet (Date,Date)";
+                     false-> case is_duration(E) of
+                              true->[R,S,E];
+                              false-> error(badarg)
+                              end
+                     end;  
+             false-> case is_duration(S) of 
+                     true->  case is_datetime(E) of
+                             true-> [R,E,S];%"Duration Date";
+                             false-> error(badarg)
+                             end;
+                     false-> error(badarg)
+                     end
+          end,
+        apply_durations(parse(Datetime),Duration,[],R).       
