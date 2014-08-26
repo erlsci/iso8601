@@ -16,7 +16,7 @@
 -type maybe(A) :: undefined | A.
 -type timestamp() :: tuple(MegaSecs::integer(),
                            Secs::integer(),
-                           MicroSecs::integer()).
+                           MicroSecs::integer() | float()).
 
 %% API
 
@@ -31,6 +31,10 @@ add_time(Datetime, H, M, S) ->
 %% returns a string with no offset (i.e., ending in "Z").
 format({_,_,_}=Timestamp) ->
     format(calendar:now_to_datetime(Timestamp));
+format({{Y,Mo,D}, {H,Mn,S}}) when is_float(S) ->
+    FmtStr = "~4.10.0B-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~9.6.0fZ",
+    IsoStr = io_lib:format(FmtStr, [Y, Mo, D, H, Mn, S]),
+    list_to_binary(IsoStr);
 format({{Y,Mo,D}, {H,Mn,S}}) ->
     FmtStr = "~4.10.0B-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~2.10.0BZ",
     IsoStr = io_lib:format(FmtStr, [Y, Mo, D, H, Mn, S]),
