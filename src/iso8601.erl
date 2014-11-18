@@ -1,6 +1,7 @@
 -module(iso8601).
 
--export([add_time/4,
+-export([now/0,
+         add_time/4,
          add_days/2,
          add_months/2,
          add_years/2,
@@ -11,6 +12,8 @@
          parse_interval/1,
          is_duration/1,
          is_datetime/1]).
+
+-compile({no_auto_import,[now/0]}).
 
 -export_types([datetime/0,
                timestamp/0]).
@@ -27,6 +30,11 @@
                            MicroSecs::integer() | float()).
 
 %% API
+
+-spec now () -> binary().
+%% @doc Wrapper for `iso8601:format(os:timestamp())`
+now() ->
+    format(os:timestamp()).
 
 -spec add_time (datetime() | timestamp(), integer(), integer(), integer()) -> datetime().
 %% @doc Add some time to the supplied `datetime()'.
