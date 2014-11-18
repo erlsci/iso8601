@@ -9,13 +9,13 @@ as [tsloughter](https://www.github.com/tsloughter) decimal seconds patch
 Add it to your `rebar.config` deps:
 
 ```erlang
-{'iso8601',    ".*",    {git, "git@github.com:seansawyer/erlang_iso8601.git", {tag, "1.1.1"}}}
+{'iso8601', ".*", {git, "git@github.com:kivra/erlang_iso8601.git", {tag, "1.1.2"}}}
 ```
 
 Format a timestamp or calendar datetime tuple:
 
 ```erlang
-> iso8601:format(now()).
+> iso8601:now().
 <<"2012-02-16T01:06:19Z">>
 > iso8601:format(calendar:universal_time()).
 <<"2012-02-16T01:06:48Z">>
