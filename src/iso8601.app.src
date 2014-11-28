@@ -2,6 +2,7 @@
  [
   {description, "ISO 8601 date parser and formatter."},
   {vsn, "1.1.1"},
+  {modules, []},
   {registered, []},
   {applications, [kernel, stdlib]},
   {env, []}
