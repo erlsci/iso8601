@@ -52,6 +52,8 @@ parse(Str) ->
 -spec parse_exact (string()) -> datetime().
 %% @doc Convert an ISO 8601 formatted string to a `{date(), time()}'
 %% tuple with seconds precision to 3 decimal palces
+parse_exact(Bin) when is_binary(Bin) ->
+    parse_exact(binary_to_list(Bin));
 parse_exact(Str) ->
     {{Date, {H, M, S}}, SecondsDecimal} = year(Str, []),
     {Date, {H, M, S + SecondsDecimal}}.
