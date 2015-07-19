@@ -10,13 +10,13 @@
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
--type datetime() :: tuple(Date::calendar:date(),
-                          Time::calendar:time()).
--type datetime_plist() :: list(tuple(atom(), integer())).
+-type datetime() :: {Date::calendar:date(),
+                     Time::calendar:time()}.
+-type datetime_plist() :: [{atom(), integer()}].
 -type maybe(A) :: undefined | A.
--type timestamp() :: tuple(MegaSecs::integer(),
-                           Secs::integer(),
-                           MicroSecs::integer() | float()).
+-type timestamp() :: {MegaSecs::integer(),
+                      Secs::integer(),
+                      MicroSecs::integer() | float()}.
 
 %% API
 
@@ -212,7 +212,7 @@ datetime(_, Plist) ->
     datetime(Plist).
 
 -spec make_date (datetime_plist())
-                -> tuple(Date::calendar:date(), WeekOffsetH::non_neg_integer()).
+                -> {Date::calendar:date(), WeekOffsetH::non_neg_integer()}.
 %% @doc Return a `tuple' containing a date and, if the date is in week format,
 %% an offset in hours that can be applied to the date to adjust it to midnight
 %% of the day specified. If month format is used, the offset will be zero.
@@ -225,7 +225,7 @@ make_date(Plist) ->
                  maybe(pos_integer()),
                  maybe(pos_integer()),
                  datetime_plist())
-                -> tuple(calendar:date(), non_neg_integer()).
+                -> {calendar:date(), non_neg_integer()}.
 %% @doc Return a `tuple' containing a date and - if the date is in week format
 %% (i.e., `Month' is undefined, `Week' is not) - an offset in hours that can be
 %% applied to the date to adjust it to midnight of the day specified. If month
