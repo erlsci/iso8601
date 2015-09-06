@@ -41,7 +41,7 @@ format({{Y,Mo,D}, {H,Mn,S}}) ->
     list_to_binary(IsoStr).
 
 -spec parse (string()) -> datetime().
-%% @doc Convert an ISO 8601 formatted string to a 
+%% @doc Convert an ISO 8601 formatted string to a
 parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
 parse(Str) ->
@@ -163,7 +163,7 @@ decimal(Str, Acc, Key) ->
                 false
         end,
     {Parts, Rest} = lists:splitwith(F, Str),
-    acc_float([$0,$.|Parts], Rest, Key, Acc, fun offset_hour/2).    
+    acc_float([$0,$.|Parts], Rest, Key, Acc, fun offset_hour/2).
 
 offset_hour([], Acc) ->
     datetime(Acc);
