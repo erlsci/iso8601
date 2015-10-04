@@ -7,4 +7,7 @@ EUNIT_OPTS = [verbose]
 # Standard targets
 include erlang.mk
 
+DIALYZER_DIRS := ebin/
+DIALYZER_OPTS += --verbose --statistics
+
 # eof
