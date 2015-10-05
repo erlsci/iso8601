@@ -1,2 +1,8 @@
 .eunit
 ebin
+logs
+iso8601.d
+.iso8601.plt
+xrefr
+elvis
+*.beam
