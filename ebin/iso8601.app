@@ -4,4 +4,4 @@
               {registered,[]},
               {applications,[kernel,stdlib]},
               {env,[]},
-              {modules,[iso8601]}]}.
+              {modules, ['iso8601']}]}.
