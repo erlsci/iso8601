@@ -9,7 +9,7 @@ as [tsloughter](https://www.github.com/tsloughter) decimal seconds patch
 Add it to your `rebar.config` deps:
 
 ```erlang
-{'iso8601', ".*", {git, "git@github.com:kivra/erlang_iso8601.git", {tag, "1.1.2"}}}
+{'iso8601', ".*", {git, "git@github.com:kivra/erlang_iso8601.git", {tag, "1.2.0"}}}
 ```
 
 Format a timestamp or calendar datetime tuple:
