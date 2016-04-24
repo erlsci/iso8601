@@ -14,9 +14,9 @@
                      Time::calendar:time()}.
 -type datetime_plist() :: list({atom(), integer()}).
 -type maybe(A) :: undefined | A.
--type timestamp() :: tuple(MegaSecs::integer(),
-                           Secs::integer(),
-                           MicroSecs::integer() | float()).
+-type timestamp() :: {MegaSecs::integer(),
+                      Secs::integer(),
+                      MicroSecs::integer() | float()}.
 
 %% API
 

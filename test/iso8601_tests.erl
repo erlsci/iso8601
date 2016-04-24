@@ -54,7 +54,7 @@ parse_hour_test_() ->
     [{"parses YYYYMMDDTHH",
       ?_assertMatch({{2012,2,3},{4,0,0}}, F("20120203T04"))},
      {"parses YYYY-MM-DDTHH",
-      ?_assertMatch({{2012,2,3},{4,0,0}}, F("2012-02-03T04"))}].    
+      ?_assertMatch({{2012,2,3},{4,0,0}}, F("2012-02-03T04"))}].
 
 parse_fractional_hour_test_() ->
     F = fun iso8601:parse/1,
@@ -72,7 +72,7 @@ parse_minute_test_() ->
     [{"parses YYYYMMDDTHHMM",
       ?_assertMatch({{2012,2,3},{4,5,0}}, F("20120203T0405"))},
      {"parses YYYY-MM-DDTHH:MM",
-      ?_assertMatch({{2012,2,3},{4,5,0}}, F("2012-02-03T04:05"))}].    
+      ?_assertMatch({{2012,2,3},{4,5,0}}, F("2012-02-03T04:05"))}].
 
 parse_fractional_minute_test_() ->
     F = fun iso8601:parse/1,
@@ -90,7 +90,7 @@ parse_second_test_() ->
     [{"parses YYYYMMDDTHHMMSS",
       ?_assertMatch({{2012,2,3},{4,5,6}}, F("20120203T040506"))},
      {"parses YYYY-MM-DDTHH:MM:SS",
-      ?_assertMatch({{2012,2,3},{4,5,6}}, F("2012-02-03T04:05:06"))}].    
+      ?_assertMatch({{2012,2,3},{4,5,6}}, F("2012-02-03T04:05:06"))}].
 
 parse_fractional_second_test_() ->
     F = fun iso8601:parse/1,
