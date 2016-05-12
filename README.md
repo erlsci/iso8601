@@ -1,4 +1,4 @@
-# iso8601 [![Build Status][travis-badge]][travis] [![Erlang Version][erl-badge]][erl] [![Tag][tag-badge]][tag]
+# iso8601 [![Build Status][travis-badge]][travis] [![Tag][tag-badge]][tag] [![Erlang Version][erl-badge]][erl]
 
 *ISO 8601 dates formating and parsing library for Erlang*
 
