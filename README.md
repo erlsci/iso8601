@@ -2,11 +2,20 @@
 
 [![iso8601 project logo][logo]][logo-large]
 
-*ISO 8601 dates formating and parsing for Erlang*
+*ISO 8601 dates formating and parsing library for Erlang*
 
-## About
 
-The ``erlang_iso8601`` library was originally created by Sean Sawyer in 2011. In 2016, Sean handing off maintenance of the library to the [erlsci](https://github.com/erlsci) Github org and renamed the repo to simply ``iso8601``, matching its Erlang app name:
+#### Contents
+
+* [About](#about-)
+* [Usage](#usage-)
+* [Known Deficiencies](#known-deficiencies-)
+* [License](#license-)
+
+
+## About [&#x219F;](#contents)
+
+The ``erlang_iso8601`` library was originally created by Sean Sawyer in 2011. In 2016, Sean handed off maintenance of the library to the [erlsci](https://github.com/erlsci) Github org at which point the project (and repo) was renamed to simply ``iso8601``, matching its Erlang app name:
 
 * ``git clone https://github.com/erlsci/iso8601.git``
 
@@ -15,7 +24,8 @@ Thanks to Github's forwarding for project renames and moves, the following still
 * ``git clone https://github.com/seansawyer/erlang_iso8601.git``
 * ``git clone https://github.com/erlsci/erlang_iso8601.git``
 
-## Usage
+
+## Usage [&#x219F;](#contents)
 
 Add it to your `rebar.config` deps:
 
@@ -56,7 +66,8 @@ Add 1 hour, 2 minutes and 3 seconds to a datetime tuple:
 {{2012,2,16},{2,8,51}}
 ```
 
-## Known Deficiencies
+
+## Known Deficiencies [&#x219F;](#contents)
 
 * Does not support expanded year representation.
 * Does not support fractional times.
