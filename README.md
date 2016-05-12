@@ -1,4 +1,4 @@
-# iso8601 [![Build Status][travis-badge]][travis]
+# iso8601 [![Build Status][travis-badge]][travis] [![Erlang Version][erl-badge]][erl] [![Tag][tag-badge]][tag]
 
 [![iso8601 project logo][logo]][logo-large]
 
@@ -83,6 +83,10 @@ for more info.
 
 [travis]: https://travis-ci.org/erlsci/iso8601
 [travis-badge]: https://travis-ci.org/erlsci/iso8601.png?branch=master
+[tag]: https://github.com/erlsci/iso8601/releases/latest
+[tag-badge]: https://img.shields.io/github/tag/erlsci/iso8601.svg
+[erl]: http://www.erlang.org/downloads
+[erl-badge]: https://img.shields.io/badge/erlang-%E2%89%A5R16B03-red.svg
 [logo]: priv/images/logo.png
 [logo-large]: priv/images/logo-large.png
 [logo-source]: https://www.flickr.com/photos/theilr/2164085293
