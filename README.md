@@ -1,4 +1,6 @@
-# iso8601
+# iso8601 [![Build Status][travis-badge]][travis]
+
+[![iso8601 project logo][logo]][logo-large]
 
 *ISO 8601 dates formating and parsing for Erlang*
 
@@ -41,7 +43,7 @@ Parse a date string or binary:
 ```erlang
 3> iso8601:parse(<<"2012-02-16T01:06:48Z">>).
 {{2012,2,16},{1,6,48}}
-4> iso8601:parse("2012-02-16T01:06:48Z").    
+4> iso8601:parse("2012-02-16T01:06:48Z").
 {{2012,2,16},{1,6,48}}
 ```
 
@@ -63,3 +65,13 @@ Add 1 hour, 2 minutes and 3 seconds to a datetime tuple:
 
 See the [open issues](https://github.com/erlsci/iso8601/issues)
 for more info.
+
+
+
+<!-- Named page links below: /-->
+
+[travis]: https://travis-ci.org/erlsci/iso8601
+[travis-badge]: https://travis-ci.org/erlsci/iso8601.png?branch=master
+[logo]: priv/images/logo.png
+[logo-large]: priv/images/logo-large.png
+[logo-source]: https://www.flickr.com/photos/theilr/2164085293
