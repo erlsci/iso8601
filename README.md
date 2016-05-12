@@ -78,6 +78,16 @@ See the [open issues](https://github.com/erlsci/iso8601/issues)
 for more info.
 
 
+## License
+
+```
+The MIT License (MIT)
+
+Copyright © 2011-2014, Sean Sawyer
+Copyright © 2012, Tristan Sloughter
+Copyright © 2016, Duncan McGreggor
+```
+
 
 <!-- Named page links below: /-->
 
