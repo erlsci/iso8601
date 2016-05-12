@@ -78,7 +78,7 @@ See the [open issues](https://github.com/erlsci/iso8601/issues)
 for more info.
 
 
-## License
+## License [&#x219F;](#contents)
 
 ```
 The MIT License (MIT)
