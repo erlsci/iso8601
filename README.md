@@ -96,7 +96,7 @@ Copyright © 2016, Duncan McGreggor
 [tag]: https://github.com/erlsci/iso8601/releases/latest
 [tag-badge]: https://img.shields.io/github/tag/erlsci/iso8601.svg
 [erl]: http://www.erlang.org/downloads
-[erl-badge]: https://img.shields.io/badge/erlang-%E2%89%A5R16B03-red.svg
+[erl-badge]: https://img.shields.io/badge/erlang-%E2%89%A5R15B03-blue.svg
 [logo]: priv/images/logo.png
 [logo-large]: priv/images/logo-large.png
 [logo-source]: https://www.flickr.com/photos/theilr/2164085293
