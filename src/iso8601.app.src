@@ -1,6 +1,6 @@
 {application,iso8601,
              [{description,"ISO 8601 date parser and formatter."},
-              {vsn,"1.1.1"},
+              {vsn,"1.2.0"},
               {registered,[]},
               {modules,[iso8601,iso8601_tests]},
               {applications,[kernel,stdlib]},
