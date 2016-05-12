@@ -1,4 +1,5 @@
 language: erlang
+sudo: false
 install: true
 before_script:
     - wget https://s3.amazonaws.com/rebar3/rebar3
