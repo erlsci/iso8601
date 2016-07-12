@@ -103,6 +103,17 @@ parse_fractional_second_test_() ->
      {"parses YYYY-MM-DDTHHMMSS,ss",
       ?_assertMatch({{2012,2,3},{4,5,7}}, F("2012-02-03T040506,50"))}].
 
+parse_exact_fractional_second_test_() ->
+    F = fun iso8601:parse_exact/1,
+    [{"parses YYYYMMDDTHHMMSS.ss",
+      ?_assertMatch({{2012,2,3},{4,5,6.50}}, F("20120203T040506.50"))},
+     {"parses YYYY-MM-DDTHHMMSS.ss",
+      ?_assertMatch({{2012,2,3},{4,5,6.50}}, F("2012-02-03T040506.50"))},
+     {"parses YYYYMMDDTHHMMSS,ss",
+      ?_assertMatch({{2012,2,3},{4,5,6.50}}, F("20120203T040506,50"))},
+     {"parses YYYY-MM-DDTHHMMSS,ss",
+      ?_assertMatch({{2012,2,3},{4,5,6.50}}, F("2012-02-03T040506,50"))}].
+
 parse_fractional_fail_test_() ->
     F = fun iso8601:parse/1,
     [{"fails to parses multiple decimals", % disallowed by spec
