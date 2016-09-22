@@ -41,7 +41,7 @@ format({{Y,Mo,D}, {H,Mn,S}}) ->
     list_to_binary(IsoStr).
 
 -spec parse (string()) -> datetime().
-%% @doc Convert an ISO 8601 formatted string to a
+%% @doc Convert an ISO 8601 formatted string to a `{date(), time()}' tuple
 parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
 parse(Str) ->
