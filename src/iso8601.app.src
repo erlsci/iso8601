@@ -4,4 +4,9 @@
               {registered,[]},
               {modules,[iso8601,iso8601_tests]},
               {applications,[kernel,stdlib]},
-              {env,[]}]}.
+              {env,[]},
+              {licenses, ["BSD"]},
+              {maintainers, ["Duncan McGreggor"]},
+              {links, [{"Github", "https://github.com/erlsci/iso8601"}]}
+             ]
+}.
