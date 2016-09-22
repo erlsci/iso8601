@@ -66,11 +66,18 @@ Add 1 hour, 2 minutes and 3 seconds to a datetime tuple:
 {{2012,2,16},{2,8,51}}
 ```
 
+Fractional times:
+
+```erlang
+7> iso8601:parse("20120203T040506.50").
+{{2012,2,3},{4,5,7}}
+8> iso8601:parse_exact("20120203T040506.50").
+{{2012,2,3},{4,5,6.50}}
+```
 
 ## Known Deficiencies [&#x219F;](#contents)
 
 * Does not support expanded year representation.
-* Does not support fractional times.
 * Does not support ordinal dates.
 * Does not support intervals.
 
