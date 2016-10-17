@@ -78,7 +78,7 @@ format({{Y,Mo,D}, {H,Mn,S}}) ->
     IsoStr = io_lib:format(FmtStr, [Y, Mo, D, H, Mn, S]),
     list_to_binary(IsoStr).
 
--spec parse (string()) -> datetime().
+-spec parse (string()|binary()) -> datetime().
 %% @doc Convert an ISO 8601 formatted string to a
 parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
