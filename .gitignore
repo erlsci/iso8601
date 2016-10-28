@@ -1,3 +1,4 @@
+rebar.lock
 .eunit
 ebin/*.beam
 test/*.beam
