@@ -78,7 +78,6 @@ Fractional times:
 ## Known Deficiencies [&#x219F;](#contents)
 
 * Does not support expanded year representation.
-* Does not support ordinal dates.
 * Does not support intervals.
 
 See the [open issues](https://github.com/erlsci/iso8601/issues)

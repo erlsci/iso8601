@@ -6,7 +6,6 @@
          parse_exact/1]).
 
 -export_types([timestamp/0]).
-
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
@@ -67,6 +66,14 @@ month_or_week([], Acc) ->
     datetime(Acc);
 month_or_week([$-,$W,W1,W2|Rest], Acc) ->
     acc([W1,W2], Rest, week, Acc, fun week_day/2);
+month_or_week([$-,D1,D2,D3], Acc) ->
+    %% ordinal date, no time
+    io:format("Ordinal date, no time!~n"),
+    acc_ordinal_date(D1, D2, D3, [], Acc, fun hour/2);
+month_or_week([$-,D1,D2,D3,$T|Rest], Acc) ->
+    %% ordinal date with time
+    io:format("Ordinal date, time is ~p!~n", [Rest]),
+    acc_ordinal_date(D1, D2, D3, [$T|Rest], Acc, fun hour/2);
 month_or_week([$-,M1,M2|Rest], Acc) ->
     acc([M1,M2], Rest, month, Acc, fun month_day/2);
 month_or_week([$W,W1,W2|Rest], Acc) ->
@@ -201,6 +208,37 @@ acc(IntStr, Rest, Key, Acc, NextF) ->
 acc_float(FloatStr, Rest, Key, Acc, NextF) ->
     Acc1 = [{Key, list_to_float(FloatStr)}|Acc],
     NextF(Rest, Acc1).
+
+acc_ordinal_date(D1, D2, D3, Rest, Acc, NextF) ->
+    Days = list_to_integer([D1, D2, D3]),
+    Days > 0 orelse error(badarg),
+    Year = ?V(year, Acc),
+    Year =/= undefined orelse error(badarg),
+    DaysInMonths = days_in_months_for_year(Year),
+    { Month, Day } = unpack_ordinal_date(Days, DaysInMonths),
+    Acc1 = [{ month, Month }, { month_day, Day }|Acc],
+    NextF(Rest, Acc1).
+
+unpack_ordinal_date(Days, DaysInMonths) -> unpack_ordinal_date(1, Days, DaysInMonths).
+unpack_ordinal_date(_Month, _Days, []) -> error(badarg), { 0, 0 };
+unpack_ordinal_date(_Month, Days, _DaysInMonths) when Days < 0 -> error(badarg), { 0, 0 };
+unpack_ordinal_date(Month, Days, [DaysThisMonth|DaysInMonths]) ->
+    case Days > DaysThisMonth of
+        true -> unpack_ordinal_date(Month + 1, Days - DaysThisMonth, DaysInMonths);
+        _ -> { Month, Days }
+    end.
+
+days_in_months_for_year(Year) ->
+    case is_leap_year(Year) of
+        true -> [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        false -> [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    end.
+
+is_leap_year(Year) ->
+    case Year rem 100 of
+         0 -> Year rem 400 =:= 0;
+         _ ->  Year rem 4 =:= 0
+    end.
 
 add_decimal(Datetime, Plist) ->
     HDecimal = ?V(hour_decimal, Plist, 0.0),
