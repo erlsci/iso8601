@@ -4,6 +4,7 @@
 -include_lib("eunit/include/eunit.hrl").
 
 -define(MN, {0,0,0}). % midnight, as a calendar:time()
+-define(MNE, {0,0,0.0}). % midnight, as a calendar:time(), with microseconds
 
 parse_fail_test_() ->
     F = fun iso8601:parse/1,
@@ -103,6 +104,17 @@ parse_fractional_second_test_() ->
      {"parses YYYY-MM-DDTHHMMSS,ss",
       ?_assertMatch({{2012,2,3},{4,5,7}}, F("2012-02-03T040506,50"))}].
 
+parse_exact_fractional_second_test_() ->
+    F = fun iso8601:parse_exact/1,
+    [{"parses YYYYMMDDTHHMMSS.ss",
+      ?_assertMatch({{2012,2,3},{4,5,6.50}}, F("20120203T040506.50"))},
+     {"parses YYYY-MM-DDTHHMMSS.ss",
+      ?_assertMatch({{2012,2,3},{4,5,6.50}}, F("2012-02-03T040506.50"))},
+     {"parses YYYYMMDDTHHMMSS,ss",
+      ?_assertMatch({{2012,2,3},{4,5,6.50}}, F("20120203T040506,50"))},
+     {"parses YYYY-MM-DDTHHMMSS,ss",
+      ?_assertMatch({{2012,2,3},{4,5,6.50}}, F("2012-02-03T040506,50"))}].
+
 parse_fractional_fail_test_() ->
     F = fun iso8601:parse/1,
     [{"fails to parses multiple decimals", % disallowed by spec
@@ -116,3 +128,35 @@ parse_offset_test_() ->
       ?_assertMatch({{2012,2,3},{15,9,7}}, F("20120203T200506.50+0456"))},
      {"parses YYYYMMDDTHHMMSS.ss+0400",
       ?_assertMatch({{2012,2,3},{17,11,7}}, F("20120203T040506.50-1306"))}].
+
+parse_ordinal_test_() ->
+    F= fun iso8601:parse/1,
+    [{"parses YYYY-DDDTHHMMSS", ?_assertMatch({{2016,2,3}, {4,5,7}}, F("2016-034T040506.50")) },
+     {"parses YYYY-DDD", ?_assertMatch({{2016,2,3}, ?MN}, F("2016-034")) },
+     {"parses YYYY_DDDTHHMMSS, Feb 29 in a leap year", ?_assertMatch({{2016,2,29}, {4,5,7}}, F("2016-060T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, after Feb 29 in a leap year", ?_assertMatch({{2016,9,25}, {4,5,7}}, F("2016-269T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, Feb 29 in a leap century", ?_assertMatch({{2000,2,29}, {4,5,7}}, F("2000-060T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, March 1 in a non-leap year", ?_assertMatch({{2015,3,1}, {4,5,7}}, F("2015-060T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, after Feb 29 in a non-leap year", ?_assertMatch({{2015,9,26}, {4,5,7}}, F("2015-269T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, March 1 in a non-leap century", ?_assertMatch({{1900,3,1}, {4,5,7}}, F("1900-060T040506.50")) },
+     {"fails to parse ordinal date with 0 days", ?_assertError(badarg, F("2016-000T040506.50"))},
+     {"fails to parse ordinal date with too many days in a leap year", ?_assertError(badarg, F("2016-367T040506.50"))},
+     {"parses ordinal date wth 366 days in a leap year", ?_assertMatch({{2016,12,31}, {4,5,7}}, F("2016-366T040506.50"))},
+     {"fails to parse ordinal date with too many days in a non-leap year", ?_assertError(badarg, F("2015-366T040506.50"))}
+    ].
+
+parse_ordinal_exact_test_() ->
+    F= fun iso8601:parse_exact/1,
+    [{"parses YYYY-DDDTHHMMSS", ?_assertMatch({{2016,2,3}, {4,5,6.50}}, F("2016-034T040506.50")) },
+     {"parses YYYY-DDD", ?_assertMatch({{2016,2,3}, ?MNE}, F("2016-034")) },
+     {"parses YYYY_DDDTHHMMSS, Feb 29 in a leap year", ?_assertMatch({{2016,2,29}, {4,5,6.50}}, F("2016-060T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, after Feb 29 in a leap year", ?_assertMatch({{2016,9,25}, {4,5,6.50}}, F("2016-269T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, Feb 29 in a leap century", ?_assertMatch({{2000,2,29}, {4,5,6.50}}, F("2000-060T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, March 1 in a non-leap year", ?_assertMatch({{2015,3,1}, {4,5,6.50}}, F("2015-060T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, after Feb 29 in a non-leap year", ?_assertMatch({{2015,9,26}, {4,5,6.50}}, F("2015-269T040506.50")) },
+     {"parses YYYY_DDDTHHMMSS, March 1 in a non-leap century", ?_assertMatch({{1900,3,1}, {4,5,6.50}}, F("1900-060T040506.50")) },
+     {"fails to parse ordinal date with 0 days", ?_assertError(badarg, F("2016-000T040506.50"))},
+     {"fails to parse ordinal date with too many days in a leap year", ?_assertError(badarg, F("2016-367T040506.50"))},
+     {"parses ordinal date wth 366 days in a leap year", ?_assertMatch({{2016,12,31}, {4,5,6.50}}, F("2016-366T040506.50"))},
+     {"fails to parse ordinal date with too many days in a non-leap year", ?_assertError(badarg, F("2015-366T040506.50"))}
+    ].

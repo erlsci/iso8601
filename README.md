@@ -1,6 +1,6 @@
 # iso8601 [![Build Status][travis-badge]][travis] [![Tag][tag-badge]][tag] [![Erlang Version][erl-badge]][erl]
 
-*ISO 8601 dates formating and parsing library for Erlang*
+*An ISO 8601 date formating and parsing library for Erlang*
 
 [![iso8601 project logo][logo]][logo-large]
 
@@ -30,13 +30,13 @@ Thanks to Github's forwarding for project renames and moves, the following still
 Add it to your `rebar.config` deps:
 
 ```erlang
-{iso8601, ".*", {git, "https://github.com/erlsci/iso8601.git", {tag, "1.2.0"}}}
+{iso8601, ".*", {git, "https://github.com/erlsci/iso8601.git", {tag, "1.2.1"}}}
 ```
 
 Or for `rebar3`:
 
 ```erlang
-{iso8601, {git, "https://github.com/erlsci/iso8601.git", {tag, "1.2.0"}}}
+{iso8601, {git, "https://github.com/erlsci/iso8601.git", {tag, "1.2.1"}}}
 ```
 
 Format a timestamp or calendar datetime tuple:
@@ -66,12 +66,18 @@ Add 1 hour, 2 minutes and 3 seconds to a datetime tuple:
 {{2012,2,16},{2,8,51}}
 ```
 
+Fractional times:
+
+```erlang
+7> iso8601:parse("20120203T040506.50").
+{{2012,2,3},{4,5,7}}
+8> iso8601:parse_exact("20120203T040506.50").
+{{2012,2,3},{4,5,6.50}}
+```
 
 ## Known Deficiencies [&#x219F;](#contents)
 
 * Does not support expanded year representation.
-* Does not support fractional times.
-* Does not support ordinal dates.
 * Does not support intervals.
 
 See the [open issues](https://github.com/erlsci/iso8601/issues)

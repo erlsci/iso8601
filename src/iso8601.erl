@@ -2,16 +2,13 @@
 
 -export([add_time/4,
          format/1,
-         parse/1]).
+         parse/1,
+         parse_exact/1]).
 
--export_types([datetime/0,
-               timestamp/0]).
-
+-export_types([timestamp/0]).
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
--type datetime() :: {Date::calendar:date(),
-                     Time::calendar:time()}.
 -type datetime_plist() :: list({atom(), integer()}).
 -type maybe(A) :: undefined | A.
 -type timestamp() :: {MegaSecs::integer(),
@@ -20,12 +17,13 @@
 
 %% API
 
--spec add_time (datetime(), integer(), integer(), integer()) -> datetime().
-%% @doc Add some time to the supplied `datetime()'.
+-spec add_time (calendar:datetime(), integer(), integer(), integer())
+               -> calendar:datetime().
+%% @doc Add some time to the supplied `calendar:datetime()'.
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
 
--spec format (datetime() | timestamp()) -> binary().
+-spec format (calendar:datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
 %% tuple to an ISO 8601 formatted string. Note that this function always
 %% returns a string with no offset (i.e., ending in "Z").
@@ -40,12 +38,22 @@ format({{Y,Mo,D}, {H,Mn,S}}) ->
     IsoStr = io_lib:format(FmtStr, [Y, Mo, D, H, Mn, S]),
     list_to_binary(IsoStr).
 
--spec parse (string()) -> datetime().
+-spec parse (string()) -> calendar:datetime().
 %% @doc Convert an ISO 8601 formatted string to a
 parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
 parse(Str) ->
-    year(Str, []).
+    {{Date, {H, M, S}}, Subsecond} = year(Str, []),
+    {Date, {H, M, S + round(Subsecond)}}.
+
+-spec parse_exact (string()) -> calendar:datetime().
+%% @doc Convert an ISO 8601 formatted string to a `{date(), time()}'
+%% tuple with seconds precision to 3 decimal palces
+parse_exact(Bin) when is_binary(Bin) ->
+    parse_exact(binary_to_list(Bin));
+parse_exact(Str) ->
+    {{Date, {H, M, S}}, SecondsDecimal} = year(Str, []),
+    {Date, {H, M, S + SecondsDecimal}}.
 
 %% Private functions
 
@@ -58,6 +66,14 @@ month_or_week([], Acc) ->
     datetime(Acc);
 month_or_week([$-,$W,W1,W2|Rest], Acc) ->
     acc([W1,W2], Rest, week, Acc, fun week_day/2);
+month_or_week([$-,D1,D2,D3], Acc) ->
+    %% ordinal date, no time
+    io:format("Ordinal date, no time!~n"),
+    acc_ordinal_date(D1, D2, D3, [], Acc, fun hour/2);
+month_or_week([$-,D1,D2,D3,$T|Rest], Acc) ->
+    %% ordinal date with time
+    io:format("Ordinal date, time is ~p!~n", [Rest]),
+    acc_ordinal_date(D1, D2, D3, [$T|Rest], Acc, fun hour/2);
 month_or_week([$-,M1,M2|Rest], Acc) ->
     acc([M1,M2], Rest, month, Acc, fun month_day/2);
 month_or_week([$W,W1,W2|Rest], Acc) ->
@@ -193,11 +209,41 @@ acc_float(FloatStr, Rest, Key, Acc, NextF) ->
     Acc1 = [{Key, list_to_float(FloatStr)}|Acc],
     NextF(Rest, Acc1).
 
+acc_ordinal_date(D1, D2, D3, Rest, Acc, NextF) ->
+    Days = list_to_integer([D1, D2, D3]),
+    Days > 0 orelse error(badarg),
+    Year = ?V(year, Acc),
+    Year =/= undefined orelse error(badarg),
+    DaysInMonths = days_in_months_for_year(Year),
+    { Month, Day } = unpack_ordinal_date(Days, DaysInMonths),
+    Acc1 = [{ month, Month }, { month_day, Day }|Acc],
+    NextF(Rest, Acc1).
+
+unpack_ordinal_date(Days, DaysInMonths) -> unpack_ordinal_date(1, Days, DaysInMonths).
+unpack_ordinal_date(_Month, _Days, []) -> error(badarg), { 0, 0 };
+unpack_ordinal_date(_Month, Days, _DaysInMonths) when Days < 0 -> error(badarg), { 0, 0 };
+unpack_ordinal_date(Month, Days, [DaysThisMonth|DaysInMonths]) ->
+    case Days > DaysThisMonth of
+        true -> unpack_ordinal_date(Month + 1, Days - DaysThisMonth, DaysInMonths);
+        _ -> { Month, Days }
+    end.
+
+days_in_months_for_year(Year) ->
+    case is_leap_year(Year) of
+        true -> [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        false -> [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    end.
+
+is_leap_year(Year) ->
+    case Year rem 100 of
+         0 -> Year rem 400 =:= 0;
+         _ ->  Year rem 4 =:= 0
+    end.
+
 add_decimal(Datetime, Plist) ->
     HDecimal = ?V(hour_decimal, Plist, 0.0),
     MDecimal = ?V(minute_decimal, Plist, 0.0),
-    SDecimal = ?V(second_decimal, Plist, 0.0),
-    apply_offset(Datetime, HDecimal, MDecimal, SDecimal).
+    apply_offset(Datetime, HDecimal, MDecimal, 0.0).
 
 datetime(Plist) ->
     {Date, WeekOffsetH} = make_date(Plist),
@@ -206,7 +252,8 @@ datetime(Plist) ->
     OffsetSign = ?V(offset_sign, Plist, 1),
     OffsetH = -1 * OffsetSign * ?V(offset_hour, Plist, 0),
     OffsetM = -1 * OffsetSign * ?V(offset_minute, Plist, 0),
-    apply_offset(Datetime, WeekOffsetH+OffsetH, OffsetM, 0).
+    { apply_offset(Datetime, WeekOffsetH+OffsetH, OffsetM, 0), ?V(second_decimal, Plist, 0.0) }.
+
 
 datetime(_, Plist) ->
     datetime(Plist).
@@ -253,10 +300,9 @@ date_at_w01_1(Year) ->
         7 -> {Year, 1, 2}
     end.
 
--spec apply_offset (datetime(), number(), number(), number()) -> datetime().
+-spec apply_offset (calendar:datetime(), number(), number(), number())
+                   -> calendar:datetime().
 %% @doc Add the specified number of hours, minutes and seconds to `Datetime'.
-%% Punts on sub-second precision for now by rounding the total of the number of
-%% seconds in the offset before adding.
 apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
     Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
