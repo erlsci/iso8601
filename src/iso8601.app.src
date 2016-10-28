@@ -2,7 +2,7 @@
              [{description,"An ISO 8601 date formating and parsing library for Erlang"},
               {vsn,"1.2.2"},
               {registered,[]},
-              {modules,[iso8601,iso8601_tests]},
+              {modules,[iso8601]},
               {applications,[kernel,stdlib]},
               {env,[]},
               {pkg_name, iso8601},
