@@ -4,6 +4,9 @@ build:
 clean:
 	rm -rf .rebar .rebar3 deps _build rebar.lock ebin/*
 
+check:
+	rebar3 eunit -v
+
 push:
 	git push github master
 	git push gitlab master
