@@ -1,7 +1,15 @@
 {application,iso8601,
              [{description,"ISO 8601 date parser and formatter."},
-              {vsn,"1.2.0"},
+              {vsn,"1.2.1"},
               {registered,[]},
               {modules,[iso8601,iso8601_tests]},
               {applications,[kernel,stdlib]},
-              {env,[]}]}.
+              {env,[]},
+              {pkg_name, lutil},
+              {maintainers, ["Duncan McGreggor"]},
+              {licenses, ["BSD-3"]},
+              {links,
+               [{"GitHub", "https://github.com/erlsci/iso8601"},
+                {"Gitlab", "https://gitlab.com/erlsci/iso8601"},
+                {"Hex", "https://hex.pm/packages/iso8601"}
+               ]}]}.
