@@ -343,7 +343,11 @@ apply_months_offset(Datetime, 0) ->
     Datetime;
 apply_months_offset(Datetime, AM) ->
     {{Y,M,D},{H,MM,S}} = Datetime,
-    AY = (Y*12)+M+AM,
+    AY =
+      case M+AM of
+          0   -> ((Y-1)*12);  %% Month and AM cancels each other, i.e 6 + -6
+          MAM -> (Y*12)+MAM
+      end,
     Year = (AY div 12),
     Month =
         case (AY rem 12) of
