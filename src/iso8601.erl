@@ -38,7 +38,7 @@ format({{Y,Mo,D}, {H,Mn,S}}) ->
     IsoStr = io_lib:format(FmtStr, [Y, Mo, D, H, Mn, S]),
     list_to_binary(IsoStr).
 
--spec parse (string()) -> calendar:datetime().
+-spec parse (iodata()) -> calendar:datetime().
 %% @doc Convert an ISO 8601 formatted string to a
 parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
@@ -46,7 +46,7 @@ parse(Str) ->
     {{Date, {H, M, S}}, Subsecond} = year(Str, []),
     {Date, {H, M, S + round(Subsecond)}}.
 
--spec parse_exact (string()) -> calendar:datetime().
+-spec parse_exact (iodata()) -> calendar:datetime().
 %% @doc Convert an ISO 8601 formatted string to a `{date(), time()}'
 %% tuple with seconds precision to 3 decimal palces
 parse_exact(Bin) when is_binary(Bin) ->
