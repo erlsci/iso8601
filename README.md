@@ -1,4 +1,8 @@
-# iso8601 [![Build Status][travis-badge]][travis] [![Tag][tag-badge]][tag] [![Erlang Version][erl-badge]][erl]
+# iso8601 
+[![Build Status][travis-badge]][travis] 
+[![Tag][tag-badge]][tag] 
+[![Erlang Version][erl-badge]][erl]
+[![Downloads][hex downloads]][hex package]
 
 *An ISO 8601 date formating and parsing library for Erlang*
 
@@ -106,3 +110,6 @@ Copyright © 2016, Duncan McGreggor
 [logo]: resources/images/logo.png
 [logo-large]: resources/images/logo-large.png
 [logo-source]: https://www.flickr.com/photos/theilr/2164085293
+[hex badge]: https://img.shields.io/hexpm/v/iso8601.svg?maxAge=259200
+[hex package]: https://hex.pm/packages/iso8601
+[hex downloads]: https://img.shields.io/hexpm/dt/iso8601.svg
