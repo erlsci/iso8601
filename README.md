@@ -103,6 +103,6 @@ Copyright © 2016, Duncan McGreggor
 [tag-badge]: https://img.shields.io/github/tag/erlsci/iso8601.svg
 [erl]: http://www.erlang.org/downloads
 [erl-badge]: https://img.shields.io/badge/erlang-%E2%89%A5R15B03-blue.svg
-[logo]: priv/images/logo.png
-[logo-large]: priv/images/logo-large.png
+[logo]: resources/images/logo.png
+[logo-large]: resources/images/logo-large.png
 [logo-source]: https://www.flickr.com/photos/theilr/2164085293
