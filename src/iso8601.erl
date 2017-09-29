@@ -9,6 +9,9 @@
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
+-type datetime() :: {calendar:time(), {calendar:hour(),
+                                       calendar:minute(),
+                                       calendar:second() | float()}}.
 -type datetime_plist() :: list({atom(), integer()}).
 -type maybe(A) :: undefined | A.
 -type timestamp() :: {MegaSecs::integer(),
@@ -23,7 +26,7 @@
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
 
--spec format (calendar:datetime() | timestamp()) -> binary().
+-spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
 %% tuple to an ISO 8601 formatted string. Note that this function always
 %% returns a string with no offset (i.e., ending in "Z").
