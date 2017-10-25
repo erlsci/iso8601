@@ -1,6 +1,6 @@
-# iso8601 
-[![Build Status][travis-badge]][travis] 
-[![Tag][tag-badge]][tag] 
+# iso8601
+[![Build Status][travis-badge]][travis]
+[![Tag][tag-badge]][tag]
 [![Erlang Version][erl-badge]][erl]
 [![Downloads][hex downloads]][hex package]
 
@@ -77,6 +77,15 @@ Fractional times:
 {{2012,2,3},{4,5,7}}
 8> iso8601:parse_exact("20120203T040506.50").
 {{2012,2,3},{4,5,6.50}}
+```
+
+Parse durations:
+
+```erlang
+9> iso8601:parse_duration("+P6Y3M1DT1H1M1.1S").
+[{sign, "+"}, {years, 6}, {months, 3}, {days, 1}, {hours, 1}, {minutes, 1}, {seconds, 1}]
+10> iso8601:parse_duration("PT6M").
+[{sign, []}, {years, 0}, {months, 0}, {days, 0},{hours, 0}, {minutes, 6}, {seconds, 0}]
 ```
 
 ## Known Deficiencies [&#x219F;](#contents)
