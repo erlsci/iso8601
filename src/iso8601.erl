@@ -14,7 +14,7 @@
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
--type datetime() :: {calendar:time(), {calendar:hour(),
+-type datetime() :: {calendar:date(), {calendar:hour(),
                                        calendar:minute(),
                                        calendar:second() | float()}}.
 -type datetime_plist() :: list({atom(), integer()}).
