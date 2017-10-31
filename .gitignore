@@ -3,3 +3,4 @@ rebar.lock
 ebin/*.beam
 test/*.beam
 _build/*
+.rebar3
