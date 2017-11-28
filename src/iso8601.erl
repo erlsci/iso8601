@@ -1,6 +1,7 @@
 -module(iso8601).
 
 -export([add_time/4,
+         subtract_time/4,
          format/1,
          parse/1,
          parse_exact/1]).
@@ -25,6 +26,12 @@
 %% @doc Add some time to the supplied `calendar:datetime()'.
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
+
+-spec subtract_time (calendar:datetime(), integer(), integer(), integer())
+                    -> calendar:datetime().
+%% @doc Subtract some time from the supplied `calendar:datetime()'.
+subtract_time(Datetime, H, M, S) ->
+    apply_offset(Datetime, -H, -M, -S).
 
 -spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'

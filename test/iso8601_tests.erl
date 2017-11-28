@@ -160,3 +160,19 @@ parse_ordinal_exact_test_() ->
      {"parses ordinal date wth 366 days in a leap year", ?_assertMatch({{2016,12,31}, {4,5,6.50}}, F("2016-366T040506.50"))},
      {"fails to parse ordinal date with too many days in a non-leap year", ?_assertError(badarg, F("2015-366T040506.50"))}
     ].
+
+add_time_test_() ->
+    F= fun iso8601:add_time/4,
+    [{"add one second", ?_assertMatch({{2017,11,28}, {17,7,58}}, F({{2017,11,28}, {17,7,57}}, 0, 0, 1))},
+     {"add one minute", ?_assertMatch({{2017,11,28}, {17,8,57}}, F({{2017,11,28}, {17,7,57}}, 0, 1, 0))},
+     {"add one hour", ?_assertMatch({{2017,11,28}, {18,7,57}}, F({{2017,11,28}, {17,7,57}}, 1, 0, 0))},
+     {"roll over to next day", ?_assertMatch({{2017,11,29}, {00,30,00}}, F({{2017,11,28}, {23,30,00}}, 1, 0, 0))}
+    ].
+
+subtract_time_test_() ->
+    F= fun iso8601:subtract_time/4,
+    [{"add one second", ?_assertMatch({{2017,11,28}, {17,7,56}}, F({{2017,11,28}, {17,7,57}}, 0, 0, 1))},
+     {"add one minute", ?_assertMatch({{2017,11,28}, {17,6,57}}, F({{2017,11,28}, {17,7,57}}, 0, 1, 0))},
+     {"add one hour", ?_assertMatch({{2017,11,28}, {16,7,57}}, F({{2017,11,28}, {17,7,57}}, 1, 0, 0))},
+     {"roll back to previous day", ?_assertMatch({{2017,11,28}, {23,30,00}}, F({{2017,11,29}, {00,30,00}}, 1, 0, 0))}
+    ].
