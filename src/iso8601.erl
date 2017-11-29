@@ -1,15 +1,20 @@
 -module(iso8601).
 
 -export([add_time/4,
+         add_days/2,
+         add_months/2,
+         add_years/2,
          format/1,
          parse/1,
-         parse_exact/1]).
+         parse_exact/1,
+         parse_duration/1,
+         apply_duration/2]).
 
 -export_types([timestamp/0]).
 -define(MIDNIGHT, {0,0,0}).
 -define(V, proplists:get_value).
 
--type datetime() :: {calendar:time(), {calendar:hour(),
+-type datetime() :: {calendar:date(), {calendar:hour(),
                                        calendar:minute(),
                                        calendar:second() | float()}}.
 -type datetime_plist() :: list({atom(), integer()}).
@@ -21,10 +26,33 @@
 %% API
 
 -spec add_time (calendar:datetime(), integer(), integer(), integer())
-               -> calendar:datetime().
+                -> calendar:datetime().
 %% @doc Add some time to the supplied `calendar:datetime()'.
+add_time({_, _, _}=Timestamp, H, M, S) ->
+    add_time(calendar:now_to_datetime(Timestamp), H, M, S);
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
+
+-spec add_days (datetime() | timestamp(), integer()) -> datetime().
+%% @doc Add some days to the supplied `datetime()'.
+add_days({_, _, _}=Timestamp, D) ->
+    add_days(calendar:now_to_datetime(Timestamp), D);
+add_days(Datetime,  D) ->
+    apply_days_offset(Datetime, D).
+
+-spec add_months (datetime() | timestamp(), integer()) -> datetime().
+%% @doc Add some months to the supplied `datetime()'.
+add_months({_, _, _}=Timestamp, M) ->
+    add_months(calendar:now_to_datetime(Timestamp), M);
+add_months(Datetime,  M) ->
+    apply_months_offset(Datetime, M).
+
+-spec add_years (datetime() | timestamp(), integer()) -> datetime().
+%% @doc Add some years to the supplied `datetime()'.
+add_years({_, _, _}=Timestamp, Y) ->
+        add_years(calendar:now_to_datetime(Timestamp), Y);
+add_years(Datetime,  Y) ->
+    apply_years_offset(Datetime, Y).
 
 -spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
@@ -57,6 +85,45 @@ parse_exact(Bin) when is_binary(Bin) ->
 parse_exact(Str) ->
     {{Date, {H, M, S}}, SecondsDecimal} = year(Str, []),
     {Date, {H, M, S + SecondsDecimal}}.
+
+-spec gi(string()) ->integer().
+%doc get string and return integer part or 0 on error
+gi(DS)->
+   {Int, _Rest} = string:to_integer(DS),
+    case Int of
+    error->0;
+    _->Int
+    end.
+
+-spec parse_duration(string()) ->datetime_plist().
+%% @doc Convert an ISO 8601 Durations string to a
+parse_duration(Bin) when is_binary(Bin)-> %TODO extended format
+    parse_duration(binary_to_list(Bin));
+parse_duration(Str) ->
+    case re:run(Str, "^(?<sign>-|\\+)?P"
+    "(?:(?<years>[0-9]+)Y)?"
+    "(?:(?<months>[0-9]+)M)?"
+    "(?:(?<days>[0-9]+)D)?"
+    "(T(?:(?<hours>[0-9]+)H)?"
+    "(?:(?<minutes>[0-9]+)M)?"
+    "(?:(?<seconds>[0-9]+(?:\\.[0-9]+)?)S)?)?$",
+    [{capture, [sign, years, months, days, hours, minutes, seconds], list}]) of
+    {match, [Sign, Years, Months, Days, Hours, Minutes, Seconds]} ->
+    [{sign, Sign}, {years, gi(Years)}, {months, gi(Months)},
+     {days, gi(Days)}, {hours, gi(Hours)}, {minutes, gi(Minutes)},
+     {seconds, gi(Seconds)}];
+    nomatch -> error(badarg)
+    end.
+
+-spec apply_duration(datetime(), string()) -> datetime().
+%% @doc Return new datetime after apply duration.
+apply_duration(Datetime, Duration) ->
+    [{sign, _S}, {years, Y}, {months, M}, {days, D}, {hours, H},
+     {minutes, MM}, {seconds, SS}] = parse_duration(Duration),
+    D1 = apply_years_offset(Datetime, Y),
+    D2 = apply_months_offset(D1, M),
+    D3 = apply_days_offset(D2, D),
+    apply_offset(D3, H, MM, SS).
 
 %% Private functions
 
@@ -304,9 +371,46 @@ date_at_w01_1(Year) ->
     end.
 
 -spec apply_offset (calendar:datetime(), number(), number(), number())
-                   -> calendar:datetime().
+            -> calendar:datetime().
 %% @doc Add the specified number of hours, minutes and seconds to `Datetime'.
 apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
     Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
     calendar:gregorian_seconds_to_datetime(Gs).
+
+-spec apply_months_offset (datetime(), number()) -> datetime().
+%% @doc Add the specified number of months to `Datetime'.
+apply_months_offset(Datetime, 0) ->
+    Datetime;
+apply_months_offset(Datetime, AM) ->
+    {{Y, M, D}, {H, MM, S}} = Datetime,
+    AY = (Y*12)+M+AM,
+    Year = (AY div 12),
+    Month =
+        case (AY rem 12) of
+            0 -> 12;
+            _ -> AY rem 12
+        end,
+    find_last_valid_date({{Year, Month, D}, {H, MM, S}}).
+
+-spec apply_days_offset (datetime(), number()) -> datetime().
+%% @doc Add the specified days to `Datetime'.
+apply_days_offset(Datetime, AD) ->
+    {{Y, M, D}, {H, MM, S}} = Datetime,
+    DaysTotal=calendar:date_to_gregorian_days({Y, M, D})+AD,
+    {calendar:gregorian_days_to_date(DaysTotal), {H, MM, S}}.
+
+-spec apply_years_offset (datetime(), number()) -> datetime().
+%% @doc Add the specified years to `Datetime'.
+apply_years_offset(Datetime, AY) ->
+    {{Y, M, D}, {H, MM, S}} = Datetime,
+    {{Y+AY, M, D}, {H, MM, S}}.
+
+-spec find_last_valid_date(datetime()) -> datetime().
+%% @doc Decrease days until found valid date'.
+find_last_valid_date(Datetime)->
+    {{Y, M, D}, {H, MM, S}} = Datetime,
+    case calendar:valid_date({Y, M, D}) of
+       true -> Datetime;
+       false -> find_last_valid_date({{Y, M, D-1}, {H, MM, S}})
+    end.
