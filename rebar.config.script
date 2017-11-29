@@ -1,0 +1,24 @@
+%%% -*- mode: erlang; -*-
+
+{plugins, Plugins} = lists:keyfind(plugins, 1, CONFIG),
+{profiles, Profiles} = lists:keyfind(profiles, 1, CONFIG),
+{test, Test} = lists:keyfind(test, 1, Profiles),
+{deps, Deps} = lists:keyfind(deps, 1, Test),
+Deps2 = lists:keydelete(proper, 1, Deps),
+Test2 = lists:keystore(deps, 1, Test, {deps, Deps2}),
+Profiles2 = lists:keystore(test, 1, Profiles, {test, Test2}),
+Config_No_PropEr1 = lists:keystore(profiles, 1, CONFIG, {profiles, Profiles2}),
+Plugins2 = lists:delete(Plugins, rebar3_proper)
+Config_No_PropEr2 = lists:keystore(plugins, 1, Config_No_PropEr2, {plugins, Plugins2}),
+
+case os:getenv("TRAVIS_OTP_RELEASE", undefined) of
+    [$R | _] ->
+        Config_No_PropEr2;
+    [$1, N | _] when N < 8 ->
+        Config_No_PropEr2;
+    undefined ->
+        rebar_api:debug("PropEr tests only work on OTP >=18", []),
+        CONFIG;
+    _else ->
+        CONFIG
+end.
