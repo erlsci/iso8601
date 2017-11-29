@@ -4,6 +4,7 @@
          add_days/2,
          add_months/2,
          add_years/2,
+         subtract_time/4,
          format/1,
          parse/1,
          parse_exact/1,
@@ -53,6 +54,12 @@ add_years({_, _, _}=Timestamp, Y) ->
         add_years(calendar:now_to_datetime(Timestamp), Y);
 add_years(Datetime,  Y) ->
     apply_years_offset(Datetime, Y).
+
+-spec subtract_time (calendar:datetime(), integer(), integer(), integer())
+                    -> calendar:datetime().
+%% @doc Subtract some time from the supplied `calendar:datetime()'.
+subtract_time(Datetime, H, M, S) ->
+    apply_offset(Datetime, -H, -M, -S).
 
 -spec format (datetime() | timestamp()) -> binary().
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'

@@ -70,6 +70,15 @@ Add 1 hour, 2 minutes and 3 seconds to a datetime tuple:
 {{2012,2,16},{2,8,51}}
 ```
 
+Subtract 1 hour, 2 minutes and 3 seconds from a datetime tuple:
+
+```erlang
+5> Datetime = iso8601:parse(<<"2012-02-16T01:06:48Z">>).
+{{2012,2,16},{1,6,48}}
+6> iso8601:subtract_time(Datetime, 1, 2, 3).
+{{2012,2,16},{0,4,45}}
+```
+
 Fractional times:
 
 ```erlang
