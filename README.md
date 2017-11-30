@@ -34,13 +34,13 @@ Thanks to Github's forwarding for project renames and moves, the following still
 Add it to your `rebar.config` deps:
 
 ```erlang
-{iso8601, ".*", {git, "https://github.com/erlsci/iso8601.git", {tag, "1.2.3"}}}
+{iso8601, ".*", {git, "https://github.com/erlsci/iso8601.git", {tag, "1.3"}}}
 ```
 
 Or for `rebar3`:
 
 ```erlang
-{iso8601, {git, "https://github.com/erlsci/iso8601.git", {tag, "1.2.3"}}}
+{iso8601, {git, "https://github.com/erlsci/iso8601.git", {tag, "1.3"}}}
 ```
 
 Format a timestamp or calendar datetime tuple:
