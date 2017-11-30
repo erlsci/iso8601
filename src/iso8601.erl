@@ -13,6 +13,8 @@
 
 -export_types([timestamp/0]).
 -define(MIDNIGHT, {0,0,0}).
+-define(NOON, {12,0,0}).
+-define(TEATIME, {16,0,0}).
 -define(V, proplists:get_value).
 
 -type datetime() :: {calendar:date(), {calendar:hour(),
