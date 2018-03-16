@@ -1,11 +1,13 @@
 -module(iso8601).
 
 -export([now/0,
+         now/1,
          add_time/4,
          add_days/2,
          add_months/2,
          add_years/2,
          format/1,
+         format/2,
          parse/1,
          parse_duration/1,
          apply_duration/2,
@@ -27,13 +29,18 @@
 -type timestamp() :: {MegaSecs::integer(),
                       Secs::integer(),
                       MicroSecs::integer() | float()}.
+-type format_opts() :: [{precision, secs | microsecs}].
 
 %% API
 
 -spec now () -> binary().
 %% @doc Wrapper for `iso8601:format(os:timestamp())`
 now() ->
-    format(os:timestamp()).
+    now([{precision, secs}]).
+
+-spec now (format_opts()) -> binary().
+now(Opts) ->
+    format(os:timestamp(), Opts).
 
 -spec add_time (datetime() | timestamp(), integer(), integer(), integer()) -> datetime().
 %% @doc Add some time to the supplied `datetime()'.
@@ -67,13 +74,23 @@ add_years(Datetime,  Y) ->
 %% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
 %% tuple to an ISO 8601 formatted string. Note that this function always
 %% returns a string with no offset (i.e., ending in "Z").
-format({_,_,_}=Timestamp) ->
-    format(calendar:now_to_datetime(Timestamp));
-format({{Y,Mo,D}, {H,Mn,S}}) when is_float(S) ->
+format(Timestamp) ->
+    format(Timestamp, []).
+
+-spec format (datetime() | timestamp(), format_opts()) -> binary().
+format({_, _, Usec}=Timestamp, Opts) ->
+    case proplists:get_value(precision, Opts, secs) of
+        microsecs ->
+            {{Y, Mo, D}, {H, Mn, S}} = calendar:now_to_datetime(Timestamp),
+            format({{Y, Mo, D}, {H, Mn, S + Usec/1000000}}, Opts);
+        secs ->
+            format(calendar:now_to_datetime(Timestamp), Opts)
+    end;
+format({{Y,Mo,D}, {H,Mn,S}}, _Opts) when is_float(S) ->
     FmtStr = "~4.10.0B-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~9.6.0fZ",
     IsoStr = io_lib:format(FmtStr, [Y, Mo, D, H, Mn, S]),
     list_to_binary(IsoStr);
-format({{Y,Mo,D}, {H,Mn,S}}) ->
+format({{Y,Mo,D}, {H,Mn,S}}, _Opts) ->
     FmtStr = "~4.10.0B-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~2.10.0BZ",
     IsoStr = io_lib:format(FmtStr, [Y, Mo, D, H, Mn, S]),
     list_to_binary(IsoStr).
