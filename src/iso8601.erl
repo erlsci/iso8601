@@ -84,7 +84,7 @@ parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
 parse(Str) ->
     {{Date, {H, M, S}}, Subsecond} = year(Str, []),
-    {Date, {H, M, S + round(Subsecond)}}.
+    {Date, {H, M, S + trunc(Subsecond)}}.
 
 -spec parse_exact (iodata()) -> calendar:datetime().
 %% @doc Convert an ISO 8601 formatted string to a `{date(), time()}'
