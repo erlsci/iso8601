@@ -1,5 +1,4 @@
 -module(iso8601_tests).
--compile(export_all).
 
 -include_lib("eunit/include/eunit.hrl").
 
@@ -199,4 +198,14 @@ subtract_time_test_() ->
      {"add one minute", ?_assertMatch({{2017,11,28}, {17,6,57}}, F({{2017,11,28}, {17,7,57}}, 0, 1, 0))},
      {"add one hour", ?_assertMatch({{2017,11,28}, {16,7,57}}, F({{2017,11,28}, {17,7,57}}, 1, 0, 0))},
      {"roll back to previous day", ?_assertMatch({{2017,11,28}, {23,30,00}}, F({{2017,11,29}, {00,30,00}}, 1, 0, 0))}
+    ].
+
+add_months_test_() ->
+    F = fun iso8601:add_months/2,
+    [{"add one month in the middle of the year", ?_assertMatch({{2017,6,24},{1,2,3}}, F({{2017,5,24},{1,2,3}}, 1))},
+     {"add one month at the beginning of the year", ?_assertMatch({{2017,2,24},{1,2,3}}, F({{2017,1,24},{1,2,3}}, 1))},
+     {"add one month almost in the end of the year", ?_assertMatch({{2017,12,24},{1,2,3}}, F({{2017,11,24},{1,2,3}}, 1))},
+     {"add one month in the end of the year", ?_assertMatch({{2018,1,24},{1,2,3}}, F({{2017,12,24},{1,2,3}}, 1))},
+     {"add eight month in the middle of the year", ?_assertMatch({{2018,2,24},{1,2,3}}, F({{2017,6,24},{1,2,3}}, 8))},
+     {"add twelve month in the middle of the year", ?_assertMatch({{2018,5,24},{1,2,3}}, F({{2017,5,24},{1,2,3}}, 12))}
     ].
