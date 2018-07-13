@@ -106,6 +106,20 @@ See the [open issues](https://github.com/erlsci/iso8601/issues)
 for more info.
 
 
+## Donating
+
+A donation account for supporting development on this project has been set up
+on Liberapay here:
+
+* [https://liberapay.com/erlsci-iso8601/donate](https://liberapay.com/erlsci-iso8601/donate)
+
+You can learn more about Liberapay on its [Wikipedia entry][libera-wiki] or on the
+service's ["About" page][libera-about].
+
+[libera-wiki]: https://en.wikipedia.org/wiki/Liberapay
+[libera-about]: https://liberapay.com/about/
+
+
 ## License [&#x219F;](#contents)
 
 ```
