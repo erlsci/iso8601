@@ -18,4 +18,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: rebar3 dialyzer
-      - run: rebar3 eunit
+      - run: rebar3 eunit -v
