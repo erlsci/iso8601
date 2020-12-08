@@ -1,5 +1,5 @@
 ---
-name: CI for iso8601
+name: build
 on:
   push:
     branches:
