@@ -22,7 +22,7 @@
 
 -export_types([timestamp/0, year/0, month/0, day/0, hour/0, minute/0, second/0]).
 
-%% This group of types are from calendar.erl; we need to use some of them
+%% This group of types is from calendar.erl; we need to use some of them
 %% for this  lib, but thought it might be nice to provide the rest to users.
 -type year()     :: non_neg_integer().
 -type month()    :: 1..12.
