@@ -11,22 +11,38 @@
          parse_duration/1,
          apply_duration/2]).
 
--export_types([timestamp/0]).
 -define(MIDNIGHT, {0,0,0}).
 -define(NOON, {12,0,0}).
 -define(TEATIME, {16,0,0}).
 -define(V, proplists:get_value).
 
--type datetime() :: {calendar:date(), {calendar:hour(),
-                                       calendar:minute(),
-                                       calendar:second() | float()}}.
+%%----------------------------------------------------------------------
+%% Types
+%%----------------------------------------------------------------------
+
+-export_types([timestamp/0, year/0, month/0, day/0, hour/0, minute/0, second/0]).
+
+%% This group of types are from calendar.erl; we need to use some of them
+%% for this  lib, but thought it might be nice to provide the rest to users.
+-type year()     :: non_neg_integer().
+-type month()    :: 1..12.
+-type day()      :: 1..31.
+-type hour()     :: 0..23.
+-type minute()   :: 0..59.
+-type second()   :: 0..59.
+
+-type datetime() :: {calendar:date(), {hour(),
+                                       minute(),
+                                       second() | float()}}.
 -type datetime_plist() :: list({atom(), integer()}).
 -type maybe(A) :: undefined | A.
 -type timestamp() :: {MegaSecs::integer(),
                       Secs::integer(),
                       MicroSecs::integer() | float()}.
 
+%%----------------------------------------------------------------------
 %% API
+%%----------------------------------------------------------------------
 
 -spec add_time (calendar:datetime(), integer(), integer(), integer())
                 -> calendar:datetime().
