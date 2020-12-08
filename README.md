@@ -1,5 +1,5 @@
 # iso8601
-[![Build Status][travis-badge]][travis]
+[![Build Status][gh-actions-badge]][gh-actions]
 [![Tag][tag-badge]][tag]
 [![Erlang Version][erl-badge]][erl]
 [![Downloads][hex downloads]][hex package]
@@ -127,14 +127,14 @@ The MIT License (MIT)
 
 Copyright © 2011-2014, Sean Sawyer
 Copyright © 2012, Tristan Sloughter
-Copyright © 2016-2017, Erlang-Aided Enrichment Center
+Copyright © 2016-2020, Erlang-Aided Enrichment Center
 ```
 
 
-<!-- Named page links below: /-->
+[//]: --Named-Links--
 
-[travis]: https://travis-ci.org/erlsci/iso8601
-[travis-badge]: https://travis-ci.org/erlsci/iso8601.png?branch=master
+[gh-actions-badge]: https://github.com/erlsci/iso8601/workflows/ci/badge.svg
+[gh-actions]: https://github.com/erlsci/iso8601/actions
 [tag]: https://github.com/erlsci/iso8601/releases/latest
 [tag-badge]: https://img.shields.io/github/tag/erlsci/iso8601.svg
 [erl]: http://www.erlang.org/downloads
