@@ -1,0 +1,21 @@
+---
+name: CI for iso8601
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  ci:
+    name: Run checks and tests over ${{matrix.otp_vsn}} and ${{matrix.os}}
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        otp_vsn: [19.3, 20.3, 21.3, 22.3, 23.1]
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - run: rebar3 dialyzer
+      - run: rebar3 eunit
