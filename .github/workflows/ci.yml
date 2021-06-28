@@ -2,9 +2,10 @@ name: ci
 
 on:
   push:
-    branches: [ main, release/*]
+    branches: [main, 'release/**', 'task/**', 'feature/**', 'epic/**']
+    tags: ['**']
   pull_request:
-    branches: [ main, release/*]
+    branches: [main, 'release/**', 'task/**', 'feature/**', 'epic/**']
 
 jobs:
 
@@ -26,15 +27,15 @@ jobs:
       run: wget https://s3.amazonaws.com/rebar3/rebar3 && chmod 755 ./rebar3
     - name: Update Path
       run: echo "./" >> $GITHUB_PATH
-    - name: Check rebar3 Version
-      run: DEBUG=1 rebar3 --version
+    - name: Check ./rebar3 Version
+      run: ./rebar3 --version
     - name: Compile
-      run: rebar3 compile
+      run: ./rebar3 compile
     - name: Xref Checks
-      run: rebar3 xref
+      run: ./rebar3 xref
     - name: Dialyzer
-      run: rebar3 dialyzer
+      run: ./rebar3 dialyzer
     - name: Run Tests
-      run: rebar3 eunit -v
+      run: ./rebar3 eunit -v
     - name: Test Coverage
-      run: rebar3 as test do proper -c, cover -v --min_coverage=0
+      run: r./ebar3 as test do proper -c, cover -v --min_coverage=0
