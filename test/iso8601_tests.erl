@@ -164,7 +164,7 @@ parse_ordinal_test_() ->
      {"parses YYYY_DDDTHHMMSS, March 1 in a non-leap century", ?_assertMatch({{1900,3,1}, {4,5,6}}, F("1900-060T040506.50")) },
      {"fails to parse ordinal date with 0 days", ?_assertError(badarg, F("2016-000T040506.50"))},
      {"fails to parse ordinal date with too many days in a leap year", ?_assertError(badarg, F("2016-367T040506.50"))},
-     {"parses ordinal date wth 366 days in a leap year", ?_assertMatch({{2016,12,31}, {4,5,6}}, F("2016-366T040506.50"))},
+     {"parses ordinal date with 366 days in a leap year", ?_assertMatch({{2016,12,31}, {4,5,6}}, F("2016-366T040506.50"))},
      {"fails to parse ordinal date with too many days in a non-leap year", ?_assertError(badarg, F("2015-366T040506.50"))}
     ].
 
@@ -180,7 +180,7 @@ parse_ordinal_exact_test_() ->
      {"parses YYYY_DDDTHHMMSS, March 1 in a non-leap century", ?_assertMatch({{1900,3,1}, {4,5,6.50}}, F("1900-060T040506.50")) },
      {"fails to parse ordinal date with 0 days", ?_assertError(badarg, F("2016-000T040506.50"))},
      {"fails to parse ordinal date with too many days in a leap year", ?_assertError(badarg, F("2016-367T040506.50"))},
-     {"parses ordinal date wth 366 days in a leap year", ?_assertMatch({{2016,12,31}, {4,5,6.50}}, F("2016-366T040506.50"))},
+     {"parses ordinal date with 366 days in a leap year", ?_assertMatch({{2016,12,31}, {4,5,6.50}}, F("2016-366T040506.50"))},
      {"fails to parse ordinal date with too many days in a non-leap year", ?_assertError(badarg, F("2015-366T040506.50"))}
     ].
 
