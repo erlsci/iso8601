@@ -29,6 +29,7 @@
 -type timestamp() :: {MegaSecs::integer(),
                       Secs::integer(),
                       MicroSecs::integer() | float()}.
+-export_type([timestamp/0]).
 -type format_opts() :: [{precision, secs | microsecs}].
 
 %% API
