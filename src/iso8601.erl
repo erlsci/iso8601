@@ -1,4 +1,5 @@
 -module(iso8601).
+-feature(maybe_expr, disable).
 
 -export([now/0,
          now/1,
