@@ -1,6 +1,6 @@
 {application, iso8601, [
     {description,"An ISO 8601 date formatting and parsing library for Erlang"},
-    {vsn, "1.3.3"},
+    {vsn, "1.3.4"},
     {registered, []},
     {modules, [
         iso8601
