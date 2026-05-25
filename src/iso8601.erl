@@ -13,9 +13,6 @@
     apply_duration/2
 ]).
 
--define(MIDNIGHT, {0, 0, 0}).
--define(NOON, {12, 0, 0}).
--define(TEATIME, {16, 0, 0}).
 -define(V, proplists:get_value).
 
 %%----------------------------------------------------------------------
@@ -34,7 +31,7 @@
 -type second() :: 0..59.
 
 -type datetime() :: {calendar:date(), {hour(), minute(), second() | float()}}.
--type datetime_plist() :: list({atom(), integer()}).
+-type datetime_plist() :: list({atom(), integer() | string()}).
 -type undefined_or(A) :: undefined | A.
 -type timestamp() :: {MegaSecs :: integer(), Secs :: integer(), MicroSecs :: integer() | float()}.
 
@@ -110,7 +107,7 @@ parse_exact(Str) ->
     {Date, {H, M, S + SecondsDecimal}}.
 
 -spec gi(string()) -> integer().
-%doc get string and return integer part or 0 on error
+%% @doc Get the integer part of a string, or 0 for an empty capture.
 gi(DS) ->
     {Int, _Rest} = string:to_integer(DS),
     case Int of
@@ -156,7 +153,7 @@ parse_duration(Str) ->
 %% @doc Return new datetime after apply duration.
 apply_duration(Datetime, Duration) ->
     [
-        {sign, _S},
+        {sign, Sign},
         {years, Y},
         {months, M},
         {days, D},
@@ -164,10 +161,11 @@ apply_duration(Datetime, Duration) ->
         {minutes, MM},
         {seconds, SS}
     ] = parse_duration(Duration),
-    D1 = apply_years_offset(Datetime, Y),
-    D2 = apply_months_offset(D1, M),
-    D3 = apply_days_offset(D2, D),
-    apply_offset(D3, H, MM, SS).
+    F = case Sign of "-" -> fun(X) -> -X end; _ -> fun(X) -> X end end,
+    D1 = apply_years_offset(Datetime, F(Y)),
+    D2 = apply_months_offset(D1, F(M)),
+    D3 = apply_days_offset(D2, F(D)),
+    apply_offset(D3, F(H), F(MM), F(SS)).
 
 %% Private functions
 
@@ -181,12 +179,8 @@ month_or_week([], Acc) ->
 month_or_week([$-, $W, W1, W2 | Rest], Acc) ->
     acc([W1, W2], Rest, week, Acc, fun week_day/2);
 month_or_week([$-, D1, D2, D3], Acc) ->
-    %% ordinal date, no time
-    io:format("Ordinal date, no time!~n"),
     acc_ordinal_date(D1, D2, D3, [], Acc, fun hour/2);
 month_or_week([$-, D1, D2, D3, $T | Rest], Acc) ->
-    %% ordinal date with time
-    io:format("Ordinal date, time is ~p!~n", [Rest]),
     acc_ordinal_date(D1, D2, D3, [$T | Rest], Acc, fun hour/2);
 month_or_week([$-, M1, M2 | Rest], Acc) ->
     acc([M1, M2], Rest, month, Acc, fun month_day/2);
@@ -450,7 +444,7 @@ apply_days_offset(Datetime, AD) ->
 %% @doc Add the specified years to `Datetime'.
 apply_years_offset(Datetime, AY) ->
     {{Y, M, D}, {H, MM, S}} = Datetime,
-    {{Y + AY, M, D}, {H, MM, S}}.
+    find_last_valid_date({{Y + AY, M, D}, {H, MM, S}}).
 
 -spec find_last_valid_date(datetime()) -> datetime().
 %% @doc Decrease days until found valid date'.

@@ -463,3 +463,77 @@ parse_error_clauses_test_() ->
         {"decimal separator with no digits", ?_assertError(badarg, F("20120203T040506."))},
         {"offset_minute bad suffix", ?_assertError(badarg, F("2012-02-03T04:05:06+04X"))}
     ].
+
+%%----------------------------------------------------------------------
+%% F-1: apply_duration/2 must honor the sign
+%%----------------------------------------------------------------------
+
+apply_duration_sign_test_() ->
+    [
+        {"negative year subtracts",
+            ?_assertEqual({{2016, 5, 24}, {1, 2, 3}},
+                iso8601:apply_duration({{2017, 5, 24}, {1, 2, 3}}, "-P1Y"))},
+        {"positive/unsigned still adds",
+            ?_assertEqual({{2018, 5, 24}, {1, 2, 3}},
+                iso8601:apply_duration({{2017, 5, 24}, {1, 2, 3}}, "P1Y"))},
+        {"compound negative duration",
+            ?_assertEqual({{2016, 4, 23}, {0, 1, 2}},
+                iso8601:apply_duration({{2017, 5, 24}, {1, 2, 3}}, "-P1Y1M1DT1H1M1S"))}
+    ].
+
+%%----------------------------------------------------------------------
+%% F-2: add_years/2 must clamp invalid dates (leap day)
+%%----------------------------------------------------------------------
+
+add_years_leap_day_test_() ->
+    [
+        {"leap day + 1 year clamps to Feb 28",
+            ?_assertEqual({{2017, 2, 28}, {0, 0, 0}},
+                iso8601:add_years({{2016, 2, 29}, {0, 0, 0}}, 1))},
+        {"leap day - 1 year clamps to Feb 28",
+            ?_assertEqual({{2015, 2, 28}, {0, 0, 0}},
+                iso8601:add_years({{2016, 2, 29}, {0, 0, 0}}, -1))},
+        {"leap day + 3 years produces valid date",
+            ?_assert(calendar:valid_date(
+                element(1, iso8601:add_years({{2016, 2, 29}, {0, 0, 0}}, 3))))},
+        {"ordinary date unchanged",
+            ?_assertEqual({{2018, 5, 24}, {1, 2, 3}},
+                iso8601:add_years({{2017, 5, 24}, {1, 2, 3}}, 1))},
+        {"via apply_duration years path",
+            ?_assertEqual({{2017, 2, 28}, {0, 0, 0}},
+                iso8601:apply_duration({{2016, 2, 29}, {0, 0, 0}}, "P1Y"))}
+    ].
+
+%%----------------------------------------------------------------------
+%% F-3: ordinal-date parsing must not emit stdout
+%%----------------------------------------------------------------------
+
+ordinal_parse_no_stdout_test() ->
+    {Result, Output} = capture_output(fun() -> iso8601:parse("2015-201") end),
+    ?assertMatch({{2015, 7, 20}, {0, 0, 0}}, Result),
+    ?assertEqual("", Output).
+
+capture_output(Fun) ->
+    Old = group_leader(),
+    Self = self(),
+    Cap = spawn_link(fun() -> cap_loop(Self, []) end),
+    group_leader(Cap, self()),
+    R = Fun(),
+    group_leader(Old, self()),
+    Cap ! {stop, Self},
+    receive {captured, O} -> {R, O} end.
+
+cap_loop(Owner, Acc) ->
+    receive
+        {io_request, From, ReplyAs, {put_chars, _E, Chars}} ->
+            From ! {io_reply, ReplyAs, ok},
+            cap_loop(Owner, [Chars | Acc]);
+        {io_request, From, ReplyAs, {put_chars, _E, Mod, Fun, Args}} ->
+            From ! {io_reply, ReplyAs, ok},
+            cap_loop(Owner, [apply(Mod, Fun, Args) | Acc]);
+        {io_request, From, ReplyAs, _Other} ->
+            From ! {io_reply, ReplyAs, ok},
+            cap_loop(Owner, Acc);
+        {stop, Owner} ->
+            Owner ! {captured, lists:flatten(lists:reverse(Acc))}
+    end.
