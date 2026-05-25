@@ -3,7 +3,7 @@
 -include_lib("eunit/include/eunit.hrl").
 
 -define(MN, {0,0,0}). % midnight, as a calendar:time()
--define(MNE, {0,0,0.0}). % midnight, as a calendar:time(), with microseconds
+-define(MNE, {0,0,+0.0}). % midnight, as a calendar:time(), with microseconds
 
 parse_fail_test_() ->
     F = fun iso8601:parse/1,
