@@ -3,3 +3,5 @@ rebar.lock
 ebin/*.beam
 test/*.beam
 _build/*
+/.claude
+/priv/ai
