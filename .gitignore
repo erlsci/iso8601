@@ -5,3 +5,4 @@ test/*.beam
 _build/*
 /.claude
 /priv/ai
+/workbench
