@@ -96,8 +96,9 @@ what is not done, and distinguish "verified by running X" from "I believe X".
 * CI (`.github/workflows/ci.yml`) fires on `main`, `release/**`, `task/**`,
   `feature/**`, `epic/**`, and tags. It is the independent reproducer for
   compile/xref/dialyzer/eunit/coverage across the OTP 20–27 matrix.
-* Releases push to GitHub and GitLab and publish to Hex (`rebar3 hex publish`,
-  via `make publish`).
+* Releases push to GitHub and GitLab and publish to Hex (`rebar3 as dev hex publish`,
+  via `make publish`). Dev/doc/publish plugins (erlfmt, lint, ex_doc, hex, coveralls)
+  live in the `dev` rebar3 profile, so invoke them as `rebar3 as dev <task>`.
 
 ## Collaboration posture
 

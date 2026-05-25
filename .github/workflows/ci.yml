@@ -48,11 +48,17 @@ jobs:
       run: rebar3 xref
     - name: Dialyzer
       run: rebar3 dialyzer
+    # eunit/proper/coverage run in the `test` profile, which pulls PropEr 1.5
+    # (OTP floor 21.3), so they're gated to OTP >= 21. OTP 20 still gets
+    # compile + xref + dialyzer (default profile, no PropEr, no dev plugins).
     - name: EUnit Tests
+      if: matrix.otp_version >= 21
       run: rebar3 eunit -c -v
     - name: PropEr Tests
+      if: matrix.otp_version >= 21
       run: rebar3 proper -c
     - name: Test Coverage
+      if: matrix.otp_version >= 21
       run: rebar3 as test cover -v --min_coverage=0
 
   newer-builds:

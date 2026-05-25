@@ -18,5 +18,5 @@ push-tags:
 push-all: push push-tags
 
 publish: clean
-	rebar3 hex publish
+	rebar3 as dev hex publish
 
