@@ -209,3 +209,160 @@ add_months_test_() ->
      {"add eight month in the middle of the year", ?_assertMatch({{2018,2,24},{1,2,3}}, F({{2017,6,24},{1,2,3}}, 8))},
      {"add twelve month in the middle of the year", ?_assertMatch({{2018,5,24},{1,2,3}}, F({{2017,5,24},{1,2,3}}, 12))}
     ].
+
+%%----------------------------------------------------------------------
+%% format/1
+%%----------------------------------------------------------------------
+
+format_test_() ->
+    F = fun iso8601:format/1,
+    [{"formats datetime with integer seconds",
+      ?_assertEqual(<<"2012-02-03T04:05:06Z">>, F({{2012,2,3},{4,5,6}}))},
+     {"formats datetime with float seconds",
+      ?_assertEqual(<<"2012-02-03T04:05:06.500000Z">>, F({{2012,2,3},{4,5,6.5}}))},
+     {"formats timestamp tuple",
+      ?_assertEqual(<<"1970-01-01T00:00:00Z">>, F({0,0,0}))}].
+
+%%----------------------------------------------------------------------
+%% Binary input dispatch
+%%----------------------------------------------------------------------
+
+parse_binary_test_() ->
+    [{"parse/1 accepts binary input",
+      ?_assertMatch({{2012,1,1},{0,0,0}}, iso8601:parse(<<"2012">>))},
+     {"parse_exact/1 accepts binary input",
+      ?_assertMatch({{2012,2,3},{4,5,6.50}}, iso8601:parse_exact(<<"20120203T040506.50">>))},
+     {"parse_duration/1 accepts binary input",
+      ?_assertMatch([{sign,[]},{years,1}|_], iso8601:parse_duration(<<"P1Y">>))}].
+
+%%----------------------------------------------------------------------
+%% Timestamp-tuple input clauses
+%%----------------------------------------------------------------------
+
+timestamp_input_test_() ->
+    TS = {0, 0, 0},
+    [{"add_time/4 accepts timestamp tuple",
+      ?_assertMatch({{1970,1,1},{1,0,0}}, iso8601:add_time(TS, 1, 0, 0))},
+     {"add_days/2 accepts timestamp tuple",
+      ?_assertMatch({{1970,1,2},{0,0,0}}, iso8601:add_days(TS, 1))},
+     {"add_months/2 accepts timestamp tuple",
+      ?_assertMatch({{1970,2,1},{0,0,0}}, iso8601:add_months(TS, 1))},
+     {"add_years/2 accepts timestamp tuple",
+      ?_assertMatch({{1971,1,1},{0,0,0}}, iso8601:add_years(TS, 1))}].
+
+%%----------------------------------------------------------------------
+%% add_days/2, add_years/2 (datetime input)
+%%----------------------------------------------------------------------
+
+add_days_test_() ->
+    F = fun iso8601:add_days/2,
+    [{"add one day",
+      ?_assertMatch({{2017,11,29},{1,2,3}}, F({{2017,11,28},{1,2,3}}, 1))},
+     {"add days across month boundary",
+      ?_assertMatch({{2017,12,1},{1,2,3}}, F({{2017,11,30},{1,2,3}}, 1))}].
+
+add_years_test_() ->
+    F = fun iso8601:add_years/2,
+    [{"add one year",
+      ?_assertMatch({{2018,5,24},{1,2,3}}, F({{2017,5,24},{1,2,3}}, 1))},
+     {"add ten years",
+      ?_assertMatch({{2027,5,24},{1,2,3}}, F({{2017,5,24},{1,2,3}}, 10))}].
+
+%%----------------------------------------------------------------------
+%% add_months edge cases
+%%----------------------------------------------------------------------
+
+add_months_edge_test_() ->
+    F = fun iso8601:add_months/2,
+    [{"add zero months",
+      ?_assertMatch({{2017,5,24},{1,2,3}}, F({{2017,5,24},{1,2,3}}, 0))},
+     {"add month rolls back invalid day (Jan 31 + 1 month)",
+      ?_assertMatch({{2017,2,28},{1,2,3}}, F({{2017,1,31},{1,2,3}}, 1))}].
+
+%%----------------------------------------------------------------------
+%% apply_duration/2
+%%----------------------------------------------------------------------
+
+apply_duration_test_() ->
+    F = fun iso8601:apply_duration/2,
+    [{"apply duration with all components",
+      ?_assertMatch({{2018,8,1},{2,3,4}}, F({{2017,5,24},{1,2,3}}, "P1Y2M8DT1H1M1S"))},
+     {"apply simple year duration",
+      ?_assertMatch({{2018,5,24},{1,2,3}}, F({{2017,5,24},{1,2,3}}, "P1Y"))}].
+
+%%----------------------------------------------------------------------
+%% date_at_w01_1 day-of-week branch coverage
+%%----------------------------------------------------------------------
+
+parse_week_dow_test_() ->
+    F = fun iso8601:parse/1,
+    [{"W01-1 year starting Monday (2018)",
+      ?_assertMatch({{2018,1,1}, ?MN}, F("2018-W01-1"))},
+     {"W01-1 year starting Tuesday (2019)",
+      ?_assertMatch({{2018,12,31}, ?MN}, F("2019-W01-1"))},
+     {"W01-1 year starting Wednesday (2014)",
+      ?_assertMatch({{2013,12,30}, ?MN}, F("2014-W01-1"))},
+     {"W01-1 year starting Friday (2010)",
+      ?_assertMatch({{2010,1,4}, ?MN}, F("2010-W01-1"))},
+     {"W01-1 year starting Saturday (2011)",
+      ?_assertMatch({{2011,1,3}, ?MN}, F("2011-W01-1"))},
+     {"W01-1 year starting Sunday (2012)",
+      ?_assertMatch({{2012,1,2}, ?MN}, F("2012-W01-1"))}].
+
+%%----------------------------------------------------------------------
+%% Offset formats: hour-only and colon-separated
+%%----------------------------------------------------------------------
+
+parse_offset_format_test_() ->
+    F = fun iso8601:parse/1,
+    [{"offset hour only (+04)",
+      ?_assertMatch({{2012,2,3},{8,5,6}}, F("2012-02-03T12:05:06+04"))},
+     {"offset with colon (+04:30)",
+      ?_assertMatch({{2012,2,3},{8,5,6}}, F("2012-02-03T12:35:06+04:30"))}].
+
+%%----------------------------------------------------------------------
+%% Colon-delimited fractional minutes and seconds
+%%----------------------------------------------------------------------
+
+parse_colon_fractional_minute_test_() ->
+    F = fun iso8601:parse/1,
+    [{"parses HH:MM.mm (dot)",
+      ?_assertMatch({{2012,2,3},{4,5,15}}, F("2012-02-03T04:05.25"))},
+     {"parses HH:MM,mm (comma)",
+      ?_assertMatch({{2012,2,3},{4,5,15}}, F("2012-02-03T04:05,25"))}].
+
+parse_colon_fractional_second_test_() ->
+    F = fun iso8601:parse/1,
+    [{"parses HH:MM:SS.ss (dot)",
+      ?_assertMatch({{2012,2,3},{4,5,6}}, F("2012-02-03T04:05:06.50"))},
+     {"parses HH:MM:SS,ss (comma)",
+      ?_assertMatch({{2012,2,3},{4,5,6}}, F("2012-02-03T04:05:06,50"))}].
+
+%%----------------------------------------------------------------------
+%% Parser error / fall-through clause coverage
+%%----------------------------------------------------------------------
+
+parse_error_clauses_test_() ->
+    F = fun iso8601:parse/1,
+    [{"year too short",
+      ?_assertError(badarg, F("20"))},
+     {"month_or_week trailing dash",
+      ?_assertError(badarg, F("2012-"))},
+     {"week_day bad char after week",
+      ?_assertError(badarg, F("2009-W01X"))},
+     {"month_day short day",
+      ?_assertError(badarg, F("2012-12-1"))},
+     {"month_day_no_hyphen single char day",
+      ?_assertError(badarg, F("2012121"))},
+     {"hour incomplete after T",
+      ?_assertError(badarg, F("2012-12-12T"))},
+     {"minute single char after hour",
+      ?_assertError(badarg, F("2012-12-12T04:"))},
+     {"second single char after colon minute",
+      ?_assertError(badarg, F("2012-12-12T04:05:"))},
+     {"second_no_colon single char",
+      ?_assertError(badarg, F("20120203T0405X"))},
+     {"decimal separator with no digits",
+      ?_assertError(badarg, F("20120203T040506."))},
+     {"offset_minute bad suffix",
+      ?_assertError(badarg, F("2012-02-03T04:05:06+04X"))}].

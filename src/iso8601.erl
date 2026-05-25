@@ -188,9 +188,7 @@ week_day(_, _) ->
 week_day_no_hyphen([], Acc) ->
     datetime(Acc);
 week_day_no_hyphen([D|Rest], Acc) ->
-    acc([D], Rest, week_day, Acc, fun hour/2);
-week_day_no_hyphen(_, _) ->
-    error(badarg).
+    acc([D], Rest, week_day, Acc, fun hour/2).
 
 month_day([], Acc) ->
     datetime(Acc);
@@ -315,8 +313,7 @@ acc_ordinal_date(D1, D2, D3, Rest, Acc, NextF) ->
     NextF(Rest, Acc1).
 
 unpack_ordinal_date(Days, DaysInMonths) -> unpack_ordinal_date(1, Days, DaysInMonths).
-unpack_ordinal_date(_Month, _Days, []) -> error(badarg), { 0, 0 };
-unpack_ordinal_date(_Month, Days, _DaysInMonths) when Days < 0 -> error(badarg), { 0, 0 };
+unpack_ordinal_date(_Month, _Days, []) -> error(badarg);
 unpack_ordinal_date(Month, Days, [DaysThisMonth|DaysInMonths]) ->
     case Days > DaysThisMonth of
         true -> unpack_ordinal_date(Month + 1, Days - DaysThisMonth, DaysInMonths);
