@@ -12,7 +12,7 @@
     {env, []},
     {pkg_name, iso8601},
     {licenses, ["MIT"]},
-    {maintainers, ["Duncan McGreggor"]},
+    {exclude_paths, ["priv"]},
     {links, [
         {"GitHub", "https://github.com/erlsci/iso8601"},
         {"Gitlab", "https://gitlab.com/erlsci/iso8601"},

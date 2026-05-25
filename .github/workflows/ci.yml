@@ -10,19 +10,36 @@ on:
 jobs:
 
   older-builds:
-    name: Erlang ${{ matrix.otp_version }} build
-    runs-on: ubuntu-20.04
+    name: Erlang ${{ matrix.otp_version }} build (Debian container)
+    runs-on: ubuntu-latest
+    # GitHub retired the ubuntu-20.04 hosted runner (2025-04-15) and old OTP has
+    # no precompiled builds for current runners, so the old tier runs inside the
+    # official Debian-based erlang images (OTP baked in) rather than via setup-beam.
+    container:
+      image: erlang:${{ matrix.otp_version }}
 
     strategy:
+      fail-fast: false
       matrix:
         otp_version: [20, 21, 22, 23]
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: erlef/setup-beam@v1
-      with:
-        otp-version: ${{ matrix.otp_version }}
-        rebar3-version: '3.15'
+    # actions/checkout runs on Node (v6 → Node 24), which won't start on these
+    # old Debian images' glibc, so check out manually with the container's git.
+    # Public repo: no token needed; GitHub permits fetching by commit SHA.
+    - name: Checkout (container-safe, no Node action)
+      run: |
+        git config --global --add safe.directory '*'
+        git init -q .
+        git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+        git fetch -q --depth 1 origin "${GITHUB_SHA}"
+        git checkout -q FETCH_HEAD
+    - name: Install rebar3 3.15
+      # 3.15 is the last rebar3 line that supports these OTP releases; the image's
+      # bundled rebar3 may be too new, so pin it explicitly.
+      run: |
+        wget -O /usr/local/bin/rebar3 https://github.com/erlang/rebar3/releases/download/3.15.2/rebar3
+        chmod +x /usr/local/bin/rebar3
     - name: Check rebar3 Version
       run: rebar3 --version
     - name: Compile
@@ -43,11 +60,12 @@ jobs:
     runs-on: ubuntu-22.04
 
     strategy:
+      fail-fast: false
       matrix:
         otp_version: [24, 25, 26, 27]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - uses: erlef/setup-beam@v1
       with:
         otp-version: ${{ matrix.otp_version }}

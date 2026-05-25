@@ -1,5 +1,7 @@
 # iso8601
+
 [![Build Status][gh-actions-badge]][gh-actions]
+[![Coverage][coverage-badge]][project]
 [![Tag][tag-badge]][tag]
 [![Erlang Version][erl-badge]][erl]
 [![Downloads][hex downloads]][hex package]
@@ -8,14 +10,12 @@
 
 [![iso8601 project logo][logo]][logo-large]
 
-
 #### Contents
 
 * [About](#about-)
 * [Usage](#usage-)
 * [Known Deficiencies](#known-deficiencies-)
 * [License](#license-)
-
 
 ## About [&#x219F;](#contents)
 
@@ -27,7 +27,6 @@ Thanks to Github's forwarding for project renames and moves, the following still
 
 * ``git clone https://github.com/seansawyer/erlang_iso8601.git``
 * ``git clone https://github.com/erlsci/erlang_iso8601.git``
-
 
 ## Usage [&#x219F;](#contents)
 
@@ -99,7 +98,6 @@ Parse durations:
 See the [open issues](https://github.com/erlsci/iso8601/issues)
 for more info.
 
-
 ## Donating
 
 A donation account for supporting development on this project has been set up
@@ -113,7 +111,6 @@ service's ["About" page][libera-about].
 [libera-wiki]: https://en.wikipedia.org/wiki/Liberapay
 [libera-about]: https://liberapay.com/about/
 
-
 ## License [&#x219F;](#contents)
 
 ```
@@ -124,18 +121,17 @@ Copyright © 2012, Tristan Sloughter
 Copyright © 2016-2026, Erlang-Aided Enrichment Center
 ```
 
-
 [//]: --Named-Links--
 
+[project]: https://github.com/erlsci/iso8601
 [gh-actions-badge]: https://github.com/erlsci/iso8601/workflows/ci/badge.svg
 [gh-actions]: https://github.com/erlsci/iso8601/actions
+[coverage-badge]: https://img.shields.io/badge/coverage-100%25-brightgreen
 [tag]: https://github.com/erlsci/iso8601/releases/latest
 [tag-badge]: https://img.shields.io/github/tag/erlsci/iso8601.svg
 [erl]: http://www.erlang.org/downloads
-[erl-badge]: https://img.shields.io/badge/erlang-%E2%89%A5R15B03-blue.svg
-[logo]: resources/images/logo.png
-[logo-large]: resources/images/logo-large.png
-[logo-source]: https://www.flickr.com/photos/theilr/2164085293
-[hex badge]: https://img.shields.io/hexpm/v/iso8601.svg?maxAge=259200
+[erl-badge]: https://img.shields.io/badge/erlang-%E2%89%A520-blue.svg
+[logo]: priv/images/logo.png
+[logo-large]: priv/images/logo-large.png
 [hex package]: https://hex.pm/packages/iso8601
 [hex downloads]: https://img.shields.io/hexpm/dt/iso8601.svg
