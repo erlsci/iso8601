@@ -11,7 +11,7 @@
     ]},
     {env, []},
     {pkg_name, iso8601},
-    {licenses, ["BSD"]},
+    {licenses, ["MIT"]},
     {maintainers, ["Duncan McGreggor"]},
     {links, [
         {"GitHub", "https://github.com/erlsci/iso8601"},

@@ -121,7 +121,7 @@ The MIT License (MIT)
 
 Copyright © 2011-2014, Sean Sawyer
 Copyright © 2012, Tristan Sloughter
-Copyright © 2016-2021, Erlang-Aided Enrichment Center
+Copyright © 2016-2026, Erlang-Aided Enrichment Center
 ```
 
 
