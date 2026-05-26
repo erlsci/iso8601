@@ -181,10 +181,15 @@ so its `calendar`-compatible contract is preserved:
 
 ```erlang
 21> iso8601:parse_expanded("-0001-01-01").
-{{-1,1,1},{0,0,0}}
+{{-1,1,1},{0,0,0.0}}
 22> iso8601:format_expanded({{-44,3,15},{0,0,0}}).
 <<"-0044-03-15T00:00:00Z">>
 ```
+
+`parse_expanded/1` preserves fractional seconds (like `parse_exact/1`), so the
+seconds field comes back as a float. Negative years are supported in UTC (`Z`) or
+offset-free form; combining a negative year with a non-zero UTC offset or a
+week-date raises `badarg`.
 
 ## Known Deficiencies [&#x219F;](#contents)
 
