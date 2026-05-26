@@ -10,7 +10,10 @@
     parse/1,
     parse_exact/1,
     parse_duration/1,
-    apply_duration/2
+    apply_duration/2,
+    parse_interval/1,
+    interval_bounds/1,
+    format_interval/1
 ]).
 
 -define(V, proplists:get_value).
@@ -20,6 +23,7 @@
 %%----------------------------------------------------------------------
 
 -export_type([timestamp/0, year/0, month/0, day/0, hour/0, minute/0, second/0]).
+-export_type([interval/0, duration/0]).
 
 %% This group of types is from calendar.erl; we need to use some of them
 %% for this  lib, but thought it might be nice to provide the rest to users.
@@ -34,6 +38,13 @@
 -type datetime_plist() :: list({atom(), integer() | string()}).
 -type undefined_or(A) :: undefined | A.
 -type timestamp() :: {MegaSecs :: integer(), Secs :: integer(), MicroSecs :: integer() | float()}.
+
+-type duration() :: datetime_plist().
+-type interval() ::
+    {interval, start_end, datetime(), datetime()}
+    | {interval, start_duration, datetime(), duration()}
+    | {interval, duration_end, duration(), datetime()}
+    | {interval, duration, duration()}.
 
 %%----------------------------------------------------------------------
 %% API
@@ -152,20 +163,44 @@ parse_duration(Str) ->
 -spec apply_duration(datetime(), string()) -> datetime().
 %% @doc Return new datetime after apply duration.
 apply_duration(Datetime, Duration) ->
-    [
-        {sign, Sign},
-        {years, Y},
-        {months, M},
-        {days, D},
-        {hours, H},
-        {minutes, MM},
-        {seconds, SS}
-    ] = parse_duration(Duration),
-    F = case Sign of "-" -> fun(X) -> -X end; _ -> fun(X) -> X end end,
-    D1 = apply_years_offset(Datetime, F(Y)),
-    D2 = apply_months_offset(D1, F(M)),
-    D3 = apply_days_offset(D2, F(D)),
-    apply_offset(D3, F(H), F(MM), F(SS)).
+    apply_duration_plist(Datetime, parse_duration(Duration), forward).
+
+-spec parse_interval(iodata()) -> interval().
+%% @doc Parse an ISO 8601 time interval string into its structured form.
+parse_interval(Bin) when is_binary(Bin) ->
+    parse_interval(binary_to_list(Bin));
+parse_interval(Str) ->
+    case split_interval(Str) of
+        {Left, Right} ->
+            classify_interval(Left, Right);
+        single ->
+            case is_duration_str(Str) of
+                true -> {interval, duration, parse_duration(Str)};
+                false -> error(badarg)
+            end
+    end.
+
+-spec interval_bounds(interval()) -> {datetime(), datetime()}.
+%% @doc Resolve an interval to concrete `{Start, End}' datetimes.
+interval_bounds({interval, start_end, S, E}) ->
+    {S, E};
+interval_bounds({interval, start_duration, S, D}) ->
+    {S, apply_duration_plist(S, D, forward)};
+interval_bounds({interval, duration_end, D, E}) ->
+    {apply_duration_plist(E, D, backward), E};
+interval_bounds({interval, duration, _}) ->
+    error(badarg).
+
+-spec format_interval(interval()) -> binary().
+%% @doc Format an interval as an ISO 8601 binary string.
+format_interval({interval, start_end, S, E}) ->
+    iolist_to_binary([format(S), $/, format(E)]);
+format_interval({interval, start_duration, S, D}) ->
+    iolist_to_binary([format(S), $/, format_duration(D)]);
+format_interval({interval, duration_end, D, E}) ->
+    iolist_to_binary([format_duration(D), $/, format(E)]);
+format_interval({interval, duration, D}) ->
+    iolist_to_binary(format_duration(D)).
 
 %% Private functions
 
@@ -454,3 +489,165 @@ find_last_valid_date(Datetime) ->
         true -> Datetime;
         false -> find_last_valid_date({{Y, M, D - 1}, {H, MM, S}})
     end.
+
+%%----------------------------------------------------------------------
+%% Interval helpers (private)
+%%----------------------------------------------------------------------
+
+apply_duration_plist(Datetime, Plist, Direction) ->
+    [{sign, Sign}, {years, Y}, {months, M}, {days, D},
+     {hours, H}, {minutes, MM}, {seconds, SS}] = Plist,
+    Negate = (Sign =:= "-") xor (Direction =:= backward),
+    F = case Negate of true -> fun(X) -> -X end; false -> fun(X) -> X end end,
+    D1 = apply_years_offset(Datetime, F(Y)),
+    D2 = apply_months_offset(D1, F(M)),
+    D3 = apply_days_offset(D2, F(D)),
+    apply_offset(D3, F(H), F(MM), F(SS)).
+
+split_interval(Str) ->
+    case string:tokens(Str, "/") of
+        [Left, Right] -> {Left, Right};
+        [_Single] -> split_double_hyphen(Str);
+        _ -> error(badarg)
+    end.
+
+split_double_hyphen(Str) ->
+    case split_on_double_hyphen(Str) of
+        {Left, Right} -> {Left, Right};
+        none -> single
+    end.
+
+split_on_double_hyphen(Str) ->
+    split_on_double_hyphen(Str, []).
+
+split_on_double_hyphen([$-, $- | Right], Acc) ->
+    {lists:reverse(Acc), Right};
+split_on_double_hyphen([C | Rest], Acc) ->
+    split_on_double_hyphen(Rest, [C | Acc]);
+split_on_double_hyphen([], _Acc) ->
+    none.
+
+is_duration_str(Str) ->
+    case strip_sign(Str) of
+        [$P | _] -> true;
+        _ -> false
+    end.
+
+strip_sign([$+ | Rest]) -> Rest;
+strip_sign([$- | Rest]) -> Rest;
+strip_sign(Str) -> Str.
+
+classify_interval(Left, Right) ->
+    LDur = is_duration_str(Left),
+    RDur = is_duration_str(Right),
+    case {LDur, RDur} of
+        {true, true} -> error(badarg);
+        {false, true} -> {interval, start_duration, parse_endpoint(Left), parse_duration(Right)};
+        {true, false} -> {interval, duration_end, parse_duration(Left), parse_endpoint(Right)};
+        {false, false} -> parse_start_end(Left, Right)
+    end.
+
+parse_endpoint(Str) ->
+    case lists:member($., Str) orelse lists:member($,, Str) of
+        true -> parse_exact(Str);
+        false -> parse(Str)
+    end.
+
+parse_start_end(Left, Right) ->
+    Start = parse_endpoint(Left),
+    End = resolve_end(Left, Right),
+    {interval, start_end, Start, End}.
+
+resolve_end(StartStr, EndStr) ->
+    case is_abbreviated(EndStr) of
+        false -> parse_endpoint(EndStr);
+        true -> parse_inherited_end(StartStr, EndStr)
+    end.
+
+is_abbreviated(Str) ->
+    case year_prefix(Str) of
+        true -> false;
+        false -> true
+    end.
+
+year_prefix([D1, D2, D3, D4 | _])
+  when D1 >= $0, D1 =< $9, D2 >= $0, D2 =< $9,
+       D3 >= $0, D3 =< $9, D4 >= $0, D4 =< $9 ->
+    true;
+year_prefix(_) ->
+    false.
+
+parse_inherited_end(StartStr, EndStr) ->
+    case classify_end_fragment(EndStr) of
+        {time_only, TimePart} ->
+            DatePart = extract_date_part(StartStr),
+            parse_endpoint(DatePart ++ "T" ++ TimePart);
+        {day_and_time, DayStr, TimeStr} ->
+            YMPart = extract_year_month(StartStr),
+            parse_endpoint(YMPart ++ "-" ++ DayStr ++ "T" ++ TimeStr);
+        {month_day, _} ->
+            YearPart = extract_year(StartStr),
+            parse_endpoint(YearPart ++ "-" ++ EndStr);
+        {day_only, _} ->
+            YMPart = extract_year_month(StartStr),
+            parse_endpoint(YMPart ++ "-" ++ EndStr);
+        ambiguous ->
+            error(badarg)
+    end.
+
+classify_end_fragment(Str) ->
+    case lists:member($T, Str) of
+        true ->
+            case string:tokens(Str, "T") of
+                [DayPart, TimePart] ->
+                    {day_and_time, DayPart, TimePart};
+                [TimePart] ->
+                    {time_only, TimePart}
+            end;
+        false ->
+            case lists:member($:, Str) of
+                true -> {time_only, Str};
+                false -> classify_date_fragment(Str)
+            end
+    end.
+
+classify_date_fragment(Str) ->
+    case lists:member($-, Str) of
+        true -> {month_day, Str};
+        false ->
+            case length(Str) of
+                2 -> {day_only, Str};
+                _ -> ambiguous
+            end
+    end.
+
+extract_date_part(Str) ->
+    case string:tokens(Str, "T") of
+        [Date | _] -> Date
+    end.
+
+extract_year(Str) ->
+    lists:sublist(Str, 4).
+
+extract_year_month(Str) ->
+    lists:sublist(Str, 7).
+
+format_duration(Plist) ->
+    Sign = proplists:get_value(sign, Plist, ""),
+    Y = proplists:get_value(years, Plist, 0),
+    Mo = proplists:get_value(months, Plist, 0),
+    D = proplists:get_value(days, Plist, 0),
+    H = proplists:get_value(hours, Plist, 0),
+    Mi = proplists:get_value(minutes, Plist, 0),
+    S = proplists:get_value(seconds, Plist, 0),
+    DateParts =
+        [integer_to_list(V) ++ U ||
+            {V, U} <- [{Y, "Y"}, {Mo, "M"}, {D, "D"}], V > 0],
+    TimeParts =
+        [integer_to_list(V) ++ U ||
+            {V, U} <- [{H, "H"}, {Mi, "M"}, {S, "S"}], V > 0],
+    TimeSec = case TimeParts of
+        [] -> "";
+        _ -> "T" ++ lists:flatten(TimeParts)
+    end,
+    lists:flatten([Sign, "P", lists:flatten(DateParts), TimeSec]).
