@@ -138,6 +138,8 @@ parse_exact(Str) ->
 -spec parse_expanded(iodata()) -> expanded_datetime().
 %% @doc Parse an ISO 8601 string with expanded year representation,
 %% including negative (astronomical) years. Preserves fractional seconds.
+%% Negative years are supported in UTC (`Z') or offset-free form; combining
+%% a negative year with a non-zero UTC offset or a week-date raises `badarg'.
 parse_expanded(Bin) when is_binary(Bin) ->
     parse_expanded(binary_to_list(Bin));
 parse_expanded(Str) ->
@@ -489,14 +491,17 @@ date_at_w01_1(Year) ->
 -spec apply_offset(calendar:datetime(), number(), number(), number()) ->
     calendar:datetime().
 %% @doc Add the specified number of hours, minutes and seconds to `Datetime'.
-apply_offset(Datetime, H, M, S) ->
+apply_offset({{Y, _, _}, _} = Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
-    case round(OffsetS) of
-        0 ->
+    Rounded = round(OffsetS),
+    case {Y < 1, Rounded} of
+        {false, _} ->
+            Gs = Rounded + calendar:datetime_to_gregorian_seconds(Datetime),
+            calendar:gregorian_seconds_to_datetime(Gs);
+        {true, 0} ->
             Datetime;
-        RoundedS ->
-            Gs = RoundedS + calendar:datetime_to_gregorian_seconds(Datetime),
-            calendar:gregorian_seconds_to_datetime(Gs)
+        {true, _} ->
+            error(badarg)
     end.
 
 -spec apply_months_offset(datetime(), number()) -> datetime().

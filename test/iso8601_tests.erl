@@ -1035,3 +1035,31 @@ format_expanded_roundtrip_test_() ->
                 )
             )}
     ].
+
+%%----------------------------------------------------------------------
+%% F1: positive-year normalization restored (1.3.4 behavior)
+%%----------------------------------------------------------------------
+
+parse_out_of_range_positive_crashes_test_() ->
+    %% Out-of-range day on a positive year routes through calendar (not
+    %% the year<=0 bypass), which crashes rather than silently returning
+    %% an invalid date like {2017,2,30}.
+    ?_assertError(_, iso8601:parse("2017-02-30")).
+
+%%----------------------------------------------------------------------
+%% F2: year <= 0 with non-zero offset is badarg
+%%----------------------------------------------------------------------
+
+parse_expanded_negative_offset_test_() ->
+    [
+        {"negative year + timezone offset is badarg",
+            ?_assertError(badarg, iso8601:parse_expanded("-0044-03-15T12:00:00+02:00"))},
+        {"negative year + week date crashes",
+            ?_assertError(_, iso8601:parse_expanded("-0001-W01-1"))},
+        {"negative year in UTC still works",
+            ?_assertMatch({{-44, 3, 15}, {12, 0, +0.0}},
+                iso8601:parse_expanded("-0044-03-15T12:00:00Z"))},
+        {"negative year plain date still works",
+            ?_assertMatch({{-1, 1, 1}, {0, 0, +0.0}},
+                iso8601:parse_expanded("-0001-01-01"))}
+    ].
