@@ -58,7 +58,7 @@ Thanks to Github's forwarding for project renames and moves, the following still
 Add it to your `rebar.config` deps:
 
 ```erlang
-{iso8601, {git, "https://github.com/erlsci/iso8601.git", {tag, "1.3.2"}}}
+{iso8601, "~> 1.4"}
 ```
 
 Format a timestamp or calendar datetime tuple:
