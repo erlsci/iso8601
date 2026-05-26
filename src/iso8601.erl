@@ -13,7 +13,9 @@
     apply_duration/2,
     parse_interval/1,
     interval_bounds/1,
-    format_interval/1
+    format_interval/1,
+    parse_expanded/1,
+    format_expanded/1
 ]).
 
 -define(V, proplists:get_value).
@@ -24,6 +26,7 @@
 
 -export_type([timestamp/0, year/0, month/0, day/0, hour/0, minute/0, second/0]).
 -export_type([interval/0, duration/0]).
+-export_type([expanded_year/0, expanded_datetime/0]).
 
 %% This group of types is from calendar.erl; we need to use some of them
 %% for this  lib, but thought it might be nice to provide the rest to users.
@@ -45,6 +48,10 @@
     | {interval, start_duration, datetime(), duration()}
     | {interval, duration_end, duration(), datetime()}
     | {interval, duration, duration()}.
+
+-type expanded_year() :: integer().
+-type expanded_datetime() ::
+    {{expanded_year(), month(), day()}, {hour(), minute(), second() | float()}}.
 
 %%----------------------------------------------------------------------
 %% API
@@ -100,12 +107,23 @@ format({{Y, Mo, D}, {H, Mn, S}}) ->
     IsoStr = io_lib:format(FmtStr, [format_year(Y), Mo, D, H, Mn, S]),
     list_to_binary(IsoStr).
 
+-spec format_expanded(expanded_datetime()) -> binary().
+%% @doc Format an expanded datetime (including negative years) as ISO 8601.
+format_expanded({{Y, Mo, D}, {H, Mn, S}}) when is_float(S) ->
+    FmtStr = "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~9.6.0fZ",
+    IsoStr = io_lib:format(FmtStr, [format_expanded_year(Y), Mo, D, H, Mn, S]),
+    list_to_binary(IsoStr);
+format_expanded({{Y, Mo, D}, {H, Mn, S}}) ->
+    FmtStr = "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~2.10.0BZ",
+    IsoStr = io_lib:format(FmtStr, [format_expanded_year(Y), Mo, D, H, Mn, S]),
+    list_to_binary(IsoStr).
+
 -spec parse(iodata()) -> calendar:datetime().
 %% @doc Convert an ISO 8601 formatted string to a `{date(), time()}'
 parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
 parse(Str) ->
-    {{Date, {H, M, S}}, Subsecond} = year(Str, []),
+    {{Date, {H, M, S}}, Subsecond} = year(Str, [], positive_only),
     {Date, {H, M, S + trunc(Subsecond)}}.
 
 -spec parse_exact(iodata()) -> calendar:datetime().
@@ -114,7 +132,16 @@ parse(Str) ->
 parse_exact(Bin) when is_binary(Bin) ->
     parse_exact(binary_to_list(Bin));
 parse_exact(Str) ->
-    {{Date, {H, M, S}}, SecondsDecimal} = year(Str, []),
+    {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [], positive_only),
+    {Date, {H, M, S + SecondsDecimal}}.
+
+-spec parse_expanded(iodata()) -> expanded_datetime().
+%% @doc Parse an ISO 8601 string with expanded year representation,
+%% including negative (astronomical) years. Preserves fractional seconds.
+parse_expanded(Bin) when is_binary(Bin) ->
+    parse_expanded(binary_to_list(Bin));
+parse_expanded(Str) ->
+    {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [], allow_neg),
     {Date, {H, M, S + SecondsDecimal}}.
 
 -spec gi(string()) -> integer().
@@ -204,18 +231,20 @@ format_interval({interval, duration, D}) ->
 
 %% Private functions
 
-year([$+ | Rest], Acc) -> expanded_year(Rest, Acc);
-year([Y1, Y2, Y3, Y4 | Rest], Acc) ->
+year([$- | Rest], Acc, allow_neg) -> expanded_year(-1, Rest, Acc);
+year([$- | _], _, positive_only) -> error(badarg);
+year([$+ | Rest], Acc, _) -> expanded_year(1, Rest, Acc);
+year([Y1, Y2, Y3, Y4 | Rest], Acc, _) ->
     acc([Y1, Y2, Y3, Y4], Rest, year, Acc, fun month_or_week/2);
-year(_, _) ->
+year(_, _, _) ->
     error(badarg).
 
-expanded_year(Str, Acc) ->
+expanded_year(Sign, Str, Acc) ->
     F = fun(C) -> C >= $0 andalso C =< $9 end,
     {Digits, Rest} = lists:splitwith(F, Str),
     case Digits of
         [] -> error(badarg);
-        _ -> month_or_week(Rest, [{year, list_to_integer(Digits)} | Acc])
+        _ -> month_or_week(Rest, [{year, Sign * list_to_integer(Digits)} | Acc])
     end.
 
 month_or_week([], Acc) ->
@@ -459,8 +488,12 @@ date_at_w01_1(Year) ->
 %% @doc Add the specified number of hours, minutes and seconds to `Datetime'.
 apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
-    Gs = round(OffsetS) + calendar:datetime_to_gregorian_seconds(Datetime),
-    calendar:gregorian_seconds_to_datetime(Gs).
+    case round(OffsetS) of
+        0 -> Datetime;
+        RoundedS ->
+            Gs = RoundedS + calendar:datetime_to_gregorian_seconds(Datetime),
+            calendar:gregorian_seconds_to_datetime(Gs)
+    end.
 
 -spec apply_months_offset(datetime(), number()) -> datetime().
 %% @doc Add the specified number of months to `Datetime'.
@@ -503,6 +536,14 @@ format_year(Y) when Y >= 0, Y =< 9999 ->
     io_lib:format("~4.10.0B", [Y]);
 format_year(Y) when Y > 9999 ->
     [$+ | integer_to_list(Y)].
+
+format_expanded_year(Y) when Y >= 0 ->
+    [$+ | pad_year(integer_to_list(Y))];
+format_expanded_year(Y) ->
+    [$- | pad_year(integer_to_list(abs(Y)))].
+
+pad_year(S) when length(S) >= 4 -> S;
+pad_year(S) -> pad_year([$0 | S]).
 
 %%----------------------------------------------------------------------
 %% Interval helpers (private)
@@ -640,7 +681,7 @@ classify_date_fragment(Str) ->
     end.
 
 extract_date_part(Str) ->
-    case string:tokens(Str, "T") of
+    case string:split(Str, "T") of
         [Date | _] -> Date
     end.
 
