@@ -471,14 +471,20 @@ parse_error_clauses_test_() ->
 apply_duration_sign_test_() ->
     [
         {"negative year subtracts",
-            ?_assertEqual({{2016, 5, 24}, {1, 2, 3}},
-                iso8601:apply_duration({{2017, 5, 24}, {1, 2, 3}}, "-P1Y"))},
+            ?_assertEqual(
+                {{2016, 5, 24}, {1, 2, 3}},
+                iso8601:apply_duration({{2017, 5, 24}, {1, 2, 3}}, "-P1Y")
+            )},
         {"positive/unsigned still adds",
-            ?_assertEqual({{2018, 5, 24}, {1, 2, 3}},
-                iso8601:apply_duration({{2017, 5, 24}, {1, 2, 3}}, "P1Y"))},
+            ?_assertEqual(
+                {{2018, 5, 24}, {1, 2, 3}},
+                iso8601:apply_duration({{2017, 5, 24}, {1, 2, 3}}, "P1Y")
+            )},
         {"compound negative duration",
-            ?_assertEqual({{2016, 4, 23}, {0, 1, 2}},
-                iso8601:apply_duration({{2017, 5, 24}, {1, 2, 3}}, "-P1Y1M1DT1H1M1S"))}
+            ?_assertEqual(
+                {{2016, 4, 23}, {0, 1, 2}},
+                iso8601:apply_duration({{2017, 5, 24}, {1, 2, 3}}, "-P1Y1M1DT1H1M1S")
+            )}
     ].
 
 %%----------------------------------------------------------------------
@@ -488,20 +494,31 @@ apply_duration_sign_test_() ->
 add_years_leap_day_test_() ->
     [
         {"leap day + 1 year clamps to Feb 28",
-            ?_assertEqual({{2017, 2, 28}, {0, 0, 0}},
-                iso8601:add_years({{2016, 2, 29}, {0, 0, 0}}, 1))},
+            ?_assertEqual(
+                {{2017, 2, 28}, {0, 0, 0}},
+                iso8601:add_years({{2016, 2, 29}, {0, 0, 0}}, 1)
+            )},
         {"leap day - 1 year clamps to Feb 28",
-            ?_assertEqual({{2015, 2, 28}, {0, 0, 0}},
-                iso8601:add_years({{2016, 2, 29}, {0, 0, 0}}, -1))},
+            ?_assertEqual(
+                {{2015, 2, 28}, {0, 0, 0}},
+                iso8601:add_years({{2016, 2, 29}, {0, 0, 0}}, -1)
+            )},
         {"leap day + 3 years produces valid date",
-            ?_assert(calendar:valid_date(
-                element(1, iso8601:add_years({{2016, 2, 29}, {0, 0, 0}}, 3))))},
+            ?_assert(
+                calendar:valid_date(
+                    element(1, iso8601:add_years({{2016, 2, 29}, {0, 0, 0}}, 3))
+                )
+            )},
         {"ordinary date unchanged",
-            ?_assertEqual({{2018, 5, 24}, {1, 2, 3}},
-                iso8601:add_years({{2017, 5, 24}, {1, 2, 3}}, 1))},
+            ?_assertEqual(
+                {{2018, 5, 24}, {1, 2, 3}},
+                iso8601:add_years({{2017, 5, 24}, {1, 2, 3}}, 1)
+            )},
         {"via apply_duration years path",
-            ?_assertEqual({{2017, 2, 28}, {0, 0, 0}},
-                iso8601:apply_duration({{2016, 2, 29}, {0, 0, 0}}, "P1Y"))}
+            ?_assertEqual(
+                {{2017, 2, 28}, {0, 0, 0}},
+                iso8601:apply_duration({{2016, 2, 29}, {0, 0, 0}}, "P1Y")
+            )}
     ].
 
 %%----------------------------------------------------------------------
@@ -521,7 +538,9 @@ capture_output(Fun) ->
     try
         R = Fun(),
         Cap ! {stop, Self},
-        receive {captured, O} -> {R, O} end
+        receive
+            {captured, O} -> {R, O}
+        end
     after
         group_leader(Old, self())
     end.
@@ -553,27 +572,37 @@ cap_loop(Owner, Acc) ->
 parse_interval_forms_test_() ->
     [
         {"start/end",
-            ?_assertMatch({interval, start_end, {{2007, 3, 1}, {13, 0, 0}}, {{2008, 5, 11}, {15, 30, 0}}},
-                iso8601:parse_interval("2007-03-01T13:00:00Z/2008-05-11T15:30:00Z"))},
+            ?_assertMatch(
+                {interval, start_end, {{2007, 3, 1}, {13, 0, 0}}, {{2008, 5, 11}, {15, 30, 0}}},
+                iso8601:parse_interval("2007-03-01T13:00:00Z/2008-05-11T15:30:00Z")
+            )},
         {"start/duration",
-            ?_assertMatch({interval, start_duration, {{2007, 3, 1}, {13, 0, 0}}, [{sign, _} | _]},
-                iso8601:parse_interval("2007-03-01T13:00:00Z/P1Y2M10DT2H30M"))},
+            ?_assertMatch(
+                {interval, start_duration, {{2007, 3, 1}, {13, 0, 0}}, [{sign, _} | _]},
+                iso8601:parse_interval("2007-03-01T13:00:00Z/P1Y2M10DT2H30M")
+            )},
         {"duration/end",
-            ?_assertMatch({interval, duration_end, [{sign, _} | _], {{2008, 5, 11}, {15, 30, 0}}},
-                iso8601:parse_interval("P1Y2M10DT2H30M/2008-05-11T15:30:00Z"))},
+            ?_assertMatch(
+                {interval, duration_end, [{sign, _} | _], {{2008, 5, 11}, {15, 30, 0}}},
+                iso8601:parse_interval("P1Y2M10DT2H30M/2008-05-11T15:30:00Z")
+            )},
         {"duration only",
-            ?_assertMatch({interval, duration, [{sign, _} | _]},
-                iso8601:parse_interval("P1Y2M10DT2H30M"))},
+            ?_assertMatch(
+                {interval, duration, [{sign, _} | _]},
+                iso8601:parse_interval("P1Y2M10DT2H30M")
+            )},
         {"double-hyphen separator",
-            ?_assertMatch({interval, start_end, {{2007, 3, 1}, {13, 0, 0}}, {{2008, 5, 11}, {15, 30, 0}}},
-                iso8601:parse_interval("2007-03-01T13:00:00Z--2008-05-11T15:30:00Z"))},
-        {"two durations is badarg",
-            ?_assertError(badarg, iso8601:parse_interval("P1Y/P2Y"))},
-        {"three parts is badarg",
-            ?_assertError(badarg, iso8601:parse_interval("2007/2008/2009"))},
+            ?_assertMatch(
+                {interval, start_end, {{2007, 3, 1}, {13, 0, 0}}, {{2008, 5, 11}, {15, 30, 0}}},
+                iso8601:parse_interval("2007-03-01T13:00:00Z--2008-05-11T15:30:00Z")
+            )},
+        {"two durations is badarg", ?_assertError(badarg, iso8601:parse_interval("P1Y/P2Y"))},
+        {"three parts is badarg", ?_assertError(badarg, iso8601:parse_interval("2007/2008/2009"))},
         {"binary input",
-            ?_assertMatch({interval, start_end, _, _},
-                iso8601:parse_interval(<<"2007-03-01T13:00:00Z/2008-05-11T15:30:00Z">>))}
+            ?_assertMatch(
+                {interval, start_end, _, _},
+                iso8601:parse_interval(<<"2007-03-01T13:00:00Z/2008-05-11T15:30:00Z">>)
+            )}
     ].
 
 %%----------------------------------------------------------------------
@@ -583,17 +612,38 @@ parse_interval_forms_test_() ->
 interval_bounds_test_() ->
     [
         {"start/end returns both",
-            ?_assertEqual({{{2007, 3, 1}, {13, 0, 0}}, {{2008, 5, 11}, {15, 30, 0}}},
-                iso8601:interval_bounds(iso8601:parse_interval(
-                    "2007-03-01T13:00:00Z/2008-05-11T15:30:00Z")))},
+            ?_assertEqual(
+                {{{2007, 3, 1}, {13, 0, 0}}, {{2008, 5, 11}, {15, 30, 0}}},
+                iso8601:interval_bounds(
+                    iso8601:parse_interval(
+                        "2007-03-01T13:00:00Z/2008-05-11T15:30:00Z"
+                    )
+                )
+            )},
         {"start+duration end matches apply_duration",
-            ?_assertEqual(iso8601:apply_duration({{2007, 3, 1}, {13, 0, 0}}, "P1Y2M10DT2H30M"),
-                element(2, iso8601:interval_bounds(iso8601:parse_interval(
-                    "2007-03-01T13:00:00Z/P1Y2M10DT2H30M"))))},
+            ?_assertEqual(
+                iso8601:apply_duration({{2007, 3, 1}, {13, 0, 0}}, "P1Y2M10DT2H30M"),
+                element(
+                    2,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval(
+                            "2007-03-01T13:00:00Z/P1Y2M10DT2H30M"
+                        )
+                    )
+                )
+            )},
         {"duration/end start computation",
-            ?_assertMatch({{_, _, _}, {_, _, _}},
-                element(1, iso8601:interval_bounds(iso8601:parse_interval(
-                    "P1Y/2008-02-28T12:00:00Z"))))},
+            ?_assertMatch(
+                {{_, _, _}, {_, _, _}},
+                element(
+                    1,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval(
+                            "P1Y/2008-02-28T12:00:00Z"
+                        )
+                    )
+                )
+            )},
         {"duration-only is badarg",
             ?_assertError(badarg, iso8601:interval_bounds(iso8601:parse_interval("P1Y")))}
     ].
@@ -605,12 +655,20 @@ interval_bounds_test_() ->
 interval_signed_duration_test_() ->
     [
         {"negative duration in start/duration",
-            ?_assertMatch({interval, start_duration, {{2008, 5, 11}, {15, 30, 0}}, _},
-                iso8601:parse_interval("2008-05-11T15:30:00Z/-P1Y"))},
+            ?_assertMatch(
+                {interval, start_duration, {{2008, 5, 11}, {15, 30, 0}}, _},
+                iso8601:parse_interval("2008-05-11T15:30:00Z/-P1Y")
+            )},
         {"negative duration bounds subtract",
-            ?_assertEqual({{2007, 5, 11}, {15, 30, 0}},
-                element(2, iso8601:interval_bounds(
-                    iso8601:parse_interval("2008-05-11T15:30:00Z/-P1Y"))))}
+            ?_assertEqual(
+                {{2007, 5, 11}, {15, 30, 0}},
+                element(
+                    2,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval("2008-05-11T15:30:00Z/-P1Y")
+                    )
+                )
+            )}
     ].
 
 %%----------------------------------------------------------------------
@@ -620,20 +678,35 @@ interval_signed_duration_test_() ->
 format_interval_test_() ->
     [
         {"format start/end",
-            ?_assertEqual(<<"2007-03-01T13:00:00Z/2008-05-11T15:30:00Z">>,
-                iso8601:format_interval({interval, start_end,
-                    {{2007, 3, 1}, {13, 0, 0}}, {{2008, 5, 11}, {15, 30, 0}}}))},
+            ?_assertEqual(
+                <<"2007-03-01T13:00:00Z/2008-05-11T15:30:00Z">>,
+                iso8601:format_interval(
+                    {interval, start_end, {{2007, 3, 1}, {13, 0, 0}}, {{2008, 5, 11}, {15, 30, 0}}}
+                )
+            )},
         {"format start/duration",
-            ?_assertEqual(<<"2007-03-01T13:00:00Z/P1Y2M10DT2H30M">>,
-                iso8601:format_interval(iso8601:parse_interval(
-                    "2007-03-01T13:00:00Z/P1Y2M10DT2H30M")))},
+            ?_assertEqual(
+                <<"2007-03-01T13:00:00Z/P1Y2M10DT2H30M">>,
+                iso8601:format_interval(
+                    iso8601:parse_interval(
+                        "2007-03-01T13:00:00Z/P1Y2M10DT2H30M"
+                    )
+                )
+            )},
         {"format duration/end",
-            ?_assertEqual(<<"P1Y2M10DT2H30M/2008-05-11T15:30:00Z">>,
-                iso8601:format_interval(iso8601:parse_interval(
-                    "P1Y2M10DT2H30M/2008-05-11T15:30:00Z")))},
+            ?_assertEqual(
+                <<"P1Y2M10DT2H30M/2008-05-11T15:30:00Z">>,
+                iso8601:format_interval(
+                    iso8601:parse_interval(
+                        "P1Y2M10DT2H30M/2008-05-11T15:30:00Z"
+                    )
+                )
+            )},
         {"format duration only",
-            ?_assertEqual(<<"P1Y2M10DT2H30M">>,
-                iso8601:format_interval(iso8601:parse_interval("P1Y2M10DT2H30M")))}
+            ?_assertEqual(
+                <<"P1Y2M10DT2H30M">>,
+                iso8601:format_interval(iso8601:parse_interval("P1Y2M10DT2H30M"))
+            )}
     ].
 
 format_interval_roundtrip_test_() ->
@@ -643,11 +716,22 @@ format_interval_roundtrip_test_() ->
         "P1Y2M10DT2H30M/2008-05-11T15:30:00Z",
         "P1Y2M10DT2H30M"
     ],
-    [{"roundtrip: " ++ S,
-      ?_assertEqual(iso8601:parse_interval(S),
-          iso8601:parse_interval(
-              binary_to_list(iso8601:format_interval(
-                  iso8601:parse_interval(S)))))} || S <- Strs].
+    [
+        {
+            "roundtrip: " ++ S,
+            ?_assertEqual(
+                iso8601:parse_interval(S),
+                iso8601:parse_interval(
+                    binary_to_list(
+                        iso8601:format_interval(
+                            iso8601:parse_interval(S)
+                        )
+                    )
+                )
+            )
+        }
+     || S <- Strs
+    ].
 
 %%----------------------------------------------------------------------
 %% Phase B: end-element inheritance
@@ -656,21 +740,45 @@ format_interval_roundtrip_test_() ->
 interval_inheritance_test_() ->
     [
         {"inherit date (time-only end)",
-            ?_assertEqual({{2007, 12, 14}, {15, 30, 0}},
-                element(2, iso8601:interval_bounds(
-                    iso8601:parse_interval("2007-12-14T13:30:00Z/15:30:00Z"))))},
+            ?_assertEqual(
+                {{2007, 12, 14}, {15, 30, 0}},
+                element(
+                    2,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval("2007-12-14T13:30:00Z/15:30:00Z")
+                    )
+                )
+            )},
         {"inherit year (month-day end)",
-            ?_assertEqual({{2008, 3, 14}, {0, 0, 0}},
-                element(2, iso8601:interval_bounds(
-                    iso8601:parse_interval("2008-02-15/03-14"))))},
+            ?_assertEqual(
+                {{2008, 3, 14}, {0, 0, 0}},
+                element(
+                    2,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval("2008-02-15/03-14")
+                    )
+                )
+            )},
         {"inherit year+month (day-only end)",
-            ?_assertEqual({{2007, 11, 15}, {0, 0, 0}},
-                element(2, iso8601:interval_bounds(
-                    iso8601:parse_interval("2007-11-13/15"))))},
+            ?_assertEqual(
+                {{2007, 11, 15}, {0, 0, 0}},
+                element(
+                    2,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval("2007-11-13/15")
+                    )
+                )
+            )},
         {"inherit year+month (day+time end)",
-            ?_assertEqual({{2007, 11, 15}, {17, 0, 0}},
-                element(2, iso8601:interval_bounds(
-                    iso8601:parse_interval("2007-11-13T09:00:00Z/15T17:00:00Z"))))},
+            ?_assertEqual(
+                {{2007, 11, 15}, {17, 0, 0}},
+                element(
+                    2,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval("2007-11-13T09:00:00Z/15T17:00:00Z")
+                    )
+                )
+            )},
         {"ambiguous single digit is badarg",
             ?_assertError(badarg, iso8601:parse_interval("2007-11-13/9"))}
     ].
@@ -684,25 +792,55 @@ interval_coverage_test_() ->
         {"non-duration no-separator string is badarg",
             ?_assertError(badarg, iso8601:parse_interval("not-an-interval"))},
         {"positive-signed duration (+P1Y)",
-            ?_assertMatch({interval, duration, [{sign, "+"} | _]},
-                iso8601:parse_interval("+P1Y"))},
+            ?_assertMatch(
+                {interval, duration, [{sign, "+"} | _]},
+                iso8601:parse_interval("+P1Y")
+            )},
         {"fractional second endpoint uses parse_exact",
-            ?_assertMatch({interval, start_end, {{2007, 3, 1}, {13, 0, 0.5}}, _},
-                iso8601:parse_interval("2007-03-01T13:00:00.5Z/2008-05-11T15:30:00Z"))},
+            ?_assertMatch(
+                {interval, start_end, {{2007, 3, 1}, {13, 0, 0.5}}, _},
+                iso8601:parse_interval("2007-03-01T13:00:00.5Z/2008-05-11T15:30:00Z")
+            )},
         {"date-only duration (no time components)",
-            ?_assertEqual(<<"P1Y2M">>,
-                iso8601:format_interval({interval, duration,
-                    [{sign, ""}, {years, 1}, {months, 2}, {days, 0},
-                     {hours, 0}, {minutes, 0}, {seconds, 0}]}))},
+            ?_assertEqual(
+                <<"P1Y2M">>,
+                iso8601:format_interval(
+                    {interval, duration, [
+                        {sign, ""},
+                        {years, 1},
+                        {months, 2},
+                        {days, 0},
+                        {hours, 0},
+                        {minutes, 0},
+                        {seconds, 0}
+                    ]}
+                )
+            )},
         {"inherit with T-prefixed end fragment",
-            ?_assertEqual({{2007, 12, 14}, {15, 30, 0}},
-                element(2, iso8601:interval_bounds(
-                    iso8601:parse_interval("2007-12-14T13:30:00Z/T15:30:00Z"))))},
+            ?_assertEqual(
+                {{2007, 12, 14}, {15, 30, 0}},
+                element(
+                    2,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval("2007-12-14T13:30:00Z/T15:30:00Z")
+                    )
+                )
+            )},
         {"format date-only duration (time parts empty)",
-            ?_assertEqual(<<"P1Y">>,
-                iso8601:format_interval({interval, duration,
-                    [{sign, ""}, {years, 1}, {months, 0}, {days, 0},
-                     {hours, 0}, {minutes, 0}, {seconds, 0}]}))}
+            ?_assertEqual(
+                <<"P1Y">>,
+                iso8601:format_interval(
+                    {interval, duration, [
+                        {sign, ""},
+                        {years, 1},
+                        {months, 0},
+                        {days, 0},
+                        {hours, 0},
+                        {minutes, 0},
+                        {seconds, 0}
+                    ]}
+                )
+            )}
     ].
 
 %%----------------------------------------------------------------------
@@ -712,13 +850,25 @@ interval_coverage_test_() ->
 interval_minute_precision_test_() ->
     [
         {"time-only end at minute precision",
-            ?_assertEqual({{2007, 12, 14}, {15, 30, 0}},
-                element(2, iso8601:interval_bounds(
-                    iso8601:parse_interval("2007-12-14T13:30/15:30"))))},
+            ?_assertEqual(
+                {{2007, 12, 14}, {15, 30, 0}},
+                element(
+                    2,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval("2007-12-14T13:30/15:30")
+                    )
+                )
+            )},
         {"day+time end at minute precision",
-            ?_assertEqual({{2007, 11, 15}, {17, 0, 0}},
-                element(2, iso8601:interval_bounds(
-                    iso8601:parse_interval("2007-11-13T09:00/15T17:00"))))}
+            ?_assertEqual(
+                {{2007, 11, 15}, {17, 0, 0}},
+                element(
+                    2,
+                    iso8601:interval_bounds(
+                        iso8601:parse_interval("2007-11-13T09:00/15T17:00")
+                    )
+                )
+            )}
     ].
 
 %%----------------------------------------------------------------------
@@ -739,12 +889,9 @@ interval_malformed_end_test_() ->
 
 interval_empty_sides_test_() ->
     [
-        {"double slash",
-            ?_assertError(badarg, iso8601:parse_interval("2007//2008"))},
-        {"leading slash",
-            ?_assertError(badarg, iso8601:parse_interval("/2008-05-11T15:30:00Z"))},
-        {"trailing slash",
-            ?_assertError(badarg, iso8601:parse_interval("2007-03-01T13:00:00Z/"))},
+        {"double slash", ?_assertError(badarg, iso8601:parse_interval("2007//2008"))},
+        {"leading slash", ?_assertError(badarg, iso8601:parse_interval("/2008-05-11T15:30:00Z"))},
+        {"trailing slash", ?_assertError(badarg, iso8601:parse_interval("2007-03-01T13:00:00Z/"))},
         {"empty double-hyphen sides (quad dash)",
             ?_assertError(badarg, iso8601:parse_interval("2007----2008"))},
         {"leading double-hyphen (empty left)",
@@ -785,20 +932,22 @@ expanded_year_test_() ->
             ?_assertEqual({{2007, 1, 1}, {0, 0, 0}}, iso8601:parse("+2007-01-01"))},
         {"year beyond 9999",
             ?_assertEqual({{10000, 1, 1}, {0, 0, 0}}, iso8601:parse("+10000-01-01"))},
-        {"unsigned overlength is badarg",
-            ?_assertError(badarg, iso8601:parse("10000-01-01"))},
-        {"empty after sign is badarg",
-            ?_assertError(badarg, iso8601:parse("+-01-01"))},
+        {"unsigned overlength is badarg", ?_assertError(badarg, iso8601:parse("10000-01-01"))},
+        {"empty after sign is badarg", ?_assertError(badarg, iso8601:parse("+-01-01"))},
         {"+YYYY year only defaults to Jan 1",
             ?_assertEqual({{2007, 1, 1}, {0, 0, 0}}, iso8601:parse("+2007"))},
         {"+YYYY with full datetime",
             ?_assertEqual({{2007, 3, 1}, {13, 0, 0}}, iso8601:parse("+2007-03-01T13:00:00Z"))},
         {"parse_exact with expanded year",
-            ?_assertMatch({{2007, 3, 1}, {13, 0, 0.5}},
-                iso8601:parse_exact("+2007-03-01T13:00:00.5Z"))},
+            ?_assertMatch(
+                {{2007, 3, 1}, {13, 0, 0.5}},
+                iso8601:parse_exact("+2007-03-01T13:00:00.5Z")
+            )},
         {"format roundtrip with expanded year",
-            ?_assertEqual({{10000, 1, 1}, {0, 0, 0}},
-                iso8601:parse(binary_to_list(iso8601:format({{10000, 1, 1}, {0, 0, 0}}))))}
+            ?_assertEqual(
+                {{10000, 1, 1}, {0, 0, 0}},
+                iso8601:parse(binary_to_list(iso8601:format({{10000, 1, 1}, {0, 0, 0}})))
+            )}
     ].
 
 %%----------------------------------------------------------------------
@@ -819,19 +968,19 @@ parse_expanded_test_() ->
             ?_assertMatch({{10000, 1, 1}, {0, 0, +0.0}}, iso8601:parse_expanded("+10000-01-01"))},
         {"plain 4-digit year works too",
             ?_assertMatch({{2007, 1, 1}, {0, 0, +0.0}}, iso8601:parse_expanded("2007-01-01"))},
-        {"empty after sign is badarg",
-            ?_assertError(badarg, iso8601:parse_expanded("+-01-01"))},
+        {"empty after sign is badarg", ?_assertError(badarg, iso8601:parse_expanded("+-01-01"))},
         {"binary input",
             ?_assertMatch({{-1, 1, 1}, {0, 0, +0.0}}, iso8601:parse_expanded(<<"-0001-01-01">>))},
         {"fractional seconds preserved",
-            ?_assertMatch({{-1, 1, 1}, {12, 30, 45.5}},
-                iso8601:parse_expanded("-0001-01-01T12:30:45.5Z"))}
+            ?_assertMatch(
+                {{-1, 1, 1}, {12, 30, 45.5}},
+                iso8601:parse_expanded("-0001-01-01T12:30:45.5Z")
+            )}
     ].
 
 parse_rejects_negative_test_() ->
     [
-        {"parse/1 rejects negative year",
-            ?_assertError(badarg, iso8601:parse("-0001-01-01"))},
+        {"parse/1 rejects negative year", ?_assertError(badarg, iso8601:parse("-0001-01-01"))},
         {"parse_exact/1 rejects negative year",
             ?_assertError(badarg, iso8601:parse_exact("-0001-01-01"))}
     ].
@@ -839,30 +988,50 @@ parse_rejects_negative_test_() ->
 format_expanded_test_() ->
     [
         {"format negative year",
-            ?_assertEqual(<<"-0001-01-01T00:00:00Z">>,
-                iso8601:format_expanded({{-1, 1, 1}, {0, 0, 0}}))},
+            ?_assertEqual(
+                <<"-0001-01-01T00:00:00Z">>,
+                iso8601:format_expanded({{-1, 1, 1}, {0, 0, 0}})
+            )},
         {"format large positive year",
-            ?_assertEqual(<<"+10000-01-01T00:00:00Z">>,
-                iso8601:format_expanded({{10000, 1, 1}, {0, 0, 0}}))},
+            ?_assertEqual(
+                <<"+10000-01-01T00:00:00Z">>,
+                iso8601:format_expanded({{10000, 1, 1}, {0, 0, 0}})
+            )},
         {"format normal year (explicit sign)",
-            ?_assertEqual(<<"+2007-03-01T13:00:00Z">>,
-                iso8601:format_expanded({{2007, 3, 1}, {13, 0, 0}}))},
+            ?_assertEqual(
+                <<"+2007-03-01T13:00:00Z">>,
+                iso8601:format_expanded({{2007, 3, 1}, {13, 0, 0}})
+            )},
         {"format year zero",
-            ?_assertEqual(<<"+0000-01-01T00:00:00Z">>,
-                iso8601:format_expanded({{0, 1, 1}, {0, 0, 0}}))},
+            ?_assertEqual(
+                <<"+0000-01-01T00:00:00Z">>,
+                iso8601:format_expanded({{0, 1, 1}, {0, 0, 0}})
+            )},
         {"format with float seconds",
-            ?_assertEqual(<<"-0044-03-15T12:00:06.500000Z">>,
-                iso8601:format_expanded({{-44, 3, 15}, {12, 0, 6.5}}))}
+            ?_assertEqual(
+                <<"-0044-03-15T12:00:06.500000Z">>,
+                iso8601:format_expanded({{-44, 3, 15}, {12, 0, 6.5}})
+            )}
     ].
 
 format_expanded_roundtrip_test_() ->
     [
         {"roundtrip negative year",
-            ?_assertMatch({{-1, 1, 1}, {0, 0, +0.0}},
-                iso8601:parse_expanded(binary_to_list(
-                    iso8601:format_expanded({{-1, 1, 1}, {0, 0, 0}}))))},
+            ?_assertMatch(
+                {{-1, 1, 1}, {0, 0, +0.0}},
+                iso8601:parse_expanded(
+                    binary_to_list(
+                        iso8601:format_expanded({{-1, 1, 1}, {0, 0, 0}})
+                    )
+                )
+            )},
         {"roundtrip large positive year",
-            ?_assertMatch({{10000, 1, 1}, {0, 0, +0.0}},
-                iso8601:parse_expanded(binary_to_list(
-                    iso8601:format_expanded({{10000, 1, 1}, {0, 0, 0}}))))}
+            ?_assertMatch(
+                {{10000, 1, 1}, {0, 0, +0.0}},
+                iso8601:parse_expanded(
+                    binary_to_list(
+                        iso8601:format_expanded({{10000, 1, 1}, {0, 0, 0}})
+                    )
+                )
+            )}
     ].

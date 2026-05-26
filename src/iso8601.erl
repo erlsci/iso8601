@@ -231,9 +231,12 @@ format_interval({interval, duration, D}) ->
 
 %% Private functions
 
-year([$- | Rest], Acc, allow_neg) -> expanded_year(-1, Rest, Acc);
-year([$- | _], _, positive_only) -> error(badarg);
-year([$+ | Rest], Acc, _) -> expanded_year(1, Rest, Acc);
+year([$- | Rest], Acc, allow_neg) ->
+    expanded_year(-1, Rest, Acc);
+year([$- | _], _, positive_only) ->
+    error(badarg);
+year([$+ | Rest], Acc, _) ->
+    expanded_year(1, Rest, Acc);
 year([Y1, Y2, Y3, Y4 | Rest], Acc, _) ->
     acc([Y1, Y2, Y3, Y4], Rest, year, Acc, fun month_or_week/2);
 year(_, _, _) ->
@@ -489,7 +492,8 @@ date_at_w01_1(Year) ->
 apply_offset(Datetime, H, M, S) ->
     OffsetS = S + (60 * (M + (60 * H))),
     case round(OffsetS) of
-        0 -> Datetime;
+        0 ->
+            Datetime;
         RoundedS ->
             Gs = RoundedS + calendar:datetime_to_gregorian_seconds(Datetime),
             calendar:gregorian_seconds_to_datetime(Gs)
@@ -550,10 +554,21 @@ pad_year(S) -> pad_year([$0 | S]).
 %%----------------------------------------------------------------------
 
 apply_duration_plist(Datetime, Plist, Direction) ->
-    [{sign, Sign}, {years, Y}, {months, M}, {days, D},
-     {hours, H}, {minutes, MM}, {seconds, SS}] = Plist,
+    [
+        {sign, Sign},
+        {years, Y},
+        {months, M},
+        {days, D},
+        {hours, H},
+        {minutes, MM},
+        {seconds, SS}
+    ] = Plist,
     Negate = (Sign =:= "-") xor (Direction =:= backward),
-    F = case Negate of true -> fun(X) -> -X end; false -> fun(X) -> X end end,
+    F =
+        case Negate of
+            true -> fun(X) -> -X end;
+            false -> fun(X) -> X end
+        end,
     D1 = apply_years_offset(Datetime, F(Y)),
     D2 = apply_months_offset(D1, F(M)),
     D3 = apply_days_offset(D2, F(D)),
@@ -627,9 +642,16 @@ is_abbreviated(Str) ->
         false -> true
     end.
 
-year_prefix([D1, D2, D3, D4 | _])
-  when D1 >= $0, D1 =< $9, D2 >= $0, D2 =< $9,
-       D3 >= $0, D3 =< $9, D4 >= $0, D4 =< $9 ->
+year_prefix([D1, D2, D3, D4 | _]) when
+    D1 >= $0,
+    D1 =< $9,
+    D2 >= $0,
+    D2 =< $9,
+    D3 >= $0,
+    D3 =< $9,
+    D4 >= $0,
+    D4 =< $9
+->
     true;
 year_prefix(_) ->
     false.
@@ -672,18 +694,18 @@ classify_end_fragment(Str) ->
 
 classify_date_fragment(Str) ->
     case lists:member($-, Str) of
-        true -> {month_day, Str};
+        true ->
+            {month_day, Str};
         false ->
-            case length(Str) of
-                2 -> {day_only, Str};
+            case Str of
+                [_, _] -> {day_only, Str};
                 _ -> ambiguous
             end
     end.
 
 extract_date_part(Str) ->
-    case string:split(Str, "T") of
-        [Date | _] -> Date
-    end.
+    [Date | _] = string:split(Str, "T"),
+    Date.
 
 extract_year(Str) ->
     lists:sublist(Str, 4).
@@ -700,13 +722,18 @@ format_duration(Plist) ->
     Mi = proplists:get_value(minutes, Plist, 0),
     S = proplists:get_value(seconds, Plist, 0),
     DateParts =
-        [integer_to_list(V) ++ U ||
-            {V, U} <- [{Y, "Y"}, {Mo, "M"}, {D, "D"}], V > 0],
+        [
+            integer_to_list(V) ++ U
+         || {V, U} <- [{Y, "Y"}, {Mo, "M"}, {D, "D"}], V > 0
+        ],
     TimeParts =
-        [integer_to_list(V) ++ U ||
-            {V, U} <- [{H, "H"}, {Mi, "M"}, {S, "S"}], V > 0],
-    TimeSec = case TimeParts of
-        [] -> "";
-        _ -> "T" ++ lists:flatten(TimeParts)
-    end,
+        [
+            integer_to_list(V) ++ U
+         || {V, U} <- [{H, "H"}, {Mi, "M"}, {S, "S"}], V > 0
+        ],
+    TimeSec =
+        case TimeParts of
+            [] -> "";
+            _ -> "T" ++ lists:flatten(TimeParts)
+        end,
     lists:flatten([Sign, "P", lists:flatten(DateParts), TimeSec]).
