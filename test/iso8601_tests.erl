@@ -518,10 +518,18 @@ capture_output(Fun) ->
     Self = self(),
     Cap = spawn_link(fun() -> cap_loop(Self, []) end),
     group_leader(Cap, self()),
-    R = Fun(),
-    group_leader(Old, self()),
-    Cap ! {stop, Self},
-    receive {captured, O} -> {R, O} end.
+    try
+        R = Fun(),
+        Cap ! {stop, Self},
+        receive {captured, O} -> {R, O} end
+    after
+        group_leader(Old, self())
+    end.
+
+capture_output_restores_leader_on_error_test() ->
+    Old = group_leader(),
+    ?assertError(boom, capture_output(fun() -> error(boom) end)),
+    ?assertEqual(Old, group_leader()).
 
 cap_loop(Owner, Acc) ->
     receive
