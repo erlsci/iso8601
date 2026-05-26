@@ -37,6 +37,12 @@ Thanks to Github's forwarding for project renames and moves, the following still
   both the `/` and `--` separators, support signed durations, and resolve
   abbreviated end points by inheriting the missing leading components from the
   start (e.g. `2007-11-13/15`). See the interval examples in [Usage](#usage-).
+* **Expanded year representation.** `parse/1` and `parse_exact/1` now accept a
+  leading `+` and more than four digits (e.g. `+10000-01-01`), staying
+  `calendar`-compatible. Negative (astronomical) years — for paleontological and
+  geological timescales — are available through the opt-in `parse_expanded/1` and
+  `format_expanded/1`, which return an `expanded_datetime()` with an `integer()`
+  year, leaving `parse/1`'s contract unchanged.
 * **Correctness fixes.** `apply_duration/2` now honors a negative sign (a
   duration like `-P1Y` is subtracted rather than added); year arithmetic on a
   leap day (e.g. adding a year to Feb 29) now clamps to a valid date instead of
@@ -157,10 +163,34 @@ Format an interval back to a binary with `format_interval/1`:
 <<"2007-03-01T13:00:00Z/P1Y2M10DT2H30M">>
 ```
 
+Parse an expanded-representation year. Positive expanded years (an explicit `+`
+and any number of digits, e.g. years beyond `9999`) work with `parse/1`, which
+stays `calendar`-compatible:
+
+```erlang
+19> iso8601:parse("+0002007-01-01").
+{{2007,1,1},{0,0,0}}
+20> iso8601:parse("+10000-01-01").
+{{10000,1,1},{0,0,0}}
+```
+
+Negative (astronomical) years — where year `0` is 1 BCE, `-1` is 2 BCE, and so on
+— use `parse_expanded/1` / `format_expanded/1`, which return an
+`expanded_datetime()` with an `integer()` year. `parse/1` rejects negative years
+so its `calendar`-compatible contract is preserved:
+
+```erlang
+21> iso8601:parse_expanded("-0001-01-01").
+{{-1,1,1},{0,0,0}}
+22> iso8601:format_expanded({{-44,3,15},{0,0,0}}).
+<<"-0044-03-15T00:00:00Z">>
+```
+
 ## Known Deficiencies [&#x219F;](#contents)
 
-* Does not support expanded year representation.
 * Does not support repeating intervals (`Rn/...`).
+* Expanded year representation is supported in extended (hyphenated) format only,
+  not in basic format (e.g. `+0002007-01-01`, not `+00020070101`).
 
 See the [open issues](https://github.com/erlsci/iso8601/issues)
 for more info.
