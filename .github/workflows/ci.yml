@@ -59,7 +59,7 @@ jobs:
       run: rebar3 proper -c
     - name: Test Coverage
       if: matrix.otp_version >= 21
-      run: rebar3 as test cover -v --min_coverage=0
+      run: rebar3 as test cover -v --min_coverage=100
 
   newer-builds:
     name: Erlang ${{ matrix.otp_version }} build
@@ -89,4 +89,4 @@ jobs:
     - name: PropEr Tests
       run: rebar3 proper -c
     - name: Test Coverage
-      run: rebar3 as test cover -v --min_coverage=0
+      run: rebar3 as test cover -v --min_coverage=100
