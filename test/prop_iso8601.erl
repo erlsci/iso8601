@@ -57,3 +57,17 @@ format_dur(Plist) ->
         _ -> "T" ++ lists:flatten(TimeParts)
     end,
     lists:flatten(["P", lists:flatten(DateParts), TimeSec]).
+
+prop_expanded_roundtrip() ->
+    ?FORALL(
+        {Y, Mo, D, H, Mn, S},
+        {range(-9999, 9999), range(1, 12), range(1, 28),
+         range(0, 23), range(0, 59), range(0, 59)},
+        begin
+            DT = {{Y, Mo, D}, {H, Mn, S}},
+            Formatted = binary_to_list(iso8601:format_expanded(DT)),
+            {{PY, PMo, PD}, {PH, PMn, PS}} = iso8601:parse_expanded(Formatted),
+            Y =:= PY andalso Mo =:= PMo andalso D =:= PD andalso
+            H =:= PH andalso Mn =:= PMn andalso S =:= round(PS)
+        end
+    ).

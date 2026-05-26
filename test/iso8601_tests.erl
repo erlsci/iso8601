@@ -800,3 +800,69 @@ expanded_year_test_() ->
             ?_assertEqual({{10000, 1, 1}, {0, 0, 0}},
                 iso8601:parse(binary_to_list(iso8601:format({{10000, 1, 1}, {0, 0, 0}}))))}
     ].
+
+%%----------------------------------------------------------------------
+%% parse_expanded/1 and format_expanded/1
+%%----------------------------------------------------------------------
+
+parse_expanded_test_() ->
+    [
+        {"negative year -0001",
+            ?_assertMatch({{-1, 1, 1}, {0, 0, +0.0}}, iso8601:parse_expanded("-0001-01-01"))},
+        {"negative year -0000 (year zero)",
+            ?_assertMatch({{0, 1, 1}, {0, 0, +0.0}}, iso8601:parse_expanded("-0000-01-01"))},
+        {"Ides of March 44 BCE (astro -44)",
+            ?_assertMatch({{-44, 3, 15}, {0, 0, +0.0}}, iso8601:parse_expanded("-0044-03-15"))},
+        {"positive expanded +0002007",
+            ?_assertMatch({{2007, 1, 1}, {0, 0, +0.0}}, iso8601:parse_expanded("+0002007-01-01"))},
+        {"year beyond 9999",
+            ?_assertMatch({{10000, 1, 1}, {0, 0, +0.0}}, iso8601:parse_expanded("+10000-01-01"))},
+        {"plain 4-digit year works too",
+            ?_assertMatch({{2007, 1, 1}, {0, 0, +0.0}}, iso8601:parse_expanded("2007-01-01"))},
+        {"empty after sign is badarg",
+            ?_assertError(badarg, iso8601:parse_expanded("+-01-01"))},
+        {"binary input",
+            ?_assertMatch({{-1, 1, 1}, {0, 0, +0.0}}, iso8601:parse_expanded(<<"-0001-01-01">>))},
+        {"fractional seconds preserved",
+            ?_assertMatch({{-1, 1, 1}, {12, 30, 45.5}},
+                iso8601:parse_expanded("-0001-01-01T12:30:45.5Z"))}
+    ].
+
+parse_rejects_negative_test_() ->
+    [
+        {"parse/1 rejects negative year",
+            ?_assertError(badarg, iso8601:parse("-0001-01-01"))},
+        {"parse_exact/1 rejects negative year",
+            ?_assertError(badarg, iso8601:parse_exact("-0001-01-01"))}
+    ].
+
+format_expanded_test_() ->
+    [
+        {"format negative year",
+            ?_assertEqual(<<"-0001-01-01T00:00:00Z">>,
+                iso8601:format_expanded({{-1, 1, 1}, {0, 0, 0}}))},
+        {"format large positive year",
+            ?_assertEqual(<<"+10000-01-01T00:00:00Z">>,
+                iso8601:format_expanded({{10000, 1, 1}, {0, 0, 0}}))},
+        {"format normal year (explicit sign)",
+            ?_assertEqual(<<"+2007-03-01T13:00:00Z">>,
+                iso8601:format_expanded({{2007, 3, 1}, {13, 0, 0}}))},
+        {"format year zero",
+            ?_assertEqual(<<"+0000-01-01T00:00:00Z">>,
+                iso8601:format_expanded({{0, 1, 1}, {0, 0, 0}}))},
+        {"format with float seconds",
+            ?_assertEqual(<<"-0044-03-15T12:00:06.500000Z">>,
+                iso8601:format_expanded({{-44, 3, 15}, {12, 0, 6.5}}))}
+    ].
+
+format_expanded_roundtrip_test_() ->
+    [
+        {"roundtrip negative year",
+            ?_assertMatch({{-1, 1, 1}, {0, 0, +0.0}},
+                iso8601:parse_expanded(binary_to_list(
+                    iso8601:format_expanded({{-1, 1, 1}, {0, 0, 0}}))))},
+        {"roundtrip large positive year",
+            ?_assertMatch({{10000, 1, 1}, {0, 0, +0.0}},
+                iso8601:parse_expanded(binary_to_list(
+                    iso8601:format_expanded({{10000, 1, 1}, {0, 0, 0}}))))}
+    ].
