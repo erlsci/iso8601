@@ -6,3 +6,4 @@ _build/*
 /.claude
 /priv/ai
 /workbench
+/doc
