@@ -13,6 +13,7 @@
 #### Contents
 
 * [About](#about-)
+* [New in 1.4](#new-in-14-)
 * [Usage](#usage-)
 * [Known Deficiencies](#known-deficiencies-)
 * [License](#license-)
@@ -27,6 +28,24 @@ Thanks to Github's forwarding for project renames and moves, the following still
 
 * ``git clone https://github.com/seansawyer/erlang_iso8601.git``
 * ``git clone https://github.com/erlsci/erlang_iso8601.git``
+
+## New in 1.4 [&#x219F;](#contents)
+
+* **Time interval support.** New `parse_interval/1`, `interval_bounds/1`, and
+  `format_interval/1` functions handle all four ISO 8601 interval forms
+  (`start/end`, `start/duration`, `duration/end`, and `duration`-only), accept
+  both the `/` and `--` separators, support signed durations, and resolve
+  abbreviated end points by inheriting the missing leading components from the
+  start (e.g. `2007-11-13/15`). See the interval examples in [Usage](#usage-).
+* **Correctness fixes.** `apply_duration/2` now honors a negative sign (a
+  duration like `-P1Y` is subtracted rather than added); year arithmetic on a
+  leap day (e.g. adding a year to Feb 29) now clamps to a valid date instead of
+  producing an impossible one; and stray debug output during ordinal-date
+  parsing has been removed.
+* **Microsecond precision** is available via `parse_exact/1`, which preserves
+  fractional seconds as a float. Note that floats cannot represent every decimal
+  fraction exactly, so values are reliable to microsecond precision via rounding
+  rather than being bit-exact.
 
 ## Usage [&#x219F;](#contents)
 
@@ -90,10 +109,58 @@ Parse durations:
 [{sign, []}, {years, 0}, {months, 0}, {days, 0},{hours, 0}, {minutes, 6}, {seconds, 0}]
 ```
 
+Parse a time interval. `parse_interval/1` preserves which of the four forms was
+given, tagging the result so it stays matchable:
+
+```erlang
+11> iso8601:parse_interval("2007-03-01T13:00:00Z/2008-05-11T15:30:00Z").
+{interval,start_end,{{2007,3,1},{13,0,0}},{{2008,5,11},{15,30,0}}}
+12> iso8601:parse_interval("2007-03-01T13:00:00Z/P1Y2M10DT2H30M").
+{interval,start_duration,{{2007,3,1},{13,0,0}},
+          [{sign,[]},{years,1},{months,2},{days,10},
+           {hours,2},{minutes,30},{seconds,0}]}
+13> iso8601:parse_interval("P1Y2M10DT2H30M/2008-05-11T15:30:00Z").
+{interval,duration_end,
+          [{sign,[]},{years,1},{months,2},{days,10},
+           {hours,2},{minutes,30},{seconds,0}],
+          {{2008,5,11},{15,30,0}}}
+14> iso8601:parse_interval("P1Y2M10DT2H30M").
+{interval,duration,
+          [{sign,[]},{years,1},{months,2},{days,10},
+           {hours,2},{minutes,30},{seconds,0}]}
+```
+
+An abbreviated end inherits the missing leading components from the start, and
+the `--` separator is accepted as well as `/`:
+
+```erlang
+15> iso8601:parse_interval("2007-11-13/15").
+{interval,start_end,{{2007,11,13},{0,0,0}},{{2007,11,15},{0,0,0}}}
+16> iso8601:parse_interval("2000--2002").
+{interval,start_end,{{2000,1,1},{0,0,0}},{{2002,1,1},{0,0,0}}}
+```
+
+Resolve an interval to concrete `{Start, End}` datetimes with
+`interval_bounds/1` (the `start/duration` and `duration/end` forms are computed
+from the duration; a `duration`-only interval has no anchor and raises
+`badarg`):
+
+```erlang
+17> iso8601:interval_bounds(iso8601:parse_interval("2007-03-01T13:00:00Z/P1Y2M10DT2H30M")).
+{{{2007,3,1},{13,0,0}},{{2008,5,11},{15,30,0}}}
+```
+
+Format an interval back to a binary with `format_interval/1`:
+
+```erlang
+18> iso8601:format_interval(iso8601:parse_interval("2007-03-01T13:00:00Z/P1Y2M10DT2H30M")).
+<<"2007-03-01T13:00:00Z/P1Y2M10DT2H30M">>
+```
+
 ## Known Deficiencies [&#x219F;](#contents)
 
 * Does not support expanded year representation.
-* Does not support intervals.
+* Does not support repeating intervals (`Rn/...`).
 
 See the [open issues](https://github.com/erlsci/iso8601/issues)
 for more info.
