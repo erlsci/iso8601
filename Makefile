@@ -29,10 +29,10 @@ xref:
 	@$(REBAR) xref
 
 format:
-	@$(REBAR) fmt
+	@$(REBAR) as dev fmt -w
 
 lint:
-	@$(REBAR) lint
+	@$(REBAR) as dev lint
 
 console:
 	@$(REBAR) shell
@@ -41,7 +41,7 @@ check: clean compile format-check xref dialyzer lint coverage
 	@echo "All checks passed!"
 
 format-check:
-	@$(REBAR) fmt --check
+	@$(REBAR) as dev fmt --check
 
 # Testing helpers
 test-unit:
@@ -73,7 +73,7 @@ $(DOC_DIR):
 
 docs: clean $(DOC_DIR)
 
-publish: docs
+publish: check docs
 	@echo "Publishing $(APP_NAME) v$(APP_VERSION)..."
 	@$(REBAR) as dev hex publish package
 
