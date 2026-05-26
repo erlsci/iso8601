@@ -1057,9 +1057,13 @@ parse_expanded_negative_offset_test_() ->
         {"negative year + week date crashes",
             ?_assertError(_, iso8601:parse_expanded("-0001-W01-1"))},
         {"negative year in UTC still works",
-            ?_assertMatch({{-44, 3, 15}, {12, 0, +0.0}},
-                iso8601:parse_expanded("-0044-03-15T12:00:00Z"))},
+            ?_assertMatch(
+                {{-44, 3, 15}, {12, 0, +0.0}},
+                iso8601:parse_expanded("-0044-03-15T12:00:00Z")
+            )},
         {"negative year plain date still works",
-            ?_assertMatch({{-1, 1, 1}, {0, 0, +0.0}},
-                iso8601:parse_expanded("-0001-01-01"))}
+            ?_assertMatch(
+                {{-1, 1, 1}, {0, 0, +0.0}},
+                iso8601:parse_expanded("-0001-01-01")
+            )}
     ].
