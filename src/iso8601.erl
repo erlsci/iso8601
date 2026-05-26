@@ -505,14 +505,16 @@ apply_duration_plist(Datetime, Plist, Direction) ->
     apply_offset(D3, F(H), F(MM), F(SS)).
 
 split_interval(Str) ->
-    case string:tokens(Str, "/") of
-        [Left, Right] -> {Left, Right};
+    case string:split(Str, "/", all) of
+        [Left, Right] when Left =/= [], Right =/= [] -> {Left, Right};
         [_Single] -> split_double_hyphen(Str);
         _ -> error(badarg)
     end.
 
 split_double_hyphen(Str) ->
     case split_on_double_hyphen(Str) of
+        {[], _} -> error(badarg);
+        {_, []} -> error(badarg);
         {Left, Right} -> {Left, Right};
         none -> single
     end.
@@ -598,11 +600,13 @@ parse_inherited_end(StartStr, EndStr) ->
 classify_end_fragment(Str) ->
     case lists:member($T, Str) of
         true ->
-            case string:tokens(Str, "T") of
+            case string:split(Str, "T", all) of
+                [[], TimePart] ->
+                    {time_only, TimePart};
                 [DayPart, TimePart] ->
                     {day_and_time, DayPart, TimePart};
-                [TimePart] ->
-                    {time_only, TimePart}
+                _ ->
+                    error(badarg)
             end;
         false ->
             case lists:member($:, Str) of

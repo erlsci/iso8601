@@ -704,3 +704,71 @@ interval_coverage_test_() ->
                     [{sign, ""}, {years, 1}, {months, 0}, {days, 0},
                      {hours, 0}, {minutes, 0}, {seconds, 0}]}))}
     ].
+
+%%----------------------------------------------------------------------
+%% G1: Canonical minute-precision interval examples
+%%----------------------------------------------------------------------
+
+interval_minute_precision_test_() ->
+    [
+        {"time-only end at minute precision",
+            ?_assertEqual({{2007, 12, 14}, {15, 30, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30/15:30"))))},
+        {"day+time end at minute precision",
+            ?_assertEqual({{2007, 11, 15}, {17, 0, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-11-13T09:00/15T17:00"))))}
+    ].
+
+%%----------------------------------------------------------------------
+%% G2: Malformed end fragments with multiple T's
+%%----------------------------------------------------------------------
+
+interval_malformed_end_test_() ->
+    [
+        {"double T in end fragment",
+            ?_assertError(badarg, iso8601:parse_interval("2007-11-13/15T17T00"))},
+        {"consecutive TT in end fragment",
+            ?_assertError(badarg, iso8601:parse_interval("2007-11-13/15TT00"))}
+    ].
+
+%%----------------------------------------------------------------------
+%% G3: Empty interval sides
+%%----------------------------------------------------------------------
+
+interval_empty_sides_test_() ->
+    [
+        {"double slash",
+            ?_assertError(badarg, iso8601:parse_interval("2007//2008"))},
+        {"leading slash",
+            ?_assertError(badarg, iso8601:parse_interval("/2008-05-11T15:30:00Z"))},
+        {"trailing slash",
+            ?_assertError(badarg, iso8601:parse_interval("2007-03-01T13:00:00Z/"))},
+        {"empty double-hyphen sides (quad dash)",
+            ?_assertError(badarg, iso8601:parse_interval("2007----2008"))},
+        {"leading double-hyphen (empty left)",
+            ?_assertError(badarg, iso8601:parse_interval("--2008"))},
+        {"trailing double-hyphen (empty right)",
+            ?_assertError(badarg, iso8601:parse_interval("2008--"))}
+    ].
+
+%%----------------------------------------------------------------------
+%% G4: Basic-format start with abbreviated end
+%%----------------------------------------------------------------------
+
+interval_basic_format_start_test_() ->
+    [
+        {"basic-format start with abbreviated end is badarg",
+            ?_assertError(badarg, iso8601:parse_interval("20071113/15"))}
+    ].
+
+%%----------------------------------------------------------------------
+%% G5: Month-day+time abbreviated end
+%%----------------------------------------------------------------------
+
+interval_month_day_time_end_test_() ->
+    [
+        {"month-day+time abbreviated end is badarg",
+            ?_assertError(badarg, iso8601:parse_interval("2008-02-15/03-14T10:00"))}
+    ].
