@@ -92,12 +92,12 @@ subtract_time(Datetime, H, M, S) ->
 format({_, _, _} = Timestamp) ->
     format(calendar:now_to_datetime(Timestamp));
 format({{Y, Mo, D}, {H, Mn, S}}) when is_float(S) ->
-    FmtStr = "~4.10.0B-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~9.6.0fZ",
-    IsoStr = io_lib:format(FmtStr, [Y, Mo, D, H, Mn, S]),
+    FmtStr = "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~9.6.0fZ",
+    IsoStr = io_lib:format(FmtStr, [format_year(Y), Mo, D, H, Mn, S]),
     list_to_binary(IsoStr);
 format({{Y, Mo, D}, {H, Mn, S}}) ->
-    FmtStr = "~4.10.0B-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~2.10.0BZ",
-    IsoStr = io_lib:format(FmtStr, [Y, Mo, D, H, Mn, S]),
+    FmtStr = "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~2.10.0BZ",
+    IsoStr = io_lib:format(FmtStr, [format_year(Y), Mo, D, H, Mn, S]),
     list_to_binary(IsoStr).
 
 -spec parse(iodata()) -> calendar:datetime().
@@ -204,10 +204,19 @@ format_interval({interval, duration, D}) ->
 
 %% Private functions
 
+year([$+ | Rest], Acc) -> expanded_year(Rest, Acc);
 year([Y1, Y2, Y3, Y4 | Rest], Acc) ->
     acc([Y1, Y2, Y3, Y4], Rest, year, Acc, fun month_or_week/2);
 year(_, _) ->
     error(badarg).
+
+expanded_year(Str, Acc) ->
+    F = fun(C) -> C >= $0 andalso C =< $9 end,
+    {Digits, Rest} = lists:splitwith(F, Str),
+    case Digits of
+        [] -> error(badarg);
+        _ -> month_or_week(Rest, [{year, list_to_integer(Digits)} | Acc])
+    end.
 
 month_or_week([], Acc) ->
     datetime(Acc);
@@ -489,6 +498,11 @@ find_last_valid_date(Datetime) ->
         true -> Datetime;
         false -> find_last_valid_date({{Y, M, D - 1}, {H, MM, S}})
     end.
+
+format_year(Y) when Y >= 0, Y =< 9999 ->
+    io_lib:format("~4.10.0B", [Y]);
+format_year(Y) when Y > 9999 ->
+    [$+ | integer_to_list(Y)].
 
 %%----------------------------------------------------------------------
 %% Interval helpers (private)

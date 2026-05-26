@@ -772,3 +772,31 @@ interval_month_day_time_end_test_() ->
         {"month-day+time abbreviated end is badarg",
             ?_assertError(badarg, iso8601:parse_interval("2008-02-15/03-14T10:00"))}
     ].
+
+%%----------------------------------------------------------------------
+%% Expanded year representation (positive)
+%%----------------------------------------------------------------------
+
+expanded_year_test_() ->
+    [
+        {"explicit + sign with leading zeros",
+            ?_assertEqual({{2007, 1, 1}, {0, 0, 0}}, iso8601:parse("+0002007-01-01"))},
+        {"+2007 is year 2007 not 200",
+            ?_assertEqual({{2007, 1, 1}, {0, 0, 0}}, iso8601:parse("+2007-01-01"))},
+        {"year beyond 9999",
+            ?_assertEqual({{10000, 1, 1}, {0, 0, 0}}, iso8601:parse("+10000-01-01"))},
+        {"unsigned overlength is badarg",
+            ?_assertError(badarg, iso8601:parse("10000-01-01"))},
+        {"empty after sign is badarg",
+            ?_assertError(badarg, iso8601:parse("+-01-01"))},
+        {"+YYYY year only defaults to Jan 1",
+            ?_assertEqual({{2007, 1, 1}, {0, 0, 0}}, iso8601:parse("+2007"))},
+        {"+YYYY with full datetime",
+            ?_assertEqual({{2007, 3, 1}, {13, 0, 0}}, iso8601:parse("+2007-03-01T13:00:00Z"))},
+        {"parse_exact with expanded year",
+            ?_assertMatch({{2007, 3, 1}, {13, 0, 0.5}},
+                iso8601:parse_exact("+2007-03-01T13:00:00.5Z"))},
+        {"format roundtrip with expanded year",
+            ?_assertEqual({{10000, 1, 1}, {0, 0, 0}},
+                iso8601:parse(binary_to_list(iso8601:format({{10000, 1, 1}, {0, 0, 0}}))))}
+    ].
