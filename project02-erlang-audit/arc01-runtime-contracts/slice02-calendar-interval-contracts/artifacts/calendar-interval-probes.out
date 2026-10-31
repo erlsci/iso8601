@@ -1,0 +1,129 @@
+add_time day-boundary => {return,{{2018,1,1},{0,0,0}}}
+subtract_time control => {return,{{2018,1,1},{0,0,0}}}
+add_days leap transition => {return,{{2016,2,29},{12,0,0}}}
+add_months month-end clamp => {return,{{2017,2,28},{12,0,0}}}
+add_years leap-day clamp => {return,{{2017,2,28},{12,0,0}}}
+parse_duration signed ordered fields => {return,
+                                         [{sign,"-"},
+                                          {years,1},
+                                          {months,2},
+                                          {days,3},
+                                          {hours,4},
+                                          {minutes,5},
+                                          {seconds,6}]}
+apply_duration negative sign => {return,{{2016,5,24},{1,2,3}}}
+apply_duration component-order witness => {return,{{2020,3,1},{0,0,0}}}
+parse_interval start/end slash => {return,
+                                   {interval,start_end,
+                                    {{2007,3,1},{13,0,0}},
+                                    {{2008,5,11},{15,30,0}}}}
+parse_interval start/duration => {return,
+                                  {interval,start_duration,
+                                   {{2007,3,1},{13,0,0}},
+                                   [{sign,[]},
+                                    {years,1},
+                                    {months,2},
+                                    {days,0},
+                                    {hours,0},
+                                    {minutes,0},
+                                    {seconds,0}]}}
+parse_interval duration/end => {return,
+                                   {interval,duration_end,
+                                       [{sign,"-"},
+                                        {years,1},
+                                        {months,0},
+                                        {days,0},
+                                        {hours,0},
+                                        {minutes,0},
+                                        {seconds,0}],
+                                       {{2008,5,11},{15,30,0}}}}
+parse_interval duration-only => {return,
+                                 {interval,duration,
+                                  [{sign,[]},
+                                   {years,1},
+                                   {months,0},
+                                   {days,0},
+                                   {hours,0},
+                                   {minutes,0},
+                                   {seconds,0}]}}
+interval_bounds start+duration => {return,
+                                      {{{2007,3,1},{13,0,0}},
+                                       {{2008,5,11},{15,30,0}}}}
+interval_bounds negative duration/end => {return,
+                                          {{{2009,5,11},{15,30,0}},
+                                           {{2008,5,11},{15,30,0}}}}
+interval_bounds duration-only policy => {exception,error,badarg}
+format_interval canonical start/duration => {return,
+                                             <<"2007-03-01T13:00:00Z/P1Y2M">>}
+format_interval duration/end => {return,<<"P1Y/2008-05-11T15:30:00Z">>}
+format_interval duration-only => {return,<<"P1Y">>}
+parse_interval legacy double-hyphen => {return,
+                                        {interval,start_end,
+                                         {{2000,1,1},{0,0,0}},
+                                         {{2002,1,1},{0,0,0}}}}
+parse_interval inherited day => {return,
+                                 {interval,start_end,
+                                  {{2007,11,13},{0,0,0}},
+                                  {{2007,11,15},{0,0,0}}}}
+parse_interval inherited time UTC start => {return,
+                                            {{{2007,12,14},{13,30,0}},
+                                             {{2007,12,14},{15,30,0}}}}
+parse_interval zoned full-second start and unzoned inherited time => {return,
+                                                                      {{{2007,
+                                                                         12,
+                                                                         14},
+                                                                        {11,
+                                                                         30,
+                                                                         0}},
+                                                                       {{2007,
+                                                                         12,
+                                                                         14},
+                                                                        {15,
+                                                                         30,
+                                                                         0}}}}
+parse_interval zoned full-second start and explicitly zoned end => {return,
+                                                                    {{{2007,
+                                                                       12,14},
+                                                                      {11,30,
+                                                                       0}},
+                                                                     {{2007,
+                                                                       12,14},
+                                                                      {13,30,
+                                                                       0}}}}
+parse_interval zoned minute-precision start => {exception,error,badarg}
+parse_interval malformed four-digit plus candidate => {return,
+                                                       {interval,start_end,
+                                                        {{2007,2,15},{0,0,0}},
+                                                        {{200,3,14},{0,0,0}}}}
+parse_interval valid positive expanded inherited year => {return,
+                                                          {interval,
+                                                           start_end,
+                                                           {{2007,2,15},
+                                                            {0,0,0}},
+                                                           {{0,3,14},
+                                                            {0,0,0}}}}
+parse_interval valid positive expanded explicit-end control => {exception,
+                                                                error,badarg}
+parse positive expanded standalone control => {return,{{2007,2,15},{0,0,0}}}
+parse_interval unsigned positive-year control => {return,
+                                                  {interval,start_end,
+                                                   {{2007,2,15},{0,0,0}},
+                                                   {{2007,3,14},{0,0,0}}}}
+parse positive year control => {return,{{2007,2,15},{0,0,0}}}
+add_days fractional-second anchor => {return,{{2017,1,2},{0,0,0.5}}}
+apply_duration fractional-second anchor => {exception,error,function_clause}
+interval_bounds fractional-second anchor => {exception,error,function_clause}
+parse_interval malformed two durations => {exception,error,badarg}
+parse_interval malformed three pieces => {exception,error,badarg}
+ordinary negative-year add_years control => {return,{{3,2,28},{0,0,0}}}
+calendar year-zero lower-bound control => {return,{{0,1,1},{0,0,0}}}
+installed calendar validity lower bound => {return,{true,false,false}}
+add_years underflow recursion hypothesis => {timeout,250,killed,
+                                             down_confirmed}
+add_months underflow recursion hypothesis => {timeout,250,killed,
+                                              down_confirmed}
+interval_bounds underflow recursion hypothesis => {timeout,250,killed,
+                                                   down_confirmed}
+apply_duration large negative-year recursion hypothesis => {timeout,250,
+                                                            killed,
+                                                            down_confirmed}
