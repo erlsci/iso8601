@@ -1,6 +1,6 @@
 # Slice01 — date contracts
 
-Version1.0 — 2026-10-31. Status: initial attempt returned for refinement; iteration01 current, no refinements executed yet.
+Version1.0 — 2026-10-31. Status: refinement01 evidence reproduced; narrow refinement02 current, one refinement executed.
 
 ## Goal and scope
 
@@ -24,6 +24,9 @@ CDC read all744 production lines, all1069 EUnit lines, all111 property lines, ap
 
 - Initial return `3dc34cf` reviewed2026-10-31; failed complete-scope/report review for R1–R3 in `cdc-verification.md`; original evidence retained.
 - Refinement01 `cc-prompt-iteration01.md`, issued2026-10-31; predecessor `cc-prompt.md`; active after CDC review. Scope unchanged: fractional-unit evidence, accurate private-spec wording and explicit finding scales. CC owns allowed slice evidence writes until return.
+
+- Refinement01 returned at `6054bad`; CDC reproduced10 cases,7 mismatches/3 controls and accepted R1–R3 substance.
+- Refinement02 `cc-prompt-iteration02.md`, issued2026-10-31; predecessor iteration01; active for executable-scale and exact documentation wording only. Source/findings unchanged.
 
 ## Exit
 

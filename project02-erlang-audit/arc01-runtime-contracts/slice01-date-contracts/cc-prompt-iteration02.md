@@ -1,0 +1,10 @@
+# CC refinement02 — narrow report precision
+
+Current assignment for Project02/Arc01/Slice01: `cc-prompt-iteration02.md`, predecessor `cc-prompt-iteration01.md`, candidate6054bad. Sourcebcfd94a unchanged. Same Operator-approved LunaHigh CC / SolHigh CDC, diagnosis-only/no external authority. Original prompt/manifest/allowed artifact home/commit trailers remain binding; retain unchanged full reads and earlier evidence with their pins. Read this prompt, current slice plan/ledger, new dated CDC review section, full current report and relevant close/log sections before editing.
+
+R1–R3 substantive corrections independently reproduced; native/source and probe evidence remain valid. Fix only these two factual characterizations in the existing report, and preserve dated correction provenance in close/log/ledger:
+
+1. Scale coverage says Application/service/executable absent and repository without CLI. The date runtime is a passive library with no active service, but `scripts/check_coverage.escript` is a first-party Erlang executable in the complete map and is deferred to Arc02. Make scope/absence wording consistent; do not audit it in this slice or claim it absent.
+2. DATE002 says years<=0 offset rejection is documented in README/EDoc. Actual README/EDoc say negative years. Distinguish negative-year documented limit from year0/source+historical intent; keep intentional rejection excluded and date-validity finding unchanged. Do not claim prose says more than it does.
+
+No source/probe/standard/gate changes needed; retain initial and iteration01 native/probe evidence without rerunning them. Check only changed statements against project map, source/README/EDoc, report links, diff/whitespace and source no-diff. Add dated refinement02 close/log entries, allsix row accounting (or precise retention of prior row walk) and leave S01-06 pending CDC-owned close. Do not edit reviewer record/issued prompts/plans. Commit only intended changed report/close/log/ledger paths with `git commit --only` and contiguous Codex/Billo AI trailers from original prompt. Return exact commit/diff/limits and stop writes for CDC final review.
