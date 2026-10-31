@@ -4,9 +4,9 @@
 
 [project01-v1.4-maintenance/project-plan.md](project01-v1.4-maintenance/project-plan.md) is a best-effort historical reconstruction from the preserved workbench records and first-parent Git history. The project, arcs, and slices are marked `historical-reconstructed`; all historical acceptance rows remain open.
 
-## Next
+## Project02 — Erlang audit
 
-Project02 is the next project index slot. No Project02 plan is created in this historical migration.
+[project02-erlang-audit/project-plan.md](project02-erlang-audit/project-plan.md) opens the current diagnosis-only audit after historical preservation. Autonomous execution is authorized for Arc01 runtime contracts only; stop for Operator review before any next arc. Historical acceptance remains open.
 
 ## Migration checks and limits
 
