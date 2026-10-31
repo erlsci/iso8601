@@ -2,6 +2,10 @@
 
 Date: 2026-10-31. Current assignment: `cc-prompt-iteration02.md`, planning base `6314444f7c20a39116d2493fcbc19f28e4b415ed`. Source: `/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project02-arc01-audit`, `codex/project02-arc01-audit`, `bcfd94a08fa7a427eb1469679897e4d92d808edf`; source SHA256 and clean status are in `artifacts/runlog.md`. CC submits the refined Slice02 diagnosis and runtime index as proposed evidence; CDC’s independent verification and the Operator’s arc gate remain open.
 
+## Independent CDC disposition — 2026-10-31
+
+Accepted at slice scope after actual source review, independent38/64-call reproduction and metadata correction12ca2cd. Allseven ledger rows are done/reproduced; see [`cdc-verification.md`](cdc-verification.md) and [`cdc-retrospective.md`](cdc-retrospective.md). CC's historical attestation below is retained with its original responsibility boundary. Arc composition and Operator decision remain open.
+
 ## Correction02 current close
 
 Correction02 changes semantic ownership and terminology only. The runtime source and inputs are unchanged, so no probe or native gate was rerun. CDC’s independent byte-identical reproduction of the 64-call refinement01 transcript remains reviewer-owned prior evidence, not a new CC run.

@@ -1,6 +1,6 @@
 # Arc01 — runtime contracts
 
-Version1.1 — 2026-10-31. Status: active; authorized endpoint is this arc review-ready, then stop.
+Version1.2 — 2026-10-31. Status: both slices accepted; CDC assembly review-ready, independent composition and Operator gate pending. Stop here.
 
 ## Capability
 
@@ -17,14 +17,16 @@ Together these slices cover every public runtime entrypoint and production helpe
 
 Governing project plan supplies complete audit map, explicit models/authority, artifact-home override and source checkout. Each slice needs concrete boundary/positive/negative probes through public APIs, actual output/expected output, severity reasoning, limitations and at least five concrete clean checks. Follow all17 Erlang chapters while applying old-OTP/EDoc/public-type exceptions from AGENTS. No style modernization is a repair assignment.
 
-CDC independently inspects reports/source and reruns claimed observations; no summary-only acceptance. CC completion is proposed-done. Every slice closes with its ledger walk, bubble-up, CDC verification and retrospective. CDC then assembles a runtime index and arc close in the final slice artifacts/arc root; parent independently reproduces composition over all15 functions and report links. Operator review/merge remains open and Arc02 is held. Any unavailable native gates remain explicitly blocked/unrun with re-entry conditions; fresh local probes cannot imply an OTP matrix pass.
+CDC independently inspects reports/source and reruns claimed observations; no summary-only acceptance. CC completion is proposed-done. Every slice closes with its ledger walk, bubble-up, CDC verification and retrospective. CDC then assembles a runtime index and arc close in the final slice artifacts/arc root; parent independently reproduces composition over all15 functions and report links. Operator review/merge remains open and Arc02/03 are held. Any unavailable native gates remain explicitly blocked/unrun with re-entry conditions; fresh local probes cannot imply an OTP matrix pass.
 
 ## Current status and carryover
 
-Slice01 independently accepted after2 refinements: DATE001–005 (4Medium,1Low). Shared-helper consequences must cross-reference existing IDs in Slice02. The known `parse_exact/1` calendar return-spec versus float-seconds mismatch (src129/40) is uncleared, explicitly assigned to Arc02 public-type/tooling reconciliation; not a claim that runtime parsing lacks fractional seconds. No arc structural/scope/sequencing change. Slice02 now active.
+Slice01 independently accepted after2 refinements: DATE001–005 (4Medium,1Low). Shared-helper consequences must cross-reference existing IDs in Slice02. The known `parse_exact/1` calendar return-spec versus float-seconds mismatch (src129/40) is uncleared, explicitly assigned to Arc02 public-type/tooling reconciliation; not a claim that runtime parsing lacks fractional seconds. Slice02 is independently accepted at12ca2cd with3High/1Medium; combined9 IDs =3High/5Medium/1Low. Current helper map38 date +14 arithmetic/duration +22 interval =74 forms/70 names, including duration-onlygi and sharedapply_offset/datetime boundaries. Reduced-precision zoned-start contract question remains uncleared for Arc02 beside the public spec mismatch. No arc structural/sequencing change; source staysbcfd94a. Projectv1.2 separately adds later narrowly authorized OTP28/29 CI compatibility Arc03; current arc remains diagnosis-only.
 
 ## Version history
 
 - v1.0 — 2026-10-31: source-grounded two-slice runtime diagnosis; no production changes authorized.
 
 - v1.1 — 2026-10-31: Slice01 close surfaced explicit shared-helper cross-references and public-return-spec carryover; status updated, original two-slice runtime scope retained.
+
+- v1.2 — 2026-10-31: Slice02 close completed runtime/helper diagnosis, corrected semanticgi ownership and surfaced an explicit reduced-precision-zone contract carryover. Both slices accepted; parent composition/human gate remain pending, current scope unchanged.
