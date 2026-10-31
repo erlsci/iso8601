@@ -1,0 +1,9 @@
+# CC correction02 — semantic helper ownership and clean-check wording
+
+Issued2026-10-31 by CDC Sol High to existing CC Luna High. Current assignment supersedes iteration01 for this narrow correction; prior prompts/candidate501ec4327a68e6cf009f4610210f21f7c0556e21 remain preserved. Refinement2/max5, source unchangedbcfd94a.
+
+Read complete current `cdc-verification.md` refinement01 section and this prompt; inspect actual `gi/1`151–153, duration callers184–190 and dateacc390–392, current index/groupings, report clean-check10/zero-duration disposition, log/close/ledger. Original manifest/guide receipts and allowed-path contract remain binding; revalidate actual HEAD/status. Record exact refreshed reads/readback before correcting.
+
+Move gi/1@151 from date group to arithmetic/duration with source-backed duration-only ownership:38+14+22=74,70 names/15 exports unchanged. Correct all *current* index/log/close totals where necessary; preserve earlier historical39/13 receipts by an explicit superseding note rather than rewriting history. Clean-check10 must name successful calendar lower-bound/-12month controls only, keeping wrong-wrap failures in CAL001. Replace current two-tuple anchor wording `timestamp` with `datetime` where shape confusion is possible; retained EUnit three-tuple timestamp dispatch stays accurate. No finding/grade/count change.
+
+Only allowed Slice02 artifacts, close and ledger evidence/status; do not edit plans/prompts/reviewer/history/Slice01/source. No new probe/native run required: source/runner/inputs unchanged and CDC independently reproduced64-case transcript byte-identically. Retain those exact receipts as earlier evidence, not fresh runs. Use proportional source-call/group arithmetic/link/diff/source-boundary checks; keep S02-07 open for CDC. Commit explicit intended paths with contiguous required Codex and Billo AI trailers. Return hash/current map/counts/limits then stop writes. No Arc02/03, repairs or external action.

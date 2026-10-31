@@ -1,6 +1,6 @@
 # Slice02 — calendar and interval contracts
 
-Version 1.1 — 2026-10-31. Status: refinement01 assigned; initial attempt preserved atcb26ad8. This is the final slice of authorized Arc01; stop at review-ready arc/human gate.
+Version 1.2 — 2026-10-31. Status: narrow correction02 assigned; initial/refinement01 attempts preserved atcb26ad8/501ec43. This is the final slice of authorized Arc01; stop at review-ready arc/human gate.
 
 ## Outcome and scope
 
@@ -29,3 +29,5 @@ CDC fully inspected all production/tests/contract files, all17 Erlang guides and
 Assignment history: initial `cc-prompt.md`, issued2026-10-31; predecessor none; active. CC owns only this slice's artifacts/ledger/closing-report and isolated generated outputs during handoff; CDC holds planning writes. Maximum5 refinement passes. No subsequent arc execution authorized.
 
 - v1.1 — 2026-10-31: CDC issued `cc-prompt-iteration01.md` after independent original38-case rerun; floor-wrap completeness, zero-duration scope, valid-input severity and precise source/formatter labels remain original runtime scope. Initial prompt/attempt retained; refinement1/max5.
+
+- v1.2 — 2026-10-31: all64 refined cases independently reproduce; `cc-prompt-iteration02.md` narrows semantic gi duration ownership and report clean-check/shape wording. Refinement2/max5; no behavior scope expansion.
