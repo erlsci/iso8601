@@ -1,8 +1,18 @@
 # Slice02 CC close — calendar and interval contracts
 
-Date: 2026-10-31. Current assignment: `cc-prompt-iteration01.md`, planning base `7683fb41a72b6ec30f0d9d2afe61f084a045fade`. Source: `/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project02-arc01-audit`, `codex/project02-arc01-audit`, `bcfd94a08fa7a427eb1469679897e4d92d808edf`; source SHA256 and clean status are in `artifacts/runlog.md`. CC submits the refined Slice02 diagnosis and runtime index as proposed evidence; CDC’s independent verification and the Operator’s arc gate remain open.
+Date: 2026-10-31. Current assignment: `cc-prompt-iteration02.md`, planning base `6314444f7c20a39116d2493fcbc19f28e4b415ed`. Source: `/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project02-arc01-audit`, `codex/project02-arc01-audit`, `bcfd94a08fa7a427eb1469679897e4d92d808edf`; source SHA256 and clean status are in `artifacts/runlog.md`. CC submits the refined Slice02 diagnosis and runtime index as proposed evidence; CDC’s independent verification and the Operator’s arc gate remain open.
 
-## Refinement01 current close
+## Correction02 current close
+
+Correction02 changes semantic ownership and terminology only. The runtime source and inputs are unchanged, so no probe or native gate was rerun. CDC’s independent byte-identical reproduction of the 64-call refinement01 transcript remains reviewer-owned prior evidence, not a new CC run.
+
+The current EPP logical map is **38 date + 14 arithmetic/duration + 22 interval = 74 forms**, with70 names,15 exports and zero residual. `gi/1@151` is arithmetic/duration because its only actual callers are the duration captures at181–186; date `acc/5@390` instead calls `list_to_integer/1`. The earlier39+13+22 grouping remains preserved as historical in the prior runlog and candidate commit, and is explicitly superseded by the corrected index/readback. S02-04 remains CC-attested pending CDC verification.
+
+The current clean-check10 includes only successful controls: year1 Jan−12 months and year1 Jan−1 year both return year0 Jan, while installed-calendar validity is `{true,false,false}`. The two silent year-zero December wraps remain failure evidence under CAL001, outside the clean-check list. Zero-duration controls are integer-second `datetime` values; the ordinary `parse_exact/1` anchor is a float-zero `datetime`. Both have the date/time two-tuple shape, unlike the distinct three-tuple `timestamp()` type; retained EUnit timestamp-dispatch wording remains accurate.
+
+No finding IDs, severity grades or totals changed: four Slice02 findings (3 High, 1 Medium) and nine Arc01 findings (3 High, 5 Medium, 1 Low). S02-07 remains open for CDC verification/retrospective and parent/Operator gate. Source stays unchanged; no Arc02 work or external action occurred.
+
+## Refinement01 close (historical before correction02)
 
 The required refinement is complete, diagnosis-only, and proposed for independent review. The prior close packet below remains preserved as the initial candidate at `cb26ad8588d2a96932bd2caef3867c1b3e2717b5`; its original 38-case transcript remains unchanged and CDC independently reproduced it byte-identically. Refinement01 adds a separately named runner and full 64-case transcript.
 
