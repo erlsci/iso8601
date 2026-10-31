@@ -1,6 +1,40 @@
 # Slice02 CC close — calendar and interval contracts
 
-Date: 2026-10-31. Assignment: `cc-prompt.md` at planning `ae1511e4cf917c385b0a9b3602c4dc951b408a72`. Source: `/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project02-arc01-audit`, `codex/project02-arc01-audit`, `bcfd94a08fa7a427eb1469679897e4d92d808edf`; source SHA256 and clean status are in `artifacts/runlog.md`. Planning branch: `planning`. CC submits Slice02 diagnosis and runtime index as proposed evidence; CDC’s independent verification and the Operator’s arc gate remain open.
+Date: 2026-10-31. Current assignment: `cc-prompt-iteration01.md`, planning base `7683fb41a72b6ec30f0d9d2afe61f084a045fade`. Source: `/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project02-arc01-audit`, `codex/project02-arc01-audit`, `bcfd94a08fa7a427eb1469679897e4d92d808edf`; source SHA256 and clean status are in `artifacts/runlog.md`. CC submits the refined Slice02 diagnosis and runtime index as proposed evidence; CDC’s independent verification and the Operator’s arc gate remain open.
+
+## Refinement01 current close
+
+The required refinement is complete, diagnosis-only, and proposed for independent review. The prior close packet below remains preserved as the initial candidate at `cb26ad8588d2a96932bd2caef3867c1b3e2717b5`; its original 38-case transcript remains unchanged and CDC independently reproduced it byte-identically. Refinement01 adds a separately named runner and full 64-case transcript.
+
+### Current artifact inventory
+
+- `artifacts/2026.10.31-audit-results-erlang-calendar.md` — four stable IDs, calibrated severities, R1–R4 evidence/disposition, scope and limits.
+- `artifacts/calendar_interval_probes_iteration01.erl` and `artifacts/calendar-interval-probes-iteration01.out` — fresh runner and complete 282-line OTP28 stdout, including monitored hangs and stack capture.
+- `artifacts/2026.10.31-audit-index.md` — all15 exports and74 EPP forms/70 names retained, updated case crosswalk and severity totals.
+- `artifacts/runlog.md` — original intake/full-read receipts, refinement readback, new commands/results, severity reasoning and prior-vs-fresh attribution.
+- This `closing-report.md` and evidence/status cells in `ledger.md`.
+
+No issued prompt, plan, CDC record, Slice01 artifact/history, or tracked source/test/config was changed. Original runner/output at `cb26ad8` remains available as historical evidence.
+
+### Current ledger row walk
+
+- **S02-01 — CC attested:** the issued iteration01 prompt, CDC review, required readings, full Erlang-guide receipts carried from initial intake, fresh pins and contract readback are recorded in `artifacts/runlog.md` before refinement probes.
+- **S02-02 — CC attested:** all ten assigned exports and shared-helper paths remain mapped; 64 fresh labeled calls include multiple clean controls and the required zero-duration behavior. No test-quality or whole-project claim is added.
+- **S02-03 — CC attested:** four stable findings now have source locations, severity rationale, exact expected/actual/control evidence, and calibrated confidence. CAL001 includes both silent floor wrap and monitored negative-year nontermination; CAL002 includes ordinary parse-produced float-zero input and captured stack; CAL003 uses formatter-produced `+2007`; CAL004’s ordinary two-hour consequence is separated from medium-high repository-intent confidence. All suspected hangs are in monitored workers with timeout, kill and observed `DOWN`.
+- **S02-04 — CC attested:** the retained complete EPP map is still74 forms/70 names/15 exports with zero residual; index crosswalk is updated. Stable Arc01 total is9: 3 High, 5 Medium, 1 Low. CAL002–004 are High; CAL001 remains Medium with explicit floor-boundary/policy rationale. No candidate is counted.
+- **S02-05 — CC attested:** fresh isolated OTP28 source/runner compile and all64 calls are retained in the iteration01 transcript. Initial Slice02 38-case output and CDC byte-identical rerun remain separately attributed at `cb26ad8`. Slice01 native gates are retained, not rerun; supported OTP matrix, R15B03 and native project gates remain unclaimed.
+- **S02-06 — CC attested:** source checkout remains clean and byte-identical at the pinned revision. Intended planning changes stay within the permitted Slice02 artifacts, closing report and ledger evidence/status fields.
+- **S02-07 — OPEN for CDC:** CDC must independently verify the current candidate, reproduce new/affected findings, account for rows and bubble-up, and complete its reviewer-owned verification/retrospective. Parent/Operator arc gate remains separate.
+
+### Findings, zero durations and bubble-up
+
+Current Slice02 IDs remain `ERL-CAL-001`–`004`: one Medium and three High. With accepted Slice01’s four Medium and one Low, the stable Arc01 total is **9 findings: 3 High, 5 Medium, 1 Low**. Slice01 IDs are not duplicate-counted. Severity follows guide02’s realistic-operating-risk definition; CAL004 is High for the ordinary two-hour bounds error against the documented/preserved inheritance intent, while its evidence confidence remains medium-high because the README does not name timezone separately and the archived resolved intent is not ISO authority.
+
+The R1 month controls freshly show year0-Jan−1 and year1-Jan−13 both silently return year0-Dec; year1-Jan−12 is the valid year-zero floor control. R2 freshly shows ordinary `parse_exact("2017-01-01")` yields seconds `0.0`, applying `P1D` crashes through `calendar:time_to_seconds/1` line817 / `calendar:datetime_to_gregorian_seconds/1` line259 / `iso8601:apply_offset/4` line499, and an integer-second matched control succeeds. R3 freshly starts from `format_expanded/1`’s `+2007` output, accepted by `parse/1`, and shows inherited year200 plus explicit-end `badarg`; the seven-digit signed discriminator remains too. R4’s `P0D`, `PT0S` and bare `P` controls parse, apply, bound and serialize consistently with historical zero-component omission/always-P intent; no defect is manufactured. Existing timestamp-dispatch EUnit lines334–341 are cited as retained evidence, not a fresh test run.
+
+The reduced-precision zoned-start `badarg` remains a real Arc02/parser-scope candidate: full-seconds succeeds, but the current contract does not promise this reduced precision with offset and parsing fails before inheritance. The `parse_exact/1` public return spec mismatch remains an Arc02 obligation. Arc01 scope/order and the last-slice boundary do not change; no Arc02 work began. No source repair, issue, push, PR, merge, release, publication or external message occurred.
+
+## Initial candidate close (historical; committed at cb26ad8 and superseded above)
 
 ## Disposition and artifact inventory
 
