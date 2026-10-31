@@ -1,6 +1,6 @@
 # Arc01 — runtime contracts
 
-Version1.2 — 2026-10-31. Status: both slices accepted; CDC assembly review-ready, independent composition and Operator gate pending. Stop here.
+Version1.3 — 2026-10-31. Status: both slices and independent composition accepted; Operator review/merge/next-arc gate pending. Stop here. Priorv1.2 status had both composition and Operator pending; the parent gate below resolves only composition.
 
 ## Capability
 
@@ -30,3 +30,5 @@ Slice01 independently accepted after2 refinements: DATE001–005 (4Medium,1Low).
 - v1.1 — 2026-10-31: Slice01 close surfaced explicit shared-helper cross-references and public-return-spec carryover; status updated, original two-slice runtime scope retained.
 
 - v1.2 — 2026-10-31: Slice02 close completed runtime/helper diagnosis, corrected semanticgi ownership and surfaced an explicit reduced-precision-zone contract carryover. Both slices accepted; parent composition/human gate remain pending, current scope unchanged.
+
+- v1.3 — 2026-10-31: parent independently reviewed assembly1f77e98, reproduced all four probe transcripts with a fresh source beam, passed15/15 separate positive controls and verified complete export/helper/source scope. A01-03 is done/reproduced; humanA01-05 remains open. Scope/source/next-arc authority unchanged.
