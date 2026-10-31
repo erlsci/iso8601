@@ -5,7 +5,7 @@
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
 - blocks: any claim of a complete current audit or a later hardening plan
 - related: `project01-v1.4-maintenance`; iso8601 v1.4.0
-- version: 1.0 — 2026-10-31
+- version: 1.1 — 2026-10-31
 
 ## Outcome and boundaries
 
@@ -34,7 +34,7 @@ There are 16 tracked entries including the symlink. Erlang is audited including 
 ## Roadmap
 
 1. **Arc01 — runtime contracts:** independently checked diagnosis of date parsing/formatting/expanded representations and arithmetic/duration/interval composition. First usable increment: public-API date-contract findings and reproducible probes. Delivery is the owning slices' artifacts and an arc close packet on `planning`.
-2. **Arc02 — validation and audit synthesis:** full test/escript/tooling/OTP/package-contract audit; reconcile historical findings against actual source/authoritative OTP documentation; assemble final one-language report, index and modernization synthesis with compatibility classifications. Consumes accepted Arc01 findings at their pins; roadmap only, no detailed arc/slice directories yet.
+2. **Arc02 — validation and audit synthesis:** full test/escript/tooling/OTP/package-contract and public-spec reconciliation audit; reconcile historical findings against actual source/authoritative OTP documentation; assemble final one-language report, index and modernization synthesis with compatibility classifications. Consumes accepted Arc01 findings at their pins; roadmap only, no detailed arc/slice directories yet.
 
 ## Workflow, models and ownership
 
@@ -52,6 +52,10 @@ Actual preflight observed local rebar3 3.27.0 / OTP 28, outside configured OTP20
 
 CDC independently compared all12 archived files against source bytes, SHA256 and source/archive nanosecond mtimes; all match. All30 historical acceptance rows across9 ledgers remain OPEN; exactly2 arcs/6 slices. All81 authored relative links resolve; all14 task/mainline patch-ID pairs match; planning has one parentless root. History remains historical and is not accepted retroactively. Migration baseline `213bfc7`; these checks were read-only and no historical file was changed.
 
+## Known uncleared watch item
+
+Arc02 owns public-type/tooling reconciliation, including `parse_exact/1` src129 returning`calendar:datetime()` in its spec while its documented/exercised result has fractional second6.5 for`20120203T040506.50`. Private`datetime()` src40 permitsfloat; calendar second() is integer0..59. This source-pinned mismatch was observed during Slice01 review and remains uncleared for Arc02 severity/fix-compatibility assessment; it is not silently accepted or repaired in Arc01.
+
 ## Definition of done
 
 See sibling `ledger.md`. Project completion requires both arcs, complete mapped scope, independent evidence and explicit Operator acceptance. Arc01 findings are not a claim that the whole project or prior release is accepted.
@@ -59,3 +63,5 @@ See sibling `ledger.md`. Project completion requires both arcs, complete mapped 
 ## Version history
 
 - v1.0 — 2026-10-31: CDC opened two-arc diagnosis roadmap after byte-preserved historical migration; only Arc01 execution authorized.
+
+- v1.1 — 2026-10-31: Arc01/Slice01 review explicitly identified the known parse_exact return-spec obligation for already-roadmapped Arc02; no new arc or source scope added.

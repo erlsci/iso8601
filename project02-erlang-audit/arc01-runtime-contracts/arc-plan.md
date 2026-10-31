@@ -1,6 +1,6 @@
 # Arc01 — runtime contracts
 
-Version1.0 — 2026-10-31. Status: active; authorized endpoint is this arc review-ready, then stop.
+Version1.1 — 2026-10-31. Status: active; authorized endpoint is this arc review-ready, then stop.
 
 ## Capability
 
@@ -19,6 +19,12 @@ Governing project plan supplies complete audit map, explicit models/authority, a
 
 CDC independently inspects reports/source and reruns claimed observations; no summary-only acceptance. CC completion is proposed-done. Every slice closes with its ledger walk, bubble-up, CDC verification and retrospective. CDC then assembles a runtime index and arc close in the final slice artifacts/arc root; parent independently reproduces composition over all15 functions and report links. Operator review/merge remains open and Arc02 is held. Any unavailable native gates remain explicitly blocked/unrun with re-entry conditions; fresh local probes cannot imply an OTP matrix pass.
 
+## Current status and carryover
+
+Slice01 independently accepted after2 refinements: DATE001–005 (4Medium,1Low). Shared-helper consequences must cross-reference existing IDs in Slice02. The known `parse_exact/1` calendar return-spec versus float-seconds mismatch (src129/40) is uncleared, explicitly assigned to Arc02 public-type/tooling reconciliation; not a claim that runtime parsing lacks fractional seconds. No arc structural/scope/sequencing change. Slice02 now active.
+
 ## Version history
 
 - v1.0 — 2026-10-31: source-grounded two-slice runtime diagnosis; no production changes authorized.
+
+- v1.1 — 2026-10-31: Slice01 close surfaced explicit shared-helper cross-references and public-return-spec carryover; status updated, original two-slice runtime scope retained.

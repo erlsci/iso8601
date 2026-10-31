@@ -1,6 +1,6 @@
 # Slice01 — date contracts
 
-Version1.0 — 2026-10-31. Status: refinement01 evidence reproduced; narrow refinement02 current, one refinement executed.
+Version1.0 — 2026-10-31. Status: accepted by CDC at slice scope; two refinements executed, Arc/Operator gates remain open.
 
 ## Goal and scope
 
@@ -27,6 +27,8 @@ CDC read all744 production lines, all1069 EUnit lines, all111 property lines, ap
 
 - Refinement01 returned at `6054bad`; CDC reproduced10 cases,7 mismatches/3 controls and accepted R1–R3 substance.
 - Refinement02 `cc-prompt-iteration02.md`, issued2026-10-31; predecessor iteration01; active for executable-scale and exact documentation wording only. Source/findings unchanged.
+
+- Refinement02 returned `76eaf7a`; both factual corrections checked against current map/source/prose. CDC final review accepts all6 rows; retrospective complete. Current completed assignment: `cc-prompt-iteration02.md`.
 
 ## Exit
 
