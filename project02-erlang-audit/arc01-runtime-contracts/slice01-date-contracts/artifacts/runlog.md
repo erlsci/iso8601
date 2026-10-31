@@ -253,3 +253,430 @@ Final source command sequence: `git diff --exit-code bcfd94a --` (exit 0, no out
 The actual 16 tracked source paths from `git ls-files`, reconciled against the Project02 map, are: `.github/workflows/ci.yml`, `.gitignore`, `AGENTS.md`, `CLAUDE.md` (symlink), `LICENSE`, `Makefile`, `README.md`, `elvis.config`, `priv/images/logo-large.png`, `priv/images/logo.png`, `rebar.config`, `scripts/check_coverage.escript`, `src/iso8601.app.src`, `src/iso8601.erl`, `test/iso8601_tests.erl`, `test/prop_iso8601.erl`.
 
 The worktree inventory showed only the root `main`, planning worktree, and isolated audit source worktree; this handoff touched only the latter two. `git diff --check` passed in both source and planning worktrees. Before the close commit, planning status is limited to exactly this Slice01 `ledger.md`, `closing-report.md`, and the four listed artifacts; no other planning files are staged or changed. Source architecture-document discovery query `rg --files -g '*.md' -g '*.txt' -g '*.adoc'` returned only `AGENTS.md` and `README.md` in the isolated checkout; no separate architecture design document was found.
+
+## CDC independent review — initial CC packet3dc34cf, 2026-10-31
+
+Source remains bcfd94a; commands below independently executed by CDC after CC ownership return. Existing unchanged native dependencies/OTP28 PLT were retained; probes and tests rerun. This is a current reproduction, not a fresh dependency resolution/OTP matrix.
+
+### rebar3 compile
+
+Exit: 0; elapsed 0.55s
+
+```text
+[0;32m===> Verifying dependencies...
+[0m[0;32m===> Analyzing applications...
+[0m[0;32m===> Compiling iso8601
+[0m```
+
+### rebar3 xref
+
+Exit: 0; elapsed 1.79s
+
+```text
+[0;32m===> Verifying dependencies...
+[0m[0;32m===> Analyzing applications...
+[0m[0;32m===> Compiling iso8601
+[0m[0;32m===> Running cross reference analysis...
+[0m```
+
+### rebar3 dialyzer
+
+Exit: 0; elapsed 2.06s
+
+```text
+[0;32m===> Verifying dependencies...
+[0m[0;32m===> Analyzing applications...
+[0m[0;32m===> Compiling iso8601
+[0m[0;32m===> Dialyzer starting, this may take a while...
+[0m[0;35m===> Add debug_info to compiler options (erl_opts) if Dialyzer fails to load Core Erlang.
+[0m[0;32m===> Updating plt...
+[0m[0;32m===> Resolving project files...
+[0m[0;32m===> Checking 222 files in _build/default/rebar3_28.1.1_plt...
+[0m[0;32m===> Doing success typing analysis...
+[0m[0;32m===> Resolving project warning files...
+[0m[0;32m===> Analyzing 1 files with _build/default/rebar3_28.1.1_plt...
+[0m```
+
+### rebar3 eunit -c -v
+
+Exit: 0; elapsed 1.32s
+
+```text
+[0;32m===> Verifying dependencies...
+[0m[0;32m===> Analyzing applications...
+[0m[0;32m===> Compiling iso8601
+[0m[0;32m===> Performing EUnit tests...
+[0m======================== EUnit ========================
+file "iso8601.app"
+  application 'iso8601'
+    module 'iso8601'
+      module 'iso8601_tests'
+        iso8601_tests:12: -parse_fail_test_/0-fun-1- (fails to parse YYYYMM)...ok
+        iso8601_tests:16: -parse_year_test_/0-fun-1- (parses YYYY)...[0.001 s] ok
+        iso8601_tests:20: -parse_month_test_/0-fun-1- (parses YYYY-MM)...ok
+        iso8601_tests:25: -parse_month_day_test_/0-fun-3- (parses YYYYMMDD)...ok
+        iso8601_tests:26: -parse_month_day_test_/0-fun-1- (parses YYYY-MM-DD)...ok
+        iso8601_tests:32: -parse_week_test_/0-fun-7- (parses 2009W01 as 2008-12-29)...ok
+        iso8601_tests:33: -parse_week_test_/0-fun-5- (parses 2009-W01 as 2008-12-29)...ok
+        iso8601_tests:34: -parse_week_test_/0-fun-3- (parses 2009W53 as 2010-01-03)...ok
+        iso8601_tests:35: -parse_week_test_/0-fun-1- (parses 2009-W53 as 2010-01-03)...ok
+        iso8601_tests:41: -parse_week_day_test_/0-fun-7- (parses 2009W011 as 2008-12-29)...ok
+        iso8601_tests:42: -parse_week_day_test_/0-fun-5- (parses 2009-W01-1 as 2008-12-29)...ok
+        iso8601_tests:43: -parse_week_day_test_/0-fun-3- (parses 2009W537 as 2010-01-03)...ok
+        iso8601_tests:44: -parse_week_day_test_/0-fun-1- (parses 2009-W53-7 as 2010-01-03)...ok
+        iso8601_tests:50: -parse_hour_test_/0-fun-3- (parses YYYYMMDDTHH)...ok
+        iso8601_tests:51: -parse_hour_test_/0-fun-1- (parses YYYY-MM-DDTHH)...ok
+        iso8601_tests:57: -parse_fractional_hour_test_/0-fun-7- (parses YYYYMMDDTHH.hh)...ok
+        iso8601_tests:59: -parse_fractional_hour_test_/0-fun-5- (parses YYYY-MM-DDTHH.hh)...ok
+        iso8601_tests:60: -parse_fractional_hour_test_/0-fun-3- (parses YYYYMMDDTHH,hh)...ok
+        iso8601_tests:62: -parse_fractional_hour_test_/0-fun-1- (parses YYYY-MM-DDTHH,hh)...ok
+        iso8601_tests:68: -parse_minute_test_/0-fun-3- (parses YYYYMMDDTHHMM)...ok
+        iso8601_tests:69: -parse_minute_test_/0-fun-1- (parses YYYY-MM-DDTHH:MM)...ok
+        iso8601_tests:76: -parse_fractional_minute_test_/0-fun-7- (parses YYYYMMDDTHHMM.mm)...ok
+        iso8601_tests:78: -parse_fractional_minute_test_/0-fun-5- (parses YYYY-MM-DDTHHMM.mm)...ok
+        iso8601_tests:80: -parse_fractional_minute_test_/0-fun-3- (parses YYYYMMDDTHHMM,mm)...ok
+        iso8601_tests:82: -parse_fractional_minute_test_/0-fun-1- (parses YYYY-MM-DDTHHMM,mm)...ok
+        iso8601_tests:88: -parse_second_test_/0-fun-3- (parses YYYYMMDDTHHMMSS)...ok
+        iso8601_tests:90: -parse_second_test_/0-fun-1- (parses YYYY-MM-DDTHH:MM:SS)...ok
+        iso8601_tests:97: -parse_fractional_second_test_/0-fun-7- (parses YYYYMMDDTHHMMSS.ss)...ok
+        iso8601_tests:99: -parse_fractional_second_test_/0-fun-5- (parses YYYY-MM-DDTHHMMSS.ss)...ok
+        iso8601_tests:101: -parse_fractional_second_test_/0-fun-3- (parses YYYYMMDDTHHMMSS,ss)...ok
+        iso8601_tests:103: -parse_fractional_second_test_/0-fun-1- (parses YYYY-MM-DDTHHMMSS,ss)...ok
+        iso8601_tests:110: -parse_exact_fractional_second_test_/0-fun-7- (parses YYYYMMDDTHHMMSS.ss)...ok
+        iso8601_tests:112: -parse_exact_fractional_second_test_/0-fun-5- (parses YYYY-MM-DDTHHMMSS.ss)...ok
+        iso8601_tests:114: -parse_exact_fractional_second_test_/0-fun-3- (parses YYYYMMDDTHHMMSS,ss)...ok
+        iso8601_tests:116: -parse_exact_fractional_second_test_/0-fun-1- (parses YYYY-MM-DDTHHMMSS,ss)...ok
+        iso8601_tests:122: -parse_fractional_fail_test_/0-fun-1- (fails to parses multiple decimals)...ok
+        iso8601_tests:128: -parse_offset_test_/0-fun-5- (parses YYYYMMDDTHHMMSS.ssZ)...ok
+        iso8601_tests:130: -parse_offset_test_/0-fun-3- (parses YYYYMMDDTHHMMSS.ss+0400)...ok
+        iso8601_tests:132: -parse_offset_test_/0-fun-1- (parses YYYYMMDDTHHMMSS.ss+0400)...ok
+        iso8601_tests:139: -parse_duration_test_/0-fun-7- (parses with pos sign)...ok
+        iso8601_tests:152: -parse_duration_test_/0-fun-5- (parses without sign)...ok
+        iso8601_tests:165: -parse_duration_test_/0-fun-3- (parses only years)...ok
+        iso8601_tests:178: -parse_duration_test_/0-fun-1- (parses only minutes)...ok
+        iso8601_tests:194: -parse_duration_fail_test_/0-fun-1- (fails to parses misspelled string)...ok
+        iso8601_tests:200: -parse_ordinal_test_/0-fun-23- (parses YYYY-DDDTHHMMSS)...ok
+        iso8601_tests:201: -parse_ordinal_test_/0-fun-21- (parses YYYY-DDD)...ok
+        iso8601_tests:203: -parse_ordinal_test_/0-fun-19- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap year)...ok
+        iso8601_tests:205: -parse_ordinal_test_/0-fun-17- (parses YYYY_DDDTHHMMSS, after Feb 29 in a leap year)...ok
+        iso8601_tests:207: -parse_ordinal_test_/0-fun-15- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap century)...ok
+        iso8601_tests:209: -parse_ordinal_test_/0-fun-13- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap year)...ok
+        iso8601_tests:211: -parse_ordinal_test_/0-fun-11- (parses YYYY_DDDTHHMMSS, after Feb 29 in a non-leap year)...ok
+        iso8601_tests:213: -parse_ordinal_test_/0-fun-9- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap century)...ok
+        iso8601_tests:214: -parse_ordinal_test_/0-fun-7- (fails to parse ordinal date with 0 days)...ok
+        iso8601_tests:216: -parse_ordinal_test_/0-fun-5- (fails to parse ordinal date with too many days in a leap year)...ok
+        iso8601_tests:218: -parse_ordinal_test_/0-fun-3- (parses ordinal date with 366 days in a leap year)...ok
+        iso8601_tests:220: -parse_ordinal_test_/0-fun-1- (fails to parse ordinal date with too many days in a non-leap year)...ok
+        iso8601_tests:227: -parse_ordinal_exact_test_/0-fun-23- (parses YYYY-DDDTHHMMSS)...ok
+        iso8601_tests:228: -parse_ordinal_exact_test_/0-fun-21- (parses YYYY-DDD)...ok
+        iso8601_tests:230: -parse_ordinal_exact_test_/0-fun-19- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap year)...ok
+        iso8601_tests:232: -parse_ordinal_exact_test_/0-fun-17- (parses YYYY_DDDTHHMMSS, after Feb 29 in a leap year)...ok
+        iso8601_tests:234: -parse_ordinal_exact_test_/0-fun-15- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap century)...ok
+        iso8601_tests:236: -parse_ordinal_exact_test_/0-fun-13- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap year)...ok
+        iso8601_tests:238: -parse_ordinal_exact_test_/0-fun-11- (parses YYYY_DDDTHHMMSS, after Feb 29 in a non-leap year)...ok
+        iso8601_tests:240: -parse_ordinal_exact_test_/0-fun-9- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap century)...ok
+        iso8601_tests:241: -parse_ordinal_exact_test_/0-fun-7- (fails to parse ordinal date with 0 days)...ok
+        iso8601_tests:243: -parse_ordinal_exact_test_/0-fun-5- (fails to parse ordinal date with too many days in a leap year)...ok
+        iso8601_tests:245: -parse_ordinal_exact_test_/0-fun-3- (parses ordinal date with 366 days in a leap year)...ok
+        iso8601_tests:247: -parse_ordinal_exact_test_/0-fun-1- (fails to parse ordinal date with too many days in a non-leap year)...ok
+        iso8601_tests:254: -add_time_test_/0-fun-7- (add one second)...ok
+        iso8601_tests:256: -add_time_test_/0-fun-5- (add one minute)...ok
+        iso8601_tests:258: -add_time_test_/0-fun-3- (add one hour)...ok
+        iso8601_tests:260: -add_time_test_/0-fun-1- (roll over to next day)...ok
+        iso8601_tests:269: -subtract_time_test_/0-fun-7- (add one second)...ok
+        iso8601_tests:271: -subtract_time_test_/0-fun-5- (add one minute)...ok
+        iso8601_tests:273: -subtract_time_test_/0-fun-3- (add one hour)...ok
+        iso8601_tests:275: -subtract_time_test_/0-fun-1- (roll back to previous day)...ok
+        iso8601_tests:284: -add_months_test_/0-fun-11- (add one month in the middle of the year)...ok
+        iso8601_tests:286: -add_months_test_/0-fun-9- (add one month at the beginning of the year)...ok
+        iso8601_tests:288: -add_months_test_/0-fun-7- (add one month almost in the end of the year)...ok
+        iso8601_tests:290: -add_months_test_/0-fun-5- (add one month in the end of the year)...ok
+        iso8601_tests:292: -add_months_test_/0-fun-3- (add eight month in the middle of the year)...ok
+        iso8601_tests:294: -add_months_test_/0-fun-1- (add twelve month in the middle of the year)...ok
+        iso8601_tests:305: -format_test_/0-fun-5- (formats datetime with integer seconds)...ok
+        iso8601_tests:307: -format_test_/0-fun-3- (formats datetime with float seconds)...ok
+        iso8601_tests:308: -format_test_/0-fun-1- (formats timestamp tuple)...ok
+        iso8601_tests:318: -parse_binary_test_/0-fun-5- (parse/1 accepts binary input)...ok
+        iso8601_tests:320: -parse_binary_test_/0-fun-3- (parse_exact/1 accepts binary input)...ok
+        iso8601_tests:324: -parse_binary_test_/0-fun-1- (parse_duration/1 accepts binary input)...ok
+        iso8601_tests:335: -timestamp_input_test_/0-fun-7- (add_time/4 accepts timestamp tuple)...ok
+        iso8601_tests:337: -timestamp_input_test_/0-fun-5- (add_days/2 accepts timestamp tuple)...ok
+        iso8601_tests:339: -timestamp_input_test_/0-fun-3- (add_months/2 accepts timestamp tuple)...ok
+        iso8601_tests:341: -timestamp_input_test_/0-fun-1- (add_years/2 accepts timestamp tuple)...ok
+        iso8601_tests:352: -add_days_test_/0-fun-3- (add one day)...ok
+        iso8601_tests:354: -add_days_test_/0-fun-1- (add days across month boundary)...ok
+        iso8601_tests:361: -add_years_test_/0-fun-3- (add one year)...ok
+        iso8601_tests:363: -add_years_test_/0-fun-1- (add ten years)...ok
+        iso8601_tests:374: -add_months_edge_test_/0-fun-3- (add zero months)...ok
+        iso8601_tests:376: -add_months_edge_test_/0-fun-1- (add month rolls back invalid day (Jan 31 + 1 month))...ok
+        iso8601_tests:387: -apply_duration_test_/0-fun-3- (apply duration with all components)...ok
+        iso8601_tests:391: -apply_duration_test_/0-fun-1- (apply simple year duration)...ok
+        iso8601_tests:401: -parse_week_dow_test_/0-fun-11- (W01-1 year starting Monday (2018))...ok
+        iso8601_tests:403: -parse_week_dow_test_/0-fun-9- (W01-1 year starting Tuesday (2019))...ok
+        iso8601_tests:405: -parse_week_dow_test_/0-fun-7- (W01-1 year starting Wednesday (2014))...ok
+        iso8601_tests:406: -parse_week_dow_test_/0-fun-5- (W01-1 year starting Friday (2010))...ok
+        iso8601_tests:408: -parse_week_dow_test_/0-fun-3- (W01-1 year starting Saturday (2011))...ok
+        iso8601_tests:409: -parse_week_dow_test_/0-fun-1- (W01-1 year starting Sunday (2012))...ok
+        iso8601_tests:420: -parse_offset_format_test_/0-fun-3- (offset hour only (+04))...ok
+        iso8601_tests:422: -parse_offset_format_test_/0-fun-1- (offset with colon (+04:30))...ok
+        iso8601_tests:433: -parse_colon_fractional_minute_test_/0-fun-3- (parses HH:MM.mm (dot))...ok
+        iso8601_tests:435: -parse_colon_fractional_minute_test_/0-fun-1- (parses HH:MM,mm (comma))...ok
+        iso8601_tests:442: -parse_colon_fractional_second_test_/0-fun-3- (parses HH:MM:SS.ss (dot))...ok
+        iso8601_tests:444: -parse_colon_fractional_second_test_/0-fun-1- (parses HH:MM:SS,ss (comma))...ok
+        iso8601_tests:454: -parse_error_clauses_test_/0-fun-21- (year too short)...ok
+        iso8601_tests:455: -parse_error_clauses_test_/0-fun-19- (month_or_week trailing dash)...ok
+        iso8601_tests:456: -parse_error_clauses_test_/0-fun-17- (week_day bad char after week)...ok
+        iso8601_tests:457: -parse_error_clauses_test_/0-fun-15- (month_day short day)...ok
+        iso8601_tests:458: -parse_error_clauses_test_/0-fun-13- (month_day_no_hyphen single char day)...ok
+        iso8601_tests:459: -parse_error_clauses_test_/0-fun-11- (hour incomplete after T)...ok
+        iso8601_tests:460: -parse_error_clauses_test_/0-fun-9- (minute single char after hour)...ok
+        iso8601_tests:461: -parse_error_clauses_test_/0-fun-7- (second single char after colon minute)...ok
+        iso8601_tests:462: -parse_error_clauses_test_/0-fun-5- (second_no_colon single char)...ok
+        iso8601_tests:463: -parse_error_clauses_test_/0-fun-3- (decimal separator with no digits)...ok
+        iso8601_tests:464: -parse_error_clauses_test_/0-fun-1- (offset_minute bad suffix)...ok
+        iso8601_tests:474: -apply_duration_sign_test_/0-fun-5- (negative year subtracts)...ok
+        iso8601_tests:479: -apply_duration_sign_test_/0-fun-3- (positive/unsigned still adds)...ok
+        iso8601_tests:484: -apply_duration_sign_test_/0-fun-1- (compound negative duration)...ok
+        iso8601_tests:497: -add_years_leap_day_test_/0-fun-9- (leap day + 1 year clamps to Feb 28)...ok
+        iso8601_tests:502: -add_years_leap_day_test_/0-fun-7- (leap day - 1 year clamps to Feb 28)...ok
+        iso8601_tests:507: -add_years_leap_day_test_/0-fun-5- (leap day + 3 years produces valid date)...ok
+        iso8601_tests:513: -add_years_leap_day_test_/0-fun-3- (ordinary date unchanged)...ok
+        iso8601_tests:518: -add_years_leap_day_test_/0-fun-1- (via apply_duration years path)...ok
+        iso8601_tests: ordinal_parse_no_stdout_test...ok
+        iso8601_tests: capture_output_restores_leader_on_error_test...ok
+        iso8601_tests:575: -parse_interval_forms_test_/0-fun-15- (start/end)...ok
+        iso8601_tests:580: -parse_interval_forms_test_/0-fun-13- (start/duration)...ok
+        iso8601_tests:585: -parse_interval_forms_test_/0-fun-11- (duration/end)...ok
+        iso8601_tests:590: -parse_interval_forms_test_/0-fun-9- (duration only)...ok
+        iso8601_tests:595: -parse_interval_forms_test_/0-fun-7- (double-hyphen separator)...ok
+        iso8601_tests:599: -parse_interval_forms_test_/0-fun-5- (two durations is badarg)...ok
+        iso8601_tests:600: -parse_interval_forms_test_/0-fun-3- (three parts is badarg)...ok
+        iso8601_tests:602: -parse_interval_forms_test_/0-fun-1- (binary input)...ok
+        iso8601_tests:615: -interval_bounds_test_/0-fun-7- (start/end returns both)...ok
+        iso8601_tests:624: -interval_bounds_test_/0-fun-5- (start+duration end matches apply_duration)...ok
+        iso8601_tests:636: -interval_bounds_test_/0-fun-3- (duration/end start computation)...ok
+        iso8601_tests:648: -interval_bounds_test_/0-fun-1- (duration-only is badarg)...ok
+        iso8601_tests:658: -interval_signed_duration_test_/0-fun-3- (negative duration in start/duration)...[0.001 s] ok
+        iso8601_tests:663: -interval_signed_duration_test_/0-fun-1- (negative duration bounds subtract)...ok
+        iso8601_tests:681: -format_interval_test_/0-fun-7- (format start/end)...ok
+        iso8601_tests:688: -format_interval_test_/0-fun-5- (format start/duration)...ok
+        iso8601_tests:697: -format_interval_test_/0-fun-3- (format duration/end)...ok
+        iso8601_tests:706: -format_interval_test_/0-fun-1- (format duration only)...ok
+        iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: 2007-03-01T13:00:00Z/2008-05-11T15:30:00Z)...ok
+        iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: 2007-03-01T13:00:00Z/P1Y2M10DT2H30M)...ok
+        iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: P1Y2M10DT2H30M/2008-05-11T15:30:00Z)...[0.001 s] ok
+        iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: P1Y2M10DT2H30M)...ok
+        iso8601_tests:743: -interval_inheritance_test_/0-fun-9- (inherit date (time-only end))...ok
+        iso8601_tests:753: -interval_inheritance_test_/0-fun-7- (inherit year (month-day end))...ok
+        iso8601_tests:763: -interval_inheritance_test_/0-fun-5- (inherit year+month (day-only end))...ok
+        iso8601_tests:773: -interval_inheritance_test_/0-fun-3- (inherit year+month (day+time end))...ok
+        iso8601_tests:783: -interval_inheritance_test_/0-fun-1- (ambiguous single digit is badarg)...ok
+        iso8601_tests:793: -interval_coverage_test_/0-fun-11- (non-duration no-separator string is badarg)...ok
+        iso8601_tests:795: -interval_coverage_test_/0-fun-9- (positive-signed duration (+P1Y))...ok
+        iso8601_tests:800: -interval_coverage_test_/0-fun-7- (fractional second endpoint uses parse_exact)...ok
+        iso8601_tests:805: -interval_coverage_test_/0-fun-5- (date-only duration (no time components))...ok
+        iso8601_tests:820: -interval_coverage_test_/0-fun-3- (inherit with T-prefixed end fragment)...ok
+        iso8601_tests:830: -interval_coverage_test_/0-fun-1- (format date-only duration (time parts empty))...ok
+        iso8601_tests:853: -interval_minute_precision_test_/0-fun-3- (time-only end at minute precision)...ok
+        iso8601_tests:863: -interval_minute_precision_test_/0-fun-1- (day+time end at minute precision)...ok
+        iso8601_tests:881: -interval_malformed_end_test_/0-fun-3- (double T in end fragment)...ok
+        iso8601_tests:883: -interval_malformed_end_test_/0-fun-1- (consecutive TT in end fragment)...ok
+        iso8601_tests:892: -interval_empty_sides_test_/0-fun-11- (double slash)...ok
+        iso8601_tests:893: -interval_empty_sides_test_/0-fun-9- (leading slash)...ok
+        iso8601_tests:894: -interval_empty_sides_test_/0-fun-7- (trailing slash)...ok
+        iso8601_tests:896: -interval_empty_sides_test_/0-fun-5- (empty double-hyphen sides (quad dash))...ok
+        iso8601_tests:898: -interval_empty_sides_test_/0-fun-3- (leading double-hyphen (empty left))...ok
+        iso8601_tests:900: -interval_empty_sides_test_/0-fun-1- (trailing double-hyphen (empty right))...ok
+        iso8601_tests:910: -interval_basic_format_start_test_/0-fun-1- (basic-format start with abbreviated end is badarg)...ok
+        iso8601_tests:920: -interval_month_day_time_end_test_/0-fun-1- (month-day+time abbreviated end is badarg)...ok
+        iso8601_tests:930: -expanded_year_test_/0-fun-17- (explicit + sign with leading zeros)...ok
+        iso8601_tests:932: -expanded_year_test_/0-fun-15- (+2007 is year 2007 not 200)...ok
+        iso8601_tests:934: -expanded_year_test_/0-fun-13- (year beyond 9999)...ok
+        iso8601_tests:935: -expanded_year_test_/0-fun-11- (unsigned overlength is badarg)...ok
+        iso8601_tests:936: -expanded_year_test_/0-fun-9- (empty after sign is badarg)...ok
+        iso8601_tests:938: -expanded_year_test_/0-fun-7- (+YYYY year only defaults to Jan 1)...ok
+        iso8601_tests:940: -expanded_year_test_/0-fun-5- (+YYYY with full datetime)...ok
+        iso8601_tests:942: -expanded_year_test_/0-fun-3- (parse_exact with expanded year)...ok
+        iso8601_tests:947: -expanded_year_test_/0-fun-1- (format roundtrip with expanded year)...ok
+        iso8601_tests:960: -parse_expanded_test_/0-fun-17- (negative year -0001)...ok
+        iso8601_tests:962: -parse_expanded_test_/0-fun-15- (negative year -0000 (year zero))...ok
+        iso8601_tests:964: -parse_expanded_test_/0-fun-13- (Ides of March 44 BCE (astro -44))...ok
+        iso8601_tests:966: -parse_expanded_test_/0-fun-11- (positive expanded +0002007)...ok
+        iso8601_tests:968: -parse_expanded_test_/0-fun-9- (year beyond 9999)...ok
+        iso8601_tests:970: -parse_expanded_test_/0-fun-7- (plain 4-digit year works too)...ok
+        iso8601_tests:971: -parse_expanded_test_/0-fun-5- (empty after sign is badarg)...ok
+        iso8601_tests:973: -parse_expanded_test_/0-fun-3- (binary input)...ok
+        iso8601_tests:975: -parse_expanded_test_/0-fun-1- (fractional seconds preserved)...ok
+        iso8601_tests:983: -parse_rejects_negative_test_/0-fun-3- (parse/1 rejects negative year)...ok
+        iso8601_tests:985: -parse_rejects_negative_test_/0-fun-1- (parse_exact/1 rejects negative year)...ok
+        iso8601_tests:991: -format_expanded_test_/0-fun-9- (format negative year)...ok
+        iso8601_tests:996: -format_expanded_test_/0-fun-7- (format large positive year)...ok
+        iso8601_tests:1001: -format_expanded_test_/0-fun-5- (format normal year (explicit sign))...ok
+        iso8601_tests:1006: -format_expanded_test_/0-fun-3- (format year zero)...ok
+        iso8601_tests:1011: -format_expanded_test_/0-fun-1- (format with float seconds)...ok
+        iso8601_tests:1020: -format_expanded_roundtrip_test_/0-fun-3- (roundtrip negative year)...ok
+        iso8601_tests:1029: -format_expanded_roundtrip_test_/0-fun-1- (roundtrip large positive year)...ok
+        iso8601_tests:1047: -parse_out_of_range_positive_crashes_test_/0-fun-1-...ok
+        iso8601_tests:1056: -parse_expanded_negative_offset_test_/0-fun-7- (negative year + timezone offset is badarg)...ok
+        iso8601_tests:1058: -parse_expanded_negative_offset_test_/0-fun-5- (negative year + week date crashes)...ok
+        iso8601_tests:1060: -parse_expanded_negative_offset_test_/0-fun-3- (negative year in UTC still works)...ok
+        iso8601_tests:1065: -parse_expanded_negative_offset_test_/0-fun-1- (negative year plain date still works)...ok
+        [done in 0.643 s]
+      [done in 0.643 s]
+    [done in 0.643 s]
+  [done in 0.643 s]
+module 'prop_iso8601'
+=======================================================
+  All 210 tests passed.
+```
+
+### rebar3 proper -c
+
+Exit: 0; elapsed 0.73s
+
+```text
+[0;32m===> Verifying dependencies...
+[0m[0;32m===> Analyzing applications...
+[0m[0;32m===> Compiling iso8601
+[0m[0;32m===> Testing prop_iso8601:prop_parse_format_roundtrip()
+[0m....................................................................................................
+[01;32mOK: Passed 100 test(s).
+[00m[0;32m===> Testing prop_iso8601:prop_interval_start_end_roundtrip()
+[0m....................................................................................................
+[01;32mOK: Passed 100 test(s).
+[00m[0;32m===> Testing prop_iso8601:prop_start_duration_bounds()
+[0m....................................................................................................
+[01;32mOK: Passed 100 test(s).
+[00m[0;32m===> Testing prop_iso8601:prop_expanded_roundtrip()
+[0m....................................................................................................
+[01;32mOK: Passed 100 test(s).
+[00m[0;32m===>\x20
+4/4 properties passed
+[0m```
+
+### rebar3 as test cover -v --min_coverage=100
+
+Exit: 0; elapsed 0.69s
+
+```text
+[0;32m===> Verifying dependencies...
+[0m[0;32m===> Analyzing applications...
+[0m[0;32m===> Compiling iso8601
+[0m[0;32m===> Performing cover analysis...
+[0m  |------------------------|------------|
+  |                module  |  coverage  |
+  |------------------------|------------|
+  |               iso8601  |      100%  |
+  |------------------------|------------|
+  |                 total  |      100%  |
+  |------------------------|------------|
+  coverage calculated from:
+    /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project02-arc01-audit/_build/test/cover/eunit.coverdata
+    /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project02-arc01-audit/_build/test/cover/proper.coverdata
+  cover summary written to: /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project02-arc01-audit/_build/test/cover/index.html
+```
+
+### rebar3 as dev fmt --check
+
+Exit: 1; elapsed 0.6s
+
+```text
+[0;35m===> Failed to update package erlfmt from repo hexpm
+[0m[0;35m===> Errors loading plugin erlfmt. Run rebar3 with DEBUG=1 set to see errors.
+[0m[0;35m===> Failed to update package rebar3_lint from repo hexpm
+[0m[0;35m===> Errors loading plugin rebar3_lint. Run rebar3 with DEBUG=1 set to see errors.
+[0m[0;35m===> Failed to update package rebar3_ex_doc from repo hexpm
+[0m[0;35m===> Errors loading plugin rebar3_ex_doc. Run rebar3 with DEBUG=1 set to see errors.
+[0m[0;35m===> Failed to update package coveralls from repo hexpm
+[0m[0;35m===> Errors loading plugin coveralls. Run rebar3 with DEBUG=1 set to see errors.
+[0m[0;31m===> [1mCommand fmt not found
+[0m[0m```
+
+### rebar3 as dev lint
+
+Exit: 1; elapsed 0.57s
+
+```text
+[0;35m===> Failed to update package erlfmt from repo hexpm
+[0m[0;35m===> Errors loading plugin erlfmt. Run rebar3 with DEBUG=1 set to see errors.
+[0m[0;35m===> Failed to update package rebar3_lint from repo hexpm
+[0m[0;35m===> Errors loading plugin rebar3_lint. Run rebar3 with DEBUG=1 set to see errors.
+[0m[0;35m===> Failed to update package rebar3_ex_doc from repo hexpm
+[0m[0;35m===> Errors loading plugin rebar3_ex_doc. Run rebar3 with DEBUG=1 set to see errors.
+[0m[0;35m===> Failed to update package coveralls from repo hexpm
+[0m[0;35m===> Errors loading plugin coveralls. Run rebar3 with DEBUG=1 set to see errors.
+[0m[0;31m===> [1mCommand lint not found
+[0m[0m```
+
+### escript /Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project02-erlang-audit/arc01-runtime-contracts/slice01-date-contracts/artifacts/date-probes.escript
+
+Exit: 0; elapsed 0.28s
+
+```text
+parse_baseline => {return,{{2012,2,16},{1,6,48}}}
+parse_exact_baseline => {return,{{2012,2,3},{4,5,6.5}}}
+parse_positive_expanded => {return,{{10000,1,1},{0,0,0}}}
+parse_expanded_negative_control => {return,{{-1,1,1},{0,0,0.0}}}
+parse_rejects_negative_control => {exception,error,badarg}
+ordinal_leap_control => {return,{{2016,2,29},{0,0,0}}}
+week_boundary_control => {return,{{2008,12,29},{0,0,0}}}
+week_last_valid_control => {return,{{2010,1,3},{0,0,0}}}
+week_2015_w01_control => {return,{{2014,12,29},{0,0,0}}}
+week_zero_invalid => {return,{{2013,12,23},{0,0,0}}}
+week_53_invalid_for_2014 => {return,{{2014,12,29},{0,0,0}}}
+week_day_8_invalid => {return,{{2014,1,6},{0,0,0}}}
+flat_list => {return,{{2012,2,16},{0,0,0}}}
+binary => {return,{{2012,2,16},{0,0,0}}}
+nested_iodata_parse => {exception,error,badarg}
+nested_iodata_exact => {exception,error,badarg}
+nested_iodata_expanded => {exception,error,badarg}
+format_epoch_control => {return,<<"1970-01-01T00:00:00Z">>}
+format_fraction_control => {return,<<"2012-02-03T04:05:06.500000Z">>}
+parse_regular_invalid_calendar_control => {exception,error,if_clause}
+parse_expanded_invalid_nonleap_feb29 => {return,{{-1,2,29},{0,0,0.0}}}
+parse_expanded_year_zero_valid_leap_control => {return,{{0,2,29},{0,0,0.0}}}
+parse_expanded_year_zero_invalid_feb30 => {return,{{0,2,30},{0,0,0.0}}}
+parse_expanded_invalid_feb30 => {return,{{-1,2,30},{0,0,0.0}}}
+parse_expanded_invalid_month => {return,{{-1,13,1},{0,0,0.0}}}
+parse_expanded_invalid_day_zero => {return,{{-1,1,0},{0,0,0.0}}}
+parse_expanded_valid_negative_leap_control => {return,{{-4,2,29},{0,0,0.0}}}
+format_float_below_roundover => {return,<<"2012-12-30T23:59:59.999999Z">>}
+format_float_roundover_nonleap_day => {return,
+                                       <<"2012-12-30T23:59:60.000000Z">>}
+parse_format_roundover_nonleap_day => {return,{{2012,12,31},{0,0,0}}}
+format_expanded_float_roundover_nonleap_day => {return,
+                                                <<"-0001-12-30T23:59:60.000000Z">>}
+```
+
+### git diff --exit-code bcfd94a --
+
+Exit: 0; elapsed 0.02s
+
+```text
+```
+
+### CDC independent discriminating fractional-unit checks
+
+Fresh CDC erlc beam from unchanged bcfd94a at `/private/tmp/iso8601-p02-cdc`; command `erl -noshell -pa /private/tmp/iso8601-p02-cdc -eval` with exact expression below; exit0. Expected seconds independently derived from 0.0001×3600=0.36, 0.0002×3600=0.72, 0.001×60=0.06; these are not implementation-vs-itself oracles.
+
+```erlang
+Cases=[{"fractional-hour .0001",fun()->iso8601:parse_exact("2012-02-03T04.0001")end,{{2012,2,3},{4,0,0.36}}},{"fractional-hour .0002",fun()->iso8601:parse_exact("2012-02-03T04.0002")end,{{2012,2,3},{4,0,0.72}}},{"fractional-minute .001",fun()->iso8601:parse_exact("2012-02-03T04:05.001")end,{{2012,2,3},{4,5,0.06}}},{"whole-second fractional-hour control",fun()->iso8601:parse_exact("2012-02-03T04.25")end,{{2012,2,3},{4,15,0.0}}},{"fractional-second control",fun()->iso8601:parse_exact("2012-02-03T04:05:00.36")end,{{2012,2,3},{4,5,0.36}}}],lists:foreach(fun({N,F,E})->A=F(),io:format("~s expected=~p actual=~p match=~p~n",[N,E,A,E=:=A])end,Cases), io:format("independent week oracle=~p invalid year0 date=~p microsecond-rounding=~p~n",[calendar:iso_week_number({2014,12,29}),calendar:valid_date({0,2,30}),round(59.9999999*1000000)]),halt().
+```
+
+```text
+fractional-hour .0001 expected={{2012,2,3},{4,0,0.36}} actual={{2012,2,3},
+                                                               {4,0,0.0}} match=false
+fractional-hour .0002 expected={{2012,2,3},{4,0,0.72}} actual={{2012,2,3},
+                                                               {4,0,1.0}} match=false
+fractional-minute .001 expected={{2012,2,3},{4,5,0.06}} actual={{2012,2,3},
+                                                                {4,5,0.0}} match=false
+whole-second fractional-hour control expected={{2012,2,3},{4,15,0.0}} actual={{2012,
+                                                                               2,
+                                                                               3},
+                                                                              {4,
+                                                                               15,
+                                                                               0.0}} match=true
+fractional-second control expected={{2012,2,3},{4,5,0.36}} actual={{2012,2,3},
+                                                                   {4,5,0.36}} match=true
+independent week oracle={2015,1} invalid year0 date=false microsecond-rounding=60000000
+```
