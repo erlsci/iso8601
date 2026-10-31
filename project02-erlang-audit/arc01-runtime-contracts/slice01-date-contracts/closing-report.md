@@ -83,3 +83,27 @@ The exact intended planning commit contains eight paths only:
 - `project02-erlang-audit/arc01-runtime-contracts/slice01-date-contracts/ledger.md`
 
 No prompt, plan, CDC verification, source, test, build configuration, or generated beam is included. The initial four-artifact packet and this iteration update remain connected by the candidate history. **CC verdict:** S01-01 through S01-05 are proposed-done and attested, not independently accepted. S01-06 stays open for CDC's final review and retrospective; the slice returns for review and is not advanced.
+
+## Refinement02 close update — 2026-10-31
+
+This narrow wording update executes `cc-prompt-iteration02.md`, issued at planning review commit `c0249ecb58e088eb3463f1ccb6f40c2959066379` after CDC's review of candidate `6054bad49bab9d020f02c954d8d877fa5e186330`. It changes only two factual characterizations in the current report. The prior six-row walk and refinement01 evidence remain preserved above; the table below carries forward all row dispositions without reopening them.
+
+| ID | Refinement02 disposition | Evidence and current scope | Remaining reviewer work |
+|---|---|---|---|
+| S01-01 | done — CC-proposed, attested | Original full-read manifest inventory and source-cited contract readback remain in `artifacts/runlog.md`; current boundary is recorded in the refinement02 addendum | CDC final check. |
+| S01-02 | done — CC-proposed, attested | Five findings and scale coverage remain unchanged; report now correctly records the first-party `scripts/check_coverage.escript` as mapped to Arc02 and unaudited in this slice | CDC final scope review. |
+| S01-03 | done — CC-proposed, attested | Finding content/count, scales, probes and controls are unchanged; DATE002 now distinguishes negative-year documentation from the source/history `Y < 1` offset condition | CDC final wording/source check. |
+| S01-04 | done — CC-proposed, attested | Original CC and independent CDC OTP28 gate receipts remain pinned; no native gate rerun was warranted for wording-only corrections | Existing plugin-fetch and OTP-matrix limits remain. |
+| S01-05 | done — CC-proposed, attested | Source remains unchanged at `bcfd94a`; this refinement's intended commit contains only report, close report, runlog, and ledger | CDC verifies exact diff and source boundary. |
+| S01-06 | open — CC close/bubble-up attested; reviewer gate pending | This dated update and preserved row walk; the slice remains proposed, not accepted or advanced | CDC final independent verification and retrospective. |
+
+The executable-scale statement now separates the passive synchronous date library from the repository's tracked, first-party Erlang coverage executable. The project map explicitly assigns the script's complete executable/coverage-contract audit to Arc02; no script analysis is claimed in Slice01. The DATE002 statement now says that README/EDoc describe negative-year restrictions, with README defining year zero as 1 BCE but not separately specifying its offset behavior. Source `apply_offset/4` handles every year `Y < 1`, and archived design-history evidence supports intentional rejection of nonzero offsets for `year <= 0`; this remains excluded from findings. ERL-DATE-002 still concerns invalid calendar month/day tuples accepted on the zero-rounded-offset branch. The five-finding report, probes, controls, severity, and scales are unchanged.
+
+No native gates or public probes were rerun. Initial and iteration01 evidence, their pins, and all exact failure receipts remain intact. `git diff --check` and source no-diff checks are the only new validation. The current exact planning commit is limited to:
+
+- `project02-erlang-audit/arc01-runtime-contracts/slice01-date-contracts/artifacts/2026.10.31-audit-results-erlang-date.md`
+- `project02-erlang-audit/arc01-runtime-contracts/slice01-date-contracts/artifacts/runlog.md`
+- `project02-erlang-audit/arc01-runtime-contracts/slice01-date-contracts/closing-report.md`
+- `project02-erlang-audit/arc01-runtime-contracts/slice01-date-contracts/ledger.md`
+
+**CC verdict:** S01-01 through S01-05 remain CC-proposed-done/attested. S01-06 stays open for CDC's final review and retrospective. This wording update does not constitute slice acceptance.
