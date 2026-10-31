@@ -7,3 +7,7 @@
 ## Next
 
 Project02 is the next project index slot. No Project02 plan is created in this historical migration.
+
+## Migration checks and limits
+
+For commit `f82f7e9`, all 12 archived originals were compared with their source SHA-256 and nanosecond modification times; authored relative links resolved; the six-slice layout and orphan history were checked; all project, arc, and slice carryover rows remained open; and 14 task-branch/mainline patch pairs were confirmed by stable patch ID. `git show --check` passed. The source worktree remains at `bcfd94a` with no source edits from this migration. This planning-only commit did not rerun Erlang checks or CI, and the archived behavior/acceptance claims still need independent evidence. The bounded AGENTS cleanup self-check is separate from historical acceptance.
