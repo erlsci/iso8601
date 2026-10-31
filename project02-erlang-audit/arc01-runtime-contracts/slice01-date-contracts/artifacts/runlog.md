@@ -680,3 +680,49 @@ fractional-second control expected={{2012,2,3},{4,5,0.36}} actual={{2012,2,3},
                                                                    {4,5,0.36}} match=true
 independent week oracle={2015,1} invalid year0 date=false microsecond-rounding=60000000
 ```
+
+## Refinement01 execution — 2026-10-31
+
+Current assignment: `cc-prompt-iteration01.md`, issued at planning revision `3bebf0ac0d562c7fe4a06e18cf2e3142047cfdf2`; predecessor assignment `cc-prompt.md`; initial candidate `3dc34cf1c815c2df579505e3570590303cfe3e8c`. Current source remains `/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project02-arc01-audit`, `codex/project02-arc01-audit`, `bcfd94a08fa7a427eb1469679897e4d92d808edf`. Planning branch was clean at the assignment revision before this iteration. CDC returned writes to CC for only the Slice01 artifact directory, closing report, and evidence/status fields in `ledger.md`; no source, prompt, slice plan, parent plan, or reviewer-record changes are in scope.
+
+The current prompt, slice plan, ledger, CDC verification, current report, original probe runner/output, closing report, and this run log were checked against the iteration handoff. The original required-reading manifest is the section embedded in `cc-prompt.md`; no separate manifest file exists or is required. The original prompt's full reads and all 17 Erlang guide chapters remain applicable and were recorded above; chapter 11 was loaded first. For this correction, the source export list and changed date-helper path were refreshed at `src/iso8601.erl:3–19`, `121–147`, `299–320`, `429–441`, and `491–505`; README's exact-precision statement at `README.md:51–53` and the fractional-hour/minute tests at `test/iso8601_tests.erl:54–90`, `429–436` were also refreshed. The full guide02 finding shape was reread and applied: every finding now has an explicit **Scale**, and the report has a scale-coverage section.
+
+### Refinement01 source-cited contract readback addendum
+
+The module exports only the functions listed at `src/iso8601.erl:3–19`; `make_date/4` at 456–462 has a private spec and is not exported. Fractional-hour and fractional-minute syntax is dispatched by `hour_decimal/2` and `minute_decimal/2` (`299–320`); `datetime/1` calls `add_decimal/2` before applying any explicit UTC offset (`429–441`), and `add_decimal/2` passes fractional values into `apply_offset/4` (`429–432`). `apply_offset/4` converts the offset to seconds and rounds it to an integer before returning (`491–505`). `parse_exact/1` and `parse_expanded/1` then add only the distinct `second_decimal` value (`129–147`). The README promises microsecond precision for `parse_exact/1` fractional seconds (`51–53`), while existing fractional-hour/minute tests exercise only values that become whole seconds (`test/iso8601_tests.erl:54–90`, `429–436`). This supports a scoped exact-API finding; it does not alter `parse/1`'s integer-second truncation contract or establish an ISO-version claim.
+
+### R1 — public fractional-unit probes and contract disposition
+
+The fresh source-checkout beam used by the original probe run remains tied to unchanged source `bcfd94a`; CDC also retained its independent fresh `erlc` beam/output above. The focused CC runner is `artifacts/fractional-unit-probes-iteration01.escript`; command `escript artifacts/fractional-unit-probes-iteration01.escript > artifacts/fractional-unit-probes-iteration01.out` exited 0. Runner SHA-256 `2ac497c4b06d41488d07f86e490e64021ae5460e6f1a27efeb4c2b3843d5aed4`; output SHA-256 `e888444d0ac2083978c8aa92cf5ee95beed2cf0e0b9a3aa6f8f6e2d24ebfb9f8`. A failed initial escript compile was corrected before the successful run; exact first failure was:
+
+```text
+.../fractional-unit-probes-iteration01.escript:32:5: syntax error before: ']'
+escript: There were compilation errors.
+exit=1
+```
+
+The output file preserves the complete ten-case transcript. Independent expectations use fraction×3600 or fraction×60. The runner states absolute tolerance `1e-12`; expected `0.0001×3600` is represented by Erlang as `0.36000000000000004`. Three fractional-unit subsecond cases fail that tolerance; comma hour/minute, basic-binary hour and expanded-year hour siblings reproduce the mismatch. The whole-second fractional-hour control and explicit fractional-second dot/comma controls pass. The mechanism is concrete: `datetime/1` routes fractional hours/minutes through `add_decimal/2` to `apply_offset/4`, which rounds to whole seconds before `parse_exact/1` and `parse_expanded/1` add the distinct `second_decimal` value. Existing EUnit cases at 54–90 and 429–436 establish support for fractional hour/minute forms but cover only integral-second conversions. README's microsecond-preservation claim for `parse_exact/1` supports reporting this as ERL-DATE-005, Medium, with medium-high confidence; because EDoc/readme do not explicitly discuss subsecond fractional-hour/minute inputs, the report states that limit and does not extend the finding to `parse/1`'s integer-second contract. No ISO conformance claim was needed.
+
+Exact CC runner observations (full Erlang terms and tolerance are in the linked output artifact):
+
+```text
+hour_dot_0001: expected second 0.36000000000000004; actual 0.0; false
+hour_dot_0002: expected second 0.7200000000000001; actual 1.0; false
+minute_dot_001: expected second 0.06; actual 0.0; false
+hour_comma: expected second 0.36000000000000004; actual 0.0; false
+basic_binary_hour_comma: expected second 0.36000000000000004; actual 0.0; false
+minute_comma: expected second 0.06; actual 0.0; false
+expanded_hour_fraction: expected second 0.36000000000000004; actual 0.0; false
+hour_whole_second_control: expected {4,15,0.0}; actual {4,15,0.0}; true
+explicit_second_control: expected {4,5,0.36}; actual {4,5,0.36}; true
+explicit_second_comma_control: expected {4,5,0.36}; actual {4,5,0.36}; true
+absolute comparison tolerance: 1e-12
+```
+
+### R2/R3 — visibility and scale correction
+
+The module export list at `src/iso8601.erl:3–19` contains no `make_date/4`; the cited spec at 456–462 is private. The earlier report's “exported helper spec” characterization was inaccurate. The current report calls it a private spec and separately identifies the actual exports. A focused report search found no other claim that a private date helper is exported. The erroneous original wording remains available at pinned candidate `3dc34cf1c815c2df579505e3570590303cfe3e8c`; the current report has a dated refinement-history note rather than rewriting that commit.
+
+ERL-DATE-001–005 now each contain a guide02 `Scale` field. The report explicitly walks line/function, file/module, logical unit, package/library/target, application/service/executable, whole-codebase, and workspace/monorepo scales. This codebase is a single library with no service or multi-member workspace; those absences are recorded rather than fabricated findings.
+
+The prior public transcript `date-probes.out`, original runner `date-probes.escript`, parent-native gate output, CDC rerun observations and initial failure receipts remain unchanged. This refinement reran only the affected fractional-unit probes; no native gate was rerun because the prompt directs that unchanged native validation not be repeated, and CDC had independently reproduced those gates. The original missing-`timeout` receipt, cached network-fallback output, and exact formatter/linter plugin failures remain in their preceding raw log sections. `git diff --exit-code bcfd94a --` and `git status --short --branch` in the source checkout still show no tracked source change.
