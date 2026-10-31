@@ -1,17 +1,17 @@
 # Project02 — Erlang audit
 
 - project: `project02-erlang-audit`
-- status: active; Arc01 authorized, Arc02 roadmap only
+- status: active; Arc01 authorized, Arc02/Arc03 roadmap only
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
 - blocks: any claim of a complete current audit or a later hardening plan
 - related: `project01-v1.4-maintenance`; iso8601 v1.4.0
-- version: 1.1 — 2026-10-31
+- version: 1.2 — 2026-10-31
 
 ## Outcome and boundaries
 
-Deliver an evidence-based diagnosis of all first-party Erlang and its public, test, build and compatibility contracts. Findings have stable IDs, severity, precise source locations, expected/observed public behavior, concrete fix directions and independent reproduction. Final project delivery includes an Erlang report, complete audit index, historical-claim reconciliation, and evidence-backed modernization synthesis. No production, test or build-configuration repair belongs to this project. This is an audit, not an implementation or release certification.
+Deliver an evidence-based diagnosis of all first-party Erlang and its public, test, build and compatibility contracts. Findings have stable IDs, severity, precise source locations, expected/observed public behavior, concrete fix directions and independent reproduction. Final project delivery includes an Erlang report, complete audit index, historical-claim reconciliation, and evidence-backed modernization synthesis. Arc01/02 remain diagnosis-only. A narrow later implementation exception for OTP28/29 CI additions and compatibility fixes necessary for them was directly requested by the Operator on2026-10-31; Arc03 owns it. Other runtime remedies still require a later authorized hardening decision. This project does not certify a release.
 
-The Operator authorized historical migration first, the standard orphan planning layout, then a new indexed project and Autonomous Mode for **ONE ARC ONLY**. Arc01 stops review-ready for human review and merge discussion. Arc02 cannot start until separately authorized. A diagnosis-only arc may have no source diff; its useful delivery is committed planning evidence. Source fixes need a later authorized hardening plan. No push, PR, merge, publication, release, issue creation or external messages are authorized.
+The Operator authorized historical migration first, the standard orphan planning layout, then a new indexed project and Autonomous Mode for **ONE ARC ONLY**. Arc01 stops review-ready for human review and merge discussion. Arc02/03 cannot start before the Arc01 checkpoint and subsequent execution decision. A diagnosis-only arc may have no source diff; its useful delivery is committed planning evidence. Source fixes outside the narrow later OTP28/29 compatibility exception need a later authorized hardening plan. No push, PR, merge, publication, release, issue creation or external messages are authorized.
 
 ## Audit architecture and complete map
 
@@ -35,6 +35,13 @@ There are 16 tracked entries including the symlink. Erlang is audited including 
 
 1. **Arc01 — runtime contracts:** independently checked diagnosis of date parsing/formatting/expanded representations and arithmetic/duration/interval composition. First usable increment: public-API date-contract findings and reproducible probes. Delivery is the owning slices' artifacts and an arc close packet on `planning`.
 2. **Arc02 — validation and audit synthesis:** full test/escript/tooling/OTP/package-contract and public-spec reconciliation audit; reconcile historical findings against actual source/authoritative OTP documentation; assemble final one-language report, index and modernization synthesis with compatibility classifications. Consumes accepted Arc01 findings at their pins; roadmap only, no detailed arc/slice directories yet.
+3. **Arc03 — OTP28/29 CI compatibility:** add OTP28 and29 to the CI support contract and make only compatibility fixes necessary for those additions. Preserve existing OTP20–27 support and older-floor discipline unless a reproduced blocker requires an Operator decision; do not drop versions by convenience. Validate actual selected toolchain pins/matrix and record failures. If necessary compatibility fixes change the source pin, reproduce affected audit contracts/findings and reconcile final report applicability; preserve original bcfd94a/date receipts without presenting them as acceptance of changed source. Roadmap only; no detailed arc/slice directories, CI/source edits or execution before current Arc01 checkpoint.
+
+## Dated scope amendment — 2026-10-31
+
+Direct Operator steering: “we're going to need to bump CI to support OTP28 and29 (we might need to provide fixes for those additions, too ...)”. This authorizes planning the narrow Arc03 implementation exception; the current one-arc execution endpoint remains intact. Current `.github/workflows/ci.yml` still configures20–27; neither28 nor29 has been added or validated as a project matrix job. Runtime findings unrelated to the additions remain diagnosis-only.
+
+Parent read primary documentation on2026-10-31: official [OTP29 downloads](https://www.erlang.org/downloads/29) points to OTP-29.1.2 and official `erlang:29` Docker; [OTP28 downloads](https://www.erlang.org/downloads/28) points to OTP-28.5.0.8 and `erlang:28`. [setup-beam README](https://github.com/erlef/setup-beam/blob/main/README.md) lists Ubuntu22.04 with OTP24.2–29. [rebar3 compatibility table](https://github.com/erlang/rebar3) lists3.28.0 forOTP27–29 and3.25.1 forOTP26–28. These support candidate future substrates, not tested installs/pins/matrix passes. In particular, review the current >=26→3.25 selection before adding29. No binary was installed by this documentation check.
 
 ## Workflow, models and ownership
 
@@ -58,10 +65,12 @@ Arc02 owns public-type/tooling reconciliation, including `parse_exact/1` src129 
 
 ## Definition of done
 
-See sibling `ledger.md`. Project completion requires both arcs, complete mapped scope, independent evidence and explicit Operator acceptance. Arc01 findings are not a claim that the whole project or prior release is accepted.
+See sibling `ledger.md`. Project completion requires all three arcs, complete mapped scope, independent evidence and explicit Operator acceptance. Arc01 findings are not a claim that the whole project or prior release is accepted.
 
 ## Version history
 
 - v1.0 — 2026-10-31: CDC opened two-arc diagnosis roadmap after byte-preserved historical migration; only Arc01 execution authorized.
 
 - v1.1 — 2026-10-31: Arc01/Slice01 review explicitly identified the known parse_exact return-spec obligation for already-roadmapped Arc02; no new arc or source scope added.
+
+- v1.2 — 2026-10-31: direct Operator request added roadmap Arc03 for OTP28/29 CI and only necessary compatibility fixes, preserving existing support and the current Arc01 stop gate. Parent primary-document provenance retained above; no current configuration change.

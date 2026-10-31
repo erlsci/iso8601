@@ -65,3 +65,51 @@ Revalidated same source HEAD/hash, OTP28/rebar3 versions and unchanged tracked b
 - `git -C .worktrees/project02-arc01-audit diff --exit-code bcfd94a --` exited0; source checkout status porcelain was empty; source SHA-256 still `b3dd4c61be8b47ec0cd91439f1d8deeee1ef5e5e38d075be3358a893f9ad3350`. No tracked source, test, config, build, or package file changed.
 - `git -C .worktrees/planning diff --check -- project02-erlang-audit/arc01-runtime-contracts/slice02-calendar-interval-contracts` exited0. Planning mutations are only Slice02 `artifacts/**`, `closing-report.md`, and evidence/status cells in `ledger.md`. No plan/prompt/Slice01/reviewer/history file is touched.
 - CC's close walks all seven rows: S02-01 through S02-06 are `attested`, not CDC-reproduced/accepted; S02-07 remains open for CDC verification/retrospective and parent/Operator gates. No Arc02 work was started.
+
+## CDC independent initial-candidate review — 2026-10-31
+
+Reviewer Sol High, candidatecb26ad8, sourcebcfd94a. Fresh `erlc -o /private/tmp/iso8601-p02-cdc .worktrees/project02-arc01-audit/src/iso8601.erl <Slice02>/artifacts/calendar_interval_probes.erl` exit0; `erl -noshell -pa /private/tmp/iso8601-p02-cdc -s calendar_interval_probes run -s init stop` exit0. `cmp` against original transcript exit0: all38 labeled cases byte-identical, including four bounded workers. Original exact stdout remains `calendar-interval-probes.out` atcb26ad8; this rerun is CDC-owned, not CC.
+
+Fresh EPP extraction (same documented selection) versus all index name/arity@line tokens:74 unique=74 actual, missing[], extra[];15 exports independently counted. Initial reviewer token regex omitted digits in names (73); corrected regex includes digits and recovers `date_at_w01_1/1`, yielding74. No semantic source discrepancy. Source diff baseline/status and planning diff-check exit0. Retained Slice01 native inputs/evidence unchanged; no rerun.
+
+CDC extra witness source and commands (all exit0) below: `erlc -o /private/tmp/iso8601-p02-cdc /private/tmp/iso8601-p02-cdc/review_extra.erl`; `erl -noshell -pa /private/tmp/iso8601-p02-cdc -s review_extra run -s init stop`. These supplement review and are not CC evidence.
+
+```erlang
+-module(review_extra).
+-export([run/0]).
+run() ->
+    try iso8601:apply_duration({{2017,1,1},{0,0,0.5}},"P1D") catch C:R:S -> io:format("fraction stack ~p:~p ~p~n",[C,R,S]) end,
+    D=iso8601:parse_exact("2017-01-01"),
+    io:format("parse_exact ordinary=~p~n",[D]),
+    try iso8601:apply_duration(D,"P1D") of X -> io:format("composition ~p~n",[X]) catch C1:R1 -> io:format("composition ~p:~p~n",[C1,R1]) end,
+    lists:foreach(fun({A,M})->io:format("months ~p ~p => ~p~n",[A,M,iso8601:add_months(A,M)]) end,[{{{0,1,1},{0,0,0}},-1},{{{1,1,1},{0,0,0}},-13},{{{1,1,1},{0,0,0}},-12}]),
+    io:format("formatted=~p parsed=~p~n",[iso8601:format_expanded({{2007,2,15},{0,0,0}}),iso8601:parse("+2007-02-15")]).
+```
+
+```text
+fraction stack error:function_clause [{calendar,time_to_seconds,
+                                       [{0,0,0.5}],
+                                       [{file,"calendar.erl"},{line,817}]},
+                                      {calendar,
+                                       datetime_to_gregorian_seconds,1,
+                                       [{file,"calendar.erl"},{line,259}]},
+                                      {iso8601,apply_offset,4,
+                                       [{file,
+                                         ".worktrees/project02-arc01-audit/src/iso8601.erl"},
+                                        {line,499}]},
+                                      {review_extra,run,0,
+                                       [{file,
+                                         "/private/tmp/iso8601-p02-cdc/review_extra.erl"},
+                                        {line,4}]},
+                                      {init,start_it,1,[]},
+                                      {init,start_em,1,[]},
+                                      {init,do_boot,3,[]}]
+parse_exact ordinary={{2017,1,1},{0,0,0.0}}
+composition error:function_clause
+months {{0,1,1},{0,0,0}} -1 => {{0,12,1},{0,0,0}}
+months {{1,1,1},{0,0,0}} -13 => {{0,12,1},{0,0,0}}
+months {{1,1,1},{0,0,0}} -12 => {{0,1,1},{0,0,0}}
+formatted=<<"+2007-02-15T00:00:00Z">> parsed={{2007,2,15},{0,0,0}}
+```
+
+Installed OTP source independently inspected: calendar.erl249–261,810–828,862–885; seconds conversion leaf requires integer H/M/S. Public application spec is src192–196, not162–164. Source apply_months509–520 truncates at AY=0; floor-wrap witnesses need explicit accounting beside nontermination. See reviewer-owned `cdc-verification.md` for pending R1–R3; no acceptance yet.
