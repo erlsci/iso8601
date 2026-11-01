@@ -1,3 +1,17 @@
+%% @doc Parse and format ISO 8601 dates, times, durations and intervals.
+%%
+%% The ordinary APIs use calendar-style `{Date, Time}' tuples and return
+%% binaries from formatters. Date-like input is byte iodata. The legacy parser
+%% truncates explicit fractional seconds; `parse_exact/1' and the expanded
+%% parser retain floating seconds. Arithmetic preserves an anchor fraction,
+%% clamps month/year results, and observes the library's year-zero boundary.
+%% Expanded dates support selected astronomical-year forms, while interval
+%% parsing supports implemented endpoint and abbreviation forms rather than
+%% every ISO 8601 grammar production.
+%%
+%% ```
+%% {{2012, 2, 3}, {0, 0, 0}} = iso8601:parse("2012-02-03").
+%% '''
 -module(iso8601).
 
 -export([
@@ -31,11 +45,18 @@
 %% This group of types is from calendar.erl; we need to use some of them
 %% for this  lib, but thought it might be nice to provide the rest to users.
 -type year() :: non_neg_integer().
+%% Calendar-style year component; expanded negative years use `expanded_year()'.
 -type month() :: 1..12.
+%% Calendar-style month component.
 -type day() :: 1..31.
+%% Calendar-style day component; validity depends on the selected month/year.
 -type hour() :: 0..23.
+%% Calendar-style hour component.
 -type minute() :: 0..59.
+%% Calendar-style minute component.
 -type second() :: 0..59.
+%% Calendar-style whole-second component. Datetime tuples separately permit
+%% floating-point seconds for fractional precision.
 
 -type datetime() :: {calendar:date(), {hour(), minute(), second() | float()}}.
 -type datetime_plist() :: list({atom(), integer() | string()}).
@@ -43,61 +64,113 @@
 -type parser_accumulator() :: list({atom(), integer() | float() | string() | parser_mode()}).
 -type undefined_or(A) :: undefined | A.
 -type timestamp() :: {MegaSecs :: integer(), Secs :: integer(), MicroSecs :: integer() | float()}.
+%% `calendar:now_to_datetime/1'-style timestamp. Conversion to calendar
+%% datetime drops the timestamp's microsecond component.
 
 -type duration() :: datetime_plist().
+%% Fixed-order duration fields: sign, years, months, days, hours, minutes and
+%% seconds. Values default to zero; sign is `[]', `"+"' or `"-"'.
 -type interval() ::
     {interval, start_end, datetime(), datetime()}
     | {interval, start_duration, datetime(), duration()}
     | {interval, duration_end, duration(), datetime()}
     | {interval, duration, duration()}.
+%% One of four parsed interval shapes: concrete start/end, start/duration,
+%% duration/end, or unanchored duration. Bounds require a concrete anchor.
 
 -type expanded_year() :: integer().
+%% Astronomical year integer, including negative years.
 -type expanded_datetime() ::
     {{expanded_year(), month(), day()}, {hour(), minute(), second() | float()}}.
+%% Expanded calendar datetime; seconds may be floating point to retain a
+%% fractional part.
 
 %%----------------------------------------------------------------------
 %% API
 %%----------------------------------------------------------------------
 
--spec add_time(calendar:datetime(), integer(), integer(), integer()) ->
-    calendar:datetime().
-%% @doc Add some time to the supplied `calendar:datetime()'.
+-spec add_time(datetime() | timestamp(), number(), number(), number()) -> datetime().
+%% @doc Add numeric hours, minutes and seconds to a calendar datetime or
+%% timestamp. The combined shift is rounded to a whole second; the anchor's
+%% fractional second is preserved. Year-zero inputs reject a nonzero rounded
+%% shift, and results before year zero raise `badarg'.
+%%
+%% ```
+%% {{1970, 1, 1}, {1, 0, 0}} = iso8601:add_time({0, 0, 0}, 1, 0, 0).
+%% {{2017, 1, 1}, {0, 0, 1}} =
+%%     iso8601:add_time({{2017, 1, 1}, {0, 0, 0}}, 0, 0, 0.5).
+%% '''
 add_time({_, _, _} = Timestamp, H, M, S) ->
     add_time(calendar:now_to_datetime(Timestamp), H, M, S);
 add_time(Datetime, H, M, S) ->
     apply_offset(Datetime, H, M, S).
 
 -spec add_days(datetime() | timestamp(), integer()) -> datetime().
-%% @doc Add some days to the supplied `datetime()'.
+%% @doc Add an integer number of days to a calendar datetime or timestamp.
+%% Time and fractional seconds are preserved; a result before year zero raises
+%% `badarg'.
+%%
+%% ```
+%% {{2017, 2, 1}, {0, 0, 0}} = iso8601:add_days({{2017, 1, 31}, {0, 0, 0}}, 1).
+%% '''
 add_days({_, _, _} = Timestamp, D) ->
     add_days(calendar:now_to_datetime(Timestamp), D);
 add_days(Datetime, D) ->
     apply_days_offset(Datetime, D).
 
 -spec add_months(datetime() | timestamp(), integer()) -> datetime().
-%% @doc Add some months to the supplied `datetime()'.
+%% @doc Add an integer number of months to a calendar datetime or timestamp.
+%% The day is clamped to the last valid day of the target month, with time and
+%% fractional seconds preserved. Results before year zero raise `badarg'.
+%%
+%% ```
+%% {{2017, 2, 28}, {12, 0, 0.25}} =
+%%     iso8601:add_months({{2017, 1, 31}, {12, 0, 0.25}}, 1).
+%% '''
 add_months({_, _, _} = Timestamp, M) ->
     add_months(calendar:now_to_datetime(Timestamp), M);
 add_months(Datetime, M) ->
     apply_months_offset(Datetime, M).
 
 -spec add_years(datetime() | timestamp(), integer()) -> datetime().
-%% @doc Add some years to the supplied `datetime()'.
+%% @doc Add an integer number of years to a calendar datetime or timestamp.
+%% The day is clamped to the last valid day of the target month; year zero is
+%% a valid result and time/fractional seconds are preserved.
+%%
+%% ```
+%% {{2017, 2, 28}, {12, 0, 0.25}} =
+%%     iso8601:add_years({{2016, 2, 29}, {12, 0, 0.25}}, 1).
+%% '''
 add_years({_, _, _} = Timestamp, Y) ->
     add_years(calendar:now_to_datetime(Timestamp), Y);
 add_years(Datetime, Y) ->
     apply_years_offset(Datetime, Y).
 
--spec subtract_time(calendar:datetime(), integer(), integer(), integer()) ->
-    calendar:datetime().
-%% @doc Subtract some time from the supplied `calendar:datetime()'.
+-spec subtract_time(datetime(), number(), number(), number()) -> datetime().
+%% @doc Subtract numeric hours, minutes and seconds from a calendar datetime.
+%% The combined shift is rounded to a whole second, retaining the anchor's
+%% fractional second. The API does not accept timestamp tuples; a result before
+%% year zero raises `badarg'. At year zero a nonzero rounded shift also raises
+%% `badarg'; components that cancel or round to zero keep the zero-shift result.
+%%
+%% ```
+%% {{2016, 12, 31}, {23, 59, 59.25}} =
+%%     iso8601:subtract_time({{2017, 1, 1}, {0, 0, 0.25}}, 0, 0, 1).
+%% '''
 subtract_time(Datetime, H, M, S) ->
     apply_offset(Datetime, -H, -M, -S).
 
 -spec format(datetime() | timestamp()) -> binary().
-%% @doc Convert a `util:timestamp()' or a calendar-style `{date(), time()}'
-%% tuple to an ISO 8601 formatted string. Note that this function always
-%% returns a string with no offset (i.e., ending in "Z").
+%% @doc Format a calendar datetime or timestamp as a binary labeled UTC with
+%% a trailing `Z'; a local tuple is labeled, not timezone-converted. Timestamp
+%% conversion uses `calendar:now_to_datetime/1' and drops microseconds.
+%% Integer seconds omit decimals; float seconds round to six microsecond
+%% digits and carry into the next second/date when needed. Negative years need
+%% `format_expanded/1'.
+%%
+%% ```
+%% <<"1970-01-01T00:00:00Z">> = iso8601:format({0, 0, 0}).
+%% '''
 format({_, _, _} = Timestamp) ->
     format(calendar:now_to_datetime(Timestamp));
 format({{Y, Mo, D}, {H, Mn, S}}) when is_float(S) ->
@@ -114,7 +187,15 @@ format({{Y, Mo, D}, {H, Mn, S}}) ->
     list_to_binary(IsoStr).
 
 -spec format_expanded(expanded_datetime()) -> binary().
-%% @doc Format an expanded datetime (including negative years) as ISO 8601.
+%% @doc Format an expanded datetime as a binary with an explicit year sign and
+%% at least four year digits, labeled UTC with `Z'. Float seconds are rounded
+%% to six microsecond digits with carry. Negative astronomical years are
+%% supported.
+%%
+%% ```
+%% <<"-0044-03-15T00:00:00Z">> =
+%%     iso8601:format_expanded({{-44, 3, 15}, {0, 0, 0}}).
+%% '''
 format_expanded({{Y, Mo, D}, {H, Mn, S}}) when is_float(S) ->
     {Date, Hour, Minute, WholeSecond, Microsecond} = normalize_float_time({{Y, Mo, D}, {H, Mn, S}}),
     {Year, Month, Day} = Date,
@@ -129,25 +210,55 @@ format_expanded({{Y, Mo, D}, {H, Mn, S}}) ->
     list_to_binary(IsoStr).
 
 -spec parse(iodata()) -> calendar:datetime().
-%% @doc Convert ISO 8601 byte iodata to a `{date(), time()}' tuple.
+%% @doc Parse byte iodata in the implemented calendar, ordinal, week and
+%% reduced-date/time forms, returning a calendar-style datetime. Recognized
+%% offsets normalize to UTC; missing calendar fields default to month/day 1
+%% and time 0. Legacy parsing rounds fractional hours/minutes to whole seconds
+%% but truncates explicit fractional seconds. Date/week fields are validated,
+%% though this is not a complete ISO grammar or strict clock validator.
+%% Invalid byte iodata and specific invalid date/week values raise `badarg'.
+%%
+%% ```
+%% {{2012, 2, 3}, {0, 0, 0}} = iso8601:parse([<<"2012-">>, ["02", <<"-03">>]]).
+%% {{2012, 2, 3}, {4, 5, 6}} = iso8601:parse("2012-02-03T04:05:06.50").
+%% '''
 parse(Input) ->
     Str = iodata_to_list(Input),
     {{Date, {H, M, S}}, Subsecond} = year(Str, [{parser_mode, legacy}], positive_only),
     {Date, {H, M, S + trunc(Subsecond)}}.
 
--spec parse_exact(iodata()) -> calendar:datetime().
-%% @doc Convert ISO 8601 byte iodata to a `{date(), time()}' tuple with
-%% fractional-second precision.
+-spec parse_exact(iodata()) -> datetime().
+%% @doc Parse the same implemented date/time forms as `parse/1', preserving
+%% fractional seconds as floating point rather than truncating explicit
+%% fractions. This is binary floating-point precision, not exact decimal
+%% arithmetic; results normally use float seconds even when the fraction is
+%% zero. Offset-free input and `Z' need no shift, while recognized numeric
+%% offsets normalize to UTC. Explicit positive expanded years are accepted;
+%% negative years are rejected by this positive-year parser.
+%%
+%% ```
+%% {{2012, 2, 3}, {4, 5, 6.5}} = iso8601:parse_exact("2012-02-03T04:05:06.50").
+%% true =
+%%     (abs(element(3, element(2, iso8601:parse_exact("2012-01-01T00.0001"))) - 0.36) <
+%%         1.0e-12).
+%% '''
 parse_exact(Input) ->
     Str = iodata_to_list(Input),
     {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [{parser_mode, exact}], positive_only),
     combine_fraction({Date, {H, M, S}}, SecondsDecimal).
 
 -spec parse_expanded(iodata()) -> expanded_datetime().
-%% @doc Parse ISO 8601 byte iodata with expanded year representation,
-%% including negative (astronomical) years. Preserves fractional seconds.
-%% Negative years are supported in UTC (`Z') or offset-free form; combining
-%% a negative year with a non-zero UTC offset or a week-date raises `badarg'.
+%% @doc Parse implemented calendar, ordinal, week and reduced forms from byte
+%% iodata into an expanded datetime. Negative astronomical years are allowed
+%% for calendar/ordinal and offset-free or UTC forms; negative week dates and
+%% nonzero rounded adjustments at year zero or below raise `badarg'. Recognized
+%% offsets normalize to UTC. Fractional seconds are retained as floating point.
+%% Positive explicitly signed expanded years are also accepted by `parse/1'
+%% and `parse_exact/1'; those positive-year APIs reject negative years.
+%%
+%% ```
+%% {{-1, 1, 1}, {0, 0, 0.0}} = iso8601:parse_expanded("-0001-01-01").
+%% '''
 parse_expanded(Input) ->
     Str = iodata_to_list(Input),
     {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [{parser_mode, exact}], allow_neg),
@@ -166,10 +277,21 @@ gi(DS) ->
         _ -> Int
     end.
 
--spec parse_duration(string()) -> datetime_plist().
-%% @doc Convert an ISO 8601 Durations string to a
+-spec parse_duration(iodata()) -> duration().
+%% @doc Parse a duration from byte iodata, including strings, binaries, nested
+%% byte fragments and valid improper byte-iodata tails. The supported order is
+%% optional sign then Y/M/D and T H/M/S fields. The result is a fixed-order
+%% plist with zero defaults. Fractional seconds are accepted but truncated to
+%% their integer part; fractional hours/minutes and week units are unsupported.
+%% Bare `P' and `PT' are accepted as zero durations. Invalid or non-byte iodata
+%% raises `badarg'.
+%%
+%% ```
+%% [{sign, []}, {years, 0}, {months, 0}, {days, 0}, {hours, 0},
+%%  {minutes, 0}, {seconds, 1}] =
+%%     iso8601:parse_duration([<<"PT">>, ["1.9", <<"S">>]]).
+%% '''
 
-%TODO extended format
 parse_duration(Bin) when is_binary(Bin) ->
     parse_duration(binary_to_list(Bin));
 parse_duration(Str) ->
@@ -200,14 +322,34 @@ parse_duration(Str) ->
             error(badarg)
     end.
 
--spec apply_duration(datetime(), string()) -> datetime().
-%% @doc Return new datetime after apply duration.
+-spec apply_duration(datetime(), iodata()) -> datetime().
+%% @doc Apply byte-iodata duration text to a calendar datetime. A negative
+%% sign subtracts the duration. Years, months, days and then rounded time are
+%% applied in order, preserving the anchor's fractional second. Month/year
+%% stages clamp; a below-floor
+%% intermediate result raises `badarg' even if later fields could move forward.
+%%
+%% ```
+%% {{2017, 2, 28}, {12, 0, 0.25}} =
+%%     iso8601:apply_duration({{2017, 1, 31}, {12, 0, 0.25}}, [$P, $1 | <<"M">>]).
+%% '''
 apply_duration(Datetime, Duration) ->
     apply_duration_plist(Datetime, parse_duration(Duration), forward).
 
 -spec parse_interval(iodata()) -> interval().
-%% @doc Parse ISO 8601 byte iodata containing a time interval into its
-%% structured form.
+%% @doc Parse byte iodata into one of four interval shapes: start/end,
+%% start/duration, duration/end, or duration-only. `/` and `--` separators,
+%% signed durations and implemented abbreviated endpoints are supported.
+%% Complete endpoints are independent; omitted end-zone inheritance completes
+%% the end's raw local date/time before applying the start zone; an explicit
+%% end zone takes precedence. Negative endpoints, repeating intervals and
+%% unsupported/ambiguous fragments are rejected. No general endpoint-order
+%% validation is promised.
+%%
+%% ```
+%% {interval, start_end, {{2007, 2, 15}, {0, 0, 0}},
+%%  {{2007, 3, 14}, {0, 0, 0}}} = iso8601:parse_interval("+2007-02-15/03-14").
+%% '''
 parse_interval(Input) ->
     Str = iodata_to_list(Input),
     case split_interval(Str) of
@@ -221,7 +363,14 @@ parse_interval(Input) ->
     end.
 
 -spec interval_bounds(interval()) -> {datetime(), datetime()}.
-%% @doc Resolve an interval to concrete `{Start, End}' datetimes.
+%% @doc Resolve an anchored interval to concrete `{Start, End}' datetimes.
+%% A duration-only interval has no anchor and raises `badarg'.
+%%
+%% ```
+%% {{{2006, 12, 31}, {22, 30, 0}}, {{2006, 12, 31}, {22, 45, 0}}} =
+%%     iso8601:interval_bounds(iso8601:parse_interval(
+%%         "2007-01-01T00:30:00+02:00/00:45:00")).
+%% '''
 interval_bounds({interval, start_end, S, E}) ->
     {S, E};
 interval_bounds({interval, start_duration, S, D}) ->
@@ -232,7 +381,15 @@ interval_bounds({interval, duration, _}) ->
     error(badarg).
 
 -spec format_interval(interval()) -> binary().
-%% @doc Format an interval as an ISO 8601 binary string.
+%% @doc Format a structured interval as binary text. Concrete endpoints are
+%% formatted from their normalized datetime values; zero duration fields are
+%% omitted and a zero duration can format as bare `P'. Original spelling,
+%% abbreviation and zone text are not retained.
+%%
+%% ```
+%% Parsed = iso8601:parse_interval("2017-01-01/P1D"),
+%% <<"2017-01-01T00:00:00Z/P1D">> = iso8601:format_interval(Parsed).
+%% '''
 format_interval({interval, start_end, S, E}) ->
     iolist_to_binary([format(S), $/, format(E)]);
 format_interval({interval, start_duration, S, D}) ->
@@ -461,6 +618,8 @@ datetime(Plist) ->
     OffsetSign = ?V(offset_sign, Plist, 1),
     OffsetH = -1 * OffsetSign * ?V(offset_hour, Plist, 0),
     OffsetM = -1 * OffsetSign * ?V(offset_minute, Plist, 0),
+    %% Validate/construct the raw date and rounded unit adjustment first. The
+    %% timezone shift is a later parser stage and cannot cancel a rejected unit.
     OffsetDatetime = apply_offset(Datetime, WeekOffsetH + OffsetH, OffsetM, 0),
     {OffsetDatetime, ?V(second_decimal, Plist, 0.0) + UnitFraction}.
 
@@ -491,6 +650,8 @@ make_date(Plist) ->
 %% be zero.
 make_date(Year, Month, undefined, Plist) ->
     Day = ?V(month_day, Plist, 1),
+    %% Check the supplied calendar fields before any timezone shift could move
+    %% them onto an otherwise valid neighboring date.
     valid_proleptic_date(Year, Month, Day) orelse error(badarg),
     Date = {Year, Month, Day},
     {Date, 0};
@@ -561,6 +722,8 @@ apply_offset({{Y, _, _}, _} = Datetime, H, M, S) ->
     case {Y < 1, Rounded} of
         {false, _} ->
             {{Year, Month, Day}, {Hour, Minute, Second}} = Datetime,
+            %% Convert only whole seconds to Gregorian epoch units. Keeping the
+            %% fraction separate avoids losing precision in the large epoch.
             IntegerSecond = trunc(Second),
             Fraction = Second - IntegerSecond,
             Base = calendar:datetime_to_gregorian_seconds(
@@ -586,6 +749,8 @@ apply_months_offset(Datetime, AM) ->
     AY >= 1 orelse error(badarg),
     Year = (AY - 1) div 12,
     Month = ((AY - 1) rem 12) + 1,
+    %% Clamp once the target month is known; applying a reverse shift need not
+    %% recover the original day after this lossy calendar operation.
     find_last_valid_date({{Year, Month, D}, {H, MM, S}}).
 
 -spec apply_days_offset(datetime(), number()) -> datetime().
@@ -602,6 +767,7 @@ apply_years_offset(Datetime, AY) ->
     {{Y, M, D}, {H, MM, S}} = Datetime,
     TargetYear = Y + AY,
     TargetYear >= 0 orelse error(badarg),
+    %% Leap-day changes use the same target-month clamp as month arithmetic.
     find_last_valid_date({{TargetYear, M, D}, {H, MM, S}}).
 
 -spec find_last_valid_date(datetime()) -> datetime().
@@ -646,6 +812,8 @@ normalize_local_seconds(Datetime) ->
     Datetime.
 
 normalize_float_time({{Y, Month, Day}, {Hour, Minute, Second}}) ->
+    %% Keep seconds separate from the large Gregorian epoch count so fractional
+    %% precision is rounded at microsecond scale before carrying calendar fields.
     TotalMicroseconds = round(Second * 1000000),
     WholeSeconds = TotalMicroseconds div 1000000,
     Microsecond = TotalMicroseconds rem 1000000,
@@ -815,6 +983,8 @@ parse_inherited_end(StartStr, EndStr) ->
         end,
     parse_inherited_local_end(StartStr, LocalEnd).
 
+%% Complete the inherited endpoint's raw local date/time before applying the
+%% start zone; normalizing the start first would inherit the wrong calendar day.
 parse_inherited_local_end(StartStr, LocalEnd) ->
     case extract_time_zone(StartStr) of
         none ->
