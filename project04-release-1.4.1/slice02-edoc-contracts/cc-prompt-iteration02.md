@@ -1,0 +1,29 @@
+# CC iteration02 — complete four EDoc contracts
+
+Execute this CURRENT correction, predecessor cc-prompt-iteration01.md/394454e, initialprompt preserved4825673. Actual LunaHigh CC/SolHigh CDC and all Autonomous/external boundaries unchanged. Proposed source bdee2c1ef36fdc4a378ff7b764fc890516f98db9/tree8cc67b6413f2c7e73f92cf6aedbc569a25ffc510; planning proposed packetccf2fa5. This is first executed post-return review correction, existing cap5; initial issued supersedure01 was before implementation. Do not rewrite previous prompts/reports/failed attempts.
+
+Read THIS prompt, current sliceplanv1.2/ledger and cdc-verification.md FULL plus actual four source-comment regions and current generated chunk entries named in EDOC01–04. Retain your already loaded full framework/domain/source/provider contract; no new wholepacket intake. Revalidate source clean/pins/ownership and append actual readback to existingrunlog. First STOP for explicit CDC clearance before edits/build; CDC will resume via followup_task. Do not create another receipt layer or invent loaded extents.
+
+## Exact repair after clearance
+
+Only source edit needed is comments in src/iso8601.erl. NO function body/type/spec/export/test/config/README/dependency/version changes. Preserve all90runtimeforms/all16typedefs/15exports/11typeexports/29specs, including exactly the existing five accepted-in-design spec corrections versus e70. Complete four existing requirements, no new scope:
+
+1. expanded_year trailing type prose (bdee line82): state astronomical numbering year0=1BCE,-1=2BCE. Keep integer definition unchanged.
+2. add_years own EDoc (135–138): state a target before yearzero raises badarg; preserve clamp/time/fraction/validzero contract. Do not promise all malformed tuples share that reason.
+3. parse/1 own EDoc (212–219): explicitly state signed positive expanded years accepted and negative years rejected with badarg; retain byteiodata/defaults/UTC/legacyfraction vs exact distinction/permissivegrammar limit. Elsewhere already states this but the public function's own entry must describe it.
+4. parse_interval EDoc separators (341): paired Markdown backticks currently produce ONE erroneous code span through the apostrophe in end's. Recommended exact replacement: `<code>/</code> and <code>--</code> separators`. Rebuild and inspect actual chunk/HTML to prove separate code elements with contents `/` and `--` and readable surrounding end-inheritance prose; counts15/11 alone do not prove this.
+
+Current badge implementation uses separated paragraphs with named reference image-links. CDC accepts it because actual all5badge alt/src/href outputs satisfy the unchanged goal and preserve maintainable named definitions; do NOT rewrite README solely to match an incidental inline-link sketch. No other source cleanup. Keep literal-match examples and exact{Name,Arity} runner; no newunit solely for unclosedblock needed—parent independently exercised actual collector and CDC will reproduce it during review. One-off same-helper controls are supporting proof, no genericdoctestframework.
+
+## Verification and return
+
+Preserve bdee initialproposal/72artifacts and missing-original-red-raw limit. In existinglog append changes, commands/exits/pins and truthful attempt attribution (the false-comparison flaw was identified during parent+CDC draft review, not independent CC self-discovery). Correct current report's CDC model label to actualGPT-6.1SolHigh; preserve old report section with dated new addendum rather than silently recasting earlier status. Caller/API/inputbehavior unchanged; duration byteiodata support is longstanding, not newlyimplemented.
+
+Run final full8 sequential native commands as original, retain combined iteration02-native.log if convenient (no routine per-command file requirement); actualEUnit434/4×100/100 remain expected unless count legitimatelychanges (no tests change planned). Rebuild BOTH current package/docs after removing ONLY owned generated docs/chunks/oldversionedarchives, inspect actual payload/appsemantic/version/currentmodule/README/config, docmodule+15functiondescriptions/examples+11typeprose including allfour specific corrected nodes. Actual HTML all5badges/logo/6anchors/backlinks/allfragments/unprefixedsourceURL per-page+combinedcounts; same knownroutes, no externalcrawl. Package sixfiles/no testproduct. Fresh absolute finalarchive→NEW private no_build consumer, assert extractedsource/README/config identity→realrebarcompile→appversion/deps/codepath+existing9smoke+11newREADME literalcases; failfastonextractionerror. No stale re-extraction acceptance. Preserve failed/blocked attempts honestly, no fullraw reconstruction.
+
+Existing source/package providers/cache/PLT may be retained and attributed. Final source comments change so wholemodulebytehash changes, but normalized executableAST/type/spec equality to bdee and authorizedbaseline proves runtime preservation; retain prior147 runtime evidence, no freshaudit. Final current docs/package source and native/consumer proofs must be actual, not inherited oldarchives. Parent final10hostedmatrix remains OPEN until publication after CDCprereview; no CCexternalaction.
+
+Commit ONLY src/iso8601.erl in source using explicit --only; commit named child evidence/currentclose/ledger only, leave CDCplans/prompts/review/retro/projectrows offlimits. Actual adjacent Codex/Billo trailer bytes on EVERY commit, inspect storedmessage beforehandoff, preserve failedmessage/oldpin if any. Return clean exactpins/sourcehash/tree/archivehashes/gates/9rowwalk/artifactinventory, proposed-done attested only, thenreturnownership andSTOP. Hosted08/independent09 stayopen. No push/PR/merge/tag/Hex/GitLab/release/planningpublication.
+
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Billo AI <ai-engineering@billo.systems>
