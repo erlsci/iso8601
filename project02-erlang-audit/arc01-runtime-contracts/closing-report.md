@@ -133,3 +133,7 @@ A01-01/02 child acceptance and A01-04 reconciliation are supported by this indep
 ## Subsequent Operator disposition — 2026-10-31
 
 After parent composition at `cfbf539`, the Operator said: “I've looked at the findings — I want us to fix them all :-D” and asked how to start. This supersedes the earlier pending-human-review status: A01-05 is done by attributable human review and a decision to repair all nine findings in separate [Project03](../../project03-runtime-hardening/project-plan.md). There is no audit source patch to merge; no merge, push or release occurred. The original source pin and audit evidence remain unchanged. Project02 Arc02 diagnostic synthesis and Arc03 OTP28/29 CI obligations remain open and unexecuted.
+
+## Subsequent replay denominator correction — 2026-10-31
+
+Project03 replay exposed an inherited total-count error. Parent inspected the immutable initial runner and counted its transcript records: **38 ordinary +4 bounded =42 initial calendar observations**, not 38 total; the refined transcript has **58 ordinary +2 stack +4 bounded =64**. Alongside 31 date observations and 10 fractional comparisons, all four runners select 147 observations. Earlier total-count wording is superseded by this correction; original scripts, outputs, reports and issued prompts remain byte-preserved. The parent's `cfbf539` full-run byte comparison already executed all 42 initial observations, so execution coverage/findings are unchanged. See Project02 plan v1.5 for the changed-source handoff.

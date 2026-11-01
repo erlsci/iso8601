@@ -5,7 +5,7 @@
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
 - blocks: any claim of a complete current audit; does not block the separately authorized Project03 repairs of accepted Arc01 findings
 - related: `project01-v1.4-maintenance`; `project03-runtime-hardening`; iso8601 v1.4.0
-- version: 1.4 — 2026-10-31
+- version: 1.5 — 2026-10-31
 
 ## Outcome and boundaries
 
@@ -73,6 +73,12 @@ After the independent parent composition at `cfbf539`, the Operator stated: “I
 
 [Project03 — runtime hardening](../project03-runtime-hardening/project-plan.md) consumes the two accepted Arc01 reports at source `bcfd94a`. It starts with the two High interval corruption findings, followed by arithmetic/precision and parser contracts, using the existing Sol High CDC / Luna High CC arrangement and stopping after each repair arc for human review. This is a bounded handoff from accepted runtime findings, not a claim that the entire diagnostic audit is complete. Arc02's remaining test/tooling/public-spec/historical-claim audit and Arc03's requested OTP28/29 CI work stay open here; neither has begun. Any changed-source audit applicability must distinguish the original `bcfd94a` observations from later regression evidence.
 
+## Replay denominator correction — 2026-10-31
+
+During Project03 remediation, CC and CDC found that the original calendar runner was undercounted in earlier audit summaries. Parent independently inspected the preserved runner and transcript: `calendar_interval_probes.erl` executes **38 ordinary observations plus four bounded calls, 42 total**, and `calendar-interval-probes.out` contains 42 ` => ` records. The refined runner/transcript has **58 ordinary plus two stack observations plus four bounded calls, 64 total**. Earlier “38 initial observations” wording excludes the bounded calls and is superseded wherever it described the total. The other replay populations remain 31 date observations and 10 fractional comparisons, giving 147 observations across four runners.
+
+The original scripts, transcripts, reports and issued prompts remain unchanged. Parent's previous byte-identical replay at `cfbf539` executed each complete runner, so it included all 42 initial calendar observations; this correction changes count metadata, not the findings, timeout cleanup, source population or prior execution coverage. Current Project03 evidence must use the corrected denominator, distinguish its changed source pin, and preserve prior failed and accepted observations.
+
 ## Definition of done
 
 See sibling `ledger.md`. Project completion requires all three arcs, complete mapped scope, independent evidence and explicit Operator acceptance. Arc01 findings are not a claim that the whole project or prior release is accepted.
@@ -88,3 +94,5 @@ See sibling `ledger.md`. Project completion requires all three arcs, complete ma
 - v1.3 — 2026-10-31: Arc01/Slice02 close surfaced the explicit reduced-precision-zone contract obligation, retained zero-duration intent disposition and runtime delivery status. No new execution or repair scope; parent/human gates stay open.
 
 - v1.4 — 2026-10-31: Operator reviewed Arc01 findings after parent composition and explicitly authorized all nine repairs; handoff to separate Project03 supersedes the former pending-review/repair-authorization status. Remaining diagnostic and OTP28/29 CI obligations remain open, with no automatic next-audit-arc execution.
+
+- v1.5 — 2026-10-31: Project03 replay surfaced an inherited denominator error; parent confirmed 42 initial calendar observations (38 ordinary +4 bounded), retained 64 refined observations, and documented full-run applicability without altering original reports/probes.
