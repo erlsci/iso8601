@@ -1,0 +1,37 @@
+# Slice02 CC closing report — proposed-done
+
+Date: 2026-11-01 UTC. Workflow: Two-Contributor; implementer CC GPT-6 Luna High; assigned independent reviewer CDC GPT-6 Sol High. Assignment: `cc-prompt-iteration01.md` at planning source `394454e7302a84909ecdeb47736fa45746f0d22c`; explicit CDC clearance was received at 2026-11-01 05:27:15 UTC. This is the implementer's proposed-done report, not CDC verification, slice acceptance, or Operator acceptance.
+
+## Source and planning state
+
+Source branch `codex/project04-release-1.4.1` is at `bdee2c1ef36fdc4a378ff7b764fc890516f98db9`, tree `8cc67b6413f2c7e73f92cf6aedbc569a25ffc510`; the source worktree is clean. The source commit changes only `README.md`, `src/iso8601.erl`, and new `test/iso8601_doc_tests.erl`; its message contains the required adjacent Codex and Billo AI co-author trailers. No push or external mutation occurred. The final archive hashes, extracted payload identity, fresh consumer paths, and package semantics are recorded in `artifacts/final-source-package-identity.log`.
+
+The planning close packet is limited to this child slice's `closing-report.md`, `ledger.md`, and `artifacts/`. It leaves project/arc plans, assignment prompts, CDC review/retrospective, and parent project rows unchanged. The source delta contains the assigned five public spec corrections only; normalized EPP comparison reports 90 function forms, 15 exports, 11 exported types, 16 type definitions, and 29 specs preserved, with only those five specs changed. No runtime function body changed.
+
+## Row-by-row disposition
+
+Rows S02-01 through S02-07 are **CC-proposed done, attested**, and remain `open` in the ledger until CDC independently reproduces them and records the required disposition. S02-08 and S02-09 remain open. This accounts for all nine opening rows.
+
+| Row | CC disposition and evidence | Remaining owner/action |
+|---|---|---|
+| S02-01 | Proposed done, attested. Intake/readback and explicit clearance are recorded in `artifacts/runlog.md`; the current assignment is `cc-prompt-iteration01.md`. | CDC verifies clearance/readback record. |
+| S02-02 | Proposed done, attested. Commit `bdee2c1...`; `artifacts/post-correction-source-preservation.log` verifies 90 runtime forms and the exact export/type/spec population. | CDC reruns/inspects EPP comparison and the three-path diff/trailers. |
+| S02-03 | Proposed done, attested. `artifacts/post-correction-docs-v1.log` reports module overview 1/1, public function prose/examples 15/15, exported type prose 11/11. Full prose remains subject to CDC's semantic reading. | CDC reviews actual source comments and generated entries. |
+| S02-04 | Proposed done, attested. `artifacts/post-correction-eunit.log` reports 434 passed including the EDoc runner and its wrong-literal, malformed-block, and invalid-duration-iodata controls. `artifacts/attempt-receipts.md` records the runner-first red and states that its full original raw output was truncated/unavailable. | CDC independently reproduces baseline absence if required and final same-runner controls. |
+| S02-05 | Proposed done, attested. `artifacts/fresh-final-readme-examples.log` passes 11 deterministic README examples; `artifacts/post-correction-html-audit.log` checks all five badge image/link/alt pairs, logo, anchors/backlinks, local fragments and source-route versions. README invokes all 15 public API names. | CDC reviews teaching and reproduces rendered-HTML route inventory. |
+| S02-06 | Proposed done, attested. Eight final-source local logs: compile, xref, Dialyzer, EUnit, PropEr, cover, fmt, lint. EUnit=434; PropEr=4 x 100; runtime coverage=100%. Toolchain=OTP28/ERTS16.1.1/rebar3 3.27.0. | CDC reruns all required local gates; this does not claim hosted OTP coverage. |
+| S02-07 | Proposed done, attested. `artifacts/post-correction-hex-build.log`, `artifacts/post-correction-package-inventory.log`, final docs audit, final HTML audit, and `artifacts/fresh-final-consumer-compile.log`, `fresh-final-consumer-smoke.log`, and `fresh-final-readme-examples.log`. Both archives were rebuilt; the package reports 1.4.1/MIT/no requirements and six payload files; a new consumer from the exact archive compiled and passed the 9-control fixture plus 11 README examples. | CDC independently extracts/reviews archives and reproduces the new consumer. |
+| S02-08 | Open; not done/deferred. No claim of actual hosted PR80 matrix execution. | Parent owns PR80/hosted workflow; re-enter after final-tree PR and actual ten-job results. OTP20 remains static-only. |
+| S02-09 | Open; not done/deferred. This is CC's row walk, not independent CDC review or retrospective. | CDC independently verifies, completes the required retrospective/bubble-up, and closes the row; parent/human gate remains distinct. |
+
+The eight local gates passed on this committed source content. `artifacts/runlog.md` preserves earlier red/failure/retry history, including incomplete baseline raw output, EDoc audit retries, failed formatting attempts/repairs, the first stale-consumer refresh, the failed HTML page-count attempt, and cleanup of the owned `erl_crash.dump`. The final package-derived HTML link count is measured by page: API reference 32 plus README 1 equals 33 total source links, all unprefixed at 1.4.1. No full external-link crawler or full visual review is claimed.
+
+## Artifact inventory
+
+All 72 durable supporting files produced or retained for this slice are inside `artifacts/`; `artifacts/artifact-inventory.txt` records their complete filename inventory. They include the source-preservation, EDoc and README audit scripts; intake/attempt receipts; original and final native-gate logs; formatter repair/failure logs; docs_v1 dump and audits; rendered-HTML audit; package metadata/inventory and SHA identity; fresh-consumer paths, compile and smoke logs; and the execution runlog. Generated archives and extracted final consumer/docs live in source `_build` or task-owned `/private/tmp`; they are reproducible from the committed source and are not additional source paths. The generated crash dump was removed after recording its cause. Existing plugin/cache/PLT content was retained.
+
+## Bubble-up to Project04 arc
+
+This slice delivers its assigned Project04 documentation-contract capability: the current public API and type contracts are described in EDoc and README; source examples run in ordinary EUnit; and a real consumer compiled from the locally built 1.4.1 package. Runtime behavior remains unchanged. No newly discovered scope or sequencing change requires an arc-plan amendment; actual hosted verification remains the already-planned parent-owned gate. The slice stops at a local commit and review-ready evidence. Parent delivery, hosted CI, PR changes, release actions and publication remain outside CC authority.
+
+Scope-as-specified: three source paths, five truthful specs, EDoc coverage/examples/types, README examples/rendering, eight native gates, current package/docs archives and a fresh package consumer. Scope-as-delivered: all specified local work is represented by the three source paths and this child evidence packet. Nothing was silently dropped; hosted ten-job verification and independent CDC close are explicitly still open.

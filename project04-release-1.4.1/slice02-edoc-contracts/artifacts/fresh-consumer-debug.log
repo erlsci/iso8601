@@ -1,0 +1,9 @@
+===> Load global config file /Users/oubiwann/.config/rebar3/rebar.config
+===> Expanded command sequence to be run: [app_discovery,install_deps,lock,compile]
+===> Running provider: app_discovery
+===> Found top-level apps: [iso8601_consumer_probe]
+	using config: [{src_dirs,["src"]},{lib_dirs,["apps/*","lib/*","."]}]
+===> Running provider: install_deps
+===> Verifying dependencies...
+===> Fetching iso8601 (from {path,"/private/tmp/iso8601-package.KZTutS"})
+===> Failed to fetch and copy dep: {path,"/private/tmp/iso8601-package.KZTutS"}

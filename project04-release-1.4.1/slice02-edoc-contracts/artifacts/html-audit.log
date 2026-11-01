@@ -1,0 +1,5 @@
+readme_images=6 badges=5 badge_links=5 logo_src=logo.png logo_href=logo-large.png
+named_anchors= ['about-', 'contents', 'known-deficiencies-', 'license-', 'new-in-14-', 'usage-']
+Back_to_contents_links= 5 unresolved_readme_fragments= 0
+source_links= 33 all source refs use unprefixed 1.4.1
+headings= ['About Back to contents', 'New in 1.4 Back to contents', 'Usage Back to contents', 'Known Deficiencies Back to contents', 'Donating', 'License Back to contents']

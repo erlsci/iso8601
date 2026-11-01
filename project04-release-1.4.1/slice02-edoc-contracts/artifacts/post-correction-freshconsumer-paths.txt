@@ -1,0 +1,2 @@
+package_root=/private/tmp/iso8601-package-final.dWFjpL
+consumer_root=/private/tmp/iso8601-consumer-final.RnaoQ4

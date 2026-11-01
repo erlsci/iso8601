@@ -1,0 +1,6 @@
+spec {add_time,4}: -specadd_time(calendar:datetime(),integer(),integer(),integer())->calendar:datetime().
+spec {subtract_time,4}: -specsubtract_time(calendar:datetime(),integer(),integer(),integer())->calendar:datetime().
+spec {parse_exact,1}: -specparse_exact(iodata())->calendar:datetime().
+spec {parse_duration,1}: -specparse_duration(string())->datetime_plist().
+spec {apply_duration,2}: -specapply_duration(datetime(),string())->datetime().
+runtime_function_forms=90 identical exports=15 identical type_exports=11 identical type_definitions=16 identical specs=29 five corrected others unchanged

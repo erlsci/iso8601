@@ -1,0 +1,16 @@
+source_branch=codex/project04-release-1.4.1
+source_commit=bdee2c1ef36fdc4a378ff7b764fc890516f98db9
+source_tree=8cc67b6413f2c7e73f92cf6aedbc569a25ffc510
+source_commit_paths=README.md,src/iso8601.erl,test/iso8601_doc_tests.erl
+source_worktree_status=clean
+hex_package_sha256=d060e9376cd372ebc44a1c4b0774e1a733e261df97f26723196932300f8f76d9
+hex_docs_sha256=bdba5364eb61babbe3db4a91622ff957bacff107d2a4926f4fc730dd6ab22d16
+fresh_package_root=/private/tmp/iso8601-package-final.dWFjpL
+fresh_consumer_root=/private/tmp/iso8601-consumer-final.RnaoQ4
+fresh_consumer_beam_dir=/private/tmp/iso8601-consumer-final.RnaoQ4/_build/default/lib/iso8601/ebin
+extracted_module_readme_rebar_config=byte-identical-to-commit-tree
+application_semantics=source-and-package-both-vsn-1.4.1,applications-kernel-stdlib,modules-iso8601
+fresh_consumer_compile=pass
+consumer_fixture=9-literal-controls-pass
+readme_example_runner=11-deterministic-literal-examples-pass
+commit_tree_package_module_readme_rebar_config=byte-identical

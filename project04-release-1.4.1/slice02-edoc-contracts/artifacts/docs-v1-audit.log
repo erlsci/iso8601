@@ -1,0 +1,29 @@
+/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project04-release-1.4.1/slice02-edoc-contracts/artifacts/audit-docs-v1.escript:11:35: variable '_' is unbound
+%   11|         {{function, Name, Arity}, _, _, Doc, _}
+%     |                                   ^
+
+/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project04-release-1.4.1/slice02-edoc-contracts/artifacts/audit-docs-v1.escript:11:38: variable '_' is unbound
+%   11|         {{function, Name, Arity}, _, _, Doc, _}
+%     |                                      ^
+
+/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project04-release-1.4.1/slice02-edoc-contracts/artifacts/audit-docs-v1.escript:11:46: variable '_' is unbound
+%   11|         {{function, Name, Arity}, _, _, Doc, _}
+%     |                                              ^
+
+/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project04-release-1.4.1/slice02-edoc-contracts/artifacts/audit-docs-v1.escript:15:31: variable '_' is unbound
+%   15|         {{type, Name, Arity}, _, _, Doc, _}
+%     |                               ^
+
+/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project04-release-1.4.1/slice02-edoc-contracts/artifacts/audit-docs-v1.escript:15:34: variable '_' is unbound
+%   15|         {{type, Name, Arity}, _, _, Doc, _}
+%     |                                  ^
+
+/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project04-release-1.4.1/slice02-edoc-contracts/artifacts/audit-docs-v1.escript:15:42: variable '_' is unbound
+%   15|         {{type, Name, Arity}, _, _, Doc, _}
+%     |                                          ^
+
+/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project04-release-1.4.1/slice02-edoc-contracts/artifacts/audit-docs-v1.escript:4:15: Warning: variable 'Beam' is unused
+%    4| main([Source, Beam, Chunk]) ->
+%     |               ^
+
+escript: There were compilation errors.

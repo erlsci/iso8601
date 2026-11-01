@@ -1,0 +1,23 @@
+module_overview=1
+public_exports=15
+function_docs=14
+function_examples=[{{add_time,4},1},
+                   {{add_days,2},1},
+                   {{add_months,2},1},
+                   {{add_years,2},1},
+                   {{subtract_time,4},1},
+                   {{format,1},1},
+                   {{parse,1},1},
+                   {{parse_exact,1},1},
+                   {{parse_duration,1},0},
+                   {{apply_duration,2},1},
+                   {{parse_interval,1},1},
+                   {{interval_bounds,1},1},
+                   {{format_interval,1},1},
+                   {{parse_expanded,1},1},
+                   {{format_expanded,1},1}]
+missing_function_docs=[{parse_duration,1}]
+missing_function_examples=[{parse_duration,1}]
+exported_types=11
+type_docs=11
+missing_type_docs=[]

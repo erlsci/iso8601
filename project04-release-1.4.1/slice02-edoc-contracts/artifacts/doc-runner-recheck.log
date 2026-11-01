@@ -1,0 +1,12 @@
+===> Verifying dependencies...
+===> Analyzing applications...
+===> Compiling iso8601
+===> Performing EUnit tests...
+======================== EUnit ========================
+module 'iso8601_doc_tests'
+  iso8601_doc_tests: doc_examples_cover_public_api_test...[0.003 s] ok
+  iso8601_doc_tests: wrong_literal_is_rejected_test...ok
+  iso8601_doc_tests: malformed_example_is_rejected_test...ok
+  [done in 0.012 s]
+=======================================================
+  All 3 tests passed.

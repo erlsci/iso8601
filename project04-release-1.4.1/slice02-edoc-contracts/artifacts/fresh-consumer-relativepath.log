@@ -1,0 +1,3 @@
+===> Verifying dependencies...
+===> Fetching iso8601 (from {path,"../iso8601-package.KZTutS"})
+===> Failed to fetch and copy dep: {path,"../iso8601-package.KZTutS"}
