@@ -1,6 +1,6 @@
 # Slice02 — arithmetic and precision
 
-Version1.0 — 2026-11-01 UTC. Status: ready for CC implementation; no acceptance claimed.
+Version1.1 — 2026-11-01 UTC. Status: refinement01 active after unvalidated pre-intake draft; no acceptance claimed.
 
 ## Outcome, authority and sizing
 
@@ -48,8 +48,11 @@ CDC inspected full827-line current module, relevant parser/arithmetic/formatter/
 
 ## Assignment history
 
-- `cc-prompt.md` — initial assignment, issued2026-11-01 UTC after open-set commit; predecessor none; current active. Scope four findings only. No refinement executed/max5.
+- `cc-prompt.md` — initial assignment issued at planning98cef8d; predecessor none; superseded by refinement01 after early unvalidated sourcee64c20f. Edits preceded full required reading/readback and written red proof; attempt retained honestly, not accepted.
+- `cc-prompt-iteration01.md` — issued2026-11-01 UTC, predecessor `cc-prompt.md`; CURRENT ACTIVE. Completes original intake before reentry and repairs independently reproduced final-second carry in arithmetic/exact result assembly, within original criteria. Full original manifest/gates retained; actual new red baseline precedes subsequent repair, not initial draft. One refinement/max5.
 
 ## Version history
 
 - v1.0 — 2026-11-01 UTC: directly authorized next arithmetic/precision checkpoint; parent concurred with single-slice sizing, nonnegative arithmetic floor, original nonpositive parser gate, private parser type and separate proleptic formatter carry.
+
+- v1.1 — 2026-11-01 UTC: preserved pre-intake drafte64c20f and intake breach; parent concurred with refinement01 to complete missing reads and original final-second normalization, without precision rounding or policy expansion.
