@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: arithmetic/precision checkpoint independently closed and merged via PR78; integrated main e332032 passes all ten CI jobs; three parser repairs and final project gates remain open
+- status: active final parser checkpoint at integratede332032; prior interval/numeric/CI checkpoints merged; three parser finding rows and final-project gates remain open
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.10 — 2026-11-01 UTC
+- version: 1.11 — 2026-11-01 UTC
 
 ## Outcome, authority and endpoint
 
@@ -29,7 +29,7 @@ The Operator merged PR#76 and explicitly selected OTP28/29 CI as the next work s
 |---|---|---|
 | First repair checkpoint — collapsed Slice01 | Correct interval signed positive-year classification/inheritance (ERL-CAL-003) and omitted-zone inheritance (ERL-CAL-004); source module, public regression tests and README | Integrated via PR#76 at main1d85d0a (tree equals reviewed7e93c5d); human merge/next-priority decision complete |
 | Active second repair checkpoint — collapsed Slice02 | Bounded arithmetic floor behavior CAL001, float-anchor composition CAL002, formatter carry DATE003 and exact fractional-unit retention DATE005 | [Slice02](slice02-arithmetic-precision/slice-plan.md) at source3a1cdfd; bounded badarg below year0, fractional-anchor/exact-unit retention and formatter carry, preserving both actual parse/1 legacy rules. Four finding rows are done/reproduced at bd67bd0 after independent native8/147 and actual ten-job PR78 CI. Operator merged PR78 into maine332032; parent composition/integration record follows separately. Parser increment remains roadmap-only; no next work is inferred. |
-| Later parser-contract arc | Validate week boundaries DATE001 and non-positive-year dates DATE002; make declared iodata inputs work consistently DATE004 | Plan in detail after prior repairs. Keep intended negative-year/nonzero-offset restrictions and stable public error contracts; support declared iodata rather than narrowing it without authorization. Three findings remain open. |
+| Active third repair checkpoint — collapsed Slice03 | Validate week boundaries DATE001 and non-positive-year dates DATE002; make declared iodata inputs work consistently DATE004 | [Slice03](slice03-parser-contracts/slice-plan.md) activates at integratede332032. Validate original calendar/week fields before offsets and normalize all FOUR declared iodata boundaries. Three finding rows remain open until independent technical acceptance; parent16/human17 and whole-project12/13 remain distinct. |
 
 The [project ledger](ledger.md) tracks every stable ID individually. Future decomposition can refine dependencies from real source evidence, with versioned decisions; no future arc/slice directories are opened now. All current source surfaces are the existing one-module library; this increment changes only `src/iso8601.erl`, `test/iso8601_tests.erl` and `README.md`. Existing `test/prop_iso8601.erl`, app manifest, Make/rebar/CI/elvis and guidance are context, not repair targets. No new dependencies, syntax floor, record/API representation, exported helpers or version bump.
 
@@ -98,3 +98,11 @@ Parent [independent composition](slice02-arithmetic-precision/closing-report.md#
 The Operator's explicit “merged!” and GitHub's attributable merge receipt complete this checkpoint's human merge gate. P03-14 and P03-15 are done/reproduced; this supersedes their earlier parent-pending state. DATE001/002/004 and P03-12/13 remain open. The next parser increment has not started and still requires the next go-ahead. Future 1.4.1 release preparation remains a separate PR after all repairs land; source version 1.4.0 is unchanged. Project02's wider audit and upstream tooling watch are also still open.
 
 - v1.10 — 2026-11-01 UTC: parent independently composes the accepted numeric repair, verifies exact-tree user integration and ten-job main CI, and closes P03-14/15 without accepting the remaining parser, audit, project or release work.
+
+## Final parser checkpoint authorization — 2026-11-01 UTC
+
+Operator: “let's dive into the next arc!” CDC/parent concurred on one direct [Slice03](slice03-parser-contracts/slice-plan.md) for DATE001/DATE002/DATE004 only, using clean mergede332032/tree72efe0dc, source `.worktrees/project03-arc03-parsers` on `codex/project03-arc03-parsers`. Actual CDC GPT-6.1 Sol High / fresh actual CC GPT-6 Luna High continue Autonomous Mode; first CC intake must STOP after bounded full manifest/readback for explicit CDC clearance before source/test/README edits. Then real tests/red precede production repair. All four public iodata declarations are honored, existing duration string contracts and sixteen baseline type declarations preserved, raw fields validated before normalization using proleptic rules and actual ISO year52/53 count. Existing nonpositive offsets/negative weeks and unrelated clock behavior remain outside the repair. Eight native gates/100% coverage, all147 current applicability observations, independent review/retrospective and actual ten-job CI remain mandatory. Parent alone publishes the reviewed separate PR/watches CI; no CC external actions.
+
+New P03-16 composition and P03-17 human review/merge/next-work rows apply to this checkpoint. P03-12/13 final-project gates remain open even after all nine findings are technically repaired. This does not automatically close the remediation project, complete wider P02 audit/type/tooling work or open eventual1.4.1 release preparation. Previous checkpoint originals/retrospectives and unknown earlier remote-draft provenance remain preserved, with no new forensic inquiry.
+
+- v1.11 — 2026-11-01 UTC: direct next-arc authorization opens coherent Slice03 for the last three parser findings; source-grounded four-boundary design, explicit pre-edit intake stop and separate third-checkpoint/project/release gates recorded before CC dispatch.
