@@ -52,3 +52,8 @@ No unanticipated dependency or scope change emerged. The initial BaseLoader asse
 Scope-as-specified versus scope-as-delivered: both authorized source paths changed as planned; OTP20–27, the R15B03 intended floor, public API/types, runtime code, tests, dependencies, README, and release version were preserved. The full-ten-job hosted result, independent CDC review, audit applicability check, retrospective, parent publication/composition and Operator merge remain explicitly outstanding. No other specified item was silently dropped.
 
 **Planning close-packet commit:** pending until this report, ledger and runlog updates are committed on the local orphan `planning` branch; the handoff will identify the exact resulting commit. No source push, PR, merge, hosted run, release, or next slice was initiated by CC.
+
+
+## CDC refinement01 prereview / parent rerun handoff
+
+Independent [review](cdc-verification.md) supports source845b183 for publication: one private annotation corrected, every other parsed form equal to the prior candidate, fresh all8 native gates0 (238EUnit,4×100PropEr,100%coverage). CC returnff7edade remains proposed local completion; actual final-head10-job hosted regression and final close/retrospective remain open. The first9/10 run is preserved failure evidence, not silently replaced. No additional runtime finding repaired, no full147 replay claimed, no merge/release. Parent owns the next reviewed source push and hosted run.

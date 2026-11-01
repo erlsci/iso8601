@@ -1,6 +1,6 @@
 # Slice03 — OTP28/29 CI compatibility
 
-Version1.2 — 2026-10-31. Status: first hosted run9/10; narrow compatibility refinement01 active, final10-job validation pending. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
+Version1.3 — 2026-10-31. Status: spec-only refinement845b183 independently prereviewed; parent publication/final10-job validation pending. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
 
 ## Outcome, authority and endpoint
 
@@ -55,4 +55,6 @@ The executable recipe and exact rejected alternatives are above; static checks d
 - v1.1 — 2026-10-31: initial CC returned sourcefcc1fe2/planningd4ae80d. Independent configuration/byte/native prereview accepts S03-01–04; S03-05/06 stay open until actual hosted run and final close. No refinement, production change or scope expansion.
 
 - v1.2 — 2026-10-31: actualOTP29.1.2 Dialyzer found private apply_years_offset/2 underspec in run41261632042. Authorised compatibility fix changes only its second argument number()→integer(), matching both callers/public integer contract. Runtime bodies and all public specs/types stay unchanged; full runtime replay retained by exact non-spec equality, with fresh affected native/hosted gates. Prior9/10 result remains failure evidence.
-- `cc-prompt-iteration01.md` — issued2026-10-31, predecessor `cc-prompt.md`; current actualOTP29 blocker correction, zero refinements executed/max5; initial prompt/candidate preserved. CC returns locally, parent owns push/rerun after CDC prereview.
+- `cc-prompt-iteration01.md` — issued2026-10-31, predecessor `cc-prompt.md`; actualOTP29 blocker correction returned845b183/ff7edade and independently prereviewed; one refinement executed/max5; initial prompt/candidate preserved. CC returns locally, parent owns push/rerun after CDC prereview.
+
+- v1.3 — 2026-10-31: refinement01 passes independent exact one-spec/parsed-form preservation and all8 native gates. Parent may publish845b183; actual ten-job hosted gate and final close remain open, no scope change.
