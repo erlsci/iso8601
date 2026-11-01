@@ -1,6 +1,6 @@
 # Slice03 — OTP28/29 CI compatibility
 
-Version1.3 — 2026-10-31. Status: spec-only refinement845b183 independently prereviewed; parent publication/final10-job validation pending. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
+Version1.4 — 2026-10-31. Status: second actual run9/10; runtime compatibility refinement02 active, final10-job validation pending. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
 
 ## Outcome, authority and endpoint
 
@@ -58,3 +58,6 @@ The executable recipe and exact rejected alternatives are above; static checks d
 - `cc-prompt-iteration01.md` — issued2026-10-31, predecessor `cc-prompt.md`; actualOTP29 blocker correction returned845b183/ff7edade and independently prereviewed; one refinement executed/max5; initial prompt/candidate preserved. CC returns locally, parent owns push/rerun after CDC prereview.
 
 - v1.3 — 2026-10-31: refinement01 passes independent exact one-spec/parsed-form preservation and all8 native gates. Parent may publish845b183; actual ten-job hosted gate and final close remain open, no scope change.
+
+- v1.4 — 2026-10-31: second run41262288775 verifies29static gates but exposes two existing rejection-contract failures from changed calendar conversions/negative-year support. Parent/CDC authorise narrow make_date/4 rawpositive-Date validation and negative-week guard, explicitbadarg clarification; preserveYear<=0plain/Year0week, all seven runtime findings remain open. Runtime delta requires fresh affected public controls/all147 local28 applicability; prior byte-identical-runtime proof no longer suffices.
+- `cc-prompt-iteration02.md` — issued2026-10-31, predecessor `cc-prompt-iteration01.md`; current actual29 EUnit rejection repair. Refinement01 returned/accepted at845b183; one executed/max5 before this assignment. Parent owns future push/rerun after CDC prereview.

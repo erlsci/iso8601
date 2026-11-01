@@ -1,0 +1,598 @@
+Erlang 29 build	Set up job	﻿2026-11-01T01:43:56.8000898Z Current runner version: '2.338.2'
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8038584Z ##[group]Runner Image Provisioner
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8040346Z Hosted Compute Agent
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8041604Z Version: 20261021.618
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8042683Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8044066Z Build Date: 2026-10-21T00:45:21Z
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8045219Z Worker ID: {13340a54-146a-4286-83d8-b7647c9c4cff}
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8046553Z Region: eastus
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8047567Z Cloud: Azure
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8048461Z ##[endgroup]
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8051461Z ##[group]Operating System
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8052562Z Ubuntu
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8053517Z 22.04.5
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8054460Z LTS
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8055294Z ##[endgroup]
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8056420Z ##[group]Runner Image
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8057488Z Image: ubuntu-22.04
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8058493Z Version: 20261025.340.1
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8060732Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20261025.340/images/ubuntu/Ubuntu2204-Readme.md
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8063894Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20261025.340
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8065620Z ##[endgroup]
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8071640Z ##[group]GITHUB_TOKEN Permissions
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8074821Z Actions: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8075894Z ArtifactMetadata: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8076898Z Attestations: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8077912Z Checks: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8078902Z CodeQuality: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8080131Z Contents: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8081250Z CopilotRequests: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8082212Z Deployments: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8083247Z Discussions: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8084276Z Drives: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8085349Z Issues: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8086457Z Metadata: read
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8087342Z Models: read
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8088527Z Packages: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8089790Z Pages: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8090683Z PullRequests: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8091816Z RepositoryProjects: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8092925Z SecurityEvents: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8094050Z Statuses: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8095133Z VulnerabilityAlerts: read
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8096079Z ##[endgroup]
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8099635Z Secret source: Actions
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8101093Z Cache mode: write
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8102507Z Prepare workflow directory
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8592655Z Prepare all required actions
+Erlang 29 build	Set up job	2026-11-01T01:43:56.8664759Z Getting action download info
+Erlang 29 build	Set up job	2026-11-01T01:43:57.0553846Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+Erlang 29 build	Set up job	2026-11-01T01:43:57.2070514Z Download action repository 'erlef/setup-beam@v1' (SHA:54075bcc5e249e4758d363f27d099f55d843f124)
+Erlang 29 build	Set up job	2026-11-01T01:43:57.4806462Z Complete job name: Erlang 29 build
+Erlang 29 build	Run actions/checkout@v6	﻿2026-11-01T01:43:57.5720833Z ##[group]Run actions/checkout@v6
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5721732Z with:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5722189Z   repository: erlsci/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5725962Z   token: ***
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5726421Z   ssh-strict: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5726863Z   ssh-user: git
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5727314Z   persist-credentials: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5727803Z   clean: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5728255Z   sparse-checkout-cone-mode: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5728781Z   fetch-depth: 1
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5729614Z   fetch-tags: false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5730091Z   show-progress: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5730549Z   lfs: false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5730962Z   submodules: false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5731420Z   set-safe-directory: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5731930Z   allow-unsafe-pr-checkout: false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.5732770Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8243033Z Syncing repository: erlsci/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8246122Z ##[group]Getting Git version info
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8247400Z Working directory is '/home/runner/work/iso8601/iso8601'
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8252971Z [command]/usr/bin/git version
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8391633Z git version 2.56.0
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8464192Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8477332Z Temporarily overriding HOME='/home/runner/work/_temp/f64bb367-b870-4ae1-8d71-3659662f60bf' before making global git config changes
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8483892Z Adding repository directory to the temporary git global config as a safe directory
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8486532Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/iso8601/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8517929Z Deleting the contents of '/home/runner/work/iso8601/iso8601'
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8521635Z ##[group]Determining repository object format
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8524723Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8526586Z ##[group]Initializing the repository
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8533856Z [command]/usr/bin/git init /home/runner/work/iso8601/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8685300Z hint: Using 'master' as the name for the initial branch. This default branch name
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8687274Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8688895Z hint: to use in all of your new repositories, which will suppress this warning,
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8690930Z hint: call:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8707678Z hint:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8709398Z hint: 	git config --global init.defaultBranch <name>
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8710951Z hint:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8712353Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8714536Z hint: 'development'. The just-created branch can be renamed via this command:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8716366Z hint:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8717224Z hint: 	git branch -m <name>
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8717990Z hint:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8718878Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8721584Z Initialized empty Git repository in /home/runner/work/iso8601/iso8601/.git/
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8723923Z [command]/usr/bin/git remote add origin https://github.com/erlsci/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8772506Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8774251Z ##[group]Disabling automatic garbage collection
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8787767Z [command]/usr/bin/git config --local gc.auto 0
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8853308Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8854544Z ##[group]Setting up auth
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8855525Z Removing SSH command configuration
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8865122Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.8915478Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.9347316Z Removing HTTP extra header
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.9354399Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.9396253Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.9655697Z Removing includeIf entries pointing to credentials config files
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.9662623Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.9704537Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:57.9973687Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.0021417Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/iso8601/iso8601/.git.path /home/runner/work/_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.0060863Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/iso8601/iso8601/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.0110450Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.0148868Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.0185930Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.0187315Z ##[group]Fetching the repository
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.0194000Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b6b0b2b7cce0406df3eb3682b383c1728a32b28b:refs/remotes/pull/77/merge
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.3778009Z From https://github.com/erlsci/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.3779762Z  * [new ref]         b6b0b2b7cce0406df3eb3682b383c1728a32b28b -> pull/77/merge
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.3784541Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.3785918Z ##[group]Determining the checkout info
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.3787364Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.3792131Z [command]/usr/bin/git sparse-checkout disable
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.3851736Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.3891104Z ##[group]Checking out the ref
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.3893692Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/77/merge
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4119940Z Note: switching to 'refs/remotes/pull/77/merge'.
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4121685Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4122880Z You are in 'detached HEAD' state. You can look around, make experimental
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4125287Z changes and commit them, and you can discard any commits you make in this
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4127084Z state without impacting any branches by switching back to a branch.
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4128138Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4128792Z If you want to create a new branch to retain commits you create, you may
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4131655Z do so (now or later) by using -c with the switch command. Example:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4132888Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4133313Z   git switch -c <new-branch-name>
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4134076Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4134613Z Or undo this operation with:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4135352Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4135850Z   git switch -
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4136490Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4137536Z Turn off this advice by setting config variable advice.detachedHead to false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4138914Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4140768Z HEAD is now at b6b0b2b Merge 845b1830b5acbfaed0909430e1ff011617a06817 into 1d85d0a98a21750f83355a855dcc8fb4728758b4
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4145662Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4177230Z [command]/usr/bin/git log -1 --format=%H
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:43:58.4210526Z b6b0b2b7cce0406df3eb3682b383c1728a32b28b
+Erlang 29 build	Run erlef/setup-beam@v1	﻿2026-11-01T01:43:58.4720899Z ##[group]Run erlef/setup-beam@v1
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4722137Z with:
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4723013Z   otp-version: 29
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4723985Z   rebar3-version: 3.28.0
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4734613Z   github-token: ***
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4735615Z   otp-architecture: 64
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4736631Z   install-hex: true
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4737615Z   install-rebar: true
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4738624Z   version-type: loose
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4739793Z   disable_problem_matchers: false
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4741047Z   hexpm-mirrors: https://builds.hex.pm
+Erlang 29 build	Run erlef/setup-beam@v1	
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.4742290Z ##[endgroup]
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:58.8168060Z ##[group]Installing Erlang/OTP OTP-29.1.2 - built on amd64/ubuntu-22.04
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:43:59.2865364Z [command]/usr/bin/tar zx --strip-components=1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/467e739f-fe4c-4aea-9df9-27c59a676c25 -f /home/runner/work/_temp/b49c54b8-935d-474a-92b9-d825bf573730
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:02.0297949Z [command]/home/runner/work/_temp/.setup-beam/otp/Install -minimal /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:02.0694390Z Installed Erlang/OTP version
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:02.0716891Z [command]/home/runner/work/_temp/.setup-beam/otp/bin/erl -version
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:02.0875490Z Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 17.1.1
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:02.0910269Z ##[endgroup]
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:02.5527844Z ##[group]Installing rebar3 3.28.0
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:02.7702457Z Installed Rebar3 version
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:02.7709876Z [command]/home/runner/work/_temp/.setup-beam/rebar3/bin/rebar3 version
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:03.1638845Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:44:03.1710664Z ##[endgroup]
+Erlang 29 build	Check rebar3 Version	﻿2026-11-01T01:44:03.1940669Z ##[group]Run rebar3 --version
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:03.1941056Z [36;1mrebar3 --version[0m
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:03.2022865Z shell: /usr/bin/bash -e {0}
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:03.2023189Z env:
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:03.2023526Z   INSTALL_DIR_FOR_OTP: /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:03.2024008Z   INSTALL_DIR_FOR_REBAR3: /home/runner/work/_temp/.setup-beam/rebar3
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:03.2024405Z ##[endgroup]
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:03.9996360Z ===> Fetching rebar3_proper v0.12.1
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.0589285Z ===> Analyzing applications...
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.0822756Z ===> Compiling rebar3_proper
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2264777Z     ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2265658Z     │
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2266240Z  84 │                           Res <- [catch check(Mod, Fun, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2267328Z     │                                   ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2268362Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2269383Z warnings in selected modules.
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2269674Z 
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2270115Z      ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2270773Z      │
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2271327Z  166 │                           Result <- [catch retry(M, F, Args, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2272424Z      │                                      ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2273416Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2274086Z warnings in selected modules.
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2274377Z 
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2274392Z 
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:44:04.2395194Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	Compile	﻿2026-11-01T01:44:04.2556664Z ##[group]Run rebar3 compile
+Erlang 29 build	Compile	2026-11-01T01:44:04.2557153Z [36;1mrebar3 compile[0m
+Erlang 29 build	Compile	2026-11-01T01:44:04.2643386Z shell: /usr/bin/bash -e {0}
+Erlang 29 build	Compile	2026-11-01T01:44:04.2643804Z env:
+Erlang 29 build	Compile	2026-11-01T01:44:04.2644253Z   INSTALL_DIR_FOR_OTP: /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Compile	2026-11-01T01:44:04.2644992Z   INSTALL_DIR_FOR_REBAR3: /home/runner/work/_temp/.setup-beam/rebar3
+Erlang 29 build	Compile	2026-11-01T01:44:04.2645586Z ##[endgroup]
+Erlang 29 build	Compile	2026-11-01T01:44:04.8332636Z ===> Verifying dependencies...
+Erlang 29 build	Compile	2026-11-01T01:44:04.8378939Z ===> Analyzing applications...
+Erlang 29 build	Compile	2026-11-01T01:44:04.8579345Z ===> Compiling iso8601
+Erlang 29 build	Xref Checks	﻿2026-11-01T01:44:04.9936183Z ##[group]Run rebar3 xref
+Erlang 29 build	Xref Checks	2026-11-01T01:44:04.9936488Z [36;1mrebar3 xref[0m
+Erlang 29 build	Xref Checks	2026-11-01T01:44:04.9999719Z shell: /usr/bin/bash -e {0}
+Erlang 29 build	Xref Checks	2026-11-01T01:44:04.9999970Z env:
+Erlang 29 build	Xref Checks	2026-11-01T01:44:05.0000258Z   INSTALL_DIR_FOR_OTP: /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Xref Checks	2026-11-01T01:44:05.0000722Z   INSTALL_DIR_FOR_REBAR3: /home/runner/work/_temp/.setup-beam/rebar3
+Erlang 29 build	Xref Checks	2026-11-01T01:44:05.0001076Z ##[endgroup]
+Erlang 29 build	Xref Checks	2026-11-01T01:44:05.5426354Z ===> Verifying dependencies...
+Erlang 29 build	Xref Checks	2026-11-01T01:44:05.5518862Z ===> Analyzing applications...
+Erlang 29 build	Xref Checks	2026-11-01T01:44:05.5654164Z ===> Compiling iso8601
+Erlang 29 build	Xref Checks	2026-11-01T01:44:05.6427129Z ===> Running cross reference analysis...
+Erlang 29 build	Dialyzer	﻿2026-11-01T01:44:05.6653639Z ##[group]Run rebar3 dialyzer
+Erlang 29 build	Dialyzer	2026-11-01T01:44:05.6653950Z [36;1mrebar3 dialyzer[0m
+Erlang 29 build	Dialyzer	2026-11-01T01:44:05.6716701Z shell: /usr/bin/bash -e {0}
+Erlang 29 build	Dialyzer	2026-11-01T01:44:05.6716959Z env:
+Erlang 29 build	Dialyzer	2026-11-01T01:44:05.6717227Z   INSTALL_DIR_FOR_OTP: /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Dialyzer	2026-11-01T01:44:05.6717661Z   INSTALL_DIR_FOR_REBAR3: /home/runner/work/_temp/.setup-beam/rebar3
+Erlang 29 build	Dialyzer	2026-11-01T01:44:05.6718020Z ##[endgroup]
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1508754Z ===> Verifying dependencies...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1549270Z ===> Analyzing applications...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1654514Z ===> Compiling iso8601
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1701734Z ===> Dialyzer starting, this may take a while...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1728699Z ===> Add debug_info to compiler options (erl_opts) if Dialyzer fails to load Core Erlang.
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1729643Z ===> Updating plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1738034Z ===> Resolving project files...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1805711Z ===> Updating base plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1806164Z ===> Resolving base files...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:06.1831742Z ===> Building with 226 files in /home/runner/.cache/rebar3/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:38.1072977Z ===> Copying /home/runner/.cache/rebar3/rebar3_29.1.2_plt to /home/runner/work/iso8601/iso8601/_build/default/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:38.1100282Z ===> Checking 226 files in _build/default/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:39.2108014Z ===> Doing success typing analysis...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:39.2108584Z ===> Resolving project warning files...
+Erlang 29 build	Dialyzer	2026-11-01T01:44:39.2112621Z ===> Analyzing 1 files with _build/default/rebar3_29.1.2_plt...
+Erlang 29 build	EUnit Tests	﻿2026-11-01T01:44:40.4591065Z ##[group]Run rebar3 eunit -c -v
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:40.4591398Z [36;1mrebar3 eunit -c -v[0m
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:40.4653948Z shell: /usr/bin/bash -e {0}
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:40.4654207Z env:
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:40.4654476Z   INSTALL_DIR_FOR_OTP: /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:40.4654934Z   INSTALL_DIR_FOR_REBAR3: /home/runner/work/_temp/.setup-beam/rebar3
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:40.4655292Z ##[endgroup]
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:40.9310636Z ===> Verifying dependencies...
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.1293852Z ===> Fetching proper v1.5.0
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.1998331Z ===> Analyzing applications...
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.2861210Z ===> Compiling proper
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7113658Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_statem.erl:770:46: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7124543Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7125298Z warnings in selected modules.
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7126066Z %  770|     [spawn_link_cp(fun() -> Parent ! {self(),catch {ok,F(X)}} end) || X <- L].
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7126812Z %     |                                              ^
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7127155Z 
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7221863Z      ┌─ _build/test/lib/proper/src/proper_statem.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7223326Z      │
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7225091Z  770 │      [spawn_link_cp(fun() -> Parent ! {self(),catch {ok,F(X)}} end) || X <- L].
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7227149Z      │                                               ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7228915Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7230681Z warnings in selected modules.
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7231664Z 
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:41.7232071Z 
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5204768Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_erlang_abstract_code.erl:2138:29: Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5207062Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5207924Z % 2138|         lists:all(fun(R) -> is_record(R) end, Term)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5208266Z %     |                             ^
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5208444Z 
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5235198Z       ┌─ _build/test/lib/proper/src/proper_erlang_abstract_code.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5235812Z       │
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5236287Z  2138 │          lists:all(fun(R) -> is_record(R) end, Term)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5237500Z       │                              ╰── Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5238652Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5239636Z 
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5239854Z 
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5391353Z ===> Analyzing applications...
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:42.5459444Z ===> Compiling iso8601
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.1819956Z ===> Performing EUnit tests...
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.1978717Z ======================== EUnit ========================
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2087916Z file "iso8601.app"
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2089405Z   application 'iso8601'
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2090598Z     module 'iso8601'
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2091678Z       module 'iso8601_tests'
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2118142Z         iso8601_tests:12: -parse_fail_test_/0-fun-1- (fails to parse YYYYMM)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2147936Z         iso8601_tests:16: -parse_year_test_/0-fun-1- (parses YYYY)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2177824Z         iso8601_tests:20: -parse_month_test_/0-fun-1- (parses YYYY-MM)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2207832Z         iso8601_tests:25: -parse_month_day_test_/0-fun-3- (parses YYYYMMDD)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2238039Z         iso8601_tests:26: -parse_month_day_test_/0-fun-1- (parses YYYY-MM-DD)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2267907Z         iso8601_tests:32: -parse_week_test_/0-fun-7- (parses 2009W01 as 2008-12-29)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2297841Z         iso8601_tests:33: -parse_week_test_/0-fun-5- (parses 2009-W01 as 2008-12-29)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2327847Z         iso8601_tests:34: -parse_week_test_/0-fun-3- (parses 2009W53 as 2010-01-03)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2357877Z         iso8601_tests:35: -parse_week_test_/0-fun-1- (parses 2009-W53 as 2010-01-03)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2387845Z         iso8601_tests:41: -parse_week_day_test_/0-fun-7- (parses 2009W011 as 2008-12-29)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2417844Z         iso8601_tests:42: -parse_week_day_test_/0-fun-5- (parses 2009-W01-1 as 2008-12-29)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2447812Z         iso8601_tests:43: -parse_week_day_test_/0-fun-3- (parses 2009W537 as 2010-01-03)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2477885Z         iso8601_tests:44: -parse_week_day_test_/0-fun-1- (parses 2009-W53-7 as 2010-01-03)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2507820Z         iso8601_tests:50: -parse_hour_test_/0-fun-3- (parses YYYYMMDDTHH)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2543249Z         iso8601_tests:51: -parse_hour_test_/0-fun-1- (parses YYYY-MM-DDTHH)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2568037Z         iso8601_tests:57: -parse_fractional_hour_test_/0-fun-7- (parses YYYYMMDDTHH.hh)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2597969Z         iso8601_tests:59: -parse_fractional_hour_test_/0-fun-5- (parses YYYY-MM-DDTHH.hh)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2627985Z         iso8601_tests:60: -parse_fractional_hour_test_/0-fun-3- (parses YYYYMMDDTHH,hh)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2657947Z         iso8601_tests:62: -parse_fractional_hour_test_/0-fun-1- (parses YYYY-MM-DDTHH,hh)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2687801Z         iso8601_tests:68: -parse_minute_test_/0-fun-3- (parses YYYYMMDDTHHMM)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2718024Z         iso8601_tests:69: -parse_minute_test_/0-fun-1- (parses YYYY-MM-DDTHH:MM)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2748055Z         iso8601_tests:76: -parse_fractional_minute_test_/0-fun-7- (parses YYYYMMDDTHHMM.mm)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2777900Z         iso8601_tests:78: -parse_fractional_minute_test_/0-fun-5- (parses YYYY-MM-DDTHHMM.mm)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2807954Z         iso8601_tests:80: -parse_fractional_minute_test_/0-fun-3- (parses YYYYMMDDTHHMM,mm)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2838243Z         iso8601_tests:82: -parse_fractional_minute_test_/0-fun-1- (parses YYYY-MM-DDTHHMM,mm)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2867889Z         iso8601_tests:88: -parse_second_test_/0-fun-3- (parses YYYYMMDDTHHMMSS)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2897945Z         iso8601_tests:90: -parse_second_test_/0-fun-1- (parses YYYY-MM-DDTHH:MM:SS)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2928149Z         iso8601_tests:97: -parse_fractional_second_test_/0-fun-7- (parses YYYYMMDDTHHMMSS.ss)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2958274Z         iso8601_tests:99: -parse_fractional_second_test_/0-fun-5- (parses YYYY-MM-DDTHHMMSS.ss)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.2988164Z         iso8601_tests:101: -parse_fractional_second_test_/0-fun-3- (parses YYYYMMDDTHHMMSS,ss)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3017979Z         iso8601_tests:103: -parse_fractional_second_test_/0-fun-1- (parses YYYY-MM-DDTHHMMSS,ss)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3048091Z         iso8601_tests:110: -parse_exact_fractional_second_test_/0-fun-7- (parses YYYYMMDDTHHMMSS.ss)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3078442Z         iso8601_tests:112: -parse_exact_fractional_second_test_/0-fun-5- (parses YYYY-MM-DDTHHMMSS.ss)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3108012Z         iso8601_tests:114: -parse_exact_fractional_second_test_/0-fun-3- (parses YYYYMMDDTHHMMSS,ss)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3138412Z         iso8601_tests:116: -parse_exact_fractional_second_test_/0-fun-1- (parses YYYY-MM-DDTHHMMSS,ss)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3168026Z         iso8601_tests:122: -parse_fractional_fail_test_/0-fun-1- (fails to parses multiple decimals)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3197761Z         iso8601_tests:128: -parse_offset_test_/0-fun-5- (parses YYYYMMDDTHHMMSS.ssZ)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3228271Z         iso8601_tests:130: -parse_offset_test_/0-fun-3- (parses YYYYMMDDTHHMMSS.ss+0400)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3258849Z         iso8601_tests:132: -parse_offset_test_/0-fun-1- (parses YYYYMMDDTHHMMSS.ss+0400)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3288497Z         iso8601_tests:139: -parse_duration_test_/0-fun-7- (parses with pos sign)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3318439Z         iso8601_tests:152: -parse_duration_test_/0-fun-5- (parses without sign)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3348347Z         iso8601_tests:165: -parse_duration_test_/0-fun-3- (parses only years)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3378346Z         iso8601_tests:178: -parse_duration_test_/0-fun-1- (parses only minutes)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3407884Z         iso8601_tests:194: -parse_duration_fail_test_/0-fun-1- (fails to parses misspelled string)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3438077Z         iso8601_tests:200: -parse_ordinal_test_/0-fun-23- (parses YYYY-DDDTHHMMSS)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3468551Z         iso8601_tests:201: -parse_ordinal_test_/0-fun-21- (parses YYYY-DDD)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3498436Z         iso8601_tests:203: -parse_ordinal_test_/0-fun-19- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3528434Z         iso8601_tests:205: -parse_ordinal_test_/0-fun-17- (parses YYYY_DDDTHHMMSS, after Feb 29 in a leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3558314Z         iso8601_tests:207: -parse_ordinal_test_/0-fun-15- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap century)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3588528Z         iso8601_tests:209: -parse_ordinal_test_/0-fun-13- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3618558Z         iso8601_tests:211: -parse_ordinal_test_/0-fun-11- (parses YYYY_DDDTHHMMSS, after Feb 29 in a non-leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3648080Z         iso8601_tests:213: -parse_ordinal_test_/0-fun-9- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap century)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3677942Z         iso8601_tests:214: -parse_ordinal_test_/0-fun-7- (fails to parse ordinal date with 0 days)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3708493Z         iso8601_tests:216: -parse_ordinal_test_/0-fun-5- (fails to parse ordinal date with too many days in a leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3738369Z         iso8601_tests:218: -parse_ordinal_test_/0-fun-3- (parses ordinal date with 366 days in a leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3768621Z         iso8601_tests:220: -parse_ordinal_test_/0-fun-1- (fails to parse ordinal date with too many days in a non-leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3798358Z         iso8601_tests:227: -parse_ordinal_exact_test_/0-fun-23- (parses YYYY-DDDTHHMMSS)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3828281Z         iso8601_tests:228: -parse_ordinal_exact_test_/0-fun-21- (parses YYYY-DDD)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3858451Z         iso8601_tests:230: -parse_ordinal_exact_test_/0-fun-19- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3888644Z         iso8601_tests:232: -parse_ordinal_exact_test_/0-fun-17- (parses YYYY_DDDTHHMMSS, after Feb 29 in a leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3918676Z         iso8601_tests:234: -parse_ordinal_exact_test_/0-fun-15- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap century)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3948501Z         iso8601_tests:236: -parse_ordinal_exact_test_/0-fun-13- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.3978203Z         iso8601_tests:238: -parse_ordinal_exact_test_/0-fun-11- (parses YYYY_DDDTHHMMSS, after Feb 29 in a non-leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4008463Z         iso8601_tests:240: -parse_ordinal_exact_test_/0-fun-9- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap century)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4038339Z         iso8601_tests:241: -parse_ordinal_exact_test_/0-fun-7- (fails to parse ordinal date with 0 days)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4068506Z         iso8601_tests:243: -parse_ordinal_exact_test_/0-fun-5- (fails to parse ordinal date with too many days in a leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4098611Z         iso8601_tests:245: -parse_ordinal_exact_test_/0-fun-3- (parses ordinal date with 366 days in a leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4128605Z         iso8601_tests:247: -parse_ordinal_exact_test_/0-fun-1- (fails to parse ordinal date with too many days in a non-leap year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4158131Z         iso8601_tests:254: -add_time_test_/0-fun-7- (add one second)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4188103Z         iso8601_tests:256: -add_time_test_/0-fun-5- (add one minute)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4218095Z         iso8601_tests:258: -add_time_test_/0-fun-3- (add one hour)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4248130Z         iso8601_tests:260: -add_time_test_/0-fun-1- (roll over to next day)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4278134Z         iso8601_tests:269: -subtract_time_test_/0-fun-7- (add one second)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4308079Z         iso8601_tests:271: -subtract_time_test_/0-fun-5- (add one minute)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4338084Z         iso8601_tests:273: -subtract_time_test_/0-fun-3- (add one hour)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4368154Z         iso8601_tests:275: -subtract_time_test_/0-fun-1- (roll back to previous day)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4398300Z         iso8601_tests:284: -add_months_test_/0-fun-11- (add one month in the middle of the year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4428218Z         iso8601_tests:286: -add_months_test_/0-fun-9- (add one month at the beginning of the year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4458221Z         iso8601_tests:288: -add_months_test_/0-fun-7- (add one month almost in the end of the year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4488183Z         iso8601_tests:290: -add_months_test_/0-fun-5- (add one month in the end of the year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4518309Z         iso8601_tests:292: -add_months_test_/0-fun-3- (add eight month in the middle of the year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4548321Z         iso8601_tests:294: -add_months_test_/0-fun-1- (add twelve month in the middle of the year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4578649Z         iso8601_tests:305: -format_test_/0-fun-5- (formats datetime with integer seconds)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4608218Z         iso8601_tests:307: -format_test_/0-fun-3- (formats datetime with float seconds)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4638389Z         iso8601_tests:308: -format_test_/0-fun-1- (formats timestamp tuple)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4668494Z         iso8601_tests:318: -parse_binary_test_/0-fun-5- (parse/1 accepts binary input)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4699297Z         iso8601_tests:320: -parse_binary_test_/0-fun-3- (parse_exact/1 accepts binary input)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4728083Z         iso8601_tests:324: -parse_binary_test_/0-fun-1- (parse_duration/1 accepts binary input)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4758003Z         iso8601_tests:335: -timestamp_input_test_/0-fun-7- (add_time/4 accepts timestamp tuple)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4787903Z         iso8601_tests:337: -timestamp_input_test_/0-fun-5- (add_days/2 accepts timestamp tuple)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4818393Z         iso8601_tests:339: -timestamp_input_test_/0-fun-3- (add_months/2 accepts timestamp tuple)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4848536Z         iso8601_tests:341: -timestamp_input_test_/0-fun-1- (add_years/2 accepts timestamp tuple)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4877926Z         iso8601_tests:352: -add_days_test_/0-fun-3- (add one day)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4907863Z         iso8601_tests:354: -add_days_test_/0-fun-1- (add days across month boundary)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4995270Z         iso8601_tests:361: -add_years_test_/0-fun-3- (add one year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4996418Z         iso8601_tests:363: -add_years_test_/0-fun-1- (add ten years)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.4998029Z         iso8601_tests:374: -add_months_edge_test_/0-fun-3- (add zero months)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5029313Z         iso8601_tests:376: -add_months_edge_test_/0-fun-1- (add month rolls back invalid day (Jan 31 + 1 month))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5058750Z         iso8601_tests:387: -apply_duration_test_/0-fun-3- (apply duration with all components)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5088148Z         iso8601_tests:391: -apply_duration_test_/0-fun-1- (apply simple year duration)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5118573Z         iso8601_tests:401: -parse_week_dow_test_/0-fun-11- (W01-1 year starting Monday (2018))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5148428Z         iso8601_tests:403: -parse_week_dow_test_/0-fun-9- (W01-1 year starting Tuesday (2019))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5178690Z         iso8601_tests:405: -parse_week_dow_test_/0-fun-7- (W01-1 year starting Wednesday (2014))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5207513Z         iso8601_tests:406: -parse_week_dow_test_/0-fun-5- (W01-1 year starting Friday (2010))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5237329Z         iso8601_tests:408: -parse_week_dow_test_/0-fun-3- (W01-1 year starting Saturday (2011))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5267753Z         iso8601_tests:409: -parse_week_dow_test_/0-fun-1- (W01-1 year starting Sunday (2012))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5297870Z         iso8601_tests:420: -parse_offset_format_test_/0-fun-3- (offset hour only (+04))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5327914Z         iso8601_tests:422: -parse_offset_format_test_/0-fun-1- (offset with colon (+04:30))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5357954Z         iso8601_tests:433: -parse_colon_fractional_minute_test_/0-fun-3- (parses HH:MM.mm (dot))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5387753Z         iso8601_tests:435: -parse_colon_fractional_minute_test_/0-fun-1- (parses HH:MM,mm (comma))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5417514Z         iso8601_tests:442: -parse_colon_fractional_second_test_/0-fun-3- (parses HH:MM:SS.ss (dot))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5447684Z         iso8601_tests:444: -parse_colon_fractional_second_test_/0-fun-1- (parses HH:MM:SS,ss (comma))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5477596Z         iso8601_tests:454: -parse_error_clauses_test_/0-fun-21- (year too short)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5507751Z         iso8601_tests:455: -parse_error_clauses_test_/0-fun-19- (month_or_week trailing dash)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5537796Z         iso8601_tests:456: -parse_error_clauses_test_/0-fun-17- (week_day bad char after week)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5567540Z         iso8601_tests:457: -parse_error_clauses_test_/0-fun-15- (month_day short day)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5597739Z         iso8601_tests:458: -parse_error_clauses_test_/0-fun-13- (month_day_no_hyphen single char day)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5627575Z         iso8601_tests:459: -parse_error_clauses_test_/0-fun-11- (hour incomplete after T)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5657436Z         iso8601_tests:460: -parse_error_clauses_test_/0-fun-9- (minute single char after hour)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5687569Z         iso8601_tests:461: -parse_error_clauses_test_/0-fun-7- (second single char after colon minute)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5717562Z         iso8601_tests:462: -parse_error_clauses_test_/0-fun-5- (second_no_colon single char)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5747626Z         iso8601_tests:463: -parse_error_clauses_test_/0-fun-3- (decimal separator with no digits)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5778549Z         iso8601_tests:464: -parse_error_clauses_test_/0-fun-1- (offset_minute bad suffix)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5807583Z         iso8601_tests:474: -apply_duration_sign_test_/0-fun-5- (negative year subtracts)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5837675Z         iso8601_tests:479: -apply_duration_sign_test_/0-fun-3- (positive/unsigned still adds)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5867367Z         iso8601_tests:484: -apply_duration_sign_test_/0-fun-1- (compound negative duration)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5897502Z         iso8601_tests:497: -add_years_leap_day_test_/0-fun-9- (leap day + 1 year clamps to Feb 28)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5927571Z         iso8601_tests:502: -add_years_leap_day_test_/0-fun-7- (leap day - 1 year clamps to Feb 28)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5957435Z         iso8601_tests:507: -add_years_leap_day_test_/0-fun-5- (leap day + 3 years produces valid date)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.5987834Z         iso8601_tests:513: -add_years_leap_day_test_/0-fun-3- (ordinary date unchanged)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6017580Z         iso8601_tests:518: -add_years_leap_day_test_/0-fun-1- (via apply_duration years path)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6047158Z         iso8601_tests: ordinal_parse_no_stdout_test...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6077503Z         iso8601_tests: capture_output_restores_leader_on_error_test...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6107861Z         iso8601_tests:575: -parse_interval_forms_test_/0-fun-15- (start/end)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6137867Z         iso8601_tests:580: -parse_interval_forms_test_/0-fun-13- (start/duration)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6167756Z         iso8601_tests:585: -parse_interval_forms_test_/0-fun-11- (duration/end)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6197517Z         iso8601_tests:590: -parse_interval_forms_test_/0-fun-9- (duration only)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6227725Z         iso8601_tests:595: -parse_interval_forms_test_/0-fun-7- (double-hyphen separator)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6257419Z         iso8601_tests:599: -parse_interval_forms_test_/0-fun-5- (two durations is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6288006Z         iso8601_tests:600: -parse_interval_forms_test_/0-fun-3- (three parts is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6317437Z         iso8601_tests:602: -parse_interval_forms_test_/0-fun-1- (binary input)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6348359Z         iso8601_tests:615: -interval_bounds_test_/0-fun-7- (start/end returns both)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6377837Z         iso8601_tests:624: -interval_bounds_test_/0-fun-5- (start+duration end matches apply_duration)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6407729Z         iso8601_tests:636: -interval_bounds_test_/0-fun-3- (duration/end start computation)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6437849Z         iso8601_tests:648: -interval_bounds_test_/0-fun-1- (duration-only is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6467938Z         iso8601_tests:658: -interval_signed_duration_test_/0-fun-3- (negative duration in start/duration)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6497725Z         iso8601_tests:663: -interval_signed_duration_test_/0-fun-1- (negative duration bounds subtract)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6527880Z         iso8601_tests:681: -format_interval_test_/0-fun-7- (format start/end)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6557741Z         iso8601_tests:688: -format_interval_test_/0-fun-5- (format start/duration)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6587728Z         iso8601_tests:697: -format_interval_test_/0-fun-3- (format duration/end)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6617805Z         iso8601_tests:706: -format_interval_test_/0-fun-1- (format duration only)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6648121Z         iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: 2007-03-01T13:00:00Z/2008-05-11T15:30:00Z)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6678127Z         iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: 2007-03-01T13:00:00Z/P1Y2M10DT2H30M)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6707923Z         iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: P1Y2M10DT2H30M/2008-05-11T15:30:00Z)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6737459Z         iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: P1Y2M10DT2H30M)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6767413Z         iso8601_tests:743: -interval_inheritance_test_/0-fun-9- (inherit date (time-only end))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6797642Z         iso8601_tests:753: -interval_inheritance_test_/0-fun-7- (inherit year (month-day end))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6827505Z         iso8601_tests:763: -interval_inheritance_test_/0-fun-5- (inherit year+month (day-only end))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6857477Z         iso8601_tests:773: -interval_inheritance_test_/0-fun-3- (inherit year+month (day+time end))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6887899Z         iso8601_tests:783: -interval_inheritance_test_/0-fun-1- (ambiguous single digit is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6917786Z         iso8601_tests:793: -interval_coverage_test_/0-fun-11- (non-duration no-separator string is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6947476Z         iso8601_tests:795: -interval_coverage_test_/0-fun-9- (positive-signed duration (+P1Y))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.6977394Z         iso8601_tests:800: -interval_coverage_test_/0-fun-7- (fractional second endpoint uses parse_exact)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7007875Z         iso8601_tests:805: -interval_coverage_test_/0-fun-5- (date-only duration (no time components))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7038031Z         iso8601_tests:820: -interval_coverage_test_/0-fun-3- (inherit with T-prefixed end fragment)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7067804Z         iso8601_tests:830: -interval_coverage_test_/0-fun-1- (format date-only duration (time parts empty))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7097580Z         iso8601_tests:853: -interval_minute_precision_test_/0-fun-3- (time-only end at minute precision)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7127582Z         iso8601_tests:863: -interval_minute_precision_test_/0-fun-1- (day+time end at minute precision)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7157532Z         iso8601_tests:881: -interval_malformed_end_test_/0-fun-3- (double T in end fragment)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7187935Z         iso8601_tests:883: -interval_malformed_end_test_/0-fun-1- (consecutive TT in end fragment)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7217465Z         iso8601_tests:892: -interval_empty_sides_test_/0-fun-11- (double slash)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7247504Z         iso8601_tests:893: -interval_empty_sides_test_/0-fun-9- (leading slash)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7277907Z         iso8601_tests:894: -interval_empty_sides_test_/0-fun-7- (trailing slash)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7307554Z         iso8601_tests:896: -interval_empty_sides_test_/0-fun-5- (empty double-hyphen sides (quad dash))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7337382Z         iso8601_tests:898: -interval_empty_sides_test_/0-fun-3- (leading double-hyphen (empty left))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7367500Z         iso8601_tests:900: -interval_empty_sides_test_/0-fun-1- (trailing double-hyphen (empty right))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7397787Z         iso8601_tests:910: -interval_basic_format_start_test_/0-fun-1- (basic-format start with abbreviated end is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7427771Z         iso8601_tests:920: -interval_month_day_time_end_test_/0-fun-1- (month-day+time abbreviated end is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7457626Z         iso8601_tests:934: -interval_signed_year_inheritance_test_/0-fun-19- (short signed positive year is retained)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7487743Z         iso8601_tests:939: -interval_signed_year_inheritance_test_/0-fun-17- (padded signed positive year is retained)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7517681Z         iso8601_tests:944: -interval_signed_year_inheritance_test_/0-fun-15- (signed year below four digits is retained)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7547744Z         iso8601_tests:949: -interval_signed_year_inheritance_test_/0-fun-13- (signed full endpoint beyond year 9999 is parsed independently)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7577674Z         iso8601_tests:954: -interval_signed_year_inheritance_test_/0-fun-11- (signed year-only endpoint is parsed independently)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7607642Z         iso8601_tests:959: -interval_signed_year_inheritance_test_/0-fun-9- (signed year-month prefix is inherited with its full token)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7637627Z         iso8601_tests:964: -interval_signed_year_inheritance_test_/0-fun-7- (bare four digits remain a complete year endpoint)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7667653Z         iso8601_tests:969: -interval_signed_year_inheritance_test_/0-fun-5- (negative full-year interval endpoint remains rejected)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7697653Z         iso8601_tests:971: -interval_signed_year_inheritance_test_/0-fun-3- (empty signed endpoint remains rejected)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7727875Z         iso8601_tests:973: -interval_signed_year_inheritance_test_/0-fun-1- (non-date suffix after signed year remains rejected)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7757608Z         iso8601_tests: interval_formatter_produced_signed_year_inheritance_test...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7787808Z         iso8601_tests:989: -interval_raw_zone_inheritance_test_/0-fun-33- (positive start zone is inherited by a time-only end)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7817657Z         iso8601_tests:996: -interval_raw_zone_inheritance_test_/0-fun-31- (negative start zone is inherited by a time-only end)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7847665Z         iso8601_tests:1006: -interval_raw_zone_inheritance_test_/0-fun-29- (explicit Z end overrides the inherited start zone)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7877745Z         iso8601_tests:1016: -interval_raw_zone_inheritance_test_/0-fun-27- (explicit negative end zone overrides the inherited start zone)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7907768Z         iso8601_tests:1026: -interval_raw_zone_inheritance_test_/0-fun-25- (complete endpoint without zone remains independently UTC-parsed)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7937729Z         iso8601_tests:1036: -interval_raw_zone_inheritance_test_/0-fun-23- (raw local date supplies midnight before inherited zone normalization)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7967826Z         iso8601_tests:1046: -interval_raw_zone_inheritance_test_/0-fun-21- (month-day midnight inherits raw year and zone)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.7997679Z         iso8601_tests:1056: -interval_raw_zone_inheritance_test_/0-fun-19- (day-and-time end inherits raw date and zone)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8027723Z         iso8601_tests:1066: -interval_raw_zone_inheritance_test_/0-fun-17- (minute time gets seconds before inherited zone is appended)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8057604Z         iso8601_tests:1076: -interval_raw_zone_inheritance_test_/0-fun-15- (T-prefixed hour time inherits the start zone)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8087726Z         iso8601_tests:1086: -interval_raw_zone_inheritance_test_/0-fun-13- (T-prefixed basic HHMM time inherits the start zone)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8117819Z         iso8601_tests:1096: -interval_raw_zone_inheritance_test_/0-fun-11- (fractional seconds survive inherited zone normalization)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8147794Z         iso8601_tests:1106: -interval_raw_zone_inheritance_test_/0-fun-9- (comma fractional seconds survive inherited zone normalization)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8177920Z         iso8601_tests:1116: -interval_raw_zone_inheritance_test_/0-fun-7- (submicrosecond end fraction remains literal through inheritance)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8208155Z         iso8601_tests:1126: -interval_raw_zone_inheritance_test_/0-fun-5- (year-10000 raw date controls the inherited end across midnight)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8238493Z         iso8601_tests:1136: -interval_raw_zone_inheritance_test_/0-fun-3- (large signed year and negative zone cross the year boundary)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8267851Z         iso8601_tests:1146: -interval_raw_zone_inheritance_test_/0-fun-1- (inherited interval has a semantic format-parse roundtrip)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8297694Z         iso8601_tests:1163: -expanded_year_test_/0-fun-17- (explicit + sign with leading zeros)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8327522Z         iso8601_tests:1165: -expanded_year_test_/0-fun-15- (+2007 is year 2007 not 200)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8357399Z         iso8601_tests:1167: -expanded_year_test_/0-fun-13- (year beyond 9999)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8387771Z         iso8601_tests:1168: -expanded_year_test_/0-fun-11- (unsigned overlength is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8417784Z         iso8601_tests:1169: -expanded_year_test_/0-fun-9- (empty after sign is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8447785Z         iso8601_tests:1171: -expanded_year_test_/0-fun-7- (+YYYY year only defaults to Jan 1)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8477593Z         iso8601_tests:1173: -expanded_year_test_/0-fun-5- (+YYYY with full datetime)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8507869Z         iso8601_tests:1175: -expanded_year_test_/0-fun-3- (parse_exact with expanded year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8537512Z         iso8601_tests:1180: -expanded_year_test_/0-fun-1- (format roundtrip with expanded year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8567567Z         iso8601_tests:1193: -parse_expanded_test_/0-fun-17- (negative year -0001)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8597587Z         iso8601_tests:1195: -parse_expanded_test_/0-fun-15- (negative year -0000 (year zero))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8627637Z         iso8601_tests:1197: -parse_expanded_test_/0-fun-13- (Ides of March 44 BCE (astro -44))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8658025Z         iso8601_tests:1199: -parse_expanded_test_/0-fun-11- (positive expanded +0002007)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8687652Z         iso8601_tests:1201: -parse_expanded_test_/0-fun-9- (year beyond 9999)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8717733Z         iso8601_tests:1203: -parse_expanded_test_/0-fun-7- (plain 4-digit year works too)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8747715Z         iso8601_tests:1204: -parse_expanded_test_/0-fun-5- (empty after sign is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8777649Z         iso8601_tests:1206: -parse_expanded_test_/0-fun-3- (binary input)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8807851Z         iso8601_tests:1208: -parse_expanded_test_/0-fun-1- (fractional seconds preserved)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8837814Z         iso8601_tests:1216: -parse_rejects_negative_test_/0-fun-3- (parse/1 rejects negative year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8867903Z         iso8601_tests:1218: -parse_rejects_negative_test_/0-fun-1- (parse_exact/1 rejects negative year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8897772Z         iso8601_tests:1224: -format_expanded_test_/0-fun-9- (format negative year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8927944Z         iso8601_tests:1229: -format_expanded_test_/0-fun-7- (format large positive year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8958536Z         iso8601_tests:1234: -format_expanded_test_/0-fun-5- (format normal year (explicit sign))...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.8987966Z         iso8601_tests:1239: -format_expanded_test_/0-fun-3- (format year zero)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9018032Z         iso8601_tests:1244: -format_expanded_test_/0-fun-1- (format with float seconds)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9048303Z         iso8601_tests:1253: -format_expanded_roundtrip_test_/0-fun-3- (roundtrip negative year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9078114Z         iso8601_tests:1262: -format_expanded_roundtrip_test_/0-fun-1- (roundtrip large positive year)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9109332Z         iso8601_tests:1280: -parse_out_of_range_positive_crashes_test_/0-fun-1-...*failed*
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9111184Z in function iso8601_tests:'-parse_out_of_range_positive_crashes_test_/0-fun-1-'/0 (/home/runner/work/iso8601/iso8601/test/iso8601_tests.erl, line 1280)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9112678Z in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9113537Z in call from eunit_proc:run_test/1 (eunit_proc.erl, line 558)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9114386Z in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 382)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9115081Z in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 541)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9115559Z in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 483)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9116036Z in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 372)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9116518Z in call from eunit_proc:run_group/2 (eunit_proc.erl, line 597)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9117047Z **error:{assertException,[{module,iso8601_tests},
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9117406Z                   {line,1280},
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9117738Z                   {expression,"iso8601 : parse ( \"2017-02-30\" )"},
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9118130Z                   {pattern,"{ error , _ , [...] }"},
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9118492Z                   {unexpected_success,{{2017,3,2},{0,0,0}}}]}
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9118827Z   output:<<"">>
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9118973Z 
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9137825Z         iso8601_tests:1289: -parse_expanded_negative_offset_test_/0-fun-7- (negative year + timezone offset is badarg)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9169502Z         iso8601_tests:1291: -parse_expanded_negative_offset_test_/0-fun-5- (negative year + week date crashes)...*failed*
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9171590Z in function iso8601_tests:'-parse_expanded_negative_offset_test_/0-fun-5-'/0 (/home/runner/work/iso8601/iso8601/test/iso8601_tests.erl, line 1291)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9173346Z in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9174173Z in call from eunit_proc:run_test/1 (eunit_proc.erl, line 558)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9174946Z in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 382)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9175644Z in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 541)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9176082Z in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 483)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9176510Z in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 372)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9176916Z in call from eunit_proc:run_group/2 (eunit_proc.erl, line 597)
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9177366Z **error:{assertException,[{module,iso8601_tests},
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9177676Z                   {line,1291},
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9177999Z                   {expression,"iso8601 : parse_expanded ( \"-0001-W01-1\" )"},
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9178380Z                   {pattern,"{ error , _ , [...] }"},
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9178709Z                   {unexpected_success,{{-1,1,4},{0,0,0.0}}}]}
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9179441Z   output:<<"">>
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9179573Z 
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9197540Z         iso8601_tests:1293: -parse_expanded_negative_offset_test_/0-fun-3- (negative year in UTC still works)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9227767Z         iso8601_tests:1298: -parse_expanded_negative_offset_test_/0-fun-1- (negative year plain date still works)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9228768Z         [done in 0.714 s]
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9229337Z       [done in 0.714 s]
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9230197Z     [done in 0.715 s]
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9240689Z   [done in 0.715 s]
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9249621Z module 'prop_iso8601'
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9250190Z =======================================================
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9250709Z   Failed: 2.  Skipped: 0.  Passed: 236.
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9315818Z ===> Error running tests
+Erlang 29 build	EUnit Tests	2026-11-01T01:44:43.9475003Z ##[error]Process completed with exit code 1.
+Erlang 29 build	Post Run actions/checkout@v6	﻿2026-11-01T01:44:43.9619893Z Post job cleanup.
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.0561398Z [command]/usr/bin/git version
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.0620055Z git version 2.56.0
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.0678864Z Temporarily overriding HOME='/home/runner/work/_temp/e12396f9-5398-4340-afad-6bfe07550d8c' before making global git config changes
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.0680609Z Adding repository directory to the temporary git global config as a safe directory
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.0685584Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/iso8601/iso8601
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.0735815Z Removing SSH command configuration
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.0745176Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.0800532Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1129629Z Removing HTTP extra header
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1141159Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1180701Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1473681Z Removing includeIf entries pointing to credentials config files
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1484845Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1523032Z includeif.gitdir:/home/runner/work/iso8601/iso8601/.git.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1524087Z includeif.gitdir:/home/runner/work/iso8601/iso8601/.git/worktrees/*.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1524930Z includeif.gitdir:/github/workspace/.git.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1525416Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1537862Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/iso8601/iso8601/.git.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1569607Z /home/runner/work/_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1582289Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/iso8601/iso8601/.git.path /home/runner/work/_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1635231Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/iso8601/iso8601/.git/worktrees/*.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1669708Z /home/runner/work/_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1685315Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/iso8601/iso8601/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1728423Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1757413Z /github/runner_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1766480Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1807717Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1837519Z /github/runner_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1846218Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.1895738Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:44:44.2150721Z Removing credentials config '/home/runner/work/_temp/git-credentials-84aa87fd-d6c7-4ada-9d71-9cb4cc2e29a6.config'
+Erlang 29 build	Complete job	﻿2026-11-01T01:44:44.2306338Z Cleaning up orphan processes
