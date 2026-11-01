@@ -1,4 +1,4 @@
-# Slice03 CC close candidate — OTP28/29 CI
+# Slice03 close — OTP28/29 CI
 
 **Current disposition: CC-proposed-done for the bounded local refinement; the slice remains open.** The final-hosted-run and independent-review rows are still open. This return is not CDC acceptance, parent composition, Operator acceptance, or a published change.
 
@@ -10,7 +10,9 @@ The one-off OTP28 AST comparison removed only that spec attribute from each norm
 
 This refinement01-only return was not OTP29 validation; at that point no global OTP29 install or runtime replay had been performed. Refinement02 subsequently ran the required147 bounded probes, without unbounded hang calls or a hang-repair experiment. The final ten-job hosted rerun on the parent-published final PR head remains mandatory; actual OTP29 Dialyzer and its tests must run successfully before S03-05 can close. S03-06 also remains open for CDC independent disposition/retrospective and the separate parent/Operator checkpoints.
 
-**Disposition: CC-proposed-done for the locally deliverable candidate; the slice remains open.** The exact-hosted-run and independent-review rows are still open. This is an implementation return to CDC, not CDC acceptance, parent composition, Operator acceptance, or a published change.
+Current final disposition: integrated on main3a1cdfd, PR77 and main CI10/10, CDC accepted; see final section. Earlier CC/prereview stages below remain historical. Parent composition record is still separate.
+
+**Initial CC disposition: CC-proposed-done for the locally deliverable candidate; the slice remains open.** The exact-hosted-run and independent-review rows are still open. This is an implementation return to CDC, not CDC acceptance, parent composition, Operator acceptance, or a published change.
 
 ## Initial assignment return — before hosted run41261632042
 
@@ -80,3 +82,14 @@ The source commit was reworded from `3071050f501a9651356061d5c9da859cb9da862b` t
 Current source43a3740/tree3224b1e preserves the tested3071050 tree with corrected contiguous commit trailers; CC planning return063fa951 retains metadata old/new pins. Independent [review](cdc-verification.md) supports the two parser boundaries, unchanged public contracts,249EUnit/4×100PropEr/100%coverage/all8 local gates, fresh147 original runtime observations and10 additional controls. Only the named invalid-positive reason changes in original local28 date outputs; stack location/launcher differences are qualified. Full source byte-identity claims from earlier configuration/spec-only stages no longer apply.
 
 Two failed actual matrix runs remain preserved. S03-05 actual final-head10/10 and S03-06 final close/retro remain open; parent publishes reviewed correction for third run. Dependency compiler warnings (PropEr/rebar3_proper) remain P02 Arc02 watch items, distinct from first-party gate status; no suppression/bump. Seven runtime findings remain open, no future repair started, no merge/release authorised.
+
+
+## Final CDC close — actual ten-job compatibility established
+
+Current candidate43a37409bbca41ea835faffb7a77cb7087aa1b8c/tree3224b1e is technically accepted at the slice boundary. The Operator merged [PR77](https://github.com/erlsci/iso8601/pull/77) at2026-11-01T02:06:02Z into main3a1cdfd, exact reviewed tree3224b1e; [final run41263433752](https://github.com/erlsci/iso8601/actions/runs/41263433752) passes all10 jobs20–29 on that exact head. CDC independently queried run identity and inspected every job/full-log relevant projection: compile/xref/Dialyzer all10, test trio intentionally skipped only20, each21–29 runs249EUnit,4×100PropEr,100%module/totalcoverage, including all11 added and2 tightened cases. See [review](cdc-verification.md) for all6 final row dispositions, exact resolved version table, current runtime147 applicability and source/limits; [retrospective](cdc-retrospective.md) covers this collapsed checkpoint.
+
+Current artifact inventory adds to retained CC/prereview evidence: `artifacts/cdc-local-validation.log`, four `cdc-refinement02-replay-*.log` files, `hosted-first-run-jobs.json`/`hosted-first-run-otp29.log`, corresponding second-run pair, `hosted-final-jobs.json`, `hosted-final-receipt.log`, `hosted-merged-main-jobs.json`, CC `runlog.md`, `refinement01-native.log`, `refinement02-native.log` and four `refinement02-replay-*.log` files. Original inputs/reports/prompts remain at their pins; no new verifier product. Full aggregate final log is referenced by location/hash and GitHub run, with bounded durable version/outcome/case/warning receipts rather than duplicate payload.
+
+Scope-as-specified versus delivered: all planned old jobs/gates and100%floor retained; only necessary private integer-spec and rawpositive-Date/negativeweek checks added after reproduced failures. Four total source paths changed; no dependency/version/README/future-runtime cleanup. Explicitbadarg clarifies previously incidental invalid-input reasons. Initial two9/10 runs remain failed historical stages, superseded by actual final10/10, not rewritten. No further project decomposition/scope amendment is needed; parent rolls technical result and four-site upstream warning watch to existing P02 records. This direct slice supplies the original roadmap's CI increment with no arc wrapper.
+
+All6 slice rows are done/reproduced. The human CI review/merge decision is complete; parent independent composition record remains pending here. Automatic main push run41263775940 at3a1cdfd also passes10/10 with only20 test skips, independently checked from all10 job summaries. Full PRpopulation/case/warning evidence is retained on exact tree equality; no second full-main-log reading claimed. Future main changes now run the expanded matrix. Parent may close P02-06 while keeping other project obligations open. DATE001–005/CAL001–002 remain seven open repairs; remaining audit/spec/tooling/historical and project acceptance remain open. Selected patch/platform support is demonstrated, not everyOTPpatch/R15B03 or warning-free/release certification. No next increment, merge or release occurs at this close.

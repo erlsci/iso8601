@@ -1,6 +1,6 @@
 # Slice03 — OTP28/29 CI compatibility
 
-Version1.5 — 2026-10-31. Status: runtime compatibility43a3740 independently prereviewed; third actual matrix run pending. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
+Version1.7 — 2026-10-31. Status: CDC accepted and Operator-merged on main3a1cdfd; PR/main CI10/10 pass; parent composition record pending. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
 
 ## Outcome, authority and endpoint
 
@@ -63,3 +63,7 @@ The executable recipe and exact rejected alternatives are above; static checks d
 - `cc-prompt-iteration02.md` — issued2026-10-31, predecessor `cc-prompt-iteration01.md`; current actual29 EUnit rejection repair. Refinement01 returned/accepted at845b183; one executed/max5 before this assignment. Parent owns future push/rerun after CDC prereview.
 
 - v1.5 — 2026-10-31: refinement02 returned43a3740/063fa951, independently reproduced all8 native gates,249tests,147 runtime observations and10 extra controls; exact make_date4 delta/public contract preservation supported. Two refinements executed/max5; parent may publish third full matrix, no further increment or acceptance inferred.
+
+- v1.6 — 2026-10-31: actual run41263433752 independently verified10/10, each testedmajor249EUnit/4×100PropEr/100%coverage; all6 childrows accepted, close/retro complete. Firsttwo failures retained; upstream warnings bubble toArc02, seven runtime repairs and parent/human/project gates remain open. Stop at this checkpoint.
+
+- v1.7 — 2026-10-31 (merge2026-11-01T02:06:02Z): direct Operator mergedPR77, main3a1cdfd tree equals reviewed43a. Independent main push-run41263775940 summary also10/10, retained detailed PRpopulation evidence on identical tree. Human CI merge decision achieved; no next increment or full-project acceptance.

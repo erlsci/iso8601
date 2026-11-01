@@ -72,3 +72,40 @@ CDC also executed10 extra exact-value boundary controls, all true: invalidpositi
 The original3071050 source message had separated coauthors despite CC's adjacency attestation. Current43a3740 changes message metadata only and preserves the exact tested tree; both source and the two rewritten unpublished planning-message old/new identities are retained in the CC record. Literal current blocks now verified adjacent. No code/gate rerun was attributed to that metadata-only amendment; current independent runs above use final43a. This corrected attestation discrepancy is a retrospective observation, not an extra runtime refinement.
 
 S03-01/03/04 independently supported again; S03-02 unchanged workflow proof retained. S03-05/06 **remain open** pending exact final-head10/10 hosted jobs, final close/retrospective, parent composition and Operator merge checkpoint. Parent may now publish43a3740; no more source change requested locally. Upstream29 warnings from PropEr1.5.0 (catch/is_record) and rebar3_proper0.12.1 (catch sites) remain distinct P02 Arc02 tooling watch items, with no suppression/dependency bump or warning-free matrix claim.
+
+
+## Final hosted verification and slice acceptance — 2026-10-31
+
+**CDC accepts Slice03's technical implementation at source `43a37409bbca41ea835faffb7a77cb7087aa1b8c`, tree `3224b1e0da9285ab67349aadc3b59ffa11bfe8ab`.** The Operator subsequently said “all passing! I've merged the PR :-D”. [PR77](https://github.com/erlsci/iso8601/pull/77) merged byoubiwann at2026-11-01T02:06:02Z into main `3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828`. CDC independently verified the entire main tree equals the reviewed43a3740 tree3224b1e with empty diff. This is now integrated CI support; parent composition record is pending, whole-project acceptance/release is not implied. Two numbered refinements executed/max5; all issued prompts and both failed runs retained. No next runtime increment authorised by this close.
+
+Parent supplied terminal raw JSON/logs for [run41263433752](https://github.com/erlsci/iso8601/actions/runs/41263433752). CDC independently queried `gh run view 41263433752 --repo erlsci/iso8601 --json headSha,conclusion,status,url,event`: exit0, completed/success/pull_request, exact43a3740 head. CDC independently parsed **all10 job records and every aggregate log line** for complete named-step/version/test/coverage/warning projections, not sampled jobs or the rollup. [Full ten-job JSON](artifacts/hosted-final-jobs.json) and [bounded exact receipt](artifacts/hosted-final-receipt.log) retain all outcomes, actual version/action identities, each new/tightened case and warning contexts, plus aggregate byte count/hash/path. Parent's full aggregate remains `/private/tmp/iso8601-otp77-evidence/run41263433752-full.log` and the linked GitHub run. This is structured full-population inspection, not a claim every routine build line received semantic source review.
+
+| OTP patch from setup/PLT log | ERTS as printed | rebar3 as printed | Actual gate outcome |
+|---|---|---|---|
+|20.3.8.26|9.3.3.15|3.15.2|compile/xref/Dialyzer pass; test trio skipped|
+|21.3.8.24|10.3.5.19|3.15.2|all6 pass|
+|22.3.4.27|10.7.2.19|3.15.2|all6 pass|
+|23.3.4.20|11.2.2.18|3.15.2|all6 pass|
+|24.3.4.17|12.3.2.17|3.22.1|all6 pass|
+|25.3.2.21|13.2.2.16|3.22.1|all6 pass|
+|26.2.5.21|14.2.5.15|3.25.1|all6 pass|
+|27.3.4.19|15.2.7.14|3.25.1|all6 pass|
+|28.5.0.8|16.4.0.7|3.28.0|all6 pass|
+|29.1.2|17.1.1|3.28.0|all6 pass|
+
+For **each of21–29**, independently asserted one249-EUnit-success marker, four100-case PropEr successes, one4/4-property total and both module/total100%coverage rows. Also checked all11 added controls and both tightened rejection cases succeed on every tested major. Only20 has its three intended test skips; every job's three static steps succeed. New tier used checkout `d23441a48e516b6c34aea4fa41551a30e30af803` and setup-beam `54075bcc5e249e4758d363f27d099f55d843f124` on Ubuntu22.04; old tier retains official Debian containers/manual checkout. Old patch values above come from printed PLT-version markers, not an inferred ERTS mapping. Selected patches/platforms are validated, not every historical patch, platform or R15B03.
+
+The full warning projection has6 `Warning:` renderings at4 upstream sites: rebar3_proper0.12.1 `rebar3_proper_prv.erl`84/166 deprecated catch; PropEr1.5.0 `proper_statem.erl`770 deprecated catch and `proper_erlang_abstract_code.erl`2138 is_record/1 clash, each latter rendered twice. No first-party compiler warning was found in those complete contexts. These are **uncleared P02 Arc02 tooling watch items**, not failures of the passing gates or a claim the matrix is warning-free. No suppression/dependency bump. Initial final-log checker used an API-style html_url key on gh's url projection and raised KeyError before producing a receipt; corrected full-schema query passed. This reviewer check error is retained in the final receipt, not attributed to the product.
+
+### Final row walk, applicability and bubble-up
+
+S03-01 authority/base/ownership/current readings and disclosed late initial-primary-read correction verified. S03-02 exact10-major matrix/old-job preservation independently verified and now actually executed. S03-03 necessary private spec and two parser boundaries reviewed; all15exports/11types/public specs preserved, invalid-input reason clarification explicit. S03-04 all8 current native gates independently reproduced with249/4×100/100%; cached-source/PLT provenance and failures retained. S03-05 actual final-head10/10 and complete per-job test execution now independently established. S03-06 current all-row close, [retrospective](cdc-retrospective.md), artifact inventory and this independent verification complete. All6 child rows done/reproduced; parent composition record remains separate; the human CI merge decision is now completed.
+
+Delivered capability matches the selected CI increment: separately reviewable PR extends existing20–27 matrix to28/29 with only two actually required compatibility corrections. Four source paths are `.github/workflows/ci.yml`, `AGENTS.md`, `src/iso8601.erl`, `test/iso8601_tests.erl`; README/dependencies/version/build policy unchanged. The earlier configuration-only/no-runtime-delta premise was explicitly superseded by actual failures and versioned refinements, not silently retained. No new project decomposition/scope change is needed: necessary fixes were already authorised. Parent should roll up the achieved technical result and upstream warning watch items and mark P02-06 achieved following the now-attributable human merge.
+
+Fresh147 local28 replay supports current runtime applicability; only regular-invalid-positive reason changed from if_clause tobadarg among original observed values, with source/launcher stack metadata qualified. CAL003/CAL004 interval repairs survive. **DATE001–005 and CAL001/002 remain seven open remediation obligations**; no source-wide or cross-version absence-of-bugs claim. Local28 underflow behavior is not asserted identical on29's new calendar substrate. Arc02 diagnostic/spec/tooling/historical work and whole-project acceptance remain open. Parent independently records checkpoint composition next. The Operator merge decision is complete; continuation still needs its own selected next increment. Stop here, no more source/native runs or next work.
+
+
+### Merged-main follow-through
+
+The automatic [main push run41263775940](https://github.com/erlsci/iso8601/actions/runs/41263775940) also completed10/10 success. CDC freshly queried its identity (gh run view same fields, exit0): eventpush, completed/success, exact merged3a1cdfd. Independently parsed all10 [main job records](artifacts/hosted-merged-main-jobs.json): exact20–29, every compile/xref/Dialyzer succeeds, only20 test trio skipped, all6 steps21–29 succeed. Detailed249/4×100/100% and individual case/warning evidence above belongs to the full PR43a log; it is retained for the **identical main source tree**, not relabeled a second full-main-log inspection. No redundant native/full-log rerun was needed. Both source and integration validation now have attributable receipts.

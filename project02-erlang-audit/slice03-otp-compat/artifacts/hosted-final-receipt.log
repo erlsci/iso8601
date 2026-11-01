@@ -1,0 +1,430 @@
+CDC independent full10job/complete-log projection, run41263433752
+Fresh identity command: gh run view 41263433752 --repo erlsci/iso8601 --json headSha,conclusion,status,url,event EXIT0: headSha43a37409bbca41ea835faffb7a77cb7087aa1b8c;conclusion success;status completed;event pull_request.
+Input /private/tmp/iso8601-otp77-evidence/run41263433752-full.log bytes=718900 SHA256=b89e8bfd66efddee2b4f81dade8f4fed00e8b6576cc6c8a6726a07ae0439e2e3
+Input /private/tmp/iso8601-otp77-evidence/run41263433752-jobs.json SHA256=05e26540e821bae52c910a7ec464216fbd8b38f85f3fc21fb95f7fca568b50ff
+Checks: exact20–29 once,10success,all3staticsteps success;only20three testskips;each21–29all6stepssuccess,one249EUnitmarker,four100caseproperties,two100%coverrows;all11newcases+2tightenedrejectcases pass everytestedmajor. Every logline considered for these projections. Old container patchversions derive PLTmarkers rather than guessedERTS mapping. Initial projection used API html_url instead of gh url key and raised KeyError before writing receipt; corrected complete check below passed.
+
+JOB 20 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721171579
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests skipped
+PropEr Tests skipped
+Test Coverage skipped
+
+Erlang 20 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:29.9901055Z ===> Fetching rebar3_proper v0.12.1
+Erlang 20 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:30.1162968Z ===> Compiling rebar3_proper
+Erlang 20 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:30.2069565Z rebar 3.15.2 on Erlang/OTP 20 Erts 9.3.3.15
+Erlang 20 build (Debian container)	Dialyzer	2026-11-01T02:01:34.1136485Z ===> Building with 166 files in ../../github/home/.cache/rebar3/rebar3_20.3.8.26_plt...
+Erlang 20 build (Debian container)	Dialyzer	2026-11-01T02:02:22.6615002Z ===> Copying ../../github/home/.cache/rebar3/rebar3_20.3.8.26_plt to _build/default/rebar3_20.3.8.26_plt...
+Erlang 20 build (Debian container)	Dialyzer	2026-11-01T02:02:22.6646609Z ===> Checking 166 files in _build/default/rebar3_20.3.8.26_plt...
+Erlang 20 build (Debian container)	Dialyzer	2026-11-01T02:02:25.7078899Z ===> Analyzing 1 files with _build/default/rebar3_20.3.8.26_plt...
+JOB 21 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721171742
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests success
+PropEr Tests success
+Test Coverage success
+
+Erlang 21 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:32.7150715Z ===> Fetching rebar3_proper v0.12.1
+Erlang 21 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:32.7769486Z ===> Compiling rebar3_proper
+Erlang 21 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:32.8333748Z rebar 3.15.2 on Erlang/OTP 21 Erts 10.3.5.19
+Erlang 21 build (Debian container)	Dialyzer	2026-11-01T02:01:34.2514524Z ===> Building with 193 files in ../../github/home/.cache/rebar3/rebar3_21.3.8.24_plt...
+Erlang 21 build (Debian container)	Dialyzer	2026-11-01T02:02:11.8282167Z ===> Copying ../../github/home/.cache/rebar3/rebar3_21.3.8.24_plt to _build/default/rebar3_21.3.8.24_plt...
+Erlang 21 build (Debian container)	Dialyzer	2026-11-01T02:02:11.8311797Z ===> Checking 193 files in _build/default/rebar3_21.3.8.24_plt...
+Erlang 21 build (Debian container)	Dialyzer	2026-11-01T02:02:12.2157431Z ===> Analyzing 1 files with _build/default/rebar3_21.3.8.24_plt...
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4298406Z         iso8601_tests:1278: parse_out_of_range_positive_crashes_test_...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4328877Z         iso8601_tests:1283: parse_invalid_positive_calendar_date_test_ (parse_exact rejects an invalid positive date)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4359019Z         iso8601_tests:1285: parse_invalid_positive_calendar_date_test_ (expanded parsing rejects an invalid positive date)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4389517Z         iso8601_tests:1287: parse_invalid_positive_calendar_date_test_ (invalid raw date is rejected before offset normalization)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4419115Z         iso8601_tests:1289: parse_invalid_positive_calendar_date_test_ (an inherited interval end cannot normalize an invalid date)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4448694Z         iso8601_tests:1291: parse_invalid_positive_calendar_date_test_ (positive leap day remains valid)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4478514Z         iso8601_tests:1293: parse_invalid_positive_calendar_date_test_ (valid timezone crossing remains normalized)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4508599Z         iso8601_tests:1298: parse_invalid_positive_calendar_date_test_ (positive week date remains valid)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4538579Z         iso8601_tests:1300: parse_invalid_positive_calendar_date_test_ (year zero week date remains valid)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4568546Z         iso8601_tests:1302: parse_invalid_positive_calendar_date_test_ (valid negative plain date remains valid)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4599410Z         iso8601_tests:1304: parse_invalid_positive_calendar_date_test_ (expanded positive date remains valid)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4658770Z         iso8601_tests:1316: parse_expanded_negative_offset_test_ (negative year + extended week date is rejected)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4688879Z         iso8601_tests:1318: parse_expanded_negative_offset_test_ (negative year + basic week date is rejected)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T02:02:15.4826158Z   All 249 tests passed.
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T02:02:16.0779175Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T02:02:16.0780707Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T02:02:16.0826527Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T02:02:16.0865855Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T02:02:16.1004877Z 4/4 properties passed
+Erlang 21 build (Debian container)	Test Coverage	2026-11-01T02:02:16.7041134Z   |               iso8601  |      100%  |
+Erlang 21 build (Debian container)	Test Coverage	2026-11-01T02:02:16.7041587Z   |                 total  |      100%  |
+JOB 22 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721171792
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests success
+PropEr Tests success
+Test Coverage success
+
+Erlang 22 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:29.9112858Z ===> Fetching rebar3_proper v0.12.1
+Erlang 22 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:30.0222194Z ===> Compiling rebar3_proper
+Erlang 22 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:30.1502909Z rebar 3.15.2 on Erlang/OTP 22 Erts 10.7.2.19
+Erlang 22 build (Debian container)	Dialyzer	2026-11-01T02:01:32.6812464Z ===> Building with 197 files in ../../github/home/.cache/rebar3/rebar3_22.3.4.27_plt...
+Erlang 22 build (Debian container)	Dialyzer	2026-11-01T02:02:18.6595888Z ===> Copying ../../github/home/.cache/rebar3/rebar3_22.3.4.27_plt to _build/default/rebar3_22.3.4.27_plt...
+Erlang 22 build (Debian container)	Dialyzer	2026-11-01T02:02:18.6628583Z ===> Checking 197 files in _build/default/rebar3_22.3.4.27_plt...
+Erlang 22 build (Debian container)	Dialyzer	2026-11-01T02:02:19.2556916Z ===> Analyzing 1 files with _build/default/rebar3_22.3.4.27_plt...
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.0794343Z         iso8601_tests:1278: parse_out_of_range_positive_crashes_test_...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.0825112Z         iso8601_tests:1283: parse_invalid_positive_calendar_date_test_ (parse_exact rejects an invalid positive date)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.0854697Z         iso8601_tests:1285: parse_invalid_positive_calendar_date_test_ (expanded parsing rejects an invalid positive date)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.0884622Z         iso8601_tests:1287: parse_invalid_positive_calendar_date_test_ (invalid raw date is rejected before offset normalization)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.0914544Z         iso8601_tests:1289: parse_invalid_positive_calendar_date_test_ (an inherited interval end cannot normalize an invalid date)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.0945365Z         iso8601_tests:1291: parse_invalid_positive_calendar_date_test_ (positive leap day remains valid)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.0975137Z         iso8601_tests:1293: parse_invalid_positive_calendar_date_test_ (valid timezone crossing remains normalized)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.1004166Z         iso8601_tests:1298: parse_invalid_positive_calendar_date_test_ (positive week date remains valid)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.1035654Z         iso8601_tests:1300: parse_invalid_positive_calendar_date_test_ (year zero week date remains valid)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.1065229Z         iso8601_tests:1302: parse_invalid_positive_calendar_date_test_ (valid negative plain date remains valid)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.1095174Z         iso8601_tests:1304: parse_invalid_positive_calendar_date_test_ (expanded positive date remains valid)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.1155366Z         iso8601_tests:1316: parse_expanded_negative_offset_test_ (negative year + extended week date is rejected)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.1185662Z         iso8601_tests:1318: parse_expanded_negative_offset_test_ (negative year + basic week date is rejected)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T02:02:24.1391363Z   All 249 tests passed.
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T02:02:25.1782907Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T02:02:25.1785474Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T02:02:25.1824127Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T02:02:25.1883178Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T02:02:25.2004920Z 4/4 properties passed
+Erlang 22 build (Debian container)	Test Coverage	2026-11-01T02:02:26.2559514Z   |               iso8601  |      100%  |
+Erlang 22 build (Debian container)	Test Coverage	2026-11-01T02:02:26.2560333Z   |                 total  |      100%  |
+JOB 23 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721172057
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests success
+PropEr Tests success
+Test Coverage success
+
+Erlang 23 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:31.1928924Z ===> Fetching rebar3_proper v0.12.1
+Erlang 23 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:31.2842949Z ===> Compiling rebar3_proper
+Erlang 23 build (Debian container)	Check rebar3 Version	2026-11-01T02:01:31.4816059Z rebar 3.15.2 on Erlang/OTP 23 Erts 11.2.2.18
+Erlang 23 build (Debian container)	Dialyzer	2026-11-01T02:01:33.6907608Z ===> Building with 202 files in ../../github/home/.cache/rebar3/rebar3_23.3.4.20_plt...
+Erlang 23 build (Debian container)	Dialyzer	2026-11-01T02:02:21.8569398Z ===> Copying ../../github/home/.cache/rebar3/rebar3_23.3.4.20_plt to _build/default/rebar3_23.3.4.20_plt...
+Erlang 23 build (Debian container)	Dialyzer	2026-11-01T02:02:21.8604756Z ===> Checking 202 files in _build/default/rebar3_23.3.4.20_plt...
+Erlang 23 build (Debian container)	Dialyzer	2026-11-01T02:02:22.3490589Z ===> Analyzing 1 files with _build/default/rebar3_23.3.4.20_plt...
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:27.9816560Z         iso8601_tests:1278: parse_out_of_range_positive_crashes_test_...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:27.9846840Z         iso8601_tests:1283: parse_invalid_positive_calendar_date_test_ (parse_exact rejects an invalid positive date)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:27.9876898Z         iso8601_tests:1285: parse_invalid_positive_calendar_date_test_ (expanded parsing rejects an invalid positive date)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:27.9907060Z         iso8601_tests:1287: parse_invalid_positive_calendar_date_test_ (invalid raw date is rejected before offset normalization)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:27.9937110Z         iso8601_tests:1289: parse_invalid_positive_calendar_date_test_ (an inherited interval end cannot normalize an invalid date)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:27.9966894Z         iso8601_tests:1291: parse_invalid_positive_calendar_date_test_ (positive leap day remains valid)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:27.9996879Z         iso8601_tests:1293: parse_invalid_positive_calendar_date_test_ (valid timezone crossing remains normalized)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:28.0027889Z         iso8601_tests:1298: parse_invalid_positive_calendar_date_test_ (positive week date remains valid)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:28.0057082Z         iso8601_tests:1300: parse_invalid_positive_calendar_date_test_ (year zero week date remains valid)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:28.0086844Z         iso8601_tests:1302: parse_invalid_positive_calendar_date_test_ (valid negative plain date remains valid)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:28.0116819Z         iso8601_tests:1304: parse_invalid_positive_calendar_date_test_ (expanded positive date remains valid)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:28.0176758Z         iso8601_tests:1316: parse_expanded_negative_offset_test_ (negative year + extended week date is rejected)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:28.0206813Z         iso8601_tests:1318: parse_expanded_negative_offset_test_ (negative year + basic week date is rejected)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T02:02:28.0369649Z   All 249 tests passed.
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T02:02:29.0924708Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T02:02:29.0927358Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T02:02:29.0980555Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T02:02:29.1023328Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T02:02:29.1109676Z 4/4 properties passed
+Erlang 23 build (Debian container)	Test Coverage	2026-11-01T02:02:30.1468462Z   |               iso8601  |      100%  |
+Erlang 23 build (Debian container)	Test Coverage	2026-11-01T02:02:30.1469796Z   |                 total  |      100%  |
+JOB 24 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721171963
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests success
+PropEr Tests success
+Test Coverage success
+
+Erlang 24 build	Set up job	2026-11-01T02:01:14.0255944Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+Erlang 24 build	Set up job	2026-11-01T02:01:14.2103631Z Download action repository 'erlef/setup-beam@v1' (SHA:54075bcc5e249e4758d363f27d099f55d843f124)
+Erlang 24 build	Run erlef/setup-beam@v1	2026-11-01T02:01:15.9917510Z ##[group]Installing Erlang/OTP OTP-24.3.4.17 - built on amd64/ubuntu-22.04
+Erlang 24 build	Run erlef/setup-beam@v1	2026-11-01T02:01:20.4905088Z rebar 3.22.1 on Erlang/OTP 24 Erts 12.3.2.17
+Erlang 24 build	Check rebar3 Version	2026-11-01T02:01:21.8410095Z ===> Fetching rebar3_proper v0.12.1
+Erlang 24 build	Check rebar3 Version	2026-11-01T02:01:21.9119916Z ===> Compiling rebar3_proper
+Erlang 24 build	Check rebar3 Version	2026-11-01T02:01:22.0102772Z rebar 3.22.1 on Erlang/OTP 24 Erts 12.3.2.17
+Erlang 24 build	Dialyzer	2026-11-01T02:01:23.9655274Z ===> Building with 205 files in /home/runner/.cache/rebar3/rebar3_24.3.4.17_plt...
+Erlang 24 build	Dialyzer	2026-11-01T02:01:48.3374956Z ===> Copying /home/runner/.cache/rebar3/rebar3_24.3.4.17_plt to /home/runner/work/iso8601/iso8601/_build/default/rebar3_24.3.4.17_plt...
+Erlang 24 build	Dialyzer	2026-11-01T02:01:48.3419513Z ===> Checking 205 files in _build/default/rebar3_24.3.4.17_plt...
+Erlang 24 build	Dialyzer	2026-11-01T02:01:48.7482133Z ===> Analyzing 1 files with _build/default/rebar3_24.3.4.17_plt...
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1164469Z         iso8601_tests:1278: parse_out_of_range_positive_crashes_test_...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1194430Z         iso8601_tests:1283: parse_invalid_positive_calendar_date_test_ (parse_exact rejects an invalid positive date)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1224454Z         iso8601_tests:1285: parse_invalid_positive_calendar_date_test_ (expanded parsing rejects an invalid positive date)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1254592Z         iso8601_tests:1287: parse_invalid_positive_calendar_date_test_ (invalid raw date is rejected before offset normalization)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1284424Z         iso8601_tests:1289: parse_invalid_positive_calendar_date_test_ (an inherited interval end cannot normalize an invalid date)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1314509Z         iso8601_tests:1291: parse_invalid_positive_calendar_date_test_ (positive leap day remains valid)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1344310Z         iso8601_tests:1293: parse_invalid_positive_calendar_date_test_ (valid timezone crossing remains normalized)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1374345Z         iso8601_tests:1298: parse_invalid_positive_calendar_date_test_ (positive week date remains valid)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1404349Z         iso8601_tests:1300: parse_invalid_positive_calendar_date_test_ (year zero week date remains valid)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1434582Z         iso8601_tests:1302: parse_invalid_positive_calendar_date_test_ (valid negative plain date remains valid)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1464491Z         iso8601_tests:1304: parse_invalid_positive_calendar_date_test_ (expanded positive date remains valid)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1524259Z         iso8601_tests:1316: parse_expanded_negative_offset_test_ (negative year + extended week date is rejected)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1555089Z         iso8601_tests:1318: parse_expanded_negative_offset_test_ (negative year + basic week date is rejected)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T02:01:53.1722245Z   All 249 tests passed.
+Erlang 24 build	PropEr Tests	2026-11-01T02:01:54.0166432Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T02:01:54.0191601Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T02:01:54.0231317Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T02:01:54.0253054Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T02:01:54.0333054Z 4/4 properties passed
+Erlang 24 build	Test Coverage	2026-11-01T02:01:54.9063393Z   |               iso8601  |      100%  |
+Erlang 24 build	Test Coverage	2026-11-01T02:01:54.9064132Z   |                 total  |      100%  |
+JOB 25 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721171704
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests success
+PropEr Tests success
+Test Coverage success
+
+Erlang 25 build	Set up job	2026-11-01T02:01:12.9233601Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+Erlang 25 build	Set up job	2026-11-01T02:01:13.1667985Z Download action repository 'erlef/setup-beam@v1' (SHA:54075bcc5e249e4758d363f27d099f55d843f124)
+Erlang 25 build	Run erlef/setup-beam@v1	2026-11-01T02:01:14.6713324Z ##[group]Installing Erlang/OTP OTP-25.3.2.21 - built on amd64/ubuntu-22.04
+Erlang 25 build	Run erlef/setup-beam@v1	2026-11-01T02:01:19.5114933Z rebar 3.22.1 on Erlang/OTP 25 Erts 13.2.2.16
+Erlang 25 build	Check rebar3 Version	2026-11-01T02:01:20.8555175Z ===> Fetching rebar3_proper v0.12.1
+Erlang 25 build	Check rebar3 Version	2026-11-01T02:01:20.9503649Z ===> Compiling rebar3_proper
+Erlang 25 build	Check rebar3 Version	2026-11-01T02:01:21.0968106Z rebar 3.22.1 on Erlang/OTP 25 Erts 13.2.2.16
+Erlang 25 build	Dialyzer	2026-11-01T02:01:24.2029610Z ===> Building with 206 files in /home/runner/.cache/rebar3/rebar3_25.3.2.21_plt...
+Erlang 25 build	Dialyzer	2026-11-01T02:01:47.8212088Z ===> Copying /home/runner/.cache/rebar3/rebar3_25.3.2.21_plt to /home/runner/work/iso8601/iso8601/_build/default/rebar3_25.3.2.21_plt...
+Erlang 25 build	Dialyzer	2026-11-01T02:01:47.8245949Z ===> Checking 206 files in _build/default/rebar3_25.3.2.21_plt...
+Erlang 25 build	Dialyzer	2026-11-01T02:01:48.2993611Z ===> Analyzing 1 files with _build/default/rebar3_25.3.2.21_plt...
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0185621Z         iso8601_tests:1278: -parse_out_of_range_positive_crashes_test_/0-fun-1-...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0216257Z         iso8601_tests:1283: -parse_invalid_positive_calendar_date_test_/0-fun-19- (parse_exact rejects an invalid positive date)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0246317Z         iso8601_tests:1285: -parse_invalid_positive_calendar_date_test_/0-fun-17- (expanded parsing rejects an invalid positive date)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0276566Z         iso8601_tests:1287: -parse_invalid_positive_calendar_date_test_/0-fun-15- (invalid raw date is rejected before offset normalization)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0306333Z         iso8601_tests:1289: -parse_invalid_positive_calendar_date_test_/0-fun-13- (an inherited interval end cannot normalize an invalid date)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0336260Z         iso8601_tests:1291: -parse_invalid_positive_calendar_date_test_/0-fun-11- (positive leap day remains valid)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0366268Z         iso8601_tests:1293: -parse_invalid_positive_calendar_date_test_/0-fun-9- (valid timezone crossing remains normalized)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0396164Z         iso8601_tests:1298: -parse_invalid_positive_calendar_date_test_/0-fun-7- (positive week date remains valid)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0426204Z         iso8601_tests:1300: -parse_invalid_positive_calendar_date_test_/0-fun-5- (year zero week date remains valid)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0455875Z         iso8601_tests:1302: -parse_invalid_positive_calendar_date_test_/0-fun-3- (valid negative plain date remains valid)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0486308Z         iso8601_tests:1304: -parse_invalid_positive_calendar_date_test_/0-fun-1- (expanded positive date remains valid)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0546041Z         iso8601_tests:1316: -parse_expanded_negative_offset_test_/0-fun-7- (negative year + extended week date is rejected)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0575924Z         iso8601_tests:1318: -parse_expanded_negative_offset_test_/0-fun-5- (negative year + basic week date is rejected)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T02:01:53.0691838Z   All 249 tests passed.
+Erlang 25 build	PropEr Tests	2026-11-01T02:01:54.2513544Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T02:01:54.2550077Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T02:01:54.2585996Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T02:01:54.2605897Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T02:01:54.2819779Z 4/4 properties passed
+Erlang 25 build	Test Coverage	2026-11-01T02:01:55.4490257Z   |               iso8601  |      100%  |
+Erlang 25 build	Test Coverage	2026-11-01T02:01:55.4491258Z   |                 total  |      100%  |
+JOB 26 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721171740
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests success
+PropEr Tests success
+Test Coverage success
+
+Erlang 26 build	Set up job	2026-11-01T02:01:12.7876026Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+Erlang 26 build	Set up job	2026-11-01T02:01:12.9151848Z Download action repository 'erlef/setup-beam@v1' (SHA:54075bcc5e249e4758d363f27d099f55d843f124)
+Erlang 26 build	Run erlef/setup-beam@v1	2026-11-01T02:01:14.5569640Z ##[group]Installing Erlang/OTP OTP-26.2.5.21 - built on amd64/ubuntu-22.04
+Erlang 26 build	Run erlef/setup-beam@v1	2026-11-01T02:01:18.2110601Z rebar 3.25.1 on Erlang/OTP 26 Erts 14.2.5.15
+Erlang 26 build	Check rebar3 Version	2026-11-01T02:01:18.7862918Z ===> Fetching rebar3_proper v0.12.1
+Erlang 26 build	Check rebar3 Version	2026-11-01T02:01:18.8485765Z ===> Compiling rebar3_proper
+Erlang 26 build	Check rebar3 Version	2026-11-01T02:01:18.9394570Z rebar 3.25.1 on Erlang/OTP 26 Erts 14.2.5.15
+Erlang 26 build	Dialyzer	2026-11-01T02:01:20.2071437Z ===> Building with 212 files in /home/runner/.cache/rebar3/rebar3_26.2.5.21_plt...
+Erlang 26 build	Dialyzer	2026-11-01T02:01:34.4836727Z ===> Copying /home/runner/.cache/rebar3/rebar3_26.2.5.21_plt to /home/runner/work/iso8601/iso8601/_build/default/rebar3_26.2.5.21_plt...
+Erlang 26 build	Dialyzer	2026-11-01T02:01:34.4854099Z ===> Checking 212 files in _build/default/rebar3_26.2.5.21_plt...
+Erlang 26 build	Dialyzer	2026-11-01T02:01:35.2265449Z ===> Analyzing 1 files with _build/default/rebar3_26.2.5.21_plt...
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6158046Z         iso8601_tests:1278: -parse_out_of_range_positive_crashes_test_/0-fun-1-...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6188179Z         iso8601_tests:1283: -parse_invalid_positive_calendar_date_test_/0-fun-19- (parse_exact rejects an invalid positive date)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6218192Z         iso8601_tests:1285: -parse_invalid_positive_calendar_date_test_/0-fun-17- (expanded parsing rejects an invalid positive date)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6248301Z         iso8601_tests:1287: -parse_invalid_positive_calendar_date_test_/0-fun-15- (invalid raw date is rejected before offset normalization)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6278210Z         iso8601_tests:1289: -parse_invalid_positive_calendar_date_test_/0-fun-13- (an inherited interval end cannot normalize an invalid date)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6308179Z         iso8601_tests:1291: -parse_invalid_positive_calendar_date_test_/0-fun-11- (positive leap day remains valid)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6338175Z         iso8601_tests:1293: -parse_invalid_positive_calendar_date_test_/0-fun-9- (valid timezone crossing remains normalized)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6368149Z         iso8601_tests:1298: -parse_invalid_positive_calendar_date_test_/0-fun-7- (positive week date remains valid)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6398151Z         iso8601_tests:1300: -parse_invalid_positive_calendar_date_test_/0-fun-5- (year zero week date remains valid)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6428209Z         iso8601_tests:1302: -parse_invalid_positive_calendar_date_test_/0-fun-3- (valid negative plain date remains valid)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6458165Z         iso8601_tests:1304: -parse_invalid_positive_calendar_date_test_/0-fun-1- (expanded positive date remains valid)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6518164Z         iso8601_tests:1316: -parse_expanded_negative_offset_test_/0-fun-7- (negative year + extended week date is rejected)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6548166Z         iso8601_tests:1318: -parse_expanded_negative_offset_test_/0-fun-5- (negative year + basic week date is rejected)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T02:01:38.6628804Z   All 249 tests passed.
+Erlang 26 build	PropEr Tests	2026-11-01T02:01:39.2321708Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T02:01:39.2348268Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T02:01:39.2374247Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T02:01:39.2393460Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T02:01:39.2437577Z 4/4 properties passed
+Erlang 26 build	Test Coverage	2026-11-01T02:01:39.7792222Z   |               iso8601  |      100%  |
+Erlang 26 build	Test Coverage	2026-11-01T02:01:39.7792756Z   |                 total  |      100%  |
+JOB 27 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721171985
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests success
+PropEr Tests success
+Test Coverage success
+
+Erlang 27 build	Set up job	2026-11-01T02:01:13.3547405Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+Erlang 27 build	Set up job	2026-11-01T02:01:13.5216279Z Download action repository 'erlef/setup-beam@v1' (SHA:54075bcc5e249e4758d363f27d099f55d843f124)
+Erlang 27 build	Run erlef/setup-beam@v1	2026-11-01T02:01:15.0238071Z ##[group]Installing Erlang/OTP OTP-27.3.4.19 - built on amd64/ubuntu-22.04
+Erlang 27 build	Run erlef/setup-beam@v1	2026-11-01T02:01:19.0247950Z rebar 3.25.1 on Erlang/OTP 27 Erts 15.2.7.14
+Erlang 27 build	Check rebar3 Version	2026-11-01T02:01:19.7919932Z ===> Fetching rebar3_proper v0.12.1
+Erlang 27 build	Check rebar3 Version	2026-11-01T02:01:19.8704248Z ===> Compiling rebar3_proper
+Erlang 27 build	Check rebar3 Version	2026-11-01T02:01:20.0214026Z rebar 3.25.1 on Erlang/OTP 27 Erts 15.2.7.14
+Erlang 27 build	Dialyzer	2026-11-01T02:01:21.8880491Z ===> Building with 218 files in /home/runner/.cache/rebar3/rebar3_27.3.4.19_plt...
+Erlang 27 build	Dialyzer	2026-11-01T02:01:47.8668379Z ===> Copying /home/runner/.cache/rebar3/rebar3_27.3.4.19_plt to /home/runner/work/iso8601/iso8601/_build/default/rebar3_27.3.4.19_plt...
+Erlang 27 build	Dialyzer	2026-11-01T02:01:47.8718677Z ===> Checking 218 files in _build/default/rebar3_27.3.4.19_plt...
+Erlang 27 build	Dialyzer	2026-11-01T02:01:48.9930989Z ===> Analyzing 1 files with _build/default/rebar3_27.3.4.19_plt...
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9629309Z         iso8601_tests:1278: -parse_out_of_range_positive_crashes_test_/0-fun-1-...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9660062Z         iso8601_tests:1283: -parse_invalid_positive_calendar_date_test_/0-fun-19- (parse_exact rejects an invalid positive date)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9689928Z         iso8601_tests:1285: -parse_invalid_positive_calendar_date_test_/0-fun-17- (expanded parsing rejects an invalid positive date)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9720073Z         iso8601_tests:1287: -parse_invalid_positive_calendar_date_test_/0-fun-15- (invalid raw date is rejected before offset normalization)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9749992Z         iso8601_tests:1289: -parse_invalid_positive_calendar_date_test_/0-fun-13- (an inherited interval end cannot normalize an invalid date)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9779866Z         iso8601_tests:1291: -parse_invalid_positive_calendar_date_test_/0-fun-11- (positive leap day remains valid)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9809869Z         iso8601_tests:1293: -parse_invalid_positive_calendar_date_test_/0-fun-9- (valid timezone crossing remains normalized)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9839923Z         iso8601_tests:1298: -parse_invalid_positive_calendar_date_test_/0-fun-7- (positive week date remains valid)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9869478Z         iso8601_tests:1300: -parse_invalid_positive_calendar_date_test_/0-fun-5- (year zero week date remains valid)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9899640Z         iso8601_tests:1302: -parse_invalid_positive_calendar_date_test_/0-fun-3- (valid negative plain date remains valid)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9929875Z         iso8601_tests:1304: -parse_invalid_positive_calendar_date_test_/0-fun-1- (expanded positive date remains valid)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:53.9989821Z         iso8601_tests:1316: -parse_expanded_negative_offset_test_/0-fun-7- (negative year + extended week date is rejected)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:54.0019855Z         iso8601_tests:1318: -parse_expanded_negative_offset_test_/0-fun-5- (negative year + basic week date is rejected)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T02:01:54.0107689Z   All 249 tests passed.
+Erlang 27 build	PropEr Tests	2026-11-01T02:01:54.7895961Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T02:01:54.7936785Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T02:01:54.7983818Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T02:01:54.8014536Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T02:01:54.8082284Z 4/4 properties passed
+Erlang 27 build	Test Coverage	2026-11-01T02:01:55.5749391Z   |               iso8601  |      100%  |
+Erlang 27 build	Test Coverage	2026-11-01T02:01:55.5750312Z   |                 total  |      100%  |
+JOB 28 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721171819
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests success
+PropEr Tests success
+Test Coverage success
+
+Erlang 28 build	Set up job	2026-11-01T02:01:13.5206945Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+Erlang 28 build	Set up job	2026-11-01T02:01:13.7540045Z Download action repository 'erlef/setup-beam@v1' (SHA:54075bcc5e249e4758d363f27d099f55d843f124)
+Erlang 28 build	Run erlef/setup-beam@v1	2026-11-01T02:01:15.2955022Z ##[group]Installing Erlang/OTP OTP-28.5.0.8 - built on amd64/ubuntu-22.04
+Erlang 28 build	Run erlef/setup-beam@v1	2026-11-01T02:01:19.8288058Z rebar 3.28.0 on Erlang/OTP 28 Erts 16.4.0.7
+Erlang 28 build	Check rebar3 Version	2026-11-01T02:01:20.6403727Z ===> Fetching rebar3_proper v0.12.1
+Erlang 28 build	Check rebar3 Version	2026-11-01T02:01:20.7324348Z ===> Compiling rebar3_proper
+Erlang 28 build	Check rebar3 Version	2026-11-01T02:01:20.8746104Z rebar 3.28.0 on Erlang/OTP 28 Erts 16.4.0.7
+Erlang 28 build	Dialyzer	2026-11-01T02:01:22.6577086Z ===> Building with 223 files in /home/runner/.cache/rebar3/rebar3_28.5.0.8_plt...
+Erlang 28 build	Dialyzer	2026-11-01T02:01:50.9917575Z ===> Copying /home/runner/.cache/rebar3/rebar3_28.5.0.8_plt to /home/runner/work/iso8601/iso8601/_build/default/rebar3_28.5.0.8_plt...
+Erlang 28 build	Dialyzer	2026-11-01T02:01:50.9968578Z ===> Checking 223 files in _build/default/rebar3_28.5.0.8_plt...
+Erlang 28 build	Dialyzer	2026-11-01T02:01:51.9685682Z ===> Analyzing 1 files with _build/default/rebar3_28.5.0.8_plt...
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4559707Z         iso8601_tests:1278: -parse_out_of_range_positive_crashes_test_/0-fun-1-...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4589967Z         iso8601_tests:1283: -parse_invalid_positive_calendar_date_test_/0-fun-19- (parse_exact rejects an invalid positive date)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4620112Z         iso8601_tests:1285: -parse_invalid_positive_calendar_date_test_/0-fun-17- (expanded parsing rejects an invalid positive date)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4650125Z         iso8601_tests:1287: -parse_invalid_positive_calendar_date_test_/0-fun-15- (invalid raw date is rejected before offset normalization)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4680053Z         iso8601_tests:1289: -parse_invalid_positive_calendar_date_test_/0-fun-13- (an inherited interval end cannot normalize an invalid date)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4709941Z         iso8601_tests:1291: -parse_invalid_positive_calendar_date_test_/0-fun-11- (positive leap day remains valid)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4740122Z         iso8601_tests:1293: -parse_invalid_positive_calendar_date_test_/0-fun-9- (valid timezone crossing remains normalized)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4769976Z         iso8601_tests:1298: -parse_invalid_positive_calendar_date_test_/0-fun-7- (positive week date remains valid)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4800068Z         iso8601_tests:1300: -parse_invalid_positive_calendar_date_test_/0-fun-5- (year zero week date remains valid)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4830001Z         iso8601_tests:1302: -parse_invalid_positive_calendar_date_test_/0-fun-3- (valid negative plain date remains valid)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4860010Z         iso8601_tests:1304: -parse_invalid_positive_calendar_date_test_/0-fun-1- (expanded positive date remains valid)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4920674Z         iso8601_tests:1316: -parse_expanded_negative_offset_test_/0-fun-7- (negative year + extended week date is rejected)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.4950601Z         iso8601_tests:1318: -parse_expanded_negative_offset_test_/0-fun-5- (negative year + basic week date is rejected)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T02:01:56.5034944Z   All 249 tests passed.
+Erlang 28 build	PropEr Tests	2026-11-01T02:01:57.2532627Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T02:01:57.2602255Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T02:01:57.2659015Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T02:01:57.2702893Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T02:01:57.2785980Z 4/4 properties passed
+Erlang 28 build	Test Coverage	2026-11-01T02:01:57.9813882Z   |               iso8601  |      100%  |
+Erlang 28 build	Test Coverage	2026-11-01T02:01:57.9814886Z   |                 total  |      100%  |
+JOB 29 https://github.com/erlsci/iso8601/actions/runs/41263433752/job/124721171812
+Compile success
+Xref Checks success
+Dialyzer success
+EUnit Tests success
+PropEr Tests success
+Test Coverage success
+
+Erlang 29 build	Set up job	2026-11-01T02:01:13.9917312Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+Erlang 29 build	Set up job	2026-11-01T02:01:14.2248339Z Download action repository 'erlef/setup-beam@v1' (SHA:54075bcc5e249e4758d363f27d099f55d843f124)
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T02:01:16.3598682Z ##[group]Installing Erlang/OTP OTP-29.1.2 - built on amd64/ubuntu-22.04
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T02:01:20.8292195Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.4074165Z ===> Fetching rebar3_proper v0.12.1
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.4506680Z ===> Compiling rebar3_proper
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5587047Z     ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5590730Z      ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5677722Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	Dialyzer	2026-11-01T02:01:23.0015583Z ===> Building with 226 files in /home/runner/.cache/rebar3/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T02:01:48.3992156Z ===> Copying /home/runner/.cache/rebar3/rebar3_29.1.2_plt to /home/runner/work/iso8601/iso8601/_build/default/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T02:01:48.4022859Z ===> Checking 226 files in _build/default/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T02:01:49.3594588Z ===> Analyzing 1 files with _build/default/rebar3_29.1.2_plt...
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.3786499Z         iso8601_tests:1278: -parse_out_of_range_positive_crashes_test_/0-fun-1-...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.3816727Z         iso8601_tests:1283: -parse_invalid_positive_calendar_date_test_/0-fun-19- (parse_exact rejects an invalid positive date)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.3846739Z         iso8601_tests:1285: -parse_invalid_positive_calendar_date_test_/0-fun-17- (expanded parsing rejects an invalid positive date)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.3876983Z         iso8601_tests:1287: -parse_invalid_positive_calendar_date_test_/0-fun-15- (invalid raw date is rejected before offset normalization)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.3906915Z         iso8601_tests:1289: -parse_invalid_positive_calendar_date_test_/0-fun-13- (an inherited interval end cannot normalize an invalid date)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.3936761Z         iso8601_tests:1291: -parse_invalid_positive_calendar_date_test_/0-fun-11- (positive leap day remains valid)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.3966716Z         iso8601_tests:1293: -parse_invalid_positive_calendar_date_test_/0-fun-9- (valid timezone crossing remains normalized)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.3996727Z         iso8601_tests:1298: -parse_invalid_positive_calendar_date_test_/0-fun-7- (positive week date remains valid)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.4026666Z         iso8601_tests:1300: -parse_invalid_positive_calendar_date_test_/0-fun-5- (year zero week date remains valid)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.4056712Z         iso8601_tests:1302: -parse_invalid_positive_calendar_date_test_/0-fun-3- (valid negative plain date remains valid)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.4086772Z         iso8601_tests:1304: -parse_invalid_positive_calendar_date_test_/0-fun-1- (expanded positive date remains valid)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.4146637Z         iso8601_tests:1316: -parse_expanded_negative_offset_test_/0-fun-7- (negative year + extended week date is rejected)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.4176829Z         iso8601_tests:1318: -parse_expanded_negative_offset_test_/0-fun-5- (negative year + basic week date is rejected)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:53.4256970Z   All 249 tests passed.
+Erlang 29 build	PropEr Tests	2026-11-01T02:01:54.0202423Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T02:01:54.0231243Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T02:01:54.0260264Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T02:01:54.0279677Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T02:01:54.0336574Z 4/4 properties passed
+Erlang 29 build	Test Coverage	2026-11-01T02:01:54.6514278Z   |               iso8601  |      100%  |
+Erlang 29 build	Test Coverage	2026-11-01T02:01:54.6515077Z   |                 total  |      100%  |
+
+WARNING CONTEXTS (all6 Warning: renderings at4 upstream source sites, with full nearby source location; repeat rendering is not another source site)
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.4390079Z ===> Analyzing applications...
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.4506680Z ===> Compiling rebar3_proper
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5587047Z     ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5587693Z     │
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5588126Z  84 │                           Res <- [catch check(Mod, Fun, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5588914Z     │                                   ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5589658Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5590207Z warnings in selected modules.
+
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5590207Z warnings in selected modules.
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5590416Z 
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5590730Z      ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5591190Z      │
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5591626Z  166 │                           Result <- [catch retry(M, F, Args, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5592360Z      │                                      ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5593226Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	Check rebar3 Version	2026-11-01T02:01:21.5593730Z warnings in selected modules.
+
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:50.4684023Z ##[endgroup]
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:50.8497346Z ===> Verifying dependencies...
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.0104611Z ===> Fetching proper v1.5.0
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.0680902Z ===> Analyzing applications...
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.1333992Z ===> Compiling proper
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4605671Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_statem.erl:770:46: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4613891Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4615023Z warnings in selected modules.
+
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4616111Z %     |                                              ^
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4616359Z 
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4684049Z      ┌─ _build/test/lib/proper/src/proper_statem.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4703721Z      │
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4704303Z  770 │      [spawn_link_cp(fun() -> Parent ! {self(),catch {ok,F(X)}} end) || X <- L].
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4705195Z      │                                               ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4705945Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4706461Z warnings in selected modules.
+
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4705195Z      │                                               ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4705945Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4706461Z warnings in selected modules.
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4706683Z 
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:51.4706694Z 
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0854371Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_erlang_abstract_code.erl:2138:29: Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0856715Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0857959Z % 2138|         lists:all(fun(R) -> is_record(R) end, Term)
+
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0858392Z %     |                             ^
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0858608Z 
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0870387Z       ┌─ _build/test/lib/proper/src/proper_erlang_abstract_code.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0871100Z       │
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0871846Z  2138 │          lists:all(fun(R) -> is_record(R) end, Term)
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0872591Z       │                              ╰── Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0873485Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash
+Erlang 29 build	EUnit Tests	2026-11-01T02:01:52.0873899Z 
+
+CDC PROJECTION ASSERTIONS EXIT0. No source/native rerun performed. Full aggregate remains at named parent path and GitHub run.
+
+MERGED FOLLOW-THROUGH: parent human decision PR77 merged2026-11-01T02:06:02Z; CDC gitread main3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828 tree3224b1e0da9285ab67349aadc3b59ffa11bfe8ab equals43a3740, empty diff. Fresh gh run view41263775940 --repo erlsci/iso8601 --json headSha,conclusion,status,url,event EXIT0 gives push/completed/success/head3a1cdfd. Complete10mainjob JSON projected independently:20–29exact/alljobs success;3static successall;20onlytesttrioskip;all6success21–29. Detailed PRlog population evidence retained on identical tree; no second full-main-log population claim.
