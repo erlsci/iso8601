@@ -1,8 +1,18 @@
 # Slice03 CC close candidate — OTP28/29 CI
 
+**Current disposition: CC-proposed-done for the bounded local refinement; the slice remains open.** The final-hosted-run and independent-review rows are still open. This return is not CDC acceptance, parent composition, Operator acceptance, or a published change.
+
+## Refinement01 local return — 2026-10-31
+
+Source commit `845b1830b5acbfaed0909430e1ff011617a06817` (tree `084a53ea1aa64cb578dbccd5a609abdaf23ac220`) changes only the private spec for `apply_years_offset/2` from `number()` to `integer()`, matching the actual OTP29 Dialyzer success type and both caller contracts. CDC had independently reproduced the sole blocker in hosted run41261632042: OTP29.1.2/rebar3.28.0 compile/xref pass, Dialyzer fails one underspec, and EUnit/PropEr/coverage then skip. The previous9/10 run remains a failed acceptance result.
+
+The one-off OTP28 AST comparison removed only that spec attribute from each normalized parsed form set; all remaining parsed forms were equal. A separate comparison found all15 exports,11 exported types and public specs unchanged. The focused existing timestamp/year/duration/leap-clamp tests remain in place. Fresh sequential local gates all passed on OTP28.1.1/rebar3.27.0: compile, xref, Dialyzer, EUnit238, PropEr4×100,100% coverage, format check and lint. Exact commands/output/exits are in [`artifacts/refinement01-native.log`](artifacts/refinement01-native.log); full intake, preservation comparison and limits are in [`artifacts/runlog.md`](artifacts/runlog.md).
+
+This is not OTP29 validation. No global OTP29 install or runtime replay/hang probe was performed. The final ten-job hosted rerun on the parent-published final PR head remains mandatory; actual OTP29 Dialyzer and its tests must run successfully before S03-05 can close. S03-06 also remains open for CDC independent disposition/retrospective and the separate parent/Operator checkpoints.
+
 **Disposition: CC-proposed-done for the locally deliverable candidate; the slice remains open.** The exact-hosted-run and independent-review rows are still open. This is an implementation return to CDC, not CDC acceptance, parent composition, Operator acceptance, or a published change.
 
-## Assignment and source candidate
+## Initial assignment return — before hosted run41261632042
 
 Executed initial `cc-prompt.md` at planning open-set commit `14d1316596937b61dead8bc0511f07699f85bdaa`, under parent priority/merge commit `cb672b23197cf3e0b36e820f57ee27b0f6c718c`. Source branch `codex/project02-otp-28-29` began clean at `1d85d0a98a21750f83355a855dcc8fb4728758b4`, tree `90b1466fabc482ef45debc846bcd0657db625153`.
 
@@ -10,13 +20,13 @@ Source candidate commit `fcc1fe22e1651e133e20b7eb798dece82969e348`, tree `24abd4
 
 The complete production, EUnit, PropEr, rebar configuration, and app-manifest population remains byte-identical to intake. Its five SHA-256 values and the source-cited design/readback are in [`artifacts/runlog.md`](artifacts/runlog.md). No compatibility blocker was reproduced, no source/test/build mutation was needed, and no 147-observation replay was rerun for YAML/guidance-only changes. `CLAUDE.md` remains its `AGENTS.md` symlink. No application version or README change was made.
 
-## Validation and evidence limits
+## Initial validation and evidence limits
 
 Fresh local `rebar3 compile` and `rebar3 xref` each exited 0 on OTP28 / ERTS16.1.1 / rebar3 3.27.0. A corrected PyYAML `BaseLoader` assertion exited 0 after confirming exactly ten majors20–29, tier membership, OTP20-only test skips, six native commands on21–29, toolchain selectors, runner/actions, `fail-fast:false`, triggers and100% coverage. `git diff --check` exited 0. One initial local assertion exited1 because `BaseLoader` returned strings and the assertion expected integers; the corrected assertion passed. Full command/observation details and the unchanged-source evidence pins are retained in the [runlog](artifacts/runlog.md).
 
-The runlog retains CDC's independent eight native gates at the unchanged production SHA and the prior PR76 8/8 OTP20–27 result. They are not fresh candidate runs and do not validate OTP28/29. No actual ten-job hosted run exists yet. S03-05 must remain open until the parent publishes the CDC-reviewed source candidate and verifies the individual jobs, steps, resolved versions and populations on the exact PR head. The local OTP28 receipt is supplemental and makes no OTP29 claim.
+The runlog retains CDC's independent eight native gates at the unchanged production SHA and the prior PR76 8/8 OTP20–27 result. They are not fresh candidate runs and do not validate OTP28/29. At that initial return, no ten-job hosted result existed. Parent later published this candidate as PR77; run41261632042 finished9/10 and exposed the one OTP29 Dialyzer blocker documented above. S03-05 remains open until a reviewed correction is published and all ten exact-head jobs pass. The initial local OTP28 receipt was supplemental and did not establish OTP29 compatibility.
 
-## Ledger walk
+## Initial ledger walk — status at the first CC return
 
 | Row | CC disposition | Evidence / remaining gate |
 |---|---|---|
@@ -29,11 +39,11 @@ The runlog retains CDC's independent eight native gates at the unchanged product
 
 The ledger retains all six opening rows. CC's proposed statuses do not close them independently.
 
-## Artifact inventory
+## Initial artifact inventory
 
-The only supporting artifact created under `artifacts/` is [`runlog.md`](artifacts/runlog.md), containing the read manifest, source-grounded readback, identities, checks and retained-evidence pins. This `closing-report.md` and the existing slice documents remain first-class files at the slice root; no additional receipt, verifier, or test product was created.
+Supporting evidence under `artifacts/` comprises the continuing [`runlog.md`](artifacts/runlog.md), preserved initial hosted failure records, and [`refinement01-native.log`](artifacts/refinement01-native.log) for the fresh local gates. This `closing-report.md` and the existing slice documents remain first-class files at the slice root; no verifier or test product was created.
 
-## Bubble-up to the project
+## Initial bubble-up disposition — before the hosted failure
 
 This slice is the direct child of Project02 under the recorded one-slice collapse; there is no arc wrapper or `arc-plan.md`. The implementation piece is a committed, reviewable workflow candidate that will schedule OTP28/29 checks using the supported selector. Its integration state is local and unpushed. The local configuration check confirms the ten intended jobs are described correctly, while actual usability remains contingent on the parent-owned ten-job hosted run. Do not treat this candidate as integrated OTP support yet.
 
@@ -41,4 +51,4 @@ No unanticipated dependency or scope change emerged. The initial BaseLoader asse
 
 Scope-as-specified versus scope-as-delivered: both authorized source paths changed as planned; OTP20–27, the R15B03 intended floor, public API/types, runtime code, tests, dependencies, README, and release version were preserved. The full-ten-job hosted result, independent CDC review, audit applicability check, retrospective, parent publication/composition and Operator merge remain explicitly outstanding. No other specified item was silently dropped.
 
-**Planning close-packet commit:** pending until this report and its ledger/runlog evidence are committed on the local orphan `planning` branch; the handoff will identify the exact resulting commit. No source push, PR, merge, hosted run, release, or next slice was initiated by CC.
+**Planning close-packet commit:** pending until this report, ledger and runlog updates are committed on the local orphan `planning` branch; the handoff will identify the exact resulting commit. No source push, PR, merge, hosted run, release, or next slice was initiated by CC.
