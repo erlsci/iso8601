@@ -1,0 +1,45 @@
+month_wrap => {return,{{0,12,1},{0,0,0}}} expected {exception,error,badarg} pass false
+year_underflow => timeout expected {exception,error,badarg} pass false
+duration_underflow => timeout expected {exception,error,badarg} pass false
+valid_zero_target => {return,{{0,1,1},{0,0,0}}} expected {return,
+                                                          {{0,1,1},{0,0,0}}} pass true
+float_zero_duration => {exception,error,function_clause} expected {return,
+                                                                   {{2017,1,2},
+                                                                    {0,0,
+                                                                     0.0}}} pass false
+float_micro_large_year => {exception,error,function_clause} expected {return,
+                                                                      {{100000,
+                                                                        1,2},
+                                                                       {0,0,
+                                                                        1.0e-6}}} pass false
+duration_end_float => {exception,error,function_clause} expected {return,
+                                                                  {{{2017,1,1},
+                                                                    {0,0,0.5}},
+                                                                   {{2017,1,2},
+                                                                    {0,0,
+                                                                     0.5}}}} pass false
+hour_exact => {return,{{2012,2,3},{4,0,0.0}}} expected {approx,
+                                                        {{2012,2,3},
+                                                         {4,0,0.36}}} pass false
+minute_exact => {return,{{2012,2,3},{4,5,0.0}}} expected {approx,
+                                                          {{2012,2,3},
+                                                           {4,5,0.06}}} pass false
+hour_legacy_round => {return,{{2012,2,3},{4,0,1}}} expected {return,
+                                                             {{2012,2,3},
+                                                              {4,0,1}}} pass true
+second_legacy_trunc => {return,{{2012,2,3},{4,5,6}}} expected {return,
+                                                               {{2012,2,3},
+                                                                {4,5,6}}} pass true
+float_formatter_carry => {return,<<"2012-12-30T23:59:60.000000Z">>} expected {return,
+                                                                              <<"2012-12-31T00:00:00.000000Z">>} pass false
+expanded_negative_year_carry => {return,<<"-0001-12-31T23:59:60.000000Z">>} expected {return,
+                                                                                      <<"+0000-01-01T00:00:00.000000Z">>} pass false
+year_zero_time_policy => {exception,error,badarg} expected {exception,error,
+                                                            badarg} pass true
+negative_unit_offset_policy => {exception,error,badarg} expected {exception,
+                                                                  error,
+                                                                  badarg} pass true
+negative_plain_control => {return,{{-1,1,1},{0,0,0.0}}} expected {return,
+                                                                  {{-1,1,1},
+                                                                   {0,0,0.0}}} pass true
+total 16 passed 6 failed 10

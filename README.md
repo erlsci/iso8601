@@ -10,7 +10,7 @@
 
 ## Project03 — runtime hardening
 
-[project03-runtime-hardening/project-plan.md](project03-runtime-hardening/project-plan.md) tracks the Operator-authorized repairs for all nine accepted runtime findings. The first interval inheritance checkpoint is merged via PR#76. Seven remaining findings are grouped into arithmetic/precision and parser contracts, still open after the completed Project02 OTP28/29 CI priority checkpoint. Existing Sol High CDC / Luna High CC roles and the stop after every repair arc remain in force.
+[project03-runtime-hardening/project-plan.md](project03-runtime-hardening/project-plan.md) tracks the Operator-authorized repairs for all nine accepted runtime findings. The interval inheritance checkpoint is merged via PR#76; the four-finding arithmetic/precision checkpoint is merged via [PR#78](https://github.com/erlsci/iso8601/pull/78), with all ten OTP20–29 jobs passing on both its PR and merged main e332032. Three parser findings remain open; that next increment has not started. Existing Sol High CDC / Luna High CC roles and the stop after every repair arc remain in force. The Operator selected a separate 1.4.1 release-preparation PR only after all repairs have landed; the source version remains 1.4.0.
 
 ## Migration checks and limits
 

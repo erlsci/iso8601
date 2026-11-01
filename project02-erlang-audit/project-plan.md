@@ -1,11 +1,11 @@
 # Project02 — Erlang audit
 
 - project: `project02-erlang-audit`
-- status: Arc01 reviewed; first Project03 interval repair and OTP28/29 CI PR#77 merged; main3a1cdfd passes all ten jobs; Arc02 audit and seven runtime repairs remain open
+- status: Arc01 reviewed; OTP28/29 CI and the first two Project03 repair checkpoints merged; main e332032 passes all ten jobs; Arc02 audit and three runtime parser repairs remain open
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
 - blocks: any claim of a complete current audit; does not block the separately authorized Project03 repairs of accepted Arc01 findings
 - related: `project01-v1.4-maintenance`; `project03-runtime-hardening`; iso8601 v1.4.0
-- version: 1.8 — 2026-10-31
+- version: 1.9 — 2026-11-01 UTC
 
 ## Outcome and boundaries
 
@@ -146,3 +146,11 @@ OTP29 emits upstream compiler warnings in PropEr1.5.0 (`proper_statem.erl` catch
 The Operator stated: “all passing! I've merged the PR :-D”. GitHub confirms PR#77 merged by `oubiwann` at2026-11-01T02:06:02Z into main `3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828`. Its tree `3224b1e0da9285ab67349aadc3b59ffa11bfe8ab` is exactly the reviewed43a3740 tree. Parent fast-forwarded clean local main and independently verified that tree. Rebased commits `dfb1924`, `69ddc49`, `3a1cdfd` retain both adjacent coauthor trailers.
 
 Automatic [main push run41263775940](https://github.com/erlsci/iso8601/actions/runs/41263775940) also completed successfully on exact3a1cdfd, last job2026-11-01T02:07:26Z. Parent inspected all ten job records and native step outcomes, including only20's intentional test skips. The prior final-PR full-log/version/population evidence remains applicable to the identical tree; no extra native or full-log replay was needed for a rebase that preserved every file. This dispositions the CI increment's human merge/integration checkpoint and closes P02-06. It does not accept the remaining audit, seven runtime repairs or a release, and no later increment has started.
+
+## Subsequent remediation applicability — 2026-11-01 UTC
+
+Project03 [Slice02 arithmetic/precision](../project03-runtime-hardening/slice02-arithmetic-precision/closing-report.md) repairs CAL001/CAL002/DATE003/DATE005 after the completed CI checkpoint. Its reviewed source bd67bd0 and merged main e332032 have the same tree 72efe0dc; [PR#78](https://github.com/erlsci/iso8601/pull/78) and automatic merged-main CI both pass all ten OTP20–29 jobs. Fresh local OTP28 replay covers all 147 original observations with their actual current applicability; the original diagnostic reports and runners remain unchanged. Together with the earlier interval repair, six runtime findings are repaired and three parser findings remain open. This supersedes the preceding no-later-increment/seven-open runtime state, without accepting the remaining Project02 diagnostic work.
+
+The six upstream OTP29 warning renderings/four dependency sites remain the existing Arc02 tooling follow-up, separate from the passing first-party checks. No further diagnostic or parser increment starts automatically. The Operator selected eventual 1.4.1 in a separate release-preparation PR after all repairs land; no version bump or release is included here.
+
+- v1.9 — 2026-11-01 UTC: subsequent Project03 arithmetic/precision checkpoint merged and independently reconciled; preserves original audit provenance, remaining diagnostic obligations, three open parser findings and the upstream tooling watch.

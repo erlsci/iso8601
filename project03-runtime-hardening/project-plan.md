@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: arithmetic/precision checkpoint technically accepted at bd67bd0; PR78 merged by Operator; parent final composition/integration record follows; three parser repairs remain open
+- status: arithmetic/precision checkpoint independently closed and merged via PR78; integrated main e332032 passes all ten CI jobs; three parser repairs and final project gates remain open
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.9 — 2026-11-01 UTC
+- version: 1.10 — 2026-11-01 UTC
 
 ## Outcome, authority and endpoint
 
@@ -90,3 +90,11 @@ The Operator explicitly said “merged!” and parent verified PR78 merged2026-1
 - v1.9 — 2026-11-01 UTC: four numeric finding rows close after independent native/hosted verification; PR78 Operator merge acknowledged without pre-filling parent composition/integration or whole-project acceptance.
 
 Integration receipt for v1.9: parent API verifies synthetic PR merge and merged maine332032 have the reviewed tree72efe0dc; CDC local tree comparison independently agrees. Main push-run41268179012 independently inspected all10 step JSON successful (last job03:13:09Z), with prior fully inspected PR populations retained by tree equality. Parent final composition/human-row record remains separately authored.
+
+## Parent composition and integrated checkpoint close — 2026-11-01 UTC
+
+Parent [independent composition](slice02-arithmetic-precision/closing-report.md#parent-independent-checkpoint-composition--2026-11-01-utc) accepts the four-finding checkpoint after actual final source/API review, the same 16-control fixture against baseline and candidate (6/16 versus 16/16), public-declaration comparison, complete PR job/step/population inspection, and independently verified integration. Reviewed bd67bd0, synthetic PR merge e5e5069, and merged main e332032 all have tree `72efe0dc781ed31cdac78872670465b92940da80`. All ten PR and main CI jobs pass; the clean primary checkout is fast-forwarded to the user's merge. All five rebased source commits retain the required adjacent coauthor trailers.
+
+The Operator's explicit “merged!” and GitHub's attributable merge receipt complete this checkpoint's human merge gate. P03-14 and P03-15 are done/reproduced; this supersedes their earlier parent-pending state. DATE001/002/004 and P03-12/13 remain open. The next parser increment has not started and still requires the next go-ahead. Future 1.4.1 release preparation remains a separate PR after all repairs land; source version 1.4.0 is unchanged. Project02's wider audit and upstream tooling watch are also still open.
+
+- v1.10 — 2026-11-01 UTC: parent independently composes the accepted numeric repair, verifies exact-tree user integration and ten-job main CI, and closes P03-14/15 without accepting the remaining parser, audit, project or release work.
