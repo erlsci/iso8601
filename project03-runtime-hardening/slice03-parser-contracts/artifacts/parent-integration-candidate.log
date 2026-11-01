@@ -1,0 +1,72 @@
+invalid_week_zero => {exception,error,badarg} expected {exception,error,
+                                                        badarg} pass true
+invalid_week_53 => {exception,error,badarg} expected {exception,error,badarg} pass true
+invalid_weekday_zero => {exception,error,badarg} expected {exception,error,
+                                                           badarg} pass true
+invalid_weekday_eight => {exception,error,badarg} expected {exception,error,
+                                                            badarg} pass true
+valid_week_53 => {return,{{2016,1,3},{0,0,0}}} expected {return,
+                                                         {{2016,1,3},{0,0,0}}} pass true
+valid_week_cross_year => {return,{{2014,12,29},{0,0,0}}} expected {return,
+                                                                   {{2014,12,
+                                                                     29},
+                                                                    {0,0,0}}} pass true
+year_zero_week_control => {return,{{0,1,3},{0,0,0.0}}} expected {return,
+                                                                 {{0,1,3},
+                                                                  {0,0,0.0}}} pass true
+negative_week_restriction => {exception,error,badarg} expected {exception,
+                                                                error,badarg} pass true
+negative_nonleap_day => {exception,error,badarg} expected {exception,error,
+                                                           badarg} pass true
+year_zero_impossible_day => {exception,error,badarg} expected {exception,
+                                                               error,badarg} pass true
+negative_century_nonleap => {exception,error,badarg} expected {exception,
+                                                               error,badarg} pass true
+negative_400_leap_control => {return,{{-400,2,29},{0,0,0.0}}} expected {return,
+                                                                        {{-400,
+                                                                          2,
+                                                                          29},
+                                                                         {0,0,
+                                                                          0.0}}} pass true
+year_zero_leap_control => {return,{{0,2,29},{0,0,0.0}}} expected {return,
+                                                                  {{0,2,29},
+                                                                   {0,0,0.0}}} pass true
+negative_zone_restriction => {exception,error,badarg} expected {exception,
+                                                                error,badarg} pass true
+nested_legacy => {return,{{2012,2,16},{1,6,48}}} expected {return,
+                                                           {{2012,2,16},
+                                                            {1,6,48}}} pass true
+nested_exact_unit => {return,{{2012,2,3},{4,0,0.36000000000000004}}} expected {approx,
+                                                                               {{2012,
+                                                                                 2,
+                                                                                 3},
+                                                                                {4,
+                                                                                 0,
+                                                                                 0.36}}} pass true
+nested_expanded_leap => {return,{{-4,2,29},{0,0,0.0}}} expected {return,
+                                                                 {{-4,2,29},
+                                                                  {0,0,0.0}}} pass true
+binary_tail_exact => {return,{{2017,1,1},{0,0,0.0}}} expected {return,
+                                                               {{2017,1,1},
+                                                                {0,0,0.0}}} pass true
+nested_interval_inheritance => {return,
+                                   {{{9999,12,31},{22,30,0}},
+                                    {{10000,1,1},{22,15,0}}}} expected {return,
+                                                                        {{{9999,
+                                                                           12,
+                                                                           31},
+                                                                          {22,
+                                                                           30,
+                                                                           0}},
+                                                                         {{10000,
+                                                                           1,
+                                                                           1},
+                                                                          {22,
+                                                                           15,
+                                                                           0}}}} pass true
+nested_duration_interval => {return,<<"P1D">>} expected {return,<<"P1D">>} pass true
+nonbyte_iodata => {exception,error,badarg} expected {exception,error,badarg} pass true
+atom_iodata => {exception,error,badarg} expected {exception,error,badarg} pass true
+atom_tail_iodata => {exception,error,badarg} expected {exception,error,badarg} pass true
+bitstring_iodata => {exception,error,badarg} expected {exception,error,badarg} pass true
+total 24 passed 24 failed 0

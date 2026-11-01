@@ -1,0 +1,246 @@
+{
+  "utc": "2026-11-01T03:55:33.678788+00:00",
+  "candidate_head": "22b92d10b496ab541d3b8c369c4a081309bf0134",
+  "candidate_tree": "643ed3352b66b1d19035b6fd61b7e975d869d985",
+  "baseline_head": "e332032561142bff6c620cd1e7b4a5bfe9929b0b",
+  "baseline_tree": "72efe0dc781ed31cdac78872670465b92940da80",
+  "sha256": {
+    "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc03-parsers/src/iso8601.erl": "77b77957a5ca524f5dc9e1451f25be701e1375225b0a7b36c58977a079a706cd",
+    "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc03-parsers/test/iso8601_tests.erl": "6bf0e12036454095753866740538c3123472aa0d190a7e13bb1e03546149a19b",
+    "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc03-parsers/README.md": "745407901dae7d2f3f0ef776f9a9e710829c2ef92a679597d3f804a32a62ee30",
+    "/private/tmp/iso8601-parser-parent-f8pwu1i8/candidate-ebin/iso8601.beam": "b38fe532879bde7ffba5446d29a9fb69a7eec99ce1c1812cfc99cebef4068aa0",
+    "/private/tmp/iso8601-parser-parent-f8pwu1i8/controls.escript": "db997a4a4cd8e66ecbeec4284edca24e5cf151543912e3a41f759cfb5ad5b855",
+    "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project03-runtime-hardening/slice02-arithmetic-precision/artifacts/parent-integration-controls.escript": "620f0d1cee92bbcae1f17afdad1e1bf0b474e52a763a02dd824a455a00046a37"
+  },
+  "commands": {
+    "private_erlc": 0,
+    "parent24_candidate": 0,
+    "prior16_candidate": 0,
+    "epp_declarations": 0
+  },
+  "populations": {
+    "parent24_baseline": [
+      24,
+      10,
+      14
+    ],
+    "parent24_candidate": [
+      24,
+      24,
+      0
+    ],
+    "prior16_baseline": [
+      16,
+      16,
+      0
+    ],
+    "prior16_candidate": [
+      16,
+      16,
+      0
+    ]
+  },
+  "pr_ci_inspection": {
+    "run": 41271243883,
+    "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883",
+    "headSha": "22b92d10b496ab541d3b8c369c4a081309bf0134",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "otp": 20,
+        "job": "Erlang 20 build (Debian container)",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293220",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:00:05Z",
+        "test_counts": [
+          0,
+          0,
+          0
+        ],
+        "versions": [
+          "Erlang 20 build (Debian container)\tInitialize containers\t2026-11-01T03:59:02.4272590Z OTP_VERSION=20.3.8.26",
+          "Erlang 20 build (Debian container)\tCheck rebar3 Version\t2026-11-01T03:59:05.5836494Z rebar 3.15.2 on Erlang/OTP 20 Erts 9.3.3.15"
+        ]
+      },
+      {
+        "otp": 21,
+        "job": "Erlang 21 build (Debian container)",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293250",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:00:04Z",
+        "test_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 21 build (Debian container)\tInitialize containers\t2026-11-01T03:59:00.9513947Z OTP_VERSION=21.3.8.24",
+          "Erlang 21 build (Debian container)\tCheck rebar3 Version\t2026-11-01T03:59:03.4731774Z rebar 3.15.2 on Erlang/OTP 21 Erts 10.3.5.19"
+        ]
+      },
+      {
+        "otp": 22,
+        "job": "Erlang 22 build (Debian container)",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293147",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T03:59:57Z",
+        "test_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 22 build (Debian container)\tInitialize containers\t2026-11-01T03:59:00.3094487Z OTP_VERSION=22.3.4.27",
+          "Erlang 22 build (Debian container)\tCheck rebar3 Version\t2026-11-01T03:59:02.1460565Z rebar 3.15.2 on Erlang/OTP 22 Erts 10.7.2.19"
+        ]
+      },
+      {
+        "otp": 23,
+        "job": "Erlang 23 build (Debian container)",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293307",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:00:03Z",
+        "test_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 23 build (Debian container)\tInitialize containers\t2026-11-01T03:59:14.7035233Z OTP_VERSION=23.3.4.20",
+          "Erlang 23 build (Debian container)\tCheck rebar3 Version\t2026-11-01T03:59:17.3346460Z rebar 3.15.2 on Erlang/OTP 23 Erts 11.2.2.18"
+        ]
+      },
+      {
+        "otp": 24,
+        "job": "Erlang 24 build",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293231",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T03:59:39Z",
+        "test_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 24 build\tRun erlef/setup-beam@v1\t2026-11-01T03:58:48.7563302Z ##[group]Installing Erlang/OTP OTP-24.3.4.17 - built on amd64/ubuntu-22.04",
+          "Erlang 24 build\tCheck rebar3 Version\t2026-11-01T03:58:55.3380388Z rebar 3.22.1 on Erlang/OTP 24 Erts 12.3.2.17"
+        ]
+      },
+      {
+        "otp": 25,
+        "job": "Erlang 25 build",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293243",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T03:59:35Z",
+        "test_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 25 build\tRun erlef/setup-beam@v1\t2026-11-01T03:58:49.4142042Z ##[group]Installing Erlang/OTP OTP-25.3.2.21 - built on amd64/ubuntu-22.04",
+          "Erlang 25 build\tCheck rebar3 Version\t2026-11-01T03:58:56.0132982Z rebar 3.22.1 on Erlang/OTP 25 Erts 13.2.2.16"
+        ]
+      },
+      {
+        "otp": 26,
+        "job": "Erlang 26 build",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293233",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T03:59:33Z",
+        "test_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 26 build\tRun erlef/setup-beam@v1\t2026-11-01T03:58:48.0873833Z ##[group]Installing Erlang/OTP OTP-26.2.5.21 - built on amd64/ubuntu-22.04",
+          "Erlang 26 build\tCheck rebar3 Version\t2026-11-01T03:58:54.2384453Z rebar 3.25.1 on Erlang/OTP 26 Erts 14.2.5.15"
+        ]
+      },
+      {
+        "otp": 27,
+        "job": "Erlang 27 build",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293315",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T03:59:31Z",
+        "test_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 27 build\tRun erlef/setup-beam@v1\t2026-11-01T03:58:47.4956666Z ##[group]Installing Erlang/OTP OTP-27.3.4.19 - built on amd64/ubuntu-22.04",
+          "Erlang 27 build\tCheck rebar3 Version\t2026-11-01T03:58:52.7798567Z rebar 3.25.1 on Erlang/OTP 27 Erts 15.2.7.14"
+        ]
+      },
+      {
+        "otp": 28,
+        "job": "Erlang 28 build",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293312",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T03:59:55Z",
+        "test_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 28 build\tRun erlef/setup-beam@v1\t2026-11-01T03:58:59.2845360Z ##[group]Installing Erlang/OTP OTP-28.5.0.8 - built on amd64/ubuntu-22.04",
+          "Erlang 28 build\tCheck rebar3 Version\t2026-11-01T03:59:04.6768716Z rebar 3.28.0 on Erlang/OTP 28 Erts 16.4.0.7"
+        ]
+      },
+      {
+        "otp": 29,
+        "job": "Erlang 29 build",
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41271243883/job/124744293283",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T03:59:29Z",
+        "test_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 29 build\tRun erlef/setup-beam@v1\t2026-11-01T03:58:47.0169526Z ##[group]Installing Erlang/OTP OTP-29.1.2 - built on amd64/ubuntu-22.04",
+          "Erlang 29 build\tCheck rebar3 Version\t2026-11-01T03:58:53.2147806Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1"
+        ]
+      }
+    ]
+  },
+  "synthetic_checkout": {
+    "parents": [
+      "e332032561142bff6c620cd1e7b4a5bfe9929b0b",
+      "22b92d10b496ab541d3b8c369c4a081309bf0134"
+    ],
+    "sha": "85875ece261296a7744310595021dc2710e17166",
+    "tree": "643ed3352b66b1d19035b6fd61b7e975d869d985"
+  },
+  "operator_merge": {
+    "baseRefOid": "e332032561142bff6c620cd1e7b4a5bfe9929b0b",
+    "headRefOid": "22b92d10b496ab541d3b8c369c4a081309bf0134",
+    "mergeCommit": {
+      "oid": "10a182be1bf4f5cd532592558e87789b83edb96f"
+    },
+    "mergedAt": "2026-11-01T04:01:43Z",
+    "mergedBy": {
+      "id": "MDQ6VXNlcjg5NDI1MQ==",
+      "is_bot": false,
+      "login": "oubiwann",
+      "name": "Duncan McGreggor"
+    },
+    "number": 79,
+    "state": "MERGED",
+    "title": "Validate parser dates and accept declared iodata inputs",
+    "url": "https://github.com/erlsci/iso8601/pull/79"
+  },
+  "main_ci": {
+    "id": 41271453140,
+    "head": "10a182be1bf4f5cd532592558e87789b83edb96f",
+    "jobs": 10,
+    "conclusion": "success",
+    "last_job_utc": "2026-11-01T04:03:13Z",
+    "inspection": "all job/step JSON inspected; prior full PR populations retained by exact tree; no full main log review claimed"
+  },
+  "full_pr_log_sha256": "ddcb8307ad9e8e0c3b447bba01e2b402f1374b319a104fcc4cc93a806a8d505d"
+}

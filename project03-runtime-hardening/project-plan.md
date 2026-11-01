@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: all nine finding criteria technically repaired; final parser checkpoint independently accepted after ten-job PR79CI and Operator merge10a182; parent composition/integration and whole-project gates remain separate
+- status: all nine runtime findings repaired and merged; third parser checkpoint and human merge complete at main10a182 with all ten PR/main jobs passing; whole-project acceptance remains open
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
-- blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.12 — 2026-11-01 UTC
+- blocks: claims of completed remediation-project acceptance or release readiness
+- version: 1.13 — 2026-11-01 UTC
 
 ## Outcome, authority and endpoint
 
@@ -28,8 +28,8 @@ The Operator merged PR#76 and explicitly selected OTP28/29 CI as the next work s
 | Increment | Capability, findings and destination | Dependency / current state |
 |---|---|---|
 | First repair checkpoint — collapsed Slice01 | Correct interval signed positive-year classification/inheritance (ERL-CAL-003) and omitted-zone inheritance (ERL-CAL-004); source module, public regression tests and README | Integrated via PR#76 at main1d85d0a (tree equals reviewed7e93c5d); human merge/next-priority decision complete |
-| Active second repair checkpoint — collapsed Slice02 | Bounded arithmetic floor behavior CAL001, float-anchor composition CAL002, formatter carry DATE003 and exact fractional-unit retention DATE005 | [Slice02](slice02-arithmetic-precision/slice-plan.md) at source3a1cdfd; bounded badarg below year0, fractional-anchor/exact-unit retention and formatter carry, preserving both actual parse/1 legacy rules. Four finding rows are done/reproduced at bd67bd0 after independent native8/147 and actual ten-job PR78 CI. Operator merged PR78 into maine332032; parent composition/integration record follows separately. Parser increment remains roadmap-only; no next work is inferred. |
-| Active third repair checkpoint — collapsed Slice03 | Validate week boundaries DATE001 and non-positive-year dates DATE002; make declared iodata inputs work consistently DATE004 | [Slice03](slice03-parser-contracts/slice-plan.md) activates at integratede332032. Validate original calendar/week fields before offsets and normalize all FOUR declared iodata boundaries. Three finding rows remain open until independent technical acceptance; parent16/human17 and whole-project12/13 remain distinct. |
+| Completed second repair checkpoint — collapsed Slice02 | Bounded arithmetic floor behavior CAL001, float-anchor composition CAL002, formatter carry DATE003 and exact fractional-unit retention DATE005 | [Slice02](slice02-arithmetic-precision/slice-plan.md) merged through PR78/main e332032; independent technical/parent/human checkpoints complete. Third parser checkpoint subsequently completed below. |
+| Completed third repair checkpoint — collapsed Slice03 | Validate week boundaries DATE001 and non-positive-year dates DATE002; honor FOUR declared iodata boundaries DATE004 | [Slice03](slice03-parser-contracts/slice-plan.md) merged through PR79/main10a182, exact reviewed tree643ed335. Independent technical/parent/human checkpoints complete with all ten PR/main jobs passing; whole-project12/13 remain open. |
 
 The [project ledger](ledger.md) tracks every stable ID individually. Future decomposition can refine dependencies from real source evidence, with versioned decisions; no future arc/slice directories are opened now. All current source surfaces are the existing one-module library; this increment changes only `src/iso8601.erl`, `test/iso8601_tests.erl` and `README.md`. Existing `test/prop_iso8601.erl`, app manifest, Make/rebar/CI/elvis and guidance are context, not repair targets. No new dependencies, syntax floor, record/API representation, exported helpers or version bump.
 
@@ -116,3 +116,11 @@ The Operator explicitly said “merged!”; parent verifies PR79 merged by oubiw
 - v1.12 — 2026-11-01 UTC: the final three parser finding criteria close after independent native/hosted validation; attributable human merge acknowledged while parent final composition/integration and whole-project gates stay separately owned.
 
 Integration receipt for v1.12: CDC locally resolves merged main10a182 to the exact reviewed/synthetic tree643ed335 and independently inspects all ten main-run41271453140 job/stepJSON conclusions. All configured steps succeed with only20's intended3skips; prior fully inspected PR430/4×100/100% populations remain applicable by tree equality, with no full main-log reread claimed. Parent owns attributable final composition/P03-16/17 disposition; whole-project12/13 stay open.
+
+## Parent parser composition and integrated checkpoint close — 2026-11-01 UTC
+
+Parent [independent composition](slice03-parser-contracts/closing-report.md#parent-independent-checkpoint-composition--2026-11-01-utc) accepts this third repair checkpoint after full final diff/declaration review, fresh unchanged24-control baseline/candidate comparison (10/24 versus24/24), retained prior16 controls (16/16 both), complete PR job/step/log/population review and exact integrated-tree confirmation. Reviewed22b92d1, synthetic PR checkout85875ec and merged main10a182 share tree643ed335. All ten PRrun41271243883 and mainrun41271453140 jobs pass; the main receipt is actual job/step inspection with prior full PR populations retained by identical tree. Clean local main is synchronized and both coauthor trailers survive rebasing.
+
+The Operator's “merged!” and attributable GitHub PR79 receipt complete this checkpoint's human merge gate. P03-16/17 are done/reproduced and supersede the preceding parent-pending observations. All nine finding rows are repaired and integrated; P03-12/13 final project-scale synthesis/acceptance remain OPEN. Wider Project02 audit/type/tooling work and eventual separate1.4.1 release preparation remain open/unstarted as applicable. Sourceversion1.4.0 is unchanged; no automatic next increment, release or whole-project acceptance follows.
+
+- v1.13 — 2026-11-01 UTC: parent independently composes the final parser repair and verifies user merge/main CI, closingP03-16/17 while retaining final project, wider audit and release boundaries.

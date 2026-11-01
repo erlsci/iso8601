@@ -1,11 +1,11 @@
 # Project02 — Erlang audit
 
 - project: `project02-erlang-audit`
-- status: Arc01 reviewed; OTP28/29 CI and the first two Project03 repair checkpoints merged; main e332032 passes all ten jobs; Arc02 audit and three runtime parser repairs remain open
+- status: Arc01 reviewed; OTP28/29 CI and first two Project03 repair checkpoints merged; final parser checkpoint PR#79 merged at main10a182b with all ten PR/main jobs passing; wider Arc02 audit and project acceptance remain open
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
 - blocks: any claim of a complete current audit; does not block the separately authorized Project03 repairs of accepted Arc01 findings
 - related: `project01-v1.4-maintenance`; `project03-runtime-hardening`; iso8601 v1.4.0
-- version: 1.9 — 2026-11-01 UTC
+- version: 1.10 — 2026-11-01 UTC
 
 ## Outcome and boundaries
 
@@ -154,3 +154,11 @@ Project03 [Slice02 arithmetic/precision](../project03-runtime-hardening/slice02-
 The six upstream OTP29 warning renderings/four dependency sites remain the existing Arc02 tooling follow-up, separate from the passing first-party checks. No further diagnostic or parser increment starts automatically. The Operator selected eventual 1.4.1 in a separate release-preparation PR after all repairs land; no version bump or release is included here.
 
 - v1.9 — 2026-11-01 UTC: subsequent Project03 arithmetic/precision checkpoint merged and independently reconciled; preserves original audit provenance, remaining diagnostic obligations, three open parser findings and the upstream tooling watch.
+
+## Final runtime repair applicability — 2026-11-01 UTC
+
+Project03 [Slice03 parser contracts](../project03-runtime-hardening/slice03-parser-contracts/closing-report.md) repairs DATE001/DATE002/DATE004 in reviewed source22b92d1/tree643ed335, submitted as [PR#79](https://github.com/erlsci/iso8601/pull/79). Independent native8/430 EUnit/4×100 PropEr/100% coverage and all147 original observations establish current applicability while preserving the six prior repairs. [Actual PR CI run41271243883](https://github.com/erlsci/iso8601/actions/runs/41271243883) passes all ten OTP20–29 jobs; each21–29 runs430 tests/4×100/100%, and20 retains its static-only policy. The synthetic PR merge tree and merged main10a182be1bf4f5cd532592558e87789b83edb96f are identical to the reviewed candidate. The Operator stated “merged!”; GitHub attributes the04:01:43Z merge tooubiwann. Parent synchronized clean local main and verified the rebased commit retains both adjacent coauthor trailers. [Main push run41271453140](https://github.com/erlsci/iso8601/actions/runs/41271453140) also passes all ten jobs (last04:03:13Z), with actual job/step JSON inspected; the complete PR population evidence is retained by exact tree equality, without claiming a second full-log review.
+
+All nine accepted runtime findings now have reviewed repairs. The original diagnostic reports/runners remain immutable, and Project02 Arc02 tests/escript/tooling/type/history/synthesis work and project acceptance stay open. This repair checkpoint does not establish that the wider code audit is complete. The same upstream OTP29 warnings remain the existing tooling follow-up. The source version stays1.4.0; eventual1.4.1 release preparation remains a separate PR after repairs land.
+
+- v1.10 — 2026-11-01 UTC: reconciles the final runtime repair checkpoint and exact passing PR matrix, verifying human merge/integration and retaining wider audit, project and release boundaries.
