@@ -1,0 +1,21 @@
+CDC independent supplemental validation, source fcc1fe22e1651e133e20b7eb798dece82969e348; cwd project02-otp-28-29; known CC-built cached-source dependencies retained, not fresh network resolution.
+
+COMMAND ["rebar3", "--version"]
+rebar 3.27.0 on Erlang/OTP 28 Erts 16.1.1
+
+EXIT 0
+
+COMMAND ["rebar3", "compile"]
+===> Verifying dependencies...
+===> Analyzing applications...
+===> Compiling iso8601
+
+EXIT 0
+
+COMMAND ["rebar3", "xref"]
+===> Verifying dependencies...
+===> Analyzing applications...
+===> Compiling iso8601
+===> Running cross reference analysis...
+
+EXIT 0

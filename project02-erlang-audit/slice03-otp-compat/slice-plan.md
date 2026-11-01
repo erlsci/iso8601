@@ -1,6 +1,6 @@
 # Slice03 — OTP28/29 CI compatibility
 
-Version1.0 — 2026-10-31. Status: implementation authorised at merged base1d85d0a; parent priority/merge plan committed atcb672b2; initial assignment ready for dispatch. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
+Version1.1 — 2026-10-31. Status: local sourcefcc1fe2 independently prereviewed; parent publication and actual10-job hosted validation pending. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
 
 ## Outcome, authority and endpoint
 
@@ -51,3 +51,5 @@ The executable recipe and exact rejected alternatives are above; static checks d
 - v1.0 — 2026-10-31: directly prioritised CI implementation prepared on reviewed7e93c5d and authorised merged1d85d0a with exact tree equality. One collapsed slice; no production changes or CC dispatch at opening.
 
 - `cc-prompt.md` — issued2026-10-31 after parentcb672b2/base1d85d0a handoff; initial assignment active, zero refinements executed/max5. CC returns a local candidate to CDC; hosted execution/parent composition follow independent prereview.
+
+- v1.1 — 2026-10-31: initial CC returned sourcefcc1fe2/planningd4ae80d. Independent configuration/byte/native prereview accepts S03-01–04; S03-05/06 stay open until actual hosted run and final close. No refinement, production change or scope expansion.

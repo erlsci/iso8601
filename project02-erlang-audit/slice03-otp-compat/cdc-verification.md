@@ -1,0 +1,26 @@
+# CDC verification — OTP28/29 CI
+
+## Independent prereview — 2026-10-31
+
+CDC GPT-6.1 Sol High reviewed CC Luna High return at source `fcc1fe22e1651e133e20b7eb798dece82969e348`, tree `24abd4af8e85d8f9ed5805487217100dad3ddb41`, planning return `d4ae80dc2d48ad4a3a15564dea16746ed74d1adb`. Base `1d85d0a98a21750f83355a855dcc8fb4728758b4` is the merged/rebased interval repair; its entire tree equals reviewed7e93c5d. **Verdict: source candidate passes independent prereview and may be published by parent for the authorised ten-job CI run. Slice acceptance remains pending hosted execution and final close/retrospective.** No source correction or compatibility fix needed at this stage.
+
+Read the complete actual two-file source diff, CC close/ledger/runlog including failed attempts and current primary-source receipt. The workflow adds28/29 only to the Ubuntu22.04 newer tier and selects exact rebar3.28.0 for both, retaining previous toolchains for20–27. AGENTS changes only its two configured support ranges20–29/tests21–29. These are candidate configuration statements, not a claim those jobs have run. README >=20 badge stays accurate; CLAUDE symlink remains unchanged. The source commit has both required adjacent trailers; source checkout clean.
+
+CDC's independent one-off Python/PyYAML BaseLoader query loaded baseline/current complete YAML and asserted old tier20–23/new tier24–29, exactly10 unique majors, exact new selector, old-tier object equality, then replaced only the new OTP list/selector with baseline values and asserted **entire workflow object equality**. Thus runners/actions/triggers/fail-fast/skips/commands/100%coverage all retain their baseline representation. Normalizing only the two AGENTS ranges likewise reproduces baseline bytes. Query exit0; source `git diff --check 1d85d0a..HEAD` exit0. This structural comparison does not prove GitHub version resolution or runtime compatibility.
+
+Independently compared every tracked `src/`, `test/`, `rebar.config`, `Makefile` and `scripts/` file with base bytes; all unchanged. Production SHA-256 remains `39487e5e94afc299a091b4b41b023b13bdd53e4c0734319a90fdeb8a3d016ebc`; this retains15 exports/11 types and the accepted interval behavior without a new runtime claim. The prior independent [Project03 verification](../../project03-runtime-hardening/slice01-interval-inheritance/cdc-verification.md) supports retained native static/test/property/coverage/fmt/lint evidence at identical executable/build inputs. Its147 applicability observations remain dated evidence: two interval findings repaired, seven others still open. No replay needed solely for YAML/guidance edits. Existing PR76 eight-job evidence is retained historical support only, not a28/29 result.
+
+CDC independently reran local `rebar3 --version`, `rebar3 compile`, `rebar3 xref` sequentially, all exit0, on OTP28/ERTS16.1.1/rebar3.27.0. Exact commands/outputs/exits in [local validation](artifacts/cdc-local-validation.log); known CC-built cached-source plugin inputs retained, not fresh network resolution. No29 binary installed and no full new local native suite claimed. Real hosted10-job run must freshly execute six native gates21–29 and compile/xref/Dialyzer20; local proof cannot replace it.
+
+Intake/readback aligns with actual source and bound scope. Initial primary-doc receipt relied on CDC's plan summary rather than direct required sections; before final return CC directly loaded the named current sections and recorded them. The implementation was already authored then, so this is a corrected reading-order lapse, not proof every required item preceded editing. CDC had checked those primary sections before assignment and final source agrees; current direct receipts and source review close the practical gap without a code revision. Two wrong relative links and PM README full-versus-section wording were corrected before committed return. Read receipts remain attestation, not proof of attention. CC's BaseLoader string/integer assertion failure and wrong-base planning diff attempt are preserved tool/check mistakes, not workflow/runtime failures; corrected applicable checks pass.
+
+| Row | Prereview disposition |
+|---|---|
+| S03-01 | Independently dispositioned; actual authority/base/ownership/readback checked, current reading-order disclosure above retained. |
+| S03-02 | Independently reproduced configuration delta and full normalized workflow preservation; hosted gate separate. |
+| S03-03 | Independently reproduced exact allowed-file/byte/API/type/documentation preservation; no compatibility repair performed. |
+| S03-04 | Independent fresh local compile/xref0, exact-source prior gates retained at identified pins. |
+| S03-05 | Open: no actual10-job hosted run yet. Parent must publish final head and supply per-job/step/version/population evidence. |
+| S03-06 | Open: final hosted review/all-row close/retrospective still outstanding. Parent composition and Operator merge separate. |
+
+Parent owns scoped source push/separate PR/CI watch after this prereview. P02-06 remains open pending actual result; project acceptance, remaining audit and seven runtime repairs remain open. No merge/release or further increment is authorised by this prereview.
