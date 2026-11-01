@@ -5,7 +5,7 @@
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.7 — 2026-11-01 UTC
+- version: 1.8 — 2026-11-01 UTC
 
 ## Outcome, authority and endpoint
 
@@ -74,3 +74,9 @@ Operator: “nice! Let's jump into the next arc!” This directly authorizes the
 The standing separate-PR workflow applies: parent publishes the independently prereviewed candidate and watches all ten exact-head jobs; CC does not push/PR/merge/release. Current four finding rows may close only after technical verification. New P03-14 independent parent composition and P03-15 human review/merge/next-work gates remain separate and open. P03-12/13 are whole-project gates; DATE001/002/004, known P02 type/tooling questions and all release decisions remain open. Durable new evidence lives only in Slice02 artifacts, preserving all original audit and first-checkpoint evidence.
 
 - v1.7 — 2026-11-01 UTC: direct next-arc authorization activates collapsed Slice02 arithmetic/precision at integrated3a1cdfd; source-grounded four-finding policy and separate parent/human gates recorded before fresh CC dispatch.
+
+## Release boundary — 2026-11-01 UTC
+
+The Operator chose eventual release1.4.1 after all repairs land, in a separate release-preparation PR covering the version bump and release work. This is a future boundary and version decision, not authority to change version1.4.0, publish or release during Slice02. Current checkpoint remains arithmetic/precision only; three parser repairs and whole-project acceptance are open. No release-preparation increment has started.
+
+- v1.8 — 2026-11-01 UTC: record the Operator's eventual1.4.1/separate release-preparation decision without extending the active repair checkpoint or changing sourceversion.

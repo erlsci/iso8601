@@ -1,6 +1,6 @@
 # Slice02 — arithmetic and precision
 
-Version1.2 — 2026-11-01 UTC. Status: refinement02 active for carry provenance; no acceptance claimed.
+Version1.3 — 2026-11-01 UTC. Status: refinement03 active for promised formatter controls/comment/metadata; no acceptance claimed.
 
 ## Outcome, authority and sizing
 
@@ -57,6 +57,10 @@ CDC inspected full827-line current module, relevant parser/arithmetic/formatter/
 
 - v1.1 — 2026-11-01 UTC: preserved pre-intake drafte64c20f and intake breach; parent concurred with refinement01 to complete missing reads and original final-second normalization, without precision rounding or policy expansion.
 
-- `cc-prompt-iteration02.md` — issued2026-11-01 UTC, predecessor iteration01; CURRENT ACTIVE. Preserve valid-base fractional-carry provenance rather than normalize raw malformed clocks; correct matched zone oracle/docs and complete affected native/replay validation. Same four findings/9rows; two refinements/max5.
+- `cc-prompt-iteration02.md` — issued2026-11-01 UTC, predecessor iteration01; returned at sourced3c7012/planning6aa8bb1, superseded by refinement03. Preserve valid-base fractional-carry provenance rather than normalize raw malformed clocks; correct matched zone oracle/docs and complete affected native/replay validation. Same four findings/9rows; two refinements/max5.
 
 - v1.2 — 2026-11-01 UTC: parent/CDC review exposed missing valid-base provenance in the earlier carry recipe and a malformed negative-control string; scope/proof correction preserved before next edits, with prior results retained at their actual working state.
+
+- `cc-prompt-iteration03.md` — issued2026-11-01 UTC, predecessor iteration02; CURRENT ACTIVE. Four promised non-midnight/month/year0→1 formatter oracles, stale clamp EDoc and current/failed-attempt metadata, no runtime redesign. Parent concurred retention only after executable equality, fresh affected tests/coverage/style; three refinements/max5.
+
+- v1.3 — 2026-11-01 UTC: stable d3 runtime review supports narrow final test/comment/record refinement before independent reproduction. Exact non-midnight/year0 controls close a promised coverage gap; missing raw warning evidence must be recovered or candidly disclosed.
