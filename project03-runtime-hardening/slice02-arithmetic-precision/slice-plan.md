@@ -1,6 +1,6 @@
 # Slice02 — arithmetic and precision
 
-Version1.3 — 2026-11-01 UTC. Status: refinement03 active for promised formatter controls/comment/metadata; no acceptance claimed.
+Version1.4 — 2026-11-01 UTC. Status: refinement04 active for two private parser annotations; no acceptance claimed.
 
 ## Outcome, authority and sizing
 
@@ -61,6 +61,10 @@ CDC inspected full827-line current module, relevant parser/arithmetic/formatter/
 
 - v1.2 — 2026-11-01 UTC: parent/CDC review exposed missing valid-base provenance in the earlier carry recipe and a malformed negative-control string; scope/proof correction preserved before next edits, with prior results retained at their actual working state.
 
-- `cc-prompt-iteration03.md` — issued2026-11-01 UTC, predecessor iteration02; CURRENT ACTIVE. Four promised non-midnight/month/year0→1 formatter oracles, stale clamp EDoc and current/failed-attempt metadata, no runtime redesign. Parent concurred retention only after executable equality, fresh affected tests/coverage/style; three refinements/max5.
+- `cc-prompt-iteration03.md` — issued2026-11-01 UTC, predecessor iteration02; returned at source163d483/planning1f0c35b, superseded by refinement04. Four promised non-midnight/month/year0→1 formatter oracles, stale clamp EDoc and current/failed-attempt metadata, no runtime redesign. Parent concurred retention only after executable equality, fresh affected tests/coverage/style; three refinements/max5.
 
 - v1.3 — 2026-11-01 UTC: stable d3 runtime review supports narrow final test/comment/record refinement before independent reproduction. Exact non-midnight/year0 controls close a promised coverage gap; missing raw warning evidence must be recovered or candidly disclosed.
+
+- `cc-prompt-iteration04.md` — issued2026-11-01 UTC, predecessor iteration03; CURRENT ACTIVE. Exactly two private make_date parser-accumulator argument annotations complete the original recipe without widening public duration; fresh compiler/static/style evidence and executable-equivalence retention. Four refinements/max5.
+
+- v1.4 — 2026-11-01 UTC: late source-call/spec review exposed incomplete private type propagation from the new mode tag. Parent/CDC chose two-annotation correction now; public contract and runtime remain unchanged, and the author/review miss remains explicit.
