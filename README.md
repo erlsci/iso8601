@@ -14,7 +14,7 @@
 
 ## Project04 — 1.4.1 release preparation
 
-[project04-release-1.4.1/project-plan.md](project04-release-1.4.1/project-plan.md) owns the separately authorized release-preparation PR: bump the package to1.4.1, keep version authority in the app manifest, align generated source links with unprefixed tags, draft release notes, and validate native checks/local package/docs/fresh consumer/OTP20–29 CI. Runtime/API/tests/README stay unchanged. Preparation does not authorize merge, tagging or publication, or close Project03/P02 acceptance gates.
+[project04-release-1.4.1/project-plan.md](project04-release-1.4.1/project-plan.md) prepares1.4.1 in [PR#80](https://github.com/erlsci/iso8601/pull/80), with all ten OTP20–29 CI jobs passing on reviewed sourcee70b4a0. Version authority is the app manifest; generated source links match unprefixed tags, existing README logo/contents links work in HexDocs, and the PR includes a release-note draft. Native/package/docs/fresh-consumer checks pass; runtime/API/tests and README teaching/examples stay unchanged. Operator review/merge and actual release publication remain separate; Project03 final and Project02 wider audit acceptance stay open.
 
 ## Migration checks and limits
 

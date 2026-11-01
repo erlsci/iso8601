@@ -5,7 +5,7 @@
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
 - blocks: any claim of a complete current audit; does not block the separately authorized Project03 repairs of accepted Arc01 findings
 - related: `project01-v1.4-maintenance`; `project03-runtime-hardening`; iso8601 v1.4.0
-- version: 1.10 — 2026-11-01 UTC
+- version: 1.11 — 2026-11-01 UTC
 
 ## Outcome and boundaries
 
@@ -162,3 +162,11 @@ Project03 [Slice03 parser contracts](../project03-runtime-hardening/slice03-pars
 All nine accepted runtime findings now have reviewed repairs. The original diagnostic reports/runners remain immutable, and Project02 Arc02 tests/escript/tooling/type/history/synthesis work and project acceptance stay open. This repair checkpoint does not establish that the wider code audit is complete. The same upstream OTP29 warnings remain the existing tooling follow-up. The source version stays1.4.0; eventual1.4.1 release preparation remains a separate PR after repairs land.
 
 - v1.10 — 2026-11-01 UTC: reconciles the final runtime repair checkpoint and exact passing PR matrix, verifying human merge/integration and retaining wider audit, project and release boundaries.
+
+## Release-preparation documentation rendering follow-up — 2026-11-01 UTC
+
+Parent inspection of Project04's locally generated1.4.1 `readme.html` found a nonblocking cosmetic rendering issue beyond the bounded logo/fragment repairs: the first four reference-style badges are combined into one image's multiline alt text, with `src="http://www.erlang.org/downloads"`, and heading backlink labels show the literal numeric-entity text. The responsible parser/component has not been isolated. This exact observation belongs to the still-open Arc02 documentation/tooling review; no broader crawler, external-link repair or source fix was commissioned in release preparation. API usage teaching, the two repaired logo targets, all17 same-document fragment links and unprefixed source URLs have separate positive evidence. No claim of complete visual/badge rendering verification follows from those scoped checks.
+
+[Project04 preparation](../project04-release-1.4.1/project-plan.md) is the separate [PR80](https://github.com/erlsci/iso8601/pull/80), with all ten OTP20–29 jobs passing on sourcee70b4a0; no automatic audit acceptance or release publication follows. This note adds a concrete follow-up to the existing open audit surface; no P02 ledger row closes.
+
+- v1.11 — 2026-11-01 UTC: records observed generated badge/entity formatting as a nonblocking documentation/tooling follow-up, distinguishing it from repaired logo/navigation defects and passing source/package gates.

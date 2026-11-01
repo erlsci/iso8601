@@ -1,0 +1,335 @@
+{
+  "published_baseline": {
+    "source_base": "10a182be1bf4f5cd532592558e87789b83edb96f",
+    "source_tree": "643ed3352b66b1d19035b6fd61b7e975d869d985",
+    "published_version": "1.4.0",
+    "published_archive_sha256": "59e9ac944942387d5a41741e73a8f630b8fb0d891997103761dfb330794e170c",
+    "registry_checksum": "59e9ac944942387d5a41741e73a8f630b8fb0d891997103761dfb330794e170c",
+    "published_source_sha256": "b3dd4c61be8b47ec0cd91439f1d8deeee1ef5e5e38d075be3358a893f9ad3350",
+    "parent_epp_observation": {
+      "exports": 15,
+      "exported_types": 11,
+      "public_specs_equal": true,
+      "baseline_type_declarations_retained": true
+    },
+    "pre_dispatch_remote_branch": "absent (git ls-remote exit0 empty)"
+  },
+  "parent_candidate_inspection": {
+    "head": "e70b4a09300afa1fcde1fad13ed6277226f8d41a",
+    "tree": "e098fec9f624b4cb04843ee9fbbca2310740b7e8",
+    "source_scope": [
+      "AGENTS.md",
+      "README.md",
+      "rebar.config",
+      "src/iso8601.app.src"
+    ],
+    "runtime_tests_ci_make_byte_identical_to": "10a182be1bf4f5cd532592558e87789b83edb96f",
+    "README_exact_allowed_transformation": true,
+    "package_outer": [
+      "VERSION",
+      "CHECKSUM",
+      "metadata.config",
+      "contents.tar.gz"
+    ],
+    "package_files": [
+      "LICENSE",
+      "README.md",
+      "rebar.config",
+      "rebar.lock",
+      "src/iso8601.app.src",
+      "src/iso8601.erl"
+    ],
+    "docs_files": [
+      ".build",
+      ".build.epub",
+      "404.html",
+      "api-reference.html",
+      "dist/html-Y2MUTVIN.js",
+      "dist/html-erlang-KCHZLXSC.css",
+      "dist/lato-latin-400-normal-W7754I4D.woff2",
+      "dist/lato-latin-700-normal-2XVSBPG4.woff2",
+      "dist/lato-latin-ext-400-normal-N27NCBWW.woff2",
+      "dist/lato-latin-ext-700-normal-Q2L5DVMW.woff2",
+      "dist/remixicon-ZWU5GQ4X.woff2",
+      "dist/search_data-2973B03B.js",
+      "dist/sidebar_items-C3E55ADD.js",
+      "index.html",
+      "iso8601.epub",
+      "iso8601.html",
+      "readme.html",
+      "search.html"
+    ],
+    "readme_local_links": 17,
+    "readme_distinct_fragments": 12,
+    "all_readme_fragments_resolve": true,
+    "source_refs_by_page": {
+      "readme": 1,
+      "module": 32
+    },
+    "source_refs_prefixed": 0,
+    "raw_logo_targets_verified": true,
+    "archives_sha256": {
+      "iso8601-1.4.1-docs.tar": "b78154bde3078b3b9d50a3e48c06ebc4569b4e91ab08a87ce393a36d7a062644",
+      "iso8601-1.4.1.tar": "24daee8dc21c65fb1511ad6c8f0d645bb3f59651d6c63ca0529387ed3392900d"
+    },
+    "parent_probe_corrections": [
+      "Initial packaged app.src whitespace byte assertion was overstrict; correct gate is consulted application term equality/version.",
+      "Initial source-ref count assertion conflated module-only32 with both-page33; actual readme1+module32=33, intendedURLs correct."
+    ],
+    "consumer_kind": "parent manual erlc/application proof; real rebar consumer separately performed by CC/CDC"
+  },
+  "initial_docs_observations": {
+    "initial_docs_sha256": "4f664d461a3f290e6e83bee9dc4a12acda0f34533ddbc0be8ab94b974c419d51",
+    "initial_docs_members": [
+      ".build",
+      ".build.epub",
+      "404.html",
+      "api-reference.html",
+      "dist/html-Y2MUTVIN.js",
+      "dist/html-erlang-KCHZLXSC.css",
+      "dist/lato-latin-400-normal-W7754I4D.woff2",
+      "dist/lato-latin-700-normal-2XVSBPG4.woff2",
+      "dist/lato-latin-ext-400-normal-N27NCBWW.woff2",
+      "dist/lato-latin-ext-700-normal-Q2L5DVMW.woff2",
+      "dist/remixicon-ZWU5GQ4X.woff2",
+      "dist/search_data-055EF39E.js",
+      "dist/sidebar_items-C3E55ADD.js",
+      "index.html",
+      "iso8601.epub",
+      "iso8601.html",
+      "readme.html",
+      "search.html"
+    ],
+    "unresolved_readme_fragments": [
+      "#about-",
+      "#contents",
+      "#known-deficiencies-",
+      "#license-",
+      "#new-in-14-",
+      "#usage-"
+    ],
+    "missing_local_readme_images": [
+      "priv/images/logo.png"
+    ],
+    "parent_probe_correction": "Initial parent assertion required packaged app.src byte identity; provider rewrites whitespace. Correct gate is application term equivalence/version plus exact module/README/config bytes. No app metadata semantic defect observed."
+  },
+  "parent_cdc_docs_inspection": {
+    "docs_sha256": "d2991d8b998587ba7ebe72ee7274f7e04d17f5bd13106f773c3d944fc0260e90",
+    "members": 18,
+    "readme_local_links": 17,
+    "all_fragments_resolve": true,
+    "all_source_refs_unprefixed": 33,
+    "raw_logos_exact": true,
+    "scope": "verified logos/fragments/source refs; no complete badge/visual rendering claim; generated badge/entity follow-up stays P02"
+  },
+  "hosted_ci": {
+    "run": 41274645553,
+    "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553",
+    "headSha": "e70b4a09300afa1fcde1fad13ed6277226f8d41a",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "otp": 20,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239652",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:52:23Z",
+        "population_counts": [
+          0,
+          0,
+          0
+        ],
+        "versions": [
+          "Erlang 20 build (Debian container)\tInitialize containers\t2026-11-01T04:51:21.6333976Z OTP_VERSION=20.3.8.26",
+          "Erlang 20 build (Debian container)\tCheck rebar3 Version\t2026-11-01T04:51:24.4491289Z rebar 3.15.2 on Erlang/OTP 20 Erts 9.3.3.15"
+        ]
+      },
+      {
+        "otp": 21,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239913",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:51:57Z",
+        "population_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 21 build (Debian container)\tInitialize containers\t2026-11-01T04:51:14.5687194Z OTP_VERSION=21.3.8.24",
+          "Erlang 21 build (Debian container)\tCheck rebar3 Version\t2026-11-01T04:51:16.4664596Z rebar 3.15.2 on Erlang/OTP 21 Erts 10.3.5.19"
+        ]
+      },
+      {
+        "otp": 22,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239848",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:52:04Z",
+        "population_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 22 build (Debian container)\tInitialize containers\t2026-11-01T04:51:17.6789375Z OTP_VERSION=22.3.4.27",
+          "Erlang 22 build (Debian container)\tCheck rebar3 Version\t2026-11-01T04:51:20.6368746Z rebar 3.15.2 on Erlang/OTP 22 Erts 10.7.2.19"
+        ]
+      },
+      {
+        "otp": 23,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239838",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:52:01Z",
+        "population_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 23 build (Debian container)\tInitialize containers\t2026-11-01T04:51:14.9295167Z OTP_VERSION=23.3.4.20",
+          "Erlang 23 build (Debian container)\tCheck rebar3 Version\t2026-11-01T04:51:17.4314191Z rebar 3.15.2 on Erlang/OTP 23 Erts 11.2.2.18"
+        ]
+      },
+      {
+        "otp": 24,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239842",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:51:46Z",
+        "population_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 24 build\tRun erlef/setup-beam@v1\t2026-11-01T04:51:00.4909442Z ##[group]Installing Erlang/OTP OTP-24.3.4.17 - built on amd64/ubuntu-22.04",
+          "Erlang 24 build\tCheck rebar3 Version\t2026-11-01T04:51:06.1415402Z rebar 3.22.1 on Erlang/OTP 24 Erts 12.3.2.17"
+        ]
+      },
+      {
+        "otp": 25,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239886",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:51:37Z",
+        "population_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 25 build\tRun erlef/setup-beam@v1\t2026-11-01T04:51:00.4986493Z ##[group]Installing Erlang/OTP OTP-25.3.2.21 - built on amd64/ubuntu-22.04",
+          "Erlang 25 build\tCheck rebar3 Version\t2026-11-01T04:51:07.1779497Z rebar 3.22.1 on Erlang/OTP 25 Erts 13.2.2.16"
+        ]
+      },
+      {
+        "otp": 26,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239971",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:51:46Z",
+        "population_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 26 build\tRun erlef/setup-beam@v1\t2026-11-01T04:51:01.2086128Z ##[group]Installing Erlang/OTP OTP-26.2.5.21 - built on amd64/ubuntu-22.04",
+          "Erlang 26 build\tCheck rebar3 Version\t2026-11-01T04:51:07.5644872Z rebar 3.25.1 on Erlang/OTP 26 Erts 14.2.5.15"
+        ]
+      },
+      {
+        "otp": 27,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239948",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:51:44Z",
+        "population_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 27 build\tRun erlef/setup-beam@v1\t2026-11-01T04:51:00.4532356Z ##[group]Installing Erlang/OTP OTP-27.3.4.19 - built on amd64/ubuntu-22.04",
+          "Erlang 27 build\tCheck rebar3 Version\t2026-11-01T04:51:05.8917505Z rebar 3.25.1 on Erlang/OTP 27 Erts 15.2.7.14"
+        ]
+      },
+      {
+        "otp": 28,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239775",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:51:49Z",
+        "population_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 28 build\tRun erlef/setup-beam@v1\t2026-11-01T04:51:00.4356482Z ##[group]Installing Erlang/OTP OTP-28.5.0.8 - built on amd64/ubuntu-22.04",
+          "Erlang 28 build\tCheck rebar3 Version\t2026-11-01T04:51:05.7724806Z rebar 3.28.0 on Erlang/OTP 28 Erts 16.4.0.7"
+        ]
+      },
+      {
+        "otp": 29,
+        "url": "https://github.com/erlsci/iso8601/actions/runs/41274645553/job/124754239858",
+        "conclusion": "success",
+        "completedAt": "2026-11-01T04:51:47Z",
+        "population_counts": [
+          1,
+          4,
+          2
+        ],
+        "versions": [
+          "Erlang 29 build\tRun erlef/setup-beam@v1\t2026-11-01T04:50:59.2774556Z ##[group]Installing Erlang/OTP OTP-29.1.2 - built on amd64/ubuntu-22.04",
+          "Erlang 29 build\tCheck rebar3 Version\t2026-11-01T04:51:04.6640872Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1"
+        ]
+      }
+    ],
+    "synthetic_checkouts": [
+      "aa6554cb5e6ff4fbfe03afba2a296dd33ba10d4e"
+    ],
+    "full_log_sha256": "ef1f3beb0e3a9edab9c9b98a61cf910611135a6d537cef5a433c2fa24b77eea9",
+    "warning_renderings": [
+      "Erlang 29 build\tCheck rebar3 Version\t2026-11-01T04:51:04.6544126Z     \u2502                                   \u2570\u2500\u2500 Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.",
+      "Erlang 29 build\tCheck rebar3 Version\t2026-11-01T04:51:04.6549021Z      \u2502                                      \u2570\u2500\u2500 Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.",
+      "Erlang 29 build\tEUnit Tests\t2026-11-01T04:51:41.7018493Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_statem.erl:770:46: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.",
+      "Erlang 29 build\tEUnit Tests\t2026-11-01T04:51:41.7163809Z      \u2502                                               \u2570\u2500\u2500 Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.",
+      "Erlang 29 build\tEUnit Tests\t2026-11-01T04:51:42.4565317Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_erlang_abstract_code.erl:2138:29: Warning: ambiguous call of overridden auto-imported BIF is_record/1 --",
+      "Erlang 29 build\tEUnit Tests\t2026-11-01T04:51:42.4601843Z       \u2502                              \u2570\u2500\u2500 Warning: ambiguous call of overridden auto-imported BIF is_record/1 --"
+    ]
+  },
+  "hosted_checkout": {
+    "parents": [
+      "10a182be1bf4f5cd532592558e87789b83edb96f",
+      "e70b4a09300afa1fcde1fad13ed6277226f8d41a"
+    ],
+    "sha": "aa6554cb5e6ff4fbfe03afba2a296dd33ba10d4e",
+    "tree": "e098fec9f624b4cb04843ee9fbbca2310740b7e8"
+  },
+  "operator_pr_state": {
+    "baseRefOid": "10a182be1bf4f5cd532592558e87789b83edb96f",
+    "headRefOid": "e70b4a09300afa1fcde1fad13ed6277226f8d41a",
+    "mergeCommit": null,
+    "mergedAt": null,
+    "mergedBy": null,
+    "number": 80,
+    "state": "OPEN",
+    "url": "https://github.com/erlsci/iso8601/pull/80"
+  },
+  "parent_package_consumer": {
+    "kind": "fresh private extraction, erlc compile, application term/load/version/deps/code-path plus unchanged existing40control fixtures; distinct from CC/CDC real rebar consumers",
+    "compile_exit": 0,
+    "application_load_exit": 0,
+    "version": "1.4.1",
+    "module_sha256": "77b77957a5ca524f5dc9e1451f25be701e1375225b0a7b36c58977a079a706cd",
+    "beam_sha256": "038dc80d2f525cd083f6e6606c23bd242f459d2edd27a980f0b74a3e639b6cca",
+    "parser_controls": [
+      24,
+      24,
+      0
+    ],
+    "arithmetic_controls": [
+      16,
+      16,
+      0
+    ],
+    "fixtures": {
+      "project03-runtime-hardening/slice03-parser-contracts/artifacts/parent-integration-controls.escript": "db997a4a4cd8e66ecbeec4284edca24e5cf151543912e3a41f759cfb5ad5b855",
+      "project03-runtime-hardening/slice02-arithmetic-precision/artifacts/parent-integration-controls.escript": "620f0d1cee92bbcae1f17afdad1e1bf0b474e52a763a02dd824a455a00046a37"
+    }
+  }
+}

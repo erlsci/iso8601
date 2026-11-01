@@ -5,7 +5,7 @@
 - depends-on: integrated main10a182be1bf4f5cd532592558e87789b83edb96f, tree643ed3352b66b1d19035b6fd61b7e975d869d985, consuming the nine repaired finding criteria and OTP20–29 CI
 - related: Project03 runtime hardening and Project02 wider audit; their remaining project/audit gates are not prerequisites silently accepted here
 - blocks: a reviewable1.4.1 preparation candidate; actual release publication remains a later decision
-- version:1.2 — 2026-11-01 UTC
+- version:1.3 — 2026-11-01 UTC
 
 ## Outcome and authority
 
@@ -34,3 +34,9 @@ Initial source d999c8d/tree136685ed and planningaf613db preserve successful nati
 Slice01 is independently accepted against all8 criteria, including actual final-tree [PR80 CI](https://github.com/erlsci/iso8601/actions/runs/41274645553), native430/4×100/100 and current local package/docs/fresh consumer. [Project assembly](closing-report.md) and both retrospectives retain initial rejection, one amendment and tooling/harness limits. P04-01 is done/reproduced; P04-02 independent parent composition and P04-03 human PR disposition remain open. Generated badge/entity details observed by the parent are a nonblocking wider P02 docs/tooling follow-up, not additional P04 source work or a claim all rendered/external references were verified.
 
 - v1.2 — 2026-11-01 UTC: Slice01 technical close at sourcee70b4a0/treee098fec9 and actual ten-job run41274645553; no scope expansion, parent/human/release boundary retained.
+
+## Independent parent preparation handoff — 2026-11-01 UTC
+
+Parent [project composition](closing-report.md#parent-independent-release-preparation-composition--2026-11-01-utc) accepts the complete one-child preparation after exact source/README/public-declaration review, fresh actual-package40control proof, scoped both-doc-build inspection, full actual hosted matrix and release-note review. PR80 includes the reviewable version1.4.1 candidate and unpublished release-note draft; all ten OTP20–29 jobs pass on the exact reviewed tree. P04-02 is done/reproduced, while P04-03 remains OPEN for Operator disposition. No merge, tag, release publication, next increment or acceptance of the wider P02/P03 projects follows automatically.
+
+- v1.3 — 2026-11-01 UTC: independently composed release-preparation project is ready for human review/merge; remaining human and publication boundaries are explicit.
