@@ -1,6 +1,6 @@
 # Slice01 — interval inheritance correctness
 
-Version1.0 — 2026-10-31. Status: initial assignment ready. Current assignment `cc-prompt.md`; zero refinements executed/max5.
+Version1.1 — 2026-10-31. Status: narrow refinement01 active. Current assignment `cc-prompt-iteration01.md`; zero refinements executed/max5, initial candidateec665b8 preserved.
 
 ## Outcome and scope
 
@@ -37,4 +37,11 @@ API-01/02 SHOULD: preserve small explicit exports/private helpers. EH-07/10 SHOU
 
 ## Assignment history
 
-- `cc-prompt.md` — issued2026-10-31, predecessor none, initial implementation; active. CC owns allowed source and slice artifacts/ledger/close during handoff; CDC owns other Project03 plans/reviewer records, parent owns existing Project02/README. Five numbered refinements maximum, no next increment before human gate.
+- `cc-prompt.md` — issued2026-10-31, predecessor none, initial implementation; returned as sourceec665b8/planning3908b5a, superseded by refinement01. CC owns allowed source and slice artifacts/ledger/close during handoff; CDC owns other Project03 plans/reviewer records, parent owns existing Project02/README. Five numbered refinements maximum, no next increment before human gate.
+
+- `cc-prompt-iteration01.md` — issued2026-10-31, predecessor `cc-prompt.md`; actual formatter-derived regression, README numbering and source-backed evidence/read receipts; active. Production byte-identical, no scope change.
+
+## Version history
+
+- v1.0 — 2026-10-31: initial coherent collapsed repair checkpoint.
+- v1.1 — 2026-10-31: CDC independently supported production/native/replay behavior; narrow test/doc/evidence refinement01 required before acceptance. Full original runner population corrects inherited prompt shorthand38 to42; all147 observations retained.

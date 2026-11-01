@@ -1,0 +1,18 @@
+# CC refinement01 — formatter regression and report precision
+
+Issued2026-10-31 by CDC Sol High to existing Operator-selected CC Luna High. Current assignment supersedes initial `cc-prompt.md` for this narrow pass, initial sourceec665b8/planning3908b5a remain preserved. Refinement1/max5. Execute through updated tests/docs/evidence, explicit-path commits and return, then stop writes. Production `src/iso8601.erl` must remain byte-identical toec665b8 (SHA39487e5e94afc299a091b4b41b023b13bdd53e4c0734319a90fdeb8a3d016ebc); implementation behavior has independent support.
+
+Read full this prompt and `cdc-verification.md`, current slice-plan/ledger, actual formatter-labeled EUnit case, README affected continuation, full10 fractional stdout and current log/close. Original required manifest/guide and ownership contracts remain binding; record refreshed actual source/planning pins/reads/readback before edits. Required conditional now triggered: full `/Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/skills/testing/guides/02-coverage-hardening.md`; record actual loading/timing and any earlier gap honestly.
+
+Resolve R1–R4 exactly as detailed in reviewer record. Replace the mislabeled literal self-roundtrip with a test that actually calls format_expanded, asserts exact signedStart and an independent full expected interval with endyear2007, then checks format_interval round-trip against that expected tuple. Preserve source/API behavior. Demonstrate the corrected formatter-specific regression failing unchangedbcfd94a via isolated baseline source/test beams and passing repaired candidate; no worktree production rollback. Correct only affected README continuation22–25, preserving preexisting earlier repeated5/6 context. Derive DATE0057false/3true from full10 output, append explicit superseding interpretation while preserving initial3908b5a and raw outputs. Correct nonexistent close path in slice ledger. Reconcile triggered guide actual reads and exact preserved attempt receipts; unknown original fields remain unknown, no invented observations.
+
+Source mutation allowlist for this refinement: **test/iso8601_tests.erl and README.md only**. Planning allowlist remains owning `artifacts/**`, closing-report and ledger evidence/status only; no plans/prompts/reviewer/history/Project02 mutation. You are sole writer of those paths until return; CDC holds writes. No production/config/dependency or later-finding repair.
+
+CDC already independently reproduced all8 named native gates onec665b8,18red/217pass atf344400,10 extra boundaries and all147 audit observations. Retain unchanged production compile/xref/Dialyzer/PropEr/audit replay evidence with exact original attribution; no duplicate full replay for a test/README-only change. Run affected EUnit,100%cover,fmt/lint afresh and scoped docs/diff/API/source-hash checks; refresh property cover inputs only if needed to resolve a concrete stale-data concern. Preserve all red/green/failed/corrected receipts and actual populations; no aggregate matrix/release claim.
+
+Commit explicit intended source paths with `git commit --only`; then explicit actual allowed planning files. Every assistant commit includes contiguous trailers:
+
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Billo AI <ai-engineering@billo.systems>
+
+Update current close/all8 row walk, source/planning assignment identity, failure/count correction disclosures and retained-versus-new validation. S01-08 independent review/retro and projectP03-10/P03-11 remain open. Return exact hashes/current paths/tests/limits and stop writes; no next increment, push/PR/merge/release/external action.

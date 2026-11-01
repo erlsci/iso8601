@@ -1,0 +1,50 @@
+Fresh candidateec665b8: erlc -o /private/tmp/iso8601-p03-cdc-candidate /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl
+COMMAND escript /private/tmp/iso8601-p03-cdc-baseline/boundaries.escript /private/tmp/iso8601-p03-cdc-candidate
+single-digit signed year expected={{9,11,15},{0,0,0}} actual={{9,11,15},
+                                                              {0,0,0}} match=true
+signed year basic time and -HHMM expected={{10001,1,1},{2,15,0}} actual={{10001,
+                                                                          1,1},
+                                                                         {2,
+                                                                          15,
+                                                                          0}} match=true
+hour-only inherited offset expected={{2007,12,14},{13,0,0}} actual={{2007,12,
+                                                                     14},
+                                                                    {13,0,0}} match=true
+day-only midnight inherits +HH expected={{2007,12,14},{22,0,0}} actual={{2007,
+                                                                         12,
+                                                                         14},
+                                                                        {22,0,
+                                                                         0}} match=true
+month-day midnight inherits +HHMM expected={{2007,12,14},{21,30,0}} actual={{2007,
+                                                                             12,
+                                                                             14},
+                                                                            {21,
+                                                                             30,
+                                                                             0}} match=true
+submicrosecond literal retained expected={{2007,12,14},{13,30,1.0e-7}} actual={{2007,
+                                                                                12,
+                                                                                14},
+                                                                               {13,
+                                                                                30,
+                                                                                1.0e-7}} match=true
+comma fraction retained expected={{2007,12,14},{13,30,0.125}} actual={{2007,
+                                                                       12,14},
+                                                                      {13,30,
+                                                                       0.125}} match=true
+fractional-hour whole-minute control expected={{2007,12,14},{13,15,0.0}} actual={{2007,
+                                                                                  12,
+                                                                                  14},
+                                                                                 {13,
+                                                                                  15,
+                                                                                  0.0}} match=true
+complete signed end is independently UTC expected={{2008,1,1},{0,0,0}} actual={{2008,
+                                                                                1,
+                                                                                1},
+                                                                               {0,
+                                                                                0,
+                                                                                0}} match=true
+bare four digits remains year expected={{1530,1,1},{0,0,0}} actual={{1530,1,1},
+                                                                    {0,0,0}} match=true
+SUMMARY 10 checks 0 failures
+
+EXIT 0

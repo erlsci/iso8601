@@ -80,3 +80,40 @@ Applicability disposition against the exact candidate:
 | ERL-DATE-005 | All ten fractional-hour/minute comparisons reproduced: six accepted fractional-unit cases still fail the probe's exact subsecond tolerance; whole-second and explicit-second controls match. | Still applicable/open; not repaired. |
 
 No later arithmetic/parser/CI increment was started. The local receipts do not claim the configured OTP20–27 CI matrix, R15B03 compatibility, release readiness, independent verification, parent composition or Operator acceptance.
+
+## CDC independent initial-candidate evidence — 2026-10-31
+
+Reviewer Sol High, sourceec665b8, initial CC close3908b5a. Full actual source/test/README diff and close/ledger/readback inspected. Eight named native commands independently ran sequentially in source worktree with45s bounded processes; all exit0: compile/xref/Dialyzer/EUnit238/PropEr4×100/100%cover/fmt/lint. Exact command arrays/exits/complete stdout in `cdc-validation.log`. Known CC-built dependencies/localOTP28 PLT were retained inputs, not a new resolution. Independently compiled sourcebcfd94a plus exact f344400 test file in `/private/tmp/iso8601-p03-cdc-baseline`; EUnit gives18failed/217passed exit1 (`cdc-red-regression.log`). Fresh candidate source compiled into `/private/tmp/iso8601-p03-cdc-candidate` (exit0); independent10 expected-value boundary controls pass0failures (`cdc-boundaries.log`), versus9failures/1 bare-year control at unchangedbaseline (toolb62287).
+
+The independent boundary fixture is a temporary straightforward public-call table, not a production verifier. Its exact source for reconstruction:
+
+```erlang
+#!/usr/bin/env escript
+main([Beam]) ->
+ true=code:add_patha(Beam),
+ Cases=[
+  {"single-digit signed year", "+9-11-13/15", {{9,11,15},{0,0,0}}},
+  {"signed year basic time and -HHMM", "+10000-12-31T23:30:00-0230/T2345", {{10001,1,1},{2,15,0}}},
+  {"hour-only inherited offset", "2007-12-14T13:30:00+02:00/T15", {{2007,12,14},{13,0,0}}},
+  {"day-only midnight inherits +HH", "2007-12-14T13:30:00+02/15", {{2007,12,14},{22,0,0}}},
+  {"month-day midnight inherits +HHMM", "2007-12-14T13:30:00+0230/12-15", {{2007,12,14},{21,30,0}}},
+  {"submicrosecond literal retained", "2007-12-14T13:30:00+02:00/15:30:00.0000001", {{2007,12,14},{13,30,0.0000001}}},
+  {"comma fraction retained", "2007-12-14T13:30:00+02:00/15:30:00,125", {{2007,12,14},{13,30,0.125}}},
+  {"fractional-hour whole-minute control", "2007-12-14T13:30:00+02:00/T15.25", {{2007,12,14},{13,15,0.0}}},
+  {"complete signed end is independently UTC", "2007-12-14T13:30:00+02:00/+2008-01-01", {{2008,1,1},{0,0,0}}},
+  {"bare four digits remains year", "2007-12-14T13:30:00+02:00/1530", {{1530,1,1},{0,0,0}}}
+ ],
+ N=lists:foldl(fun({Name,Str,Want},Acc)->
+  Got=try element(2,iso8601:interval_bounds(iso8601:parse_interval(Str))) catch C:R->{exception,C,R} end,
+  Match=Got=:=Want,io:format("~s expected=~p actual=~p match=~p~n",[Name,Want,Got,Match]),
+  case Match of true->Acc;false->Acc+1 end
+ end,0,Cases),
+ io:format("SUMMARY ~p checks ~p failures~n",[length(Cases),N]),
+ case N of 0->halt(0);_->halt(1) end.
+```
+
+Fresh candidate replay: temporary copies of both date escripts changed only exact BeamDir literal from original P02 ebin to `/private/tmp/iso8601-p03-cdc-candidate`; `escript <copy>` both exit0. Both immutable calendar modules compiled with `erlc -o /private/tmp/iso8601-p03-cdc-candidate <original module path>` exit0; `erl -noshell -pa /private/tmp/iso8601-p03-cdc-candidate -s calendar_interval_probes run -s init stop` and analogous `calendar_interval_probes_iteration01` both exit0. Full candidate outputs `cdc-replay-date-31.log`, `cdc-replay-fractional-10.log`, `cdc-replay-calendar-42.log`, `cdc-replay-calendar-refined-64.log`.
+
+Complete populations31+10+42+64=147. Date/fraction output byte-equal to original/CC; fractional flags7false/3true including expanded_hour_fraction. Temporary output comparison grouped each original label and complete printed term, removed layout whitespace and normalized stack `{file,...}` paths to basename only; every calendar label/outcome equals CC candidate. Original calendar differs in4 expectedCAL003/004 labels (omittedzone, short signed inheritedyear, padded inheritedyear, padded fullendpoint), refinement differs in5 (omittedzone, formatter signed inheritedyear/fullendpoint, padded inheritedyear/fullendpoint). All other values/exceptions/bounded timeout cleanup match original. Production and public expected semantics were independently assessed from source/calendar arithmetic and exact regressions, not normalized-output equality alone.
+
+Exact EPP baseline/candidate export/type list comparison: exports_equal=true count15, types_equal=true count11 (exit0). Current sourceSHA39487e5e94afc299a091b4b41b023b13bdd53e4c0734319a90fdeb8a3d016ebc. Known prior planning read-count and original-calendar denominator errors remain preserved/disclosed. Pending narrow R1–R4 review is in reviewer-owned `cdc-verification.md`; not accepted yet.
