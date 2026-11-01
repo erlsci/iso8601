@@ -467,7 +467,10 @@ make_date(Plist) ->
 %% be zero.
 make_date(Year, Month, undefined, Plist) ->
     Date = {Year, Month, ?V(month_day, Plist, 1)},
+    (Year =< 0 orelse calendar:valid_date(Date)) orelse error(badarg),
     {Date, 0};
+make_date(Year, _, Week, _) when Year < 0, Week =/= undefined ->
+    error(badarg);
 make_date(Year, _, Week, Plist) ->
     Weekday = ?V(week_day, Plist, 1),
     % week/weekday offset in hours

@@ -1274,10 +1274,35 @@ format_expanded_roundtrip_test_() ->
 %%----------------------------------------------------------------------
 
 parse_out_of_range_positive_crashes_test_() ->
-    %% Out-of-range day on a positive year routes through calendar (not
-    %% the year<=0 bypass), which crashes rather than silently returning
-    %% an invalid date like {2017,2,30}.
-    ?_assertError(_, iso8601:parse("2017-02-30")).
+    %% Invalid positive calendar dates are rejected before timezone offsets.
+    ?_assertError(badarg, iso8601:parse("2017-02-30")).
+
+parse_invalid_positive_calendar_date_test_() ->
+    [
+        {"parse_exact rejects an invalid positive date",
+            ?_assertError(badarg, iso8601:parse_exact("2017-02-30"))},
+        {"expanded parsing rejects an invalid positive date",
+            ?_assertError(badarg, iso8601:parse_expanded("+2017-02-30"))},
+        {"invalid raw date is rejected before offset normalization",
+            ?_assertError(badarg, iso8601:parse("2017-02-30T00:30:00+02:00"))},
+        {"an inherited interval end cannot normalize an invalid date",
+            ?_assertError(badarg, iso8601:parse_interval("2017-02-28/30"))},
+        {"positive leap day remains valid",
+            ?_assertMatch({{2016, 2, 29}, ?MN}, iso8601:parse("2016-02-29"))},
+        {"valid timezone crossing remains normalized",
+            ?_assertMatch(
+                {{2017, 2, 27}, {22, 30, 0}},
+                iso8601:parse("2017-02-28T00:30:00+02:00")
+            )},
+        {"positive week date remains valid",
+            ?_assertMatch({{2012, 1, 2}, ?MN}, iso8601:parse("2012-W01-1"))},
+        {"year zero week date remains valid",
+            ?_assertMatch({{0, 1, 3}, ?MNE}, iso8601:parse_expanded("0000-W01-1"))},
+        {"valid negative plain date remains valid",
+            ?_assertMatch({{-1, 1, 1}, ?MNE}, iso8601:parse_expanded("-0001-01-01"))},
+        {"expanded positive date remains valid",
+            ?_assertMatch({{10000, 1, 1}, ?MNE}, iso8601:parse_expanded("+10000-01-01"))}
+    ].
 
 %%----------------------------------------------------------------------
 %% F2: year <= 0 with non-zero offset is badarg
@@ -1287,8 +1312,10 @@ parse_expanded_negative_offset_test_() ->
     [
         {"negative year + timezone offset is badarg",
             ?_assertError(badarg, iso8601:parse_expanded("-0044-03-15T12:00:00+02:00"))},
-        {"negative year + week date crashes",
-            ?_assertError(_, iso8601:parse_expanded("-0001-W01-1"))},
+        {"negative year + extended week date is rejected",
+            ?_assertError(badarg, iso8601:parse_expanded("-0001-W01-1"))},
+        {"negative year + basic week date is rejected",
+            ?_assertError(badarg, iso8601:parse_expanded("-0001W011"))},
         {"negative year in UTC still works",
             ?_assertMatch(
                 {{-44, 3, 15}, {12, 0, +0.0}},
