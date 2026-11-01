@@ -146,20 +146,35 @@ the `--` separator is accepted as well as `/`:
 {interval,start_end,{{2000,1,1},{0,0,0}},{{2002,1,1},{0,0,0}}}
 ```
 
+An explicit positive expanded year is retained when an abbreviated end inherits
+its year or month. For an abbreviated end without its own timezone, the start's
+timezone is also inherited after the end's local date and time have been
+completed. A complete endpoint remains independent, and an explicit end
+timezone takes precedence:
+
+```erlang
+17> iso8601:parse_interval("+2007-11-13/15").
+{interval,start_end,{{2007,11,13},{0,0,0}},{{2007,11,15},{0,0,0}}}
+18> iso8601:interval_bounds(iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30:00")).
+{{{2007,12,14},{11,30,0}},{{2007,12,14},{13,30,0}}}
+19> iso8601:interval_bounds(iso8601:parse_interval("2007-12-14T13:30:00+02:00/2007-12-15T15:30:00")).
+{{{2007,12,14},{11,30,0}},{{2007,12,15},{15,30,0}}}
+```
+
 Resolve an interval to concrete `{Start, End}` datetimes with
 `interval_bounds/1` (the `start/duration` and `duration/end` forms are computed
 from the duration; a `duration`-only interval has no anchor and raises
 `badarg`):
 
 ```erlang
-17> iso8601:interval_bounds(iso8601:parse_interval("2007-03-01T13:00:00Z/P1Y2M10DT2H30M")).
+20> iso8601:interval_bounds(iso8601:parse_interval("2007-03-01T13:00:00Z/P1Y2M10DT2H30M")).
 {{{2007,3,1},{13,0,0}},{{2008,5,11},{15,30,0}}}
 ```
 
 Format an interval back to a binary with `format_interval/1`:
 
 ```erlang
-18> iso8601:format_interval(iso8601:parse_interval("2007-03-01T13:00:00Z/P1Y2M10DT2H30M")).
+21> iso8601:format_interval(iso8601:parse_interval("2007-03-01T13:00:00Z/P1Y2M10DT2H30M")).
 <<"2007-03-01T13:00:00Z/P1Y2M10DT2H30M">>
 ```
 

@@ -658,26 +658,91 @@ year_prefix([D1, D2, D3, D4 | _]) when
     D4 =< $9
 ->
     true;
+year_prefix([$+ | Rest]) ->
+    case lists:splitwith(fun is_digit/1, Rest) of
+        {[], _} -> false;
+        {_Digits, []} -> true;
+        {_Digits, [$- | _]} -> true;
+        _ -> false
+    end;
 year_prefix(_) ->
     false.
 
 parse_inherited_end(StartStr, EndStr) ->
-    case classify_end_fragment(EndStr) of
-        {time_only, TimePart} ->
-            DatePart = extract_date_part(StartStr),
-            parse_endpoint(DatePart ++ "T" ++ TimePart);
-        {day_and_time, DayStr, TimeStr} ->
-            YMPart = extract_year_month(StartStr),
-            parse_endpoint(YMPart ++ "-" ++ DayStr ++ "T" ++ TimeStr);
-        {month_day, _} ->
-            YearPart = extract_year(StartStr),
-            parse_endpoint(YearPart ++ "-" ++ EndStr);
-        {day_only, _} ->
-            YMPart = extract_year_month(StartStr),
-            parse_endpoint(YMPart ++ "-" ++ EndStr);
-        ambiguous ->
-            error(badarg)
+    LocalEnd =
+        case classify_end_fragment(EndStr) of
+            {time_only, TimePart} ->
+                DatePart = extract_date_part(StartStr),
+                DatePart ++ "T" ++ TimePart;
+            {day_and_time, DayStr, TimeStr} ->
+                YMPart = extract_year_month(StartStr),
+                YMPart ++ "-" ++ DayStr ++ "T" ++ TimeStr;
+            {month_day, _} ->
+                YearPart = extract_year(StartStr),
+                YearPart ++ "-" ++ EndStr;
+            {day_only, _} ->
+                YMPart = extract_year_month(StartStr),
+                YMPart ++ "-" ++ EndStr;
+            ambiguous ->
+                error(badarg)
+        end,
+    parse_inherited_local_end(StartStr, LocalEnd).
+
+parse_inherited_local_end(StartStr, LocalEnd) ->
+    case extract_time_zone(StartStr) of
+        none ->
+            parse_endpoint(LocalEnd);
+        StartZone ->
+            case extract_time_zone(LocalEnd) of
+                none -> parse_endpoint(complete_inherited_time(LocalEnd) ++ StartZone);
+                _EndZone -> parse_endpoint(LocalEnd)
+            end
     end.
+
+extract_time_zone(Str) ->
+    case string:split(Str, "T") of
+        [_Date, Time] -> time_zone_suffix(Time);
+        [_Date] -> none
+    end.
+
+time_zone_suffix(Str) ->
+    case lists:dropwhile(fun(C) -> C =/= $+ andalso C =/= $- andalso C =/= $Z end, Str) of
+        [] -> none;
+        Zone -> Zone
+    end.
+
+complete_inherited_time(LocalEnd) ->
+    case string:split(LocalEnd, "T") of
+        [Date] -> Date ++ "T00:00:00";
+        [Date, Time] -> Date ++ "T" ++ complete_time_precision(Time)
+    end.
+
+complete_time_precision([H1, H2]) when H1 >= $0, H1 =< $9, H2 >= $0, H2 =< $9 ->
+    [H1, H2] ++ ":00:00";
+complete_time_precision([H1, H2, $:, M1, M2]) when
+    H1 >= $0,
+    H1 =< $9,
+    H2 >= $0,
+    H2 =< $9,
+    M1 >= $0,
+    M1 =< $9,
+    M2 >= $0,
+    M2 =< $9
+->
+    [H1, H2, $:, M1, M2] ++ ":00";
+complete_time_precision([H1, H2, M1, M2]) when
+    H1 >= $0,
+    H1 =< $9,
+    H2 >= $0,
+    H2 =< $9,
+    M1 >= $0,
+    M1 =< $9,
+    M2 >= $0,
+    M2 =< $9
+->
+    [H1, H2, M1, M2, $0, $0];
+complete_time_precision(Time) ->
+    Time.
 
 classify_end_fragment(Str) ->
     case lists:member($T, Str) of
@@ -713,10 +778,25 @@ extract_date_part(Str) ->
     Date.
 
 extract_year(Str) ->
-    lists:sublist(Str, 4).
+    case Str of
+        [$+ | Rest] ->
+            {Digits, _} = lists:splitwith(fun is_digit/1, Rest),
+            [$+ | Digits];
+        _ ->
+            lists:sublist(Str, 4)
+    end.
 
 extract_year_month(Str) ->
-    lists:sublist(Str, 7).
+    case Str of
+        [$+ | Rest] ->
+            {Digits, Suffix} = lists:splitwith(fun is_digit/1, Rest),
+            [$+ | Digits] ++ lists:sublist(Suffix, 3);
+        _ ->
+            lists:sublist(Str, 7)
+    end.
+
+is_digit(C) ->
+    C >= $0 andalso C =< $9.
 
 format_duration(Plist) ->
     Sign = proplists:get_value(sign, Plist, ""),
