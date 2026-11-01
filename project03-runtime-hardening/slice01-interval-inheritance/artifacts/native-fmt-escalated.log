@@ -1,0 +1,22 @@
+===> Fetching erlfmt v1.8.0
+===> Analyzing applications...
+===> Compiling erlfmt
+===> Fetching rebar3_lint v6.0.0
+===> Fetching elvis_core v6.0.0
+===> Fetching katana_code v2.5.3
+===> Analyzing applications...
+===> Compiling katana_code
+===> Compiling elvis_core
+===> Compiling rebar3_lint
+===> Fetching rebar3_ex_doc v0.3.0
+===> Analyzing applications...
+===> Compiling rebar3_ex_doc
+===> Fetching coveralls v2.2.0
+===> Fetching jsx v2.10.0
+===> Analyzing applications...
+===> Compiling jsx
+===> Compiling coveralls
+Checking formatting...
+[warn] src/iso8601.erl
+[warn] test/iso8601_tests.erl
+[warn] Code style issues found in the above file(s). Forgot to run erlfmt?

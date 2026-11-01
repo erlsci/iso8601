@@ -1,0 +1,19 @@
+===> Failed to update package erlfmt from repo hexpm
+===> Errors loading plugin erlfmt. Run rebar3 with DEBUG=1 set to see errors.
+===> Failed to update package rebar3_lint from repo hexpm
+===> Errors loading plugin rebar3_lint. Run rebar3 with DEBUG=1 set to see errors.
+===> Failed to update package rebar3_ex_doc from repo hexpm
+===> Errors loading plugin rebar3_ex_doc. Run rebar3 with DEBUG=1 set to see errors.
+===> Fetching rebar3_hex v7.3.0
+===> Download error, using cached file at /Users/oubiwann/.cache/rebar3/hex/hexpm/packages/rebar3_hex-7.3.0.tar
+===> Fetching hex_core v0.19.0
+===> Download error, using cached file at /Users/oubiwann/.cache/rebar3/hex/hexpm/packages/hex_core-0.19.0.tar
+===> Fetching verl v1.1.1
+===> Download error, using cached file at /Users/oubiwann/.cache/rebar3/hex/hexpm/packages/verl-1.1.1.tar
+===> Analyzing applications...
+===> Compiling verl
+===> Compiling hex_core
+===> Compiling rebar3_hex
+===> Failed to update package coveralls from repo hexpm
+===> Errors loading plugin coveralls. Run rebar3 with DEBUG=1 set to see errors.
+===> Command fmt not found

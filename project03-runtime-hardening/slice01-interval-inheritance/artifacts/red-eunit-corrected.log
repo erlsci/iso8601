@@ -1,0 +1,508 @@
+===> Verifying dependencies...
+===> Analyzing applications...
+===> Compiling iso8601
+===> Performing EUnit tests...
+======================== EUnit ========================
+file "iso8601.app"
+  application 'iso8601'
+    module 'iso8601'
+      module 'iso8601_tests'
+        iso8601_tests:12: -parse_fail_test_/0-fun-1- (fails to parse YYYYMM)...ok
+        iso8601_tests:16: -parse_year_test_/0-fun-1- (parses YYYY)...[0.001 s] ok
+        iso8601_tests:20: -parse_month_test_/0-fun-1- (parses YYYY-MM)...ok
+        iso8601_tests:25: -parse_month_day_test_/0-fun-3- (parses YYYYMMDD)...ok
+        iso8601_tests:26: -parse_month_day_test_/0-fun-1- (parses YYYY-MM-DD)...ok
+        iso8601_tests:32: -parse_week_test_/0-fun-7- (parses 2009W01 as 2008-12-29)...ok
+        iso8601_tests:33: -parse_week_test_/0-fun-5- (parses 2009-W01 as 2008-12-29)...ok
+        iso8601_tests:34: -parse_week_test_/0-fun-3- (parses 2009W53 as 2010-01-03)...ok
+        iso8601_tests:35: -parse_week_test_/0-fun-1- (parses 2009-W53 as 2010-01-03)...ok
+        iso8601_tests:41: -parse_week_day_test_/0-fun-7- (parses 2009W011 as 2008-12-29)...ok
+        iso8601_tests:42: -parse_week_day_test_/0-fun-5- (parses 2009-W01-1 as 2008-12-29)...ok
+        iso8601_tests:43: -parse_week_day_test_/0-fun-3- (parses 2009W537 as 2010-01-03)...ok
+        iso8601_tests:44: -parse_week_day_test_/0-fun-1- (parses 2009-W53-7 as 2010-01-03)...ok
+        iso8601_tests:50: -parse_hour_test_/0-fun-3- (parses YYYYMMDDTHH)...ok
+        iso8601_tests:51: -parse_hour_test_/0-fun-1- (parses YYYY-MM-DDTHH)...ok
+        iso8601_tests:57: -parse_fractional_hour_test_/0-fun-7- (parses YYYYMMDDTHH.hh)...ok
+        iso8601_tests:59: -parse_fractional_hour_test_/0-fun-5- (parses YYYY-MM-DDTHH.hh)...ok
+        iso8601_tests:60: -parse_fractional_hour_test_/0-fun-3- (parses YYYYMMDDTHH,hh)...ok
+        iso8601_tests:62: -parse_fractional_hour_test_/0-fun-1- (parses YYYY-MM-DDTHH,hh)...ok
+        iso8601_tests:68: -parse_minute_test_/0-fun-3- (parses YYYYMMDDTHHMM)...ok
+        iso8601_tests:69: -parse_minute_test_/0-fun-1- (parses YYYY-MM-DDTHH:MM)...ok
+        iso8601_tests:76: -parse_fractional_minute_test_/0-fun-7- (parses YYYYMMDDTHHMM.mm)...ok
+        iso8601_tests:78: -parse_fractional_minute_test_/0-fun-5- (parses YYYY-MM-DDTHHMM.mm)...ok
+        iso8601_tests:80: -parse_fractional_minute_test_/0-fun-3- (parses YYYYMMDDTHHMM,mm)...ok
+        iso8601_tests:82: -parse_fractional_minute_test_/0-fun-1- (parses YYYY-MM-DDTHHMM,mm)...ok
+        iso8601_tests:88: -parse_second_test_/0-fun-3- (parses YYYYMMDDTHHMMSS)...ok
+        iso8601_tests:90: -parse_second_test_/0-fun-1- (parses YYYY-MM-DDTHH:MM:SS)...ok
+        iso8601_tests:97: -parse_fractional_second_test_/0-fun-7- (parses YYYYMMDDTHHMMSS.ss)...ok
+        iso8601_tests:99: -parse_fractional_second_test_/0-fun-5- (parses YYYY-MM-DDTHHMMSS.ss)...ok
+        iso8601_tests:101: -parse_fractional_second_test_/0-fun-3- (parses YYYYMMDDTHHMMSS,ss)...ok
+        iso8601_tests:103: -parse_fractional_second_test_/0-fun-1- (parses YYYY-MM-DDTHHMMSS,ss)...ok
+        iso8601_tests:110: -parse_exact_fractional_second_test_/0-fun-7- (parses YYYYMMDDTHHMMSS.ss)...ok
+        iso8601_tests:112: -parse_exact_fractional_second_test_/0-fun-5- (parses YYYY-MM-DDTHHMMSS.ss)...ok
+        iso8601_tests:114: -parse_exact_fractional_second_test_/0-fun-3- (parses YYYYMMDDTHHMMSS,ss)...ok
+        iso8601_tests:116: -parse_exact_fractional_second_test_/0-fun-1- (parses YYYY-MM-DDTHHMMSS,ss)...ok
+        iso8601_tests:122: -parse_fractional_fail_test_/0-fun-1- (fails to parses multiple decimals)...ok
+        iso8601_tests:128: -parse_offset_test_/0-fun-5- (parses YYYYMMDDTHHMMSS.ssZ)...ok
+        iso8601_tests:130: -parse_offset_test_/0-fun-3- (parses YYYYMMDDTHHMMSS.ss+0400)...ok
+        iso8601_tests:132: -parse_offset_test_/0-fun-1- (parses YYYYMMDDTHHMMSS.ss+0400)...ok
+        iso8601_tests:139: -parse_duration_test_/0-fun-7- (parses with pos sign)...ok
+        iso8601_tests:152: -parse_duration_test_/0-fun-5- (parses without sign)...ok
+        iso8601_tests:165: -parse_duration_test_/0-fun-3- (parses only years)...ok
+        iso8601_tests:178: -parse_duration_test_/0-fun-1- (parses only minutes)...ok
+        iso8601_tests:194: -parse_duration_fail_test_/0-fun-1- (fails to parses misspelled string)...ok
+        iso8601_tests:200: -parse_ordinal_test_/0-fun-23- (parses YYYY-DDDTHHMMSS)...ok
+        iso8601_tests:201: -parse_ordinal_test_/0-fun-21- (parses YYYY-DDD)...ok
+        iso8601_tests:203: -parse_ordinal_test_/0-fun-19- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap year)...ok
+        iso8601_tests:205: -parse_ordinal_test_/0-fun-17- (parses YYYY_DDDTHHMMSS, after Feb 29 in a leap year)...ok
+        iso8601_tests:207: -parse_ordinal_test_/0-fun-15- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap century)...ok
+        iso8601_tests:209: -parse_ordinal_test_/0-fun-13- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap year)...ok
+        iso8601_tests:211: -parse_ordinal_test_/0-fun-11- (parses YYYY_DDDTHHMMSS, after Feb 29 in a non-leap year)...ok
+        iso8601_tests:213: -parse_ordinal_test_/0-fun-9- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap century)...ok
+        iso8601_tests:214: -parse_ordinal_test_/0-fun-7- (fails to parse ordinal date with 0 days)...ok
+        iso8601_tests:216: -parse_ordinal_test_/0-fun-5- (fails to parse ordinal date with too many days in a leap year)...ok
+        iso8601_tests:218: -parse_ordinal_test_/0-fun-3- (parses ordinal date with 366 days in a leap year)...ok
+        iso8601_tests:220: -parse_ordinal_test_/0-fun-1- (fails to parse ordinal date with too many days in a non-leap year)...ok
+        iso8601_tests:227: -parse_ordinal_exact_test_/0-fun-23- (parses YYYY-DDDTHHMMSS)...ok
+        iso8601_tests:228: -parse_ordinal_exact_test_/0-fun-21- (parses YYYY-DDD)...ok
+        iso8601_tests:230: -parse_ordinal_exact_test_/0-fun-19- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap year)...ok
+        iso8601_tests:232: -parse_ordinal_exact_test_/0-fun-17- (parses YYYY_DDDTHHMMSS, after Feb 29 in a leap year)...ok
+        iso8601_tests:234: -parse_ordinal_exact_test_/0-fun-15- (parses YYYY_DDDTHHMMSS, Feb 29 in a leap century)...ok
+        iso8601_tests:236: -parse_ordinal_exact_test_/0-fun-13- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap year)...ok
+        iso8601_tests:238: -parse_ordinal_exact_test_/0-fun-11- (parses YYYY_DDDTHHMMSS, after Feb 29 in a non-leap year)...ok
+        iso8601_tests:240: -parse_ordinal_exact_test_/0-fun-9- (parses YYYY_DDDTHHMMSS, March 1 in a non-leap century)...ok
+        iso8601_tests:241: -parse_ordinal_exact_test_/0-fun-7- (fails to parse ordinal date with 0 days)...ok
+        iso8601_tests:243: -parse_ordinal_exact_test_/0-fun-5- (fails to parse ordinal date with too many days in a leap year)...ok
+        iso8601_tests:245: -parse_ordinal_exact_test_/0-fun-3- (parses ordinal date with 366 days in a leap year)...ok
+        iso8601_tests:247: -parse_ordinal_exact_test_/0-fun-1- (fails to parse ordinal date with too many days in a non-leap year)...ok
+        iso8601_tests:254: -add_time_test_/0-fun-7- (add one second)...ok
+        iso8601_tests:256: -add_time_test_/0-fun-5- (add one minute)...ok
+        iso8601_tests:258: -add_time_test_/0-fun-3- (add one hour)...ok
+        iso8601_tests:260: -add_time_test_/0-fun-1- (roll over to next day)...ok
+        iso8601_tests:269: -subtract_time_test_/0-fun-7- (add one second)...ok
+        iso8601_tests:271: -subtract_time_test_/0-fun-5- (add one minute)...ok
+        iso8601_tests:273: -subtract_time_test_/0-fun-3- (add one hour)...ok
+        iso8601_tests:275: -subtract_time_test_/0-fun-1- (roll back to previous day)...ok
+        iso8601_tests:284: -add_months_test_/0-fun-11- (add one month in the middle of the year)...ok
+        iso8601_tests:286: -add_months_test_/0-fun-9- (add one month at the beginning of the year)...ok
+        iso8601_tests:288: -add_months_test_/0-fun-7- (add one month almost in the end of the year)...ok
+        iso8601_tests:290: -add_months_test_/0-fun-5- (add one month in the end of the year)...ok
+        iso8601_tests:292: -add_months_test_/0-fun-3- (add eight month in the middle of the year)...ok
+        iso8601_tests:294: -add_months_test_/0-fun-1- (add twelve month in the middle of the year)...ok
+        iso8601_tests:305: -format_test_/0-fun-5- (formats datetime with integer seconds)...ok
+        iso8601_tests:307: -format_test_/0-fun-3- (formats datetime with float seconds)...ok
+        iso8601_tests:308: -format_test_/0-fun-1- (formats timestamp tuple)...ok
+        iso8601_tests:318: -parse_binary_test_/0-fun-5- (parse/1 accepts binary input)...ok
+        iso8601_tests:320: -parse_binary_test_/0-fun-3- (parse_exact/1 accepts binary input)...ok
+        iso8601_tests:324: -parse_binary_test_/0-fun-1- (parse_duration/1 accepts binary input)...ok
+        iso8601_tests:335: -timestamp_input_test_/0-fun-7- (add_time/4 accepts timestamp tuple)...ok
+        iso8601_tests:337: -timestamp_input_test_/0-fun-5- (add_days/2 accepts timestamp tuple)...ok
+        iso8601_tests:339: -timestamp_input_test_/0-fun-3- (add_months/2 accepts timestamp tuple)...ok
+        iso8601_tests:341: -timestamp_input_test_/0-fun-1- (add_years/2 accepts timestamp tuple)...ok
+        iso8601_tests:352: -add_days_test_/0-fun-3- (add one day)...ok
+        iso8601_tests:354: -add_days_test_/0-fun-1- (add days across month boundary)...ok
+        iso8601_tests:361: -add_years_test_/0-fun-3- (add one year)...ok
+        iso8601_tests:363: -add_years_test_/0-fun-1- (add ten years)...ok
+        iso8601_tests:374: -add_months_edge_test_/0-fun-3- (add zero months)...ok
+        iso8601_tests:376: -add_months_edge_test_/0-fun-1- (add month rolls back invalid day (Jan 31 + 1 month))...ok
+        iso8601_tests:387: -apply_duration_test_/0-fun-3- (apply duration with all components)...ok
+        iso8601_tests:391: -apply_duration_test_/0-fun-1- (apply simple year duration)...ok
+        iso8601_tests:401: -parse_week_dow_test_/0-fun-11- (W01-1 year starting Monday (2018))...ok
+        iso8601_tests:403: -parse_week_dow_test_/0-fun-9- (W01-1 year starting Tuesday (2019))...ok
+        iso8601_tests:405: -parse_week_dow_test_/0-fun-7- (W01-1 year starting Wednesday (2014))...ok
+        iso8601_tests:406: -parse_week_dow_test_/0-fun-5- (W01-1 year starting Friday (2010))...ok
+        iso8601_tests:408: -parse_week_dow_test_/0-fun-3- (W01-1 year starting Saturday (2011))...ok
+        iso8601_tests:409: -parse_week_dow_test_/0-fun-1- (W01-1 year starting Sunday (2012))...ok
+        iso8601_tests:420: -parse_offset_format_test_/0-fun-3- (offset hour only (+04))...ok
+        iso8601_tests:422: -parse_offset_format_test_/0-fun-1- (offset with colon (+04:30))...ok
+        iso8601_tests:433: -parse_colon_fractional_minute_test_/0-fun-3- (parses HH:MM.mm (dot))...ok
+        iso8601_tests:435: -parse_colon_fractional_minute_test_/0-fun-1- (parses HH:MM,mm (comma))...ok
+        iso8601_tests:442: -parse_colon_fractional_second_test_/0-fun-3- (parses HH:MM:SS.ss (dot))...ok
+        iso8601_tests:444: -parse_colon_fractional_second_test_/0-fun-1- (parses HH:MM:SS,ss (comma))...ok
+        iso8601_tests:454: -parse_error_clauses_test_/0-fun-21- (year too short)...ok
+        iso8601_tests:455: -parse_error_clauses_test_/0-fun-19- (month_or_week trailing dash)...ok
+        iso8601_tests:456: -parse_error_clauses_test_/0-fun-17- (week_day bad char after week)...ok
+        iso8601_tests:457: -parse_error_clauses_test_/0-fun-15- (month_day short day)...ok
+        iso8601_tests:458: -parse_error_clauses_test_/0-fun-13- (month_day_no_hyphen single char day)...ok
+        iso8601_tests:459: -parse_error_clauses_test_/0-fun-11- (hour incomplete after T)...ok
+        iso8601_tests:460: -parse_error_clauses_test_/0-fun-9- (minute single char after hour)...ok
+        iso8601_tests:461: -parse_error_clauses_test_/0-fun-7- (second single char after colon minute)...ok
+        iso8601_tests:462: -parse_error_clauses_test_/0-fun-5- (second_no_colon single char)...ok
+        iso8601_tests:463: -parse_error_clauses_test_/0-fun-3- (decimal separator with no digits)...ok
+        iso8601_tests:464: -parse_error_clauses_test_/0-fun-1- (offset_minute bad suffix)...ok
+        iso8601_tests:474: -apply_duration_sign_test_/0-fun-5- (negative year subtracts)...ok
+        iso8601_tests:479: -apply_duration_sign_test_/0-fun-3- (positive/unsigned still adds)...ok
+        iso8601_tests:484: -apply_duration_sign_test_/0-fun-1- (compound negative duration)...ok
+        iso8601_tests:497: -add_years_leap_day_test_/0-fun-9- (leap day + 1 year clamps to Feb 28)...ok
+        iso8601_tests:502: -add_years_leap_day_test_/0-fun-7- (leap day - 1 year clamps to Feb 28)...ok
+        iso8601_tests:507: -add_years_leap_day_test_/0-fun-5- (leap day + 3 years produces valid date)...ok
+        iso8601_tests:513: -add_years_leap_day_test_/0-fun-3- (ordinary date unchanged)...ok
+        iso8601_tests:518: -add_years_leap_day_test_/0-fun-1- (via apply_duration years path)...ok
+        iso8601_tests: ordinal_parse_no_stdout_test...ok
+        iso8601_tests: capture_output_restores_leader_on_error_test...ok
+        iso8601_tests:575: -parse_interval_forms_test_/0-fun-15- (start/end)...ok
+        iso8601_tests:580: -parse_interval_forms_test_/0-fun-13- (start/duration)...ok
+        iso8601_tests:585: -parse_interval_forms_test_/0-fun-11- (duration/end)...ok
+        iso8601_tests:590: -parse_interval_forms_test_/0-fun-9- (duration only)...ok
+        iso8601_tests:595: -parse_interval_forms_test_/0-fun-7- (double-hyphen separator)...ok
+        iso8601_tests:599: -parse_interval_forms_test_/0-fun-5- (two durations is badarg)...ok
+        iso8601_tests:600: -parse_interval_forms_test_/0-fun-3- (three parts is badarg)...ok
+        iso8601_tests:602: -parse_interval_forms_test_/0-fun-1- (binary input)...ok
+        iso8601_tests:615: -interval_bounds_test_/0-fun-7- (start/end returns both)...ok
+        iso8601_tests:624: -interval_bounds_test_/0-fun-5- (start+duration end matches apply_duration)...ok
+        iso8601_tests:636: -interval_bounds_test_/0-fun-3- (duration/end start computation)...ok
+        iso8601_tests:648: -interval_bounds_test_/0-fun-1- (duration-only is badarg)...ok
+        iso8601_tests:658: -interval_signed_duration_test_/0-fun-3- (negative duration in start/duration)...ok
+        iso8601_tests:663: -interval_signed_duration_test_/0-fun-1- (negative duration bounds subtract)...ok
+        iso8601_tests:681: -format_interval_test_/0-fun-7- (format start/end)...ok
+        iso8601_tests:688: -format_interval_test_/0-fun-5- (format start/duration)...ok
+        iso8601_tests:697: -format_interval_test_/0-fun-3- (format duration/end)...ok
+        iso8601_tests:706: -format_interval_test_/0-fun-1- (format duration only)...ok
+        iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: 2007-03-01T13:00:00Z/2008-05-11T15:30:00Z)...ok
+        iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: 2007-03-01T13:00:00Z/P1Y2M10DT2H30M)...ok
+        iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: P1Y2M10DT2H30M/2008-05-11T15:30:00Z)...ok
+        iso8601_tests:722: -format_interval_roundtrip_test_/0-fun-2- (roundtrip: P1Y2M10DT2H30M)...ok
+        iso8601_tests:743: -interval_inheritance_test_/0-fun-9- (inherit date (time-only end))...ok
+        iso8601_tests:753: -interval_inheritance_test_/0-fun-7- (inherit year (month-day end))...ok
+        iso8601_tests:763: -interval_inheritance_test_/0-fun-5- (inherit year+month (day-only end))...ok
+        iso8601_tests:773: -interval_inheritance_test_/0-fun-3- (inherit year+month (day+time end))...ok
+        iso8601_tests:783: -interval_inheritance_test_/0-fun-1- (ambiguous single digit is badarg)...ok
+        iso8601_tests:793: -interval_coverage_test_/0-fun-11- (non-duration no-separator string is badarg)...ok
+        iso8601_tests:795: -interval_coverage_test_/0-fun-9- (positive-signed duration (+P1Y))...ok
+        iso8601_tests:800: -interval_coverage_test_/0-fun-7- (fractional second endpoint uses parse_exact)...ok
+        iso8601_tests:805: -interval_coverage_test_/0-fun-5- (date-only duration (no time components))...ok
+        iso8601_tests:820: -interval_coverage_test_/0-fun-3- (inherit with T-prefixed end fragment)...ok
+        iso8601_tests:830: -interval_coverage_test_/0-fun-1- (format date-only duration (time parts empty))...ok
+        iso8601_tests:853: -interval_minute_precision_test_/0-fun-3- (time-only end at minute precision)...ok
+        iso8601_tests:863: -interval_minute_precision_test_/0-fun-1- (day+time end at minute precision)...ok
+        iso8601_tests:881: -interval_malformed_end_test_/0-fun-3- (double T in end fragment)...ok
+        iso8601_tests:883: -interval_malformed_end_test_/0-fun-1- (consecutive TT in end fragment)...ok
+        iso8601_tests:892: -interval_empty_sides_test_/0-fun-11- (double slash)...ok
+        iso8601_tests:893: -interval_empty_sides_test_/0-fun-9- (leading slash)...ok
+        iso8601_tests:894: -interval_empty_sides_test_/0-fun-7- (trailing slash)...ok
+        iso8601_tests:896: -interval_empty_sides_test_/0-fun-5- (empty double-hyphen sides (quad dash))...ok
+        iso8601_tests:898: -interval_empty_sides_test_/0-fun-3- (leading double-hyphen (empty left))...ok
+        iso8601_tests:900: -interval_empty_sides_test_/0-fun-1- (trailing double-hyphen (empty right))...ok
+        iso8601_tests:910: -interval_basic_format_start_test_/0-fun-1- (basic-format start with abbreviated end is badarg)...ok
+        iso8601_tests:920: -interval_month_day_time_end_test_/0-fun-1- (month-day+time abbreviated end is badarg)...ok
+        iso8601_tests:934: -interval_signed_year_inheritance_test_/0-fun-15- (short signed positive year is retained)...*failed*
+in function erlang:list_to_integer/1
+  called as list_to_integer("1-")
+in call from iso8601:acc/5 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 391)
+in call from iso8601:parse/1 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 126)
+in call from iso8601:parse_start_end/2 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 635)
+in call from iso8601_tests:'-interval_signed_year_inheritance_test_/0-fun-15-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 936)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+**error:badarg
+  output:<<"">>
+
+        iso8601_tests:939: -interval_signed_year_inheritance_test_/0-fun-13- (padded signed positive year is retained)...*failed*
+in function iso8601_tests:'-interval_signed_year_inheritance_test_/0-fun-13-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 941)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,941},
+              {expression,"interval_end ( \"+0002007-02-15/03-14\" )"},
+              {expected,{{2007,3,14},{0,0,0}}},
+              {value,{{0,3,14},{0,0,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:944: -interval_signed_year_inheritance_test_/0-fun-11- (signed year below four digits is retained)...*failed*
+in function erlang:list_to_integer/1
+  called as list_to_integer("1-")
+in call from iso8601:acc/5 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 391)
+in call from iso8601:parse/1 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 126)
+in call from iso8601:parse_start_end/2 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 635)
+in call from iso8601_tests:interval_end/1 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1098)
+in call from iso8601_tests:'-interval_signed_year_inheritance_test_/0-fun-11-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 946)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+**error:badarg
+  output:<<"">>
+
+        iso8601_tests:949: -interval_signed_year_inheritance_test_/0-fun-9- (signed full endpoint beyond year 9999 is parsed independently)...*failed*
+in function iso8601:month_day/2 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 289)
+in call from iso8601:parse/1 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 126)
+in call from iso8601:parse_start_end/2 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 635)
+in call from iso8601_tests:interval_end/1 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1098)
+in call from iso8601_tests:'-interval_signed_year_inheritance_test_/0-fun-9-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 951)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+**error:badarg
+  output:<<"">>
+
+        iso8601_tests:954: -interval_signed_year_inheritance_test_/0-fun-7- (signed year-month prefix is inherited with its full token)...*failed*
+in function iso8601:acc_ordinal_date/6 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 400)
+in call from iso8601:parse/1 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 126)
+in call from iso8601:parse_start_end/2 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/src/iso8601.erl, line 635)
+in call from iso8601_tests:interval_end/1 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1098)
+in call from iso8601_tests:'-interval_signed_year_inheritance_test_/0-fun-7-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 956)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+**error:badarg
+  output:<<"">>
+
+        iso8601_tests:959: -interval_signed_year_inheritance_test_/0-fun-5- (formatter-produced signed year roundtrips through abbreviation)...ok
+        iso8601_tests:966: -interval_signed_year_inheritance_test_/0-fun-3- (bare four digits remain a complete year endpoint)...ok
+        iso8601_tests:971: -interval_signed_year_inheritance_test_/0-fun-1- (negative full-year interval endpoint remains rejected)...ok
+        iso8601_tests:977: -interval_raw_zone_inheritance_test_/0-fun-33- (positive start zone is inherited by a time-only end)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-33-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 981)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,981},
+              {expression,"iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/15:30:00\" ) )"},
+              {expected,{{{2007,12,14},{11,30,0}},{{2007,12,14},{13,30,0}}}},
+              {value,{{{2007,12,14},{11,30,0}},{{2007,12,14},{15,30,0}}}}]}
+  output:<<"">>
+
+        iso8601_tests:984: -interval_raw_zone_inheritance_test_/0-fun-31- (negative start zone is inherited by a time-only end)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-31-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 988)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,988},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00-02:00/15:30:00\" ) ) )"},
+              {expected,{{2007,12,14},{17,30,0}}},
+              {value,{{2007,12,14},{15,30,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:991: -interval_raw_zone_inheritance_test_/0-fun-29- (explicit Z end overrides the inherited start zone)...ok
+        iso8601_tests:998: -interval_raw_zone_inheritance_test_/0-fun-27- (explicit negative end zone overrides the inherited start zone)...ok
+        iso8601_tests:1005: -interval_raw_zone_inheritance_test_/0-fun-25- (complete endpoint without zone remains independently UTC-parsed)...ok
+        iso8601_tests:1012: -interval_raw_zone_inheritance_test_/0-fun-23- (raw local date supplies midnight before inherited zone normalization)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-23-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1016)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1016},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/15\" ) ) )"},
+              {expected,{{2007,12,14},{22,0,0}}},
+              {value,{{2007,12,15},{0,0,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:1019: -interval_raw_zone_inheritance_test_/0-fun-21- (month-day midnight inherits raw year and zone)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-21-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1023)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1023},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/12-15\" ) ) )"},
+              {expected,{{2007,12,14},{22,0,0}}},
+              {value,{{2007,12,15},{0,0,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:1026: -interval_raw_zone_inheritance_test_/0-fun-19- (day-and-time end inherits raw date and zone)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-19-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1030)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1030},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/15T17:00:00\" ) ) )"},
+              {expected,{{2007,12,15},{15,0,0}}},
+              {value,{{2007,12,15},{17,0,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:1033: -interval_raw_zone_inheritance_test_/0-fun-17- (minute time gets seconds before inherited zone is appended)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-17-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1037)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1037},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/15:30\" ) ) )"},
+              {expected,{{2007,12,14},{13,30,0}}},
+              {value,{{2007,12,14},{15,30,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:1040: -interval_raw_zone_inheritance_test_/0-fun-15- (T-prefixed hour time inherits the start zone)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-15-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1044)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1044},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/T15\" ) ) )"},
+              {expected,{{2007,12,14},{13,0,0}}},
+              {value,{{2007,12,14},{15,0,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:1047: -interval_raw_zone_inheritance_test_/0-fun-13- (T-prefixed basic HHMM time inherits the start zone)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-13-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1051)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1051},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/T1530\" ) ) )"},
+              {expected,{{2007,12,14},{13,30,0}}},
+              {value,{{2007,12,14},{15,30,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:1054: -interval_raw_zone_inheritance_test_/0-fun-11- (fractional seconds survive inherited zone normalization)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-11-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1058)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1058},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/15:30:00.125\" ) ) )"},
+              {expected,{{2007,12,14},{13,30,0.125}}},
+              {value,{{2007,12,14},{15,30,0.125}}}]}
+  output:<<"">>
+
+        iso8601_tests:1061: -interval_raw_zone_inheritance_test_/0-fun-9- (comma fractional seconds survive inherited zone normalization)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-9-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1065)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1065},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/15:30:00,125\" ) ) )"},
+              {expected,{{2007,12,14},{13,30,0.125}}},
+              {value,{{2007,12,14},{15,30,0.125}}}]}
+  output:<<"">>
+
+        iso8601_tests:1068: -interval_raw_zone_inheritance_test_/0-fun-7- (submicrosecond end fraction remains literal through inheritance)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-7-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1072)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1072},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"2007-12-14T13:30:00+02:00/15:30:00.0000001\" ) ) )"},
+              {expected,{{2007,12,14},{13,30,1.0e-7}}},
+              {value,{{2007,12,14},{15,30,1.0e-7}}}]}
+  output:<<"">>
+
+        iso8601_tests:1075: -interval_raw_zone_inheritance_test_/0-fun-5- (year-10000 raw date controls the inherited end across midnight)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-5-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1079)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1079},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"+10000-01-01T00:30:00+02:00/T00:45:00\" ) ) )"},
+              {expected,{{9999,12,31},{22,45,0}}},
+              {value,{{10000,1,1},{0,45,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:1082: -interval_raw_zone_inheritance_test_/0-fun-3- (large signed year and negative zone cross the year boundary)...*failed*
+in function iso8601_tests:'-interval_raw_zone_inheritance_test_/0-fun-3-'/0 (/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc01-intervals/test/iso8601_tests.erl, line 1086)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+in call from eunit_proc:run_group/2 (eunit_proc.erl, line 593)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,1086},
+              {expression,"element ( 2 , iso8601 : interval_bounds ( iso8601 : parse_interval ( \"+10000-12-31T23:30:00-02:30/T23:45\" ) ) )"},
+              {expected,{{10001,1,1},{2,15,0}}},
+              {value,{{10000,12,31},{23,45,0}}}]}
+  output:<<"">>
+
+        iso8601_tests:1089: -interval_raw_zone_inheritance_test_/0-fun-1- (inherited interval has a semantic format-parse roundtrip)...ok
+        iso8601_tests:1104: -expanded_year_test_/0-fun-17- (explicit + sign with leading zeros)...ok
+        iso8601_tests:1106: -expanded_year_test_/0-fun-15- (+2007 is year 2007 not 200)...ok
+        iso8601_tests:1108: -expanded_year_test_/0-fun-13- (year beyond 9999)...ok
+        iso8601_tests:1109: -expanded_year_test_/0-fun-11- (unsigned overlength is badarg)...ok
+        iso8601_tests:1110: -expanded_year_test_/0-fun-9- (empty after sign is badarg)...ok
+        iso8601_tests:1112: -expanded_year_test_/0-fun-7- (+YYYY year only defaults to Jan 1)...ok
+        iso8601_tests:1114: -expanded_year_test_/0-fun-5- (+YYYY with full datetime)...ok
+        iso8601_tests:1116: -expanded_year_test_/0-fun-3- (parse_exact with expanded year)...ok
+        iso8601_tests:1121: -expanded_year_test_/0-fun-1- (format roundtrip with expanded year)...ok
+        iso8601_tests:1134: -parse_expanded_test_/0-fun-17- (negative year -0001)...ok
+        iso8601_tests:1136: -parse_expanded_test_/0-fun-15- (negative year -0000 (year zero))...ok
+        iso8601_tests:1138: -parse_expanded_test_/0-fun-13- (Ides of March 44 BCE (astro -44))...ok
+        iso8601_tests:1140: -parse_expanded_test_/0-fun-11- (positive expanded +0002007)...ok
+        iso8601_tests:1142: -parse_expanded_test_/0-fun-9- (year beyond 9999)...ok
+        iso8601_tests:1144: -parse_expanded_test_/0-fun-7- (plain 4-digit year works too)...ok
+        iso8601_tests:1145: -parse_expanded_test_/0-fun-5- (empty after sign is badarg)...ok
+        iso8601_tests:1147: -parse_expanded_test_/0-fun-3- (binary input)...ok
+        iso8601_tests:1149: -parse_expanded_test_/0-fun-1- (fractional seconds preserved)...ok
+        iso8601_tests:1157: -parse_rejects_negative_test_/0-fun-3- (parse/1 rejects negative year)...ok
+        iso8601_tests:1159: -parse_rejects_negative_test_/0-fun-1- (parse_exact/1 rejects negative year)...ok
+        iso8601_tests:1165: -format_expanded_test_/0-fun-9- (format negative year)...ok
+        iso8601_tests:1170: -format_expanded_test_/0-fun-7- (format large positive year)...ok
+        iso8601_tests:1175: -format_expanded_test_/0-fun-5- (format normal year (explicit sign))...ok
+        iso8601_tests:1180: -format_expanded_test_/0-fun-3- (format year zero)...ok
+        iso8601_tests:1185: -format_expanded_test_/0-fun-1- (format with float seconds)...ok
+        iso8601_tests:1194: -format_expanded_roundtrip_test_/0-fun-3- (roundtrip negative year)...ok
+        iso8601_tests:1203: -format_expanded_roundtrip_test_/0-fun-1- (roundtrip large positive year)...ok
+        iso8601_tests:1221: -parse_out_of_range_positive_crashes_test_/0-fun-1-...ok
+        iso8601_tests:1230: -parse_expanded_negative_offset_test_/0-fun-7- (negative year + timezone offset is badarg)...ok
+        iso8601_tests:1232: -parse_expanded_negative_offset_test_/0-fun-5- (negative year + week date crashes)...ok
+        iso8601_tests:1234: -parse_expanded_negative_offset_test_/0-fun-3- (negative year in UTC still works)...ok
+        iso8601_tests:1239: -parse_expanded_negative_offset_test_/0-fun-1- (negative year plain date still works)...ok
+        [done in 0.708 s]
+      [done in 0.708 s]
+    [done in 0.708 s]
+  [done in 0.708 s]
+module 'prop_iso8601'
+=======================================================
+  Failed: 18.  Skipped: 0.  Passed: 217.
+===> Error running tests
