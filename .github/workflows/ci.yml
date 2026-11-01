@@ -68,14 +68,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        otp_version: [24, 25, 26, 27]
+        otp_version: [24, 25, 26, 27, 28, 29]
 
     steps:
     - uses: actions/checkout@v6
     - uses: erlef/setup-beam@v1
       with:
         otp-version: ${{ matrix.otp_version }}
-        rebar3-version: ${{ matrix.otp_version >= 26 && '3.25' || '3.22' }}
+        rebar3-version: ${{ matrix.otp_version >= 28 && '3.28.0' || matrix.otp_version >= 26 && '3.25' || '3.22' }}
     - name: Check rebar3 Version
       run: rebar3 --version
     - name: Compile

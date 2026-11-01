@@ -28,8 +28,8 @@ changing behavior. This library does not need a supervision tree.
 
 ## Compatibility and Erlang conventions
 
-- Preserve broad OTP compatibility. CI configures OTP 20–27; OTP 20 runs compile,
-  xref, and Dialyzer only. EUnit, PropEr, and coverage are configured on OTP 21–27.
+- Preserve broad OTP compatibility. CI configures OTP 20–29; OTP 20 runs compile,
+  xref, and Dialyzer only. EUnit, PropEr, and coverage are configured on OTP 21–29.
   The historical library build target extends to R15B03; this is an intended
   compatibility floor, not proof of validation on that release. Inspect existing
   BIF and syntax use before introducing a newer requirement.
