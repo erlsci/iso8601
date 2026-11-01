@@ -1,0 +1,9 @@
+app-load-version-deps-codepath: ok (/private/tmp/iso8601-1.4.1-consumer.8PZ8iS/_build/default/lib/iso8601/ebin)
+week-date controls: ok
+nested byte iodata: ok
+exact fraction + zero-duration + format: ok
+expanded interval inheritance: ok
+omitted endpoint timezone bounds: ok
+bounded below-year-zero badarg: ok
+valid arithmetic to year zero: ok
+all unpacked consumer smoke controls passed

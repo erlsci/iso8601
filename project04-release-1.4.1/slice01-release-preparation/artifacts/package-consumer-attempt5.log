@@ -1,0 +1,7 @@
+app-load-version-deps-codepath: ok (/private/tmp/iso8601-1.4.1-consumer.8PZ8iS/_build/default/lib/iso8601/ebin)
+week-date controls: ok
+nested byte iodata: ok
+{error,{badmatch,{2012,2,3}},[{consumer_smoke,main,0,[{file,"consumer_smoke.erl"},{line,19}]},{init,start_it,1,[]},{init,start_em,1,[]},{init,do_boot,3,[]}]}
+Runtime terminating during boot ({{badmatch,{2012,2,3}},[{consumer_smoke,main,0,[{file,"consumer_smoke.erl"},{line,19}]},{init,start_it,1,[]},{init,start_em,1,[]},{init,do_boot,3,[]}]})
+
+Crash dump is being written to: erl_crash.dump...done

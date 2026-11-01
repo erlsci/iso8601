@@ -1,0 +1,12 @@
+fresh_consumer=/tmp/iso8601-1.4.1-consumer.8PZ8iS
+===> Fetching rebar3_proper v0.12.1
+===> Download error, using cached file at /Users/oubiwann/.cache/rebar3/hex/hexpm/packages/rebar3_proper-0.12.1.tar
+===> Analyzing applications...
+===> Compiling rebar3_proper
+===> Verifying dependencies...
+===> Analyzing applications...
+===> Compiling iso8601
+{error,{badmatch,ok},[{consumer_smoke,main,0,[{file,"consumer_smoke.erl"},{line,6}]},{init,start_it,1,[]},{init,start_em,1,[]},{init,do_boot,3,[]}]}
+Runtime terminating during boot ({{badmatch,ok},[{consumer_smoke,main,0,[{file,"consumer_smoke.erl"},{line,6}]},{init,start_it,1,[]},{init,start_em,1,[]},{init,do_boot,3,[]}]})
+
+Crash dump is being written to: erl_crash.dump...done
