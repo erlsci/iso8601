@@ -1,0 +1,58 @@
+COMMAND ['curl', '--head', '--location', '--max-time', '20', '--fail', '--silent', '--show-error', 'https://raw.githubusercontent.com/erlsci/iso8601/main/priv/images/logo.png']
+HTTP/2 200 
+cache-control: max-age=300
+content-security-policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+content-type: image/png
+etag: "3bf4e8f6a3df2bfca54a543be3de17f6344385c007fa998ea077bb2769881bba"
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+x-frame-options: deny
+x-xss-protection: 1; mode=block
+x-github-request-id: FD94:1EA8AA:8E8527:B8C839:6AE6C0BC
+x-github-edge-region: iad
+accept-ranges: bytes
+date: Sun, 01 Nov 2026 04:45:46 GMT
+via: 1.1 varnish
+x-served-by: cache-msp11863-MSP
+x-cache: HIT
+x-cache-hits: 0
+x-timer: S1793508346.168842,VS0,VE62
+vary: Authorization,Accept-Encoding
+access-control-allow-origin: *
+cross-origin-resource-policy: cross-origin
+x-fastly-request-id: 242b22cea152c36e86751d0455437010f4e5e443
+expires: Sun, 01 Nov 2026 04:50:46 GMT
+source-age: 0
+content-length: 150777
+
+
+EXIT 0
+COMMAND ['curl', '--head', '--location', '--max-time', '20', '--fail', '--silent', '--show-error', 'https://raw.githubusercontent.com/erlsci/iso8601/main/priv/images/logo-large.png']
+HTTP/2 200 
+cache-control: max-age=300
+content-security-policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+content-type: image/png
+etag: "6cdc4bffae3d24d24b0ffde8444a2a5b620b216c80491c2ba84da62315895f20"
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+x-frame-options: deny
+x-xss-protection: 1; mode=block
+x-github-request-id: A922:1B3246:8780EF:B1BEB5:6AE6C0BD
+x-github-edge-region: iad
+accept-ranges: bytes
+date: Sun, 01 Nov 2026 04:45:46 GMT
+via: 1.1 varnish
+x-served-by: cache-msp11822-MSP
+x-cache: HIT
+x-cache-hits: 0
+x-timer: S1793508346.293479,VS0,VE61
+vary: Authorization,Accept-Encoding
+access-control-allow-origin: *
+cross-origin-resource-policy: cross-origin
+x-fastly-request-id: 22487bc37585b9044d309a66120cf2bf95c8295b
+expires: Sun, 01 Nov 2026 04:50:46 GMT
+source-age: 0
+content-length: 3439935
+
+
+EXIT 0
