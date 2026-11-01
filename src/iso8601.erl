@@ -143,7 +143,7 @@ parse_exact(Bin) when is_binary(Bin) ->
     parse_exact(binary_to_list(Bin));
 parse_exact(Str) ->
     {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [{parser_mode, exact}], positive_only),
-    {Date, {H, M, S + SecondsDecimal}}.
+    combine_fraction({Date, {H, M, S}}, SecondsDecimal).
 
 -spec parse_expanded(iodata()) -> expanded_datetime().
 %% @doc Parse an ISO 8601 string with expanded year representation,
@@ -154,7 +154,7 @@ parse_expanded(Bin) when is_binary(Bin) ->
     parse_expanded(binary_to_list(Bin));
 parse_expanded(Str) ->
     {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [{parser_mode, exact}], allow_neg),
-    {Date, {H, M, S + SecondsDecimal}}.
+    combine_fraction({Date, {H, M, S}}, SecondsDecimal).
 
 -spec gi(string()) -> integer().
 %% @doc Get the integer part of a string, or 0 for an empty capture.
@@ -454,7 +454,6 @@ add_decimal(Datetime, Plist) ->
             end
     end.
 
--spec datetime(parser_accumulator()) -> {calendar:datetime(), float()}.
 datetime(Plist) ->
     {Date, WeekOffsetH} = make_date(Plist),
     Time = {?V(hour, Plist, 0), ?V(minute, Plist, 0), ?V(second, Plist, 0)},
@@ -577,11 +576,37 @@ find_last_valid_date(Datetime) ->
     {{Y, M, erlang:min(D, LastDay)}, {H, MM, S}}.
 
 reattach_fraction({Date, {Hour, Minute, Second}}, Fraction, WasFloat) ->
-    ResultSecond = Second + Fraction,
+    Result = combine_fraction({Date, {Hour, Minute, Second}}, Fraction),
     case WasFloat orelse Fraction =/= 0 of
-        true -> {Date, {Hour, Minute, float(ResultSecond)}};
+        true -> set_seconds_float(Result);
+        false -> Result
+    end.
+
+combine_fraction({Date, {Hour, Minute, Second}}, Fraction) ->
+    ResultSecond = Second + Fraction,
+    case
+        is_integer(Hour) andalso Hour >= 0 andalso Hour < 24 andalso
+            is_integer(Minute) andalso Minute >= 0 andalso Minute < 60 andalso
+            is_integer(Second) andalso Second >= 0 andalso Second < 60 andalso
+            Fraction >= 0 andalso ResultSecond >= 60
+    of
+        true -> normalize_local_seconds({Date, {Hour, Minute, float(ResultSecond)}});
         false -> {Date, {Hour, Minute, ResultSecond}}
     end.
+
+set_seconds_float({Date, {Hour, Minute, Second}}) ->
+    {Date, {Hour, Minute, float(Second)}}.
+
+-spec normalize_local_seconds(expanded_datetime()) -> expanded_datetime().
+%% @doc Carry a valid fractional-second rollover through minute, hour and date.
+normalize_local_seconds({Date, {Hour, Minute, Second}}) when Second >= 60 ->
+    normalize_local_seconds({Date, {Hour, Minute + 1, Second - 60.0}});
+normalize_local_seconds({Date, {Hour, Minute, Second}}) when Minute >= 60 ->
+    normalize_local_seconds({Date, {Hour + 1, Minute - 60, Second}});
+normalize_local_seconds({Date, {Hour, Minute, Second}}) when Hour >= 24 ->
+    normalize_local_seconds({next_proleptic_date(Date), {Hour - 24, Minute, Second}});
+normalize_local_seconds(Datetime) ->
+    Datetime.
 
 normalize_float_time({{Y, Month, Day}, {Hour, Minute, Second}}) ->
     TotalMicroseconds = round(Second * 1000000),

@@ -149,6 +149,45 @@ parse_exact_fractional_unit_test_() ->
             )}
     ].
 
+final_second_normalization_test_() ->
+    NearOne = 0.9999999999999999,
+    JustBelow = 0.9999999999999929,
+    [
+        {"integer shift normalizes represented near-one seconds through a minute",
+            ?_assertEqual(
+                {{2017, 1, 1}, {12, 35, 0.0}},
+                iso8601:add_time({{2017, 1, 1}, {12, 34, NearOne}}, 0, 0, 59)
+            )},
+        {"integer shift normalizes represented near-one seconds through a date",
+            ?_assertEqual(
+                {{2017, 1, 2}, {0, 0, 0.0}},
+                iso8601:add_time({{2017, 1, 1}, {23, 59, NearOne}}, 0, 0, 59)
+            )},
+        {"exact parsing normalizes represented near-one seconds",
+            ?_assertEqual(
+                {{2017, 1, 2}, {0, 0, 0.0}},
+                iso8601:parse_exact("2017-01-01T23:59:59.9999999999999999Z")
+            )},
+        {"expanded parsing normalizes represented near-one seconds into year zero",
+            ?_assertEqual(
+                {{0, 1, 1}, {0, 0, 0.0}},
+                iso8601:parse_expanded("-0001-12-31T23:59:59.9999999999999999Z")
+            )},
+        {"immediately lower represented sum does not carry",
+            ?_assert(
+                59 + JustBelow < 60 andalso
+                    iso8601:add_time({{2017, 1, 1}, {12, 34, JustBelow}}, 0, 0, 59) =:=
+                        {{2017, 1, 1}, {12, 34, 59.99999999999999}}
+            )},
+        {"exact submicrosecond seconds remain precise",
+            ?_assert(
+                assert_datetime_close(
+                    {{2017, 1, 1}, {0, 0, 59.0000001}},
+                    iso8601:parse_exact("2017-01-01T00:00:59.0000001Z")
+                )
+            )}
+    ].
+
 parse_fractional_fail_test_() ->
     F = fun iso8601:parse/1,
     % disallowed by spec
@@ -378,6 +417,11 @@ format_fractional_carry_test_() ->
                 <<"+10000-01-01T00:00:00.000000Z">>,
                 iso8601:format({{9999, 12, 31}, {23, 59, 59.9999999}})
             )},
+        {"public formatter output parses as the carried datetime",
+            ?_assertEqual(
+                {{2017, 1, 1}, {0, 0, 0}},
+                iso8601:parse(iso8601:format({{2016, 12, 31}, {23, 59, 59.9999999}}))
+            )},
         {"interval formatting uses normalized formatter",
             ?_assertEqual(
                 <<"2017-01-01T00:00:00.000000Z/2017-01-01T00:00:00.000000Z">>,
@@ -460,6 +504,38 @@ calendar_arithmetic_floor_test_() ->
                 assert_datetime_close(
                     {{2017, 1, 2}, {0, 0, 0.25}},
                     iso8601:apply_duration({{2017, 1, 1}, {0, 0, 0.25}}, "P1D")
+                )
+            )},
+        {"zero duration preserves a fractional anchor",
+            ?_assertEqual(
+                {{2017, 1, 1}, {0, 0, 0.25}},
+                iso8601:apply_duration({{2017, 1, 1}, {0, 0, 0.25}}, "PT0S")
+            )},
+        {"zero-day duration preserves a fractional anchor",
+            ?_assertEqual(
+                {{2017, 1, 1}, {0, 0, 0.25}},
+                iso8601:apply_duration({{2017, 1, 1}, {0, 0, 0.25}}, "P0D")
+            )},
+        {"signed duration preserves a fractional anchor backwards",
+            ?_assertEqual(
+                {{2016, 12, 31}, {0, 0, 0.25}},
+                iso8601:apply_duration({{2017, 1, 1}, {0, 0, 0.25}}, "-P1D")
+            )},
+        {"month duration clamps while preserving the fraction",
+            ?_assertEqual(
+                {{2017, 2, 28}, {0, 0, 0.25}},
+                iso8601:apply_duration({{2017, 1, 31}, {0, 0, 0.25}}, "P1M")
+            )},
+        {"year duration clamps leap day while preserving the fraction",
+            ?_assertEqual(
+                {{2017, 2, 28}, {0, 0, 0.25}},
+                iso8601:apply_duration({{2016, 2, 29}, {0, 0, 0.25}}, "P1Y")
+            )},
+        {"duration-end interval resolves backward from fractional endpoint",
+            ?_assertEqual(
+                {{{2017, 1, 1}, {0, 0, 0.25}}, {{2017, 1, 2}, {0, 0, 0.25}}},
+                iso8601:interval_bounds(
+                    iso8601:parse_interval("P1D/2017-01-02T00:00:00.25Z")
                 )
             )}
     ].
@@ -1494,6 +1570,24 @@ parse_invalid_positive_calendar_date_test_() ->
 
 parse_expanded_negative_offset_test_() ->
     [
+        {"year zero retains an exact fractional hour without a nonzero rounded shift",
+            ?_assert(
+                assert_datetime_close(
+                    {{0, 1, 1}, {0, 0, 0.36}},
+                    iso8601:parse_expanded("+0000-01-01T00.0001")
+                )
+            )},
+        {"year zero still rejects a fractional hour whose rounded shift is nonzero",
+            ?_assertError(badarg, iso8601:parse_expanded("+0000-01-01T00.0002"))},
+        {"year zero still rejects a nonzero timezone with exact unit fraction",
+            ?_assertError(badarg, iso8601:parse_expanded("+0000-01-01T00.0001+00:01"))},
+        {"positive year accepts the matched exact unit fraction and timezone",
+            ?_assert(
+                assert_datetime_close(
+                    {{2016, 12, 31}, {23, 59, 0.36}},
+                    iso8601:parse_expanded("2017-01-01T00.0001+00:01")
+                )
+            )},
         {"negative year + timezone offset is badarg",
             ?_assertError(badarg, iso8601:parse_expanded("-0044-03-15T12:00:00+02:00"))},
         {"negative year + extended week date is rejected",
