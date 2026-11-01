@@ -467,7 +467,7 @@ datetime(Plist) ->
 datetime(_, Plist) ->
     datetime(Plist).
 
--spec make_date(datetime_plist()) ->
+-spec make_date(parser_accumulator()) ->
     {Date :: calendar:date(), WeekOffsetH :: non_neg_integer()}.
 %% @doc Return a `tuple' containing a date and, if the date is in week format,
 %% an offset in hours that can be applied to the date to adjust it to midnight
@@ -481,7 +481,7 @@ make_date(Plist) ->
     non_neg_integer(),
     undefined_or(pos_integer()),
     undefined_or(pos_integer()),
-    datetime_plist()
+    parser_accumulator()
 ) ->
     {calendar:date(), non_neg_integer()}.
 %% @doc Return a `tuple' containing a date and - if the date is in week format
