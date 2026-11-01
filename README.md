@@ -22,7 +22,7 @@
 
 <a name="about-"></a>
 
-## About [Back to contents](#contents)
+## About [⇧](#contents)
 
 The ``erlang_iso8601`` library was originally created by Sean Sawyer in 2011. In 2016, Sean handed off maintenance of the library to the [erlsci](https://github.com/erlsci) Github org at which point the project (and repo) was renamed to simply ``iso8601``, matching its Erlang app name:
 
@@ -35,7 +35,7 @@ Thanks to Github's forwarding for project renames and moves, the following still
 
 <a name="new-in-14-"></a>
 
-## New in 1.4 [Back to contents](#contents)
+## New in 1.4 [⇧](#contents)
 
 * **Time interval support.** New `parse_interval/1`, `interval_bounds/1`, and
   `format_interval/1` functions handle all four ISO 8601 interval forms
@@ -76,7 +76,7 @@ Thanks to Github's forwarding for project renames and moves, the following still
 
 <a name="usage-"></a>
 
-## Usage [Back to contents](#contents)
+## Usage [⇧](#contents)
 
 Add it to your `rebar.config` deps:
 
@@ -266,7 +266,7 @@ adjustments raise `badarg`; an adjustment that rounds to zero remains allowed.
 
 <a name="known-deficiencies-"></a>
 
-## Known Deficiencies [Back to contents](#contents)
+## Known Deficiencies [⇧](#contents)
 
 * Does not support repeating intervals (`Rn/...`).
 * Expanded year representation is supported in extended (hyphenated) format only,
@@ -290,7 +290,7 @@ service's ["About" page][libera-about].
 
 <a name="license-"></a>
 
-## License [Back to contents](#contents)
+## License [⇧](#contents)
 
 ```
 The MIT License (MIT)
