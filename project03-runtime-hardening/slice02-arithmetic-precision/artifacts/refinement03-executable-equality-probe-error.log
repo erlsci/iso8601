@@ -1,0 +1,5 @@
+Attempted checker command (not a production gate): `beam_lib:chunks(Path, [code])` on the freshly compiled d3 beam.
+
+Observed result: `{error, beam_lib, {unknown_chunk, "/private/tmp/iso8601-s02-r03-code-equality-base/iso8601.beam", code}}`; the Erlang evaluation terminated on that badmatch and wrote a crash dump, which was removed from the source worktree.
+
+Disposition: this probe did not establish an executable difference. It was replaced by the supported `beam_disasm:file/1` comparison recorded in `refinement03-executable-equality.log`; the disassembled function lists were equal.

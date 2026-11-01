@@ -1,0 +1,7 @@
+baseline_source_sha256 bd0a93f6f6bc8e1a7d0833d4a156eeda37cd76088b1280cd66a3bf79fbec4302  /private/tmp/iso8601-s02-r03-code-equality-base/iso8601.erl
+candidate_source_sha256 d08a82d1bba9b320049194baae099d6cc557071449ddb6b731d6f0f501e440de  /private/tmp/iso8601-s02-r03-code-equality-candidate/iso8601.erl
+runtime OTP 28
+compiler commands: erlc +debug_info -o BASE BASE/iso8601.erl; erlc +debug_info -o CANDIDATE CANDIDATE/iso8601.erl
+baseline_disassembled_functions_sha256 116ABE248E87FECCF3E3E8BD006FD4D09B4AC4A6A6F0DA24F387B9BD73A00F28
+candidate_disassembled_functions_sha256 116ABE248E87FECCF3E3E8BD006FD4D09B4AC4A6A6F0DA24F387B9BD73A00F28
+disassembled_functions_equal true

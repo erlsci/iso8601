@@ -1,0 +1,9 @@
+source_commit_before_gates d3c7012e1802a7b563f53fc9dcf3c8ad78ab3094
+source_sha256 d08a82d1bba9b320049194baae099d6cc557071449ddb6b731d6f0f501e440de  /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic/src/iso8601.erl
+test_sha256 d2899469ae88b663a23663aed1ef4939e6458127493606e0f1519ae936d56bec  /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic/test/iso8601_tests.erl
+command: rebar3 as dev lint
+===> Verifying dependencies...
+===> Analyzing applications...
+===> Compiling iso8601
+
+exit_code 0

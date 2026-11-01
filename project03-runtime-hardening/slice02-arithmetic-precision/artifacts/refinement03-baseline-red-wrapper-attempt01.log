@@ -1,0 +1,6 @@
+/opt/homebrew/bin/bash: line 11: timeout: command not found
+baseline_commit 3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828
+baseline_source_sha256 a6a65b4fc5c3d776a1e9024031d9e41b156483b673346672bfb04bbf527a8297  /private/tmp/iso8601-s02-r03-baseline-ebin/iso8601.erl
+test_source_sha256 d2899469ae88b663a23663aed1ef4939e6458127493606e0f1519ae936d56bec  /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic/test/iso8601_tests.erl
+command: erlc -o /private/tmp/iso8601-s02-r03-baseline-ebin /private/tmp/iso8601-s02-r03-baseline-ebin/iso8601.erl; erlc -pa /private/tmp/iso8601-s02-r03-baseline-ebin -o /private/tmp/iso8601-s02-r03-baseline-ebin /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic/test/iso8601_tests.erl; timeout 240 erl -noshell -pa /private/tmp/iso8601-s02-r03-baseline-ebin -eval eunit:test/1
+exit_code 127
