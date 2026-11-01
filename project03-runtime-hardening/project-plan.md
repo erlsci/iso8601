@@ -1,25 +1,29 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: first interval checkpoint independently verified; Operator review/merge pending; seven remaining repairs held
+- status: first interval checkpoint independently verified; Operator authorized GitHub PR delivery; merge/continuation pending; seven remaining repairs held
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.2 — 2026-10-31
+- version: 1.3 — 2026-10-31
 
 ## Outcome, authority and endpoint
 
 Repair all nine accepted Project02 Arc01 findings while preserving the 15 public exports, 11 intentionally exported types, return shapes and broad OTP compatibility. Add meaningful regression tests that fail unchanged source and pass repaired source, source-grounded documentation, independently reproduced validation and a finding-by-finding applicability handoff. Original audit reports remain immutable dated evidence, not rewritten into green reports.
 
-Direct Operator decision: “I've looked at the findings — I want us to fix them all :-D How do we get started?” Parent relayed continued Autonomous Mode with CDC GPT-6.1 Sol High and fresh CC GPT-6 Luna High, and a stop after ONE repair arc/increment for human review and merge discussion. The first coherent interval repair fits one slice; canonical one-slice collapse puts its documents directly in `slice01-interval-inheritance/`, with no ceremonial arc wrapper. This slice is the first repair-arc checkpoint for the authorization; the branch's arc01 spelling does not require extra arc documents. Parent independently gates its final composition and the Operator retains the review/merge/next-increment decision. No push, PR, merge, release, publication, external issue/message or second repair increment is authorized now.
+Direct Operator decision: “I've looked at the findings — I want us to fix them all :-D How do we get started?” Parent relayed continued Autonomous Mode with CDC GPT-6.1 Sol High and fresh CC GPT-6 Luna High, and a stop after ONE repair arc/increment for human review and merge discussion. The first coherent interval repair fits one slice; canonical one-slice collapse puts its documents directly in `slice01-interval-inheritance/`, with no ceremonial arc wrapper. This slice is the first repair-arc checkpoint for the authorization; the branch's arc01 spelling does not require extra arc documents. Parent independently gates its final composition and the Operator retains the review/merge/next-increment decision. Original v1.0 authority excluded push/PR/merge/release and later increments. The subsequent direct PR request below supersedes only the source-branch push/PR/CI-delivery exclusion; merge, release, planning-branch publication and later repair increments remain unapproved.
 
 Project02 remains incomplete: its Arc02 tests/escript/tooling/type/historical/synthesis audit and Arc03 OTP28/29 CI plus necessary compatibility work stay open, separately owned. They are not cancelled or silently absorbed into runtime repair. Known parse_exact public return-spec and reduced-precision zoned-start questions remain Project02 obligations. This project does not claim a complete audit, supported OTP matrix or release certification.
+
+## PR delivery authorization — 2026-10-31
+
+After reviewing the first checkpoint, the Operator said: “Since this is a publicly consumed project, let's do a PR”. This authorizes pushing the reviewed source candidate `7e93c5d89cb8b14e7a2f5f7a0219201ee1bcfc38` on `codex/project03-arc01-intervals` to GitHub origin and opening a reviewable PR against `main`, including its automatic CI runs and monitoring their terminal result. GitHub main was refreshed and verified at `c594869`; there is no base drift. Consequently the PR also contains the previously authorized guidance cleanup `bcfd94a`, not yet published upstream. Source API/behavior/test evidence remains applicable at the exact reviewed tree. The orphan planning branch stays local. No merge, release, or next increment is inferred. Record the actual PR URL and hosted CI outcome in the existing closing report and gate notes.
 
 ## Full remediation roadmap
 
 | Increment | Capability, findings and destination | Dependency / current state |
 |---|---|---|
-| First repair checkpoint — collapsed Slice01 | Correct interval signed positive-year classification/inheritance (ERL-CAL-003) and omitted-zone inheritance (ERL-CAL-004); source module, public regression tests and README | CDC accepted source7e93c5d; parent/human checkpoint pending, one coherent slice |
+| First repair checkpoint — collapsed Slice01 | Correct interval signed positive-year classification/inheritance (ERL-CAL-003) and omitted-zone inheritance (ERL-CAL-004); source module, public regression tests and README | CDC and parent accepted source7e93c5d; GitHub PR authorized, human merge/continuation pending, one coherent slice |
 | Later arithmetic/precision arc | Bounded arithmetic floor behavior CAL001, float-anchor composition CAL002, formatter carry DATE003 and exact fractional-unit retention DATE005 | Plan in detail after first checkpoint. Preserve parse/1 legacy rounding; exact APIs retain fractions. A bounded badarg floor policy is the likely design but needs actual source/contract grounding before assignment. Four findings remain open. |
 | Later parser-contract arc | Validate week boundaries DATE001 and non-positive-year dates DATE002; make declared iodata inputs work consistently DATE004 | Plan in detail after prior repairs. Keep intended negative-year/nonzero-offset restrictions and stable public error contracts; support declared iodata rather than narrowing it without authorization. Three findings remain open. |
 
@@ -46,3 +50,5 @@ Completion requires all nine finding rows independently verified, final applicab
 - v1.1 — 2026-10-31: first interval slice independently accepted for CAL003/CAL004 at7e93c5d. [Verification](slice01-interval-inheritance/cdc-verification.md) and [retrospective](slice01-interval-inheritance/cdc-retrospective.md) carry current receipts, preserved147-observation audit applicability and producer-path/population/reading watch items. Only these two finding rows close; seven repairs, parent composition, human merge/continuation and all project/P02 obligations remain open.
 
 - v1.2 — 2026-10-31: parent independently reviewed the accepted slice and composed the interval repair with19 exact controls, actual formatter composition, final238 EUnit and unchanged15/11 export/type sets. P03-10 closes; P03-11 and all seven later repairs/project gates remain open. Prior pending-parent status is superseded; no merge or next increment is inferred.
+
+- v1.3 — 2026-10-31: direct Operator request authorized publishing the reviewed source branch as a GitHub PR against main and following hosted CI; refreshed basec594869 means previously authorized guidance cleanup is included. Parent composition is already accepted; merge/continuation and later repairs remain pending.
