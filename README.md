@@ -1,9 +1,13 @@
 # iso8601
 
 [![Build Status][gh-actions-badge]][gh-actions]
+
 [![Coverage][coverage-badge]][project]
+
 [![Tag][tag-badge]][tag]
+
 [![Erlang Version][erl-badge]][erl]
+
 [![Downloads][hex downloads]][hex package]
 
 *An ISO 8601 date formatting and parsing library for Erlang*
@@ -22,7 +26,7 @@
 
 <a name="about-"></a>
 
-## About [&#x219F;](#contents)
+## About [Back to contents](#contents)
 
 The ``erlang_iso8601`` library was originally created by Sean Sawyer in 2011. In 2016, Sean handed off maintenance of the library to the [erlsci](https://github.com/erlsci) Github org at which point the project (and repo) was renamed to simply ``iso8601``, matching its Erlang app name:
 
@@ -35,7 +39,7 @@ Thanks to Github's forwarding for project renames and moves, the following still
 
 <a name="new-in-14-"></a>
 
-## New in 1.4 [&#x219F;](#contents)
+## New in 1.4 [Back to contents](#contents)
 
 * **Time interval support.** New `parse_interval/1`, `interval_bounds/1`, and
   `format_interval/1` functions handle all four ISO 8601 interval forms
@@ -68,14 +72,15 @@ Thanks to Github's forwarding for project renames and moves, the following still
   Float values cannot represent every decimal exactly; formatting rounds to
   microseconds and carries a rounded second into the next minute or date.
 * **Calendar arithmetic** preserves the fractional part of a datetime's seconds
-  while applying integer time shifts and durations. Month and year changes clamp
-  to the last valid day of the target month; targets before year zero raise
-  `badarg`. For compatibility, `add_time/4` also rejects nonzero adjustments
-  when the input year is zero.
+  while applying rounded numeric time shifts and durations. Month and year
+  changes clamp to the last valid day of the target month; targets before year
+  zero raise `badarg`. At year zero, `add_time/4` rejects a nonzero rounded
+  combined shift; component values that cancel or round to zero retain the
+  existing zero-shift behavior.
 
 <a name="usage-"></a>
 
-## Usage [&#x219F;](#contents)
+## Usage [Back to contents](#contents)
 
 Add it to your `rebar.config` deps:
 
@@ -83,12 +88,14 @@ Add it to your `rebar.config` deps:
 {iso8601, "~> 1.4"}
 ```
 
-Format a timestamp or calendar datetime tuple:
+Format a timestamp or calendar datetime tuple. Formatting labels the supplied
+tuple as UTC; it does not convert a local timezone. Timestamp conversion drops
+microseconds, while float seconds in a datetime are rounded to microseconds:
 
 ```erlang
-1> iso8601:format(now()).
-<<"2012-02-16T01:06:19Z">>
-2> iso8601:format(calendar:universal_time()).
+1> iso8601:format({0, 0, 0}).
+<<"1970-01-01T00:00:00Z">>
+2> iso8601:format({{2012, 2, 16}, {1, 6, 48}}).
 <<"2012-02-16T01:06:48Z">>
 ```
 
@@ -101,10 +108,9 @@ Parse a date string or binary:
 {{2012,2,16},{1,6,48}}
 ```
 
-The four date and interval parsers accept byte iodata, so nested lists and
-binary fragments can be combined directly. Non-byte or otherwise invalid
-iodata raises `badarg`; `parse_duration/1` retains its separate string input
-contract.
+The date, interval and duration parsers accept byte iodata, so strings,
+binaries, nested byte fragments and valid improper byte-iodata tails can be
+combined directly. Non-byte or otherwise invalid iodata raises `badarg`.
 
 ```erlang
 4a> iso8601:parse([<<"2012-">>, ["02", <<"-03">>]]).
@@ -138,13 +144,36 @@ Fractional times:
 {{2012,2,3},{4,5,6.50}}
 ```
 
-Parse durations:
+Parse durations from nested byte iodata. Duration fields have fixed order and
+zero defaults; fractional seconds are accepted then truncated, while
+fractional hours/minutes and week units are unsupported:
 
 ```erlang
 9> iso8601:parse_duration("+P6Y3M1DT1H1M1.1S").
 [{sign, "+"}, {years, 6}, {months, 3}, {days, 1}, {hours, 1}, {minutes, 1}, {seconds, 1}]
-10> iso8601:parse_duration("PT6M").
+10> iso8601:parse_duration([<<"PT">>, ["6", <<"M">>]]).
 [{sign, []}, {years, 0}, {months, 0}, {days, 0},{hours, 0}, {minutes, 6}, {seconds, 0}]
+```
+
+Calendar helpers add integer days, months and years. Month/year changes clamp
+to the last valid day of the target month and preserve time/fractional seconds:
+
+```erlang
+iso8601:add_days({{2017, 1, 31}, {12, 0, 0.25}}, 1).
+{{2017, 2, 1}, {12, 0, 0.25}}
+iso8601:add_months({{2017, 1, 31}, {12, 0, 0.25}}, 1).
+{{2017, 2, 28}, {12, 0, 0.25}}
+iso8601:add_years({{2016, 2, 29}, {12, 0, 0.25}}, 1).
+{{2017, 2, 28}, {12, 0, 0.25}}
+```
+
+Apply a duration with its sign and fields in years/months/days/time order. Each
+calendar step clamps independently; intermediate results below year zero raise
+`badarg`:
+
+```erlang
+iso8601:apply_duration({{2017, 1, 31}, {12, 0, 0.25}}, <<"P1M">>).
+{{2017, 2, 28}, {12, 0, 0.25}}
 ```
 
 Parse a time interval. `parse_interval/1` preserves which of the four forms was
@@ -236,11 +265,12 @@ so its `calendar`-compatible contract is preserved:
 `parse_expanded/1` preserves fractional seconds (like `parse_exact/1`), so the
 seconds field comes back as a float. Negative years are supported in UTC (`Z`) or
 offset-free form; combining a negative year with a non-zero UTC offset or a
-week-date raises `badarg`.
+week-date raises `badarg`. At year zero or below, nonzero rounded time
+adjustments raise `badarg`; an adjustment that rounds to zero remains allowed.
 
 <a name="known-deficiencies-"></a>
 
-## Known Deficiencies [&#x219F;](#contents)
+## Known Deficiencies [Back to contents](#contents)
 
 * Does not support repeating intervals (`Rn/...`).
 * Expanded year representation is supported in extended (hyphenated) format only,
@@ -264,7 +294,7 @@ service's ["About" page][libera-about].
 
 <a name="license-"></a>
 
-## License [&#x219F;](#contents)
+## License [Back to contents](#contents)
 
 ```
 The MIT License (MIT)
