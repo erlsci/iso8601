@@ -1,0 +1,6 @@
+expanded_year/0: Astronomical year integer, including negative years; year 0 is 1 BCE and year -1 is 2 BCE.
+add_years/2: target-before-zero badarg present
+parse/1: explicit-positive-expanded accepted; negative badarg present
+parse_interval/1 separate code nodes: [<<"/">>,<<"--">>]
+parse_interval/1 surrounding inheritance prose: readable
+EXIT=0

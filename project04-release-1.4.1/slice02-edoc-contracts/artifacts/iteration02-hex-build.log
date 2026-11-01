@@ -1,0 +1,9 @@
+===> Verifying dependencies...
+===> Analyzing applications...
+===> Compiling iso8601
+Your package tarball is available at /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/_build/dev/lib/iso8601/hex/iso8601-1.4.1.tar
+===> Analyzing applications...
+===> Compiling iso8601
+===> Running edoc for iso8601
+===> Running ex_doc for iso8601
+Your docs tarball is available at /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/_build/dev/lib/iso8601/hex/iso8601-1.4.1-docs.tar

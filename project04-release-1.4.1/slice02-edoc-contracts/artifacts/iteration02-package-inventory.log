@@ -1,0 +1,33 @@
+PACKAGE FILES
+LICENSE
+README.md
+rebar.config
+rebar.lock
+src/iso8601.app.src
+src/iso8601.erl
+
+METADATA
+{<<"app">>,<<"iso8601">>}.
+{<<"build_tools">>,[<<"rebar3">>]}.
+{<<"description">>,
+ <<"An ISO 8601 date formatting and parsing library for Erlang">>}.
+{<<"files">>,
+ [<<"LICENSE">>,<<"README.md">>,<<"rebar.config">>,<<"rebar.lock">>,<<"src">>,
+  <<"src/iso8601.app.src">>,<<"src/iso8601.erl">>]}.
+{<<"licenses">>,[<<"MIT">>]}.
+{<<"links">>,
+ [{<<"GitHub">>,<<"https://github.com/erlsci/iso8601">>},
+  {<<"Gitlab">>,<<"https://gitlab.com/erlsci/iso8601">>},
+  {<<"Hex">>,<<"https://hex.pm/packages/iso8601">>}]}.
+{<<"name">>,<<"iso8601">>}.
+{<<"requirements">>,[]}.
+{<<"version">>,<<"1.4.1">>}.
+
+APP SEMANTICS
+vsn source="1.4.1" package="1.4.1" equal=true
+applications source=[kernel,stdlib] package=[kernel,stdlib] equal=true
+modules source=[iso8601] package=[iso8601] equal=true
+
+ARCHIVE SHA256
+a59ffeb6cc3d33bc80ad4f11d710c3e72842076095048803f3aa2867738d8aca  _build/dev/lib/iso8601/hex/iso8601-1.4.1.tar
+2d73aa7b5318e7d2606365f9ef11635886a53f7203e3199055835a827817e67d  _build/dev/lib/iso8601/hex/iso8601-1.4.1-docs.tar

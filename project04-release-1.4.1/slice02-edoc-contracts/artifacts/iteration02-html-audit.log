@@ -1,0 +1,5 @@
+readme_images=6 badges=5 all_alt_src_href_pairs=correct logo_src=logo.png logo_href=logo-large.png
+anchors=6 Back_to_contents=5 unresolved_readme_fragments=0
+parse_interval_inline_code_nodes=['/', '--'] surrounding_end_zone_prose=readable
+source_links api_reference=32 README=1 combined=33 all_unprefixed_version=1.4.1
+EXIT=0

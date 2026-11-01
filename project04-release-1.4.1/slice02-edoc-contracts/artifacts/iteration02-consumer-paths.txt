@@ -1,0 +1,2 @@
+package_root=/private/tmp/iso8601-package-iteration02.67yMLK
+consumer_root=/private/tmp/iso8601-consumer-iteration02.H1B7U0
