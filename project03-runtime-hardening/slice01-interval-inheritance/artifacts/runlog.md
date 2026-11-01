@@ -61,6 +61,10 @@ The date runner produced all **31/31** observations (exit 0); fractional-unit ru
 
 The parent separately inspected the preserved runner and transcript and committed the denominator correction at planning `4fc7f8771ca0dc9247048a3912e65b9cbc366f96` on disjoint Project02 paths. This CC revalidated that planning HEAD and left those parent-owned paths untouched. The four actual populations total **147** observations/comparisons (31+10+42+64). Original prompt, audit reports and runners were not changed.
 
+## Planning close commit receipt
+
+The first explicit-path planning close commit is `50ac5f0768af494ba0ccc3b96f8ff011cb70ca64`; it contains only this slice's artifacts, closing report and slice-ledger evidence/status cells, layered on parent commit `4fc7f8771ca0dc9247048a3912e65b9cbc366f96`. A cached-diff whitespace check over the complete staged packet flagged trailing spaces in two byte-preserved raw PropEr logs, from their ANSI progress line (`===> `). I retained those native outputs exactly and reran `git diff --cached --check` over the authored Markdown records only; that check passed. No source/plan ownership path was included. This note records the check and its resolution.
+
 Applicability disposition against the exact candidate:
 
 | Finding | Candidate replay evidence | CC disposition |
