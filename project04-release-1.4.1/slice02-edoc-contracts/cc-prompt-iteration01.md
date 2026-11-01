@@ -1,0 +1,24 @@
+# CC iteration01 — truthful existing duration iodata contract
+
+Execute this CURRENT assignment, superseding issued but UNEXECUTED initial cc-prompt.md/4825673161bf5a32bba0b688fe63458debaf066a. Same actual LunaHigh CC/SolHigh CDC/Autonomous configuration, same Project04 directSlice02, sourcee70b4a09300afa1fcde1fad13ed6277226f8d41a/treee098fec9f624b4cb04843ee9fbbca2310740b7e8 and three allowedpaths. Initial intake may already have loaded material; preserve exact actual chronology. No implementation or executed refinement pass has occurred yet. This is the next immutable prompt number, not permission to erase the initial prompt or reset a future correction budget.
+
+## Binding amendment and cause
+
+Current slice-planv1.1/projectplanv1.5 and nine-rowledger govern. Parent explicitly chose truthful iodata() arguments for BOTH parse_duration/1 and apply_duration/2. Existing e70 runtime already accepts nested [<<"P">>,<<"1Y">>] (CDC actual witness), and installed `/opt/homebrew/lib/erlang/lib/stdlib-7.1/src/re.erl` run/3 section799–816 declares iodata()|unicode:charlist() subject. Resolve installedstdlib path if patch differs. Current parser has no Unicode option and ASCIIgrammar; this is byteiodata documentation, no new runtime support. Initial draft's string|binary exclusivity/source conclusion was incomplete, not an instruction to reject working inputs.
+
+Replace ONLY initial duration-input constraints with:
+- `-spec parse_duration(iodata()) -> duration().`
+- `-spec apply_duration(datetime(), iodata()) -> datetime().`
+- EDoc/module/README duration prose accepts byteiodata, including strings,binaries,nestedbytefragments/validimpropertails. `parse_duration` example nested[<<"PT">>,["1.9",<<"S">>]] returns exact orderedplist seconds1 (truncated); `apply_duration` demonstrate binary or validimproper[$P,$1|<<"M">>] with literal Jan31→Feb28 fractional0.25. Invalid nestednonbyte[256] shouldraisebadarg through actual APIs; do not add new catches/normalization. BareP/PT and truncatedfractionseconds remain documented existingbehavior.
+All other three publicspec corrections stay as initial plan, exact five-spec set; all90runtimeforms/15exports/11typeexports/16definitions/otherprivateannotations unchanged. No source/runtime/type/dependency/config/version/floor/path expansion. Parent also clarified parser fractionalunit year<=0 check precedes timezone stage; cancellation claims belong within add_time/subtract_time combinedH/M/S, never imply two separately rejected parser stages cancel eachother.
+
+## Intake, execution and return
+
+Read THIS prompt, current slice-plan/projectplan and both ledgers FULL, plus complete installedre run/3 spec and current source parse_duration/apply_duration delegation; retain earlier manifest reads accurately. Original prompt's complete normative/source/provider required-reading manifest, explicit STOP/CDCclearance, sourcepath/runtime-preservation/example-runner/redbaseline/native8/actualpackage+docs/freshconsumer/actual10CI gates remain binding except the superseded duration constraints above. No need reread whole already received framework merely because this number changed. Recover gaps/truncations, update existingrunlog and source-cited readback of changedcontract/all9criteria, STOP BEFORE source/test/README/generated/build edits or commits. Do not act on superseded string|binary constraints. CDC will inspect actual readback/pristine source then resume SAME currentassignment using followup_task.
+
+After explicit clearance execute entire current slice recipe: actualsourceexamples in conventional EUnit with strict parser/evaluation/15coverage and credible wrongliteral/malformed negativecontrols; README all15API and actualrendered5badges/backlinks/anchors; allfive truthfulspecs and module/type/function docs/WHY; full8 plus actual15/15description+example11/11type docs_v1/HTML and currentbotharchives/freshrealrebarconsumer. Preserve failures/retries/cachedsubstrate/sourcepins and actualdenominators, no fullgrammar or no-warning-all-deps claim. RuntimeASTidentity retains147 behavior receipts, no freshaudit.
+
+All original external-action prohibitions remain: no push/PR/merge/tag/Hex/GitLab/release/auth; parent alone owns existingPR80/CI after independentprereview. Only three sourcepaths and newchild assigned evidence/closing/ledger writable; CDCplans/prompts/review/retro/projectrows remainofflimits. PriorSlice01 immutable. Commit explicit namedpaths/--only; EVERY actual message adjacent Codex+Billo literalnewline trailers, verify stored bytes. Proposed-done return walks all9rows/currentprompt/pins/artifactinventory/bubbleup, leaves hosted08/CDC09open, returns source/childownership thenSTOP. Max5executed corrections; current supersedure was before implementation, preserve that fact.
+
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Billo AI <ai-engineering@billo.systems>

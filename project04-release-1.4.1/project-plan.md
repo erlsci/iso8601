@@ -5,7 +5,7 @@
 - depends-on: integrated main10a182be1bf4f5cd532592558e87789b83edb96f, tree643ed3352b66b1d19035b6fd61b7e975d869d985, consuming the nine repaired finding criteria and OTP20–29 CI
 - related: Project03 runtime hardening and Project02 wider audit; their remaining project/audit gates are not prerequisites silently accepted here
 - blocks: a reviewable1.4.1 preparation candidate; actual release publication remains a later decision
-- version:1.4 — 2026-11-01 UTC
+- version:1.5 — 2026-11-01 UTC
 
 ## Outcome and authority
 
@@ -48,3 +48,5 @@ Operator explicitly requested an EDoc pass addressing the missing documentation 
 Actual SolHigh CDC/fresh LunaHigh CC/Autonomous authority persists; explicit initial intake STOP/clearance, independent native8/100%/actual package+docs+freshconsumer and final-tree ten-job CI remain required. Parent updates existing PR80 after CDC prereview; all external actions remain parent-owned, merge/release human-gated. P04-01/02 retain their e70b4a0 historical acceptance; NEW P04-04 technical and05 final two-child independent composition gates are open. P04-03 human disposition staysopen and applies to the updated candidate. Slice01 artifacts/reports are immutable; P02 wider work and P03final gates remainopen. No tag/Hex/GitLab/release action follows automatically.
 
 - v1.4 — 2026-11-01 UTC: direct Operator EDoc expansion via Slice02; previous one-child acceptance retained at its original pin, current DoD now includes both slices and final composition.
+
+- v1.5 — 2026-11-01 UTC: Slice02 pre-edit source inspection corrected the duration-input misconception: existing parse_duration/apply_duration accept byteiodata via re:run. Parent approved truthful iodata annotations/prose/examples in preserved iteration01 before implementation. Same five specs/three source paths, no runtime/API-type-definition change; initial issued assignment superseded unexecuted, not retroactively altered.
