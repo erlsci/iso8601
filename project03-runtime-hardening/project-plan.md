@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: active arithmetic/precision checkpoint at main3a1cdfd; first interval and Project02 CI checkpoints merged; seven runtime repairs open pending current work
+- status: arithmetic/precision checkpoint technically accepted at bd67bd0; PR78 merged by Operator; parent final composition/integration record follows; three parser repairs remain open
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.8 — 2026-11-01 UTC
+- version: 1.9 — 2026-11-01 UTC
 
 ## Outcome, authority and endpoint
 
@@ -28,7 +28,7 @@ The Operator merged PR#76 and explicitly selected OTP28/29 CI as the next work s
 | Increment | Capability, findings and destination | Dependency / current state |
 |---|---|---|
 | First repair checkpoint — collapsed Slice01 | Correct interval signed positive-year classification/inheritance (ERL-CAL-003) and omitted-zone inheritance (ERL-CAL-004); source module, public regression tests and README | Integrated via PR#76 at main1d85d0a (tree equals reviewed7e93c5d); human merge/next-priority decision complete |
-| Active second repair checkpoint — collapsed Slice02 | Bounded arithmetic floor behavior CAL001, float-anchor composition CAL002, formatter carry DATE003 and exact fractional-unit retention DATE005 | [Slice02](slice02-arithmetic-precision/slice-plan.md) at source3a1cdfd; bounded badarg below year0, fractional-anchor/exact-unit retention and formatter carry, preserving both actual parse/1 legacy rules. Four finding rows remain open until independent validation. Stop after this checkpoint for actual ten-job CI, parent composition and human review/merge; parser increment remains roadmap-only. |
+| Active second repair checkpoint — collapsed Slice02 | Bounded arithmetic floor behavior CAL001, float-anchor composition CAL002, formatter carry DATE003 and exact fractional-unit retention DATE005 | [Slice02](slice02-arithmetic-precision/slice-plan.md) at source3a1cdfd; bounded badarg below year0, fractional-anchor/exact-unit retention and formatter carry, preserving both actual parse/1 legacy rules. Four finding rows are done/reproduced at bd67bd0 after independent native8/147 and actual ten-job PR78 CI. Operator merged PR78 into maine332032; parent composition/integration record follows separately. Parser increment remains roadmap-only; no next work is inferred. |
 | Later parser-contract arc | Validate week boundaries DATE001 and non-positive-year dates DATE002; make declared iodata inputs work consistently DATE004 | Plan in detail after prior repairs. Keep intended negative-year/nonzero-offset restrictions and stable public error contracts; support declared iodata rather than narrowing it without authorization. Three findings remain open. |
 
 The [project ledger](ledger.md) tracks every stable ID individually. Future decomposition can refine dependencies from real source evidence, with versioned decisions; no future arc/slice directories are opened now. All current source surfaces are the existing one-module library; this increment changes only `src/iso8601.erl`, `test/iso8601_tests.erl` and `README.md`. Existing `test/prop_iso8601.erl`, app manifest, Make/rebar/CI/elvis and guidance are context, not repair targets. No new dependencies, syntax floor, record/API representation, exported helpers or version bump.
@@ -80,3 +80,13 @@ The standing separate-PR workflow applies: parent publishes the independently pr
 The Operator chose eventual release1.4.1 after all repairs land, in a separate release-preparation PR covering the version bump and release work. This is a future boundary and version decision, not authority to change version1.4.0, publish or release during Slice02. Current checkpoint remains arithmetic/precision only; three parser repairs and whole-project acceptance are open. No release-preparation increment has started.
 
 - v1.8 — 2026-11-01 UTC: record the Operator's eventual1.4.1/separate release-preparation decision without extending the active repair checkpoint or changing sourceversion.
+
+## Arithmetic/precision technical acceptance — 2026-11-01 UTC
+
+[Slice02 verification](slice02-arithmetic-precision/cdc-verification.md) accepts CAL001/CAL002/DATE003/DATE005 at bd67bd0/tree72efe0dc. Independent native8 passes300 EUnit,4×100 PropEr,100% coverage; final tests against unchanged baseline fail39/300. All147 original audit observations were freshly replayed with current applicability, alongside10 numeric/interval integration and four raw-clock scope controls. Actual [PR78 run41267969674](https://github.com/erlsci/iso8601/actions/runs/41267969674) passes all ten OTP20–29 jobs;21–29 each300/4×100/100,20's static-only policy retained. Upstream OTP29 dependency warnings remain P02 tooling watch; no first-party diagnostic observed. The [retrospective](slice02-arithmetic-precision/cdc-retrospective.md) preserves ordering/evidence gaps, all five refinements and unestablished earlier remote-draft publisher rather than asserting complete process compliance.
+
+The Operator explicitly said “merged!” and parent verified PR78 merged2026-11-01T03:11:41Z into maine332032561142bff6c620cd1e7b4a5bfe9929b0b. Parent owns final tree/integration/independent composition and P03-14/15 records; those rows remain parent-owned pending that attributable disposition. Three parser findings and whole-project gates remain open, future release1.4.1 preparation remains separate/unstarted, sourceversion1.4.0 unchanged, and no next increment begins automatically.
+
+- v1.9 — 2026-11-01 UTC: four numeric finding rows close after independent native/hosted verification; PR78 Operator merge acknowledged without pre-filling parent composition/integration or whole-project acceptance.
+
+Integration receipt for v1.9: parent API verifies synthetic PR merge and merged maine332032 have the reviewed tree72efe0dc; CDC local tree comparison independently agrees. Main push-run41268179012 independently inspected all10 step JSON successful (last job03:13:09Z), with prior fully inspected PR populations retained by tree equality. Parent final composition/human-row record remains separately authored.

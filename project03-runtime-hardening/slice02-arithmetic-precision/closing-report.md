@@ -1,6 +1,6 @@
 # Slice02 CC closing report
 
-Status: **CC proposed-done; CDC verification and Operator acceptance remain open.** This is a self-review and attestation, not independent acceptance.
+Current status: **CDC technical acceptance reproduced; PR78 all ten jobs pass and Operator has merged.** The CC report below is retained self-review/attestation; its prior pending statements are historical. Final CDC disposition follows at the end; parent composition/integration is separately attributable.
 
 ## Assignment and pins
 
@@ -46,3 +46,13 @@ S02-01 through S02-07 are CC proposed-done only. S02-08 remains open for parent-
 ## CDC local publication prereview — 2026-11-01 UTC
 
 [Independent verification](cdc-verification.md) reproduces final bd67bd0 all8 gates,300 EUnit,4×100 PropEr,100% coverage,147 fresh-beam observations and10 additional integration controls. S02-01–07 are locally done/reproduced with the original intake violation explicitly retained; S02-08/09 and parent/human gates remain open. Source is approved for parent publication, not merge/release or whole-project acceptance. This section does not replace the CC chronology above.
+
+## Final CDC technical close — 2026-11-01 UTC
+
+Sourcebd67bd0/tree72efe0dc, against baseline3a1cdfd; implementation paths exactly README.md, src/iso8601.erl and test/iso8601_tests.erl. [Final independent verification](cdc-verification.md#final-hosted-acceptance-and-row-disposition--2026-11-01-utc) supplies a nine-row/nine-disposition walk, nine-finding applicability map, scope diff and artifact inventory. All nine child rows are done/reproduced. [Retrospective](cdc-retrospective.md) covers the collapsed checkpoint, including original ordering breaches, actual carry correction, late private-spec misses, missing raw warning, stale replay and unresolved early-push writer. These limitations are preserved; they are not converted to fictional compliance.
+
+Independent final local8 gates pass300 EUnit/4×100 PropEr/100%; unchanged baseline with final tests yields261/39. Fresh147 audit observations plus10 additional integration controls and four raw-clock comparisons pass their specified oracles/applicability dispositions. [PR78](https://github.com/erlsci/iso8601/pull/78) [run41267969674](https://github.com/erlsci/iso8601/actions/runs/41267969674) passes all10 OTP20–29 jobs;20's three test skips retained, each21–29 logs300/4×100/100. [Durable JSON](artifacts/hosted-run-41267969674.json) and [CDC bounded raw receipt](artifacts/cdc-hosted-validation.log) retain exact job/step/version/population and upstream-warning evidence. No dependency warnings were suppressed or claimed cleared.
+
+CAL001/CAL002/DATE003/DATE005 are technically accepted; CAL003/004 prior repairs remain applicable; DATE001/002/004 and wider P02/project acceptance remain open. The Operator subsequently said “merged!”; parent verified PR78 merged2026-11-01T03:11:41Z into maine332032. Parent independently records final reviewed/synthetic/integrated tree equivalence and integration run, composition P03-14 and human P03-15; this child close does not claim those on its own. No next parser increment, version bump or release is inferred. All five refinements/max5 are preserved. This final CDC planning commit will be identified by the attributable handoff after commit; no self-referential hash is invented.
+
+Integration addendum: parent independently verified synthetic PR merge and merged maine332032 both have reviewed tree72efe0dc; CDC independently compared local candidate/origin-main trees and inspected [main-run ten-job JSON](artifacts/hosted-main-run-41268179012.json), all successful with preserved20 skips. Full main population logs were not re-fetched; exact tree equality retains the fully inspected PR populations. Parent composition/P03-14/15 record follows after child ownership release.

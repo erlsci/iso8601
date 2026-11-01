@@ -1,0 +1,212 @@
+CDC independent inspection of parent-fetched GitHub run JSON and complete log;2026-11-01 UTC.
+Run https://github.com/erlsci/iso8601/actions/runs/41267969674
+Run headSha bd67bd0d4306f9377bf617f802616b342fd9ee77
+JSON sha256 e42ff4337ef4186f74df07c0c3e5a9ac972b6734dd8f7e7c187e722aee94b4be
+Full log original /private/tmp/iso8601-arithmetic-parent/ci-full.log; bytes 803469 sha256 e29eb6b64c49fe508bc1355662371b1e8fb595a41c7ca7af41be9a32a5d013fa
+Parent fetch retained complete raw log in scratch; bounded exact excerpts below plus all-ten job JSON are durable. No new hosted/native execution by CDC.
+Method: group complete tab-separated log by exact job name; assert JSON run identity, exact unique20..29, each completed/success, six named step conclusions; assert one300 EUnit summary, four100-case property summaries, module+total100 coverage for EACH21..29. OTP20 has no test output and three intentional skips. Inspect upstream warning contexts and selected semantic test lines, not only run conclusion.
+
+OTP20 SUCCESS;statics3/3;EUnit=intentionally skipped;PropEr=0x100;coverage=intentionally skipped;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734654151
+Erlang 20 build (Debian container)	Check rebar3 Version	2026-11-01T03:09:07.2762158Z rebar 3.15.2 on Erlang/OTP 20 Erts 9.3.3.15
+Erlang 20 build (Debian container)	Initialize containers	2026-11-01T03:09:04.4461717Z OTP_VERSION=20.3.8.26
+
+OTP21 SUCCESS;statics3/3;EUnit=300;PropEr=4x100;coverage=100%module+total;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734654050
+Erlang 21 build (Debian container)	Check rebar3 Version	2026-11-01T03:09:08.6091467Z rebar 3.15.2 on Erlang/OTP 21 Erts 10.3.5.19
+Erlang 21 build (Debian container)	Initialize containers	2026-11-01T03:09:06.0098093Z OTP_VERSION=21.3.8.24
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T03:10:00.6900386Z   All 300 tests passed.
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T03:10:01.4952002Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T03:10:01.4954229Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T03:10:01.5063423Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T03:10:01.5131132Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	Test Coverage	2026-11-01T03:10:02.5658330Z   |               iso8601  |      100%  |
+Erlang 21 build (Debian container)	Test Coverage	2026-11-01T03:10:02.5659089Z   |                 total  |      100%  |
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T03:09:59.8930370Z         iso8601_tests:122: parse_exact_fractional_unit_test_ (retains fractional hour seconds)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T03:09:59.9079942Z         iso8601_tests:143: parse_exact_fractional_unit_test_ (legacy explicit fractional seconds still truncate)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T03:09:59.9259890Z         iso8601_tests:177: final_second_normalization_test_ (immediately lower represented sum does not carry)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T03:10:00.1209660Z         iso8601_tests:459: calendar_arithmetic_floor_test_ (month index cannot wrap to year zero)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T03:10:00.1810090Z         iso8601_tests:555: calendar_arithmetic_floor_test_ (duration-end interval resolves backward from fractional endpoint)...ok
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T03:10:00.0880159Z         iso8601_tests:396: format_fractional_carry_test_ (carries rounded fractional second into the next minute)...ok
+
+OTP22 SUCCESS;statics3/3;EUnit=300;PropEr=4x100;coverage=100%module+total;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734653876
+Erlang 22 build (Debian container)	Check rebar3 Version	2026-11-01T03:09:06.4602216Z rebar 3.15.2 on Erlang/OTP 22 Erts 10.7.2.19
+Erlang 22 build (Debian container)	Initialize containers	2026-11-01T03:09:04.5158687Z OTP_VERSION=22.3.4.27
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T03:09:58.9433718Z   All 300 tests passed.
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T03:09:59.9322696Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T03:09:59.9325202Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T03:09:59.9400477Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T03:09:59.9453888Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	Test Coverage	2026-11-01T03:10:00.9188161Z   |               iso8601  |      100%  |
+Erlang 22 build (Debian container)	Test Coverage	2026-11-01T03:10:00.9189087Z   |                 total  |      100%  |
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T03:09:58.1461911Z         iso8601_tests:122: parse_exact_fractional_unit_test_ (retains fractional hour seconds)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T03:09:58.1612128Z         iso8601_tests:143: parse_exact_fractional_unit_test_ (legacy explicit fractional seconds still truncate)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T03:09:58.1793651Z         iso8601_tests:177: final_second_normalization_test_ (immediately lower represented sum does not carry)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T03:09:58.3742448Z         iso8601_tests:459: calendar_arithmetic_floor_test_ (month index cannot wrap to year zero)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T03:09:58.4342478Z         iso8601_tests:555: calendar_arithmetic_floor_test_ (duration-end interval resolves backward from fractional endpoint)...ok
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T03:09:58.3413113Z         iso8601_tests:396: format_fractional_carry_test_ (carries rounded fractional second into the next minute)...ok
+
+OTP23 SUCCESS;statics3/3;EUnit=300;PropEr=4x100;coverage=100%module+total;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734654051
+Erlang 23 build (Debian container)	Check rebar3 Version	2026-11-01T03:09:08.4869350Z rebar 3.15.2 on Erlang/OTP 23 Erts 11.2.2.18
+Erlang 23 build (Debian container)	Initialize containers	2026-11-01T03:09:06.1864229Z OTP_VERSION=23.3.4.20
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T03:10:08.4756780Z   All 300 tests passed.
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T03:10:09.6603463Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T03:10:09.6605881Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T03:10:09.6699385Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T03:10:09.6766609Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	Test Coverage	2026-11-01T03:10:11.0386793Z   |               iso8601  |      100%  |
+Erlang 23 build (Debian container)	Test Coverage	2026-11-01T03:10:11.0388505Z   |                 total  |      100%  |
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T03:10:07.6788935Z         iso8601_tests:122: parse_exact_fractional_unit_test_ (retains fractional hour seconds)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T03:10:07.6937987Z         iso8601_tests:143: parse_exact_fractional_unit_test_ (legacy explicit fractional seconds still truncate)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T03:10:07.7118068Z         iso8601_tests:177: final_second_normalization_test_ (immediately lower represented sum does not carry)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T03:10:07.9068080Z         iso8601_tests:459: calendar_arithmetic_floor_test_ (month index cannot wrap to year zero)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T03:10:07.9668198Z         iso8601_tests:555: calendar_arithmetic_floor_test_ (duration-end interval resolves backward from fractional endpoint)...ok
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T03:10:07.8738576Z         iso8601_tests:396: format_fractional_carry_test_ (carries rounded fractional second into the next minute)...ok
+
+OTP24 SUCCESS;statics3/3;EUnit=300;PropEr=4x100;coverage=100%module+total;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734654141
+Erlang 24 build	Check rebar3 Version	2026-11-01T03:08:59.2501691Z rebar 3.22.1 on Erlang/OTP 24 Erts 12.3.2.17
+Erlang 24 build	Run erlef/setup-beam@v1	2026-11-01T03:08:52.5183434Z ##[group]Installing Erlang/OTP OTP-24.3.4.17 - built on amd64/ubuntu-22.04
+Erlang 24 build	EUnit Tests	2026-11-01T03:09:37.1406421Z   All 300 tests passed.
+Erlang 24 build	PropEr Tests	2026-11-01T03:09:38.2145930Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T03:09:38.2185359Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T03:09:38.2246651Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T03:09:38.2285908Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	Test Coverage	2026-11-01T03:09:39.4423391Z   |               iso8601  |      100%  |
+Erlang 24 build	Test Coverage	2026-11-01T03:09:39.4424085Z   |                 total  |      100%  |
+Erlang 24 build	EUnit Tests	2026-11-01T03:09:36.3431838Z         iso8601_tests:122: parse_exact_fractional_unit_test_ (retains fractional hour seconds)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T03:09:36.3581762Z         iso8601_tests:143: parse_exact_fractional_unit_test_ (legacy explicit fractional seconds still truncate)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T03:09:36.3761844Z         iso8601_tests:177: final_second_normalization_test_ (immediately lower represented sum does not carry)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T03:09:36.5711149Z         iso8601_tests:459: calendar_arithmetic_floor_test_ (month index cannot wrap to year zero)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T03:09:36.6311783Z         iso8601_tests:555: calendar_arithmetic_floor_test_ (duration-end interval resolves backward from fractional endpoint)...ok
+Erlang 24 build	EUnit Tests	2026-11-01T03:09:36.5381180Z         iso8601_tests:396: format_fractional_carry_test_ (carries rounded fractional second into the next minute)...ok
+
+OTP25 SUCCESS;statics3/3;EUnit=300;PropEr=4x100;coverage=100%module+total;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734654070
+Erlang 25 build	Check rebar3 Version	2026-11-01T03:08:59.0663344Z rebar 3.22.1 on Erlang/OTP 25 Erts 13.2.2.16
+Erlang 25 build	Run erlef/setup-beam@v1	2026-11-01T03:08:52.7370396Z ##[group]Installing Erlang/OTP OTP-25.3.2.21 - built on amd64/ubuntu-22.04
+Erlang 25 build	EUnit Tests	2026-11-01T03:09:28.9008384Z   All 300 tests passed.
+Erlang 25 build	PropEr Tests	2026-11-01T03:09:29.9341206Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T03:09:29.9382197Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T03:09:29.9420070Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T03:09:29.9442176Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	Test Coverage	2026-11-01T03:09:30.9886044Z   |               iso8601  |      100%  |
+Erlang 25 build	Test Coverage	2026-11-01T03:09:30.9889225Z   |                 total  |      100%  |
+Erlang 25 build	EUnit Tests	2026-11-01T03:09:28.1022756Z         iso8601_tests:122: -parse_exact_fractional_unit_test_/0-fun-13- (retains fractional hour seconds)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T03:09:28.1172839Z         iso8601_tests:143: -parse_exact_fractional_unit_test_/0-fun-3- (legacy explicit fractional seconds still truncate)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T03:09:28.1353107Z         iso8601_tests:177: -final_second_normalization_test_/0-fun-3- (immediately lower represented sum does not carry)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T03:09:28.3302658Z         iso8601_tests:459: -calendar_arithmetic_floor_test_/0-fun-47- (month index cannot wrap to year zero)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T03:09:28.3902743Z         iso8601_tests:555: -calendar_arithmetic_floor_test_/0-fun-1- (duration-end interval resolves backward from fractional endpoint)...ok
+Erlang 25 build	EUnit Tests	2026-11-01T03:09:28.2972568Z         iso8601_tests:396: -format_fractional_carry_test_/0-fun-21- (carries rounded fractional second into the next minute)...ok
+
+OTP26 SUCCESS;statics3/3;EUnit=300;PropEr=4x100;coverage=100%module+total;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734654112
+Erlang 26 build	Check rebar3 Version	2026-11-01T03:08:58.2690813Z rebar 3.25.1 on Erlang/OTP 26 Erts 14.2.5.15
+Erlang 26 build	Run erlef/setup-beam@v1	2026-11-01T03:08:52.8600161Z ##[group]Installing Erlang/OTP OTP-26.2.5.21 - built on amd64/ubuntu-22.04
+Erlang 26 build	EUnit Tests	2026-11-01T03:09:24.5748569Z   All 300 tests passed.
+Erlang 26 build	PropEr Tests	2026-11-01T03:09:25.5963855Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T03:09:25.5994986Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T03:09:25.6027424Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T03:09:25.6049368Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	Test Coverage	2026-11-01T03:09:26.5018843Z   |               iso8601  |      100%  |
+Erlang 26 build	Test Coverage	2026-11-01T03:09:26.5020786Z   |                 total  |      100%  |
+Erlang 26 build	EUnit Tests	2026-11-01T03:09:23.7797700Z         iso8601_tests:122: -parse_exact_fractional_unit_test_/0-fun-13- (retains fractional hour seconds)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T03:09:23.7947202Z         iso8601_tests:143: -parse_exact_fractional_unit_test_/0-fun-3- (legacy explicit fractional seconds still truncate)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T03:09:23.8126468Z         iso8601_tests:177: -final_second_normalization_test_/0-fun-3- (immediately lower represented sum does not carry)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T03:09:24.0075792Z         iso8601_tests:459: -calendar_arithmetic_floor_test_/0-fun-47- (month index cannot wrap to year zero)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T03:09:24.0676088Z         iso8601_tests:555: -calendar_arithmetic_floor_test_/0-fun-1- (duration-end interval resolves backward from fractional endpoint)...ok
+Erlang 26 build	EUnit Tests	2026-11-01T03:09:23.9746179Z         iso8601_tests:396: -format_fractional_carry_test_/0-fun-21- (carries rounded fractional second into the next minute)...ok
+
+OTP27 SUCCESS;statics3/3;EUnit=300;PropEr=4x100;coverage=100%module+total;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734654064
+Erlang 27 build	Check rebar3 Version	2026-11-01T03:08:56.4962533Z rebar 3.25.1 on Erlang/OTP 27 Erts 15.2.7.14
+Erlang 27 build	Run erlef/setup-beam@v1	2026-11-01T03:08:51.3129599Z ##[group]Installing Erlang/OTP OTP-27.3.4.19 - built on amd64/ubuntu-22.04
+Erlang 27 build	EUnit Tests	2026-11-01T03:09:30.1311469Z   All 300 tests passed.
+Erlang 27 build	PropEr Tests	2026-11-01T03:09:30.9487597Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T03:09:30.9521829Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T03:09:30.9570513Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T03:09:30.9601164Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	Test Coverage	2026-11-01T03:09:31.7664638Z   |               iso8601  |      100%  |
+Erlang 27 build	Test Coverage	2026-11-01T03:09:31.7665534Z   |                 total  |      100%  |
+Erlang 27 build	EUnit Tests	2026-11-01T03:09:29.3363482Z         iso8601_tests:122: -parse_exact_fractional_unit_test_/0-fun-13- (retains fractional hour seconds)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T03:09:29.3514210Z         iso8601_tests:143: -parse_exact_fractional_unit_test_/0-fun-3- (legacy explicit fractional seconds still truncate)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T03:09:29.3693956Z         iso8601_tests:177: -final_second_normalization_test_/0-fun-3- (immediately lower represented sum does not carry)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T03:09:29.5643991Z         iso8601_tests:459: -calendar_arithmetic_floor_test_/0-fun-47- (month index cannot wrap to year zero)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T03:09:29.6244145Z         iso8601_tests:555: -calendar_arithmetic_floor_test_/0-fun-1- (duration-end interval resolves backward from fractional endpoint)...ok
+Erlang 27 build	EUnit Tests	2026-11-01T03:09:29.5313764Z         iso8601_tests:396: -format_fractional_carry_test_/0-fun-21- (carries rounded fractional second into the next minute)...ok
+
+OTP28 SUCCESS;statics3/3;EUnit=300;PropEr=4x100;coverage=100%module+total;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734654126
+Erlang 28 build	Check rebar3 Version	2026-11-01T03:08:56.8027109Z rebar 3.28.0 on Erlang/OTP 28 Erts 16.4.0.7
+Erlang 28 build	Run erlef/setup-beam@v1	2026-11-01T03:08:51.8553183Z ##[group]Installing Erlang/OTP OTP-28.5.0.8 - built on amd64/ubuntu-22.04
+Erlang 28 build	EUnit Tests	2026-11-01T03:09:24.8238427Z   All 300 tests passed.
+Erlang 28 build	PropEr Tests	2026-11-01T03:09:25.5530730Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T03:09:25.5552523Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T03:09:25.5575095Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T03:09:25.5590430Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	Test Coverage	2026-11-01T03:09:26.2227186Z   |               iso8601  |      100%  |
+Erlang 28 build	Test Coverage	2026-11-01T03:09:26.2228720Z   |                 total  |      100%  |
+Erlang 28 build	EUnit Tests	2026-11-01T03:09:24.0298303Z         iso8601_tests:122: -parse_exact_fractional_unit_test_/0-fun-13- (retains fractional hour seconds)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T03:09:24.0447958Z         iso8601_tests:143: -parse_exact_fractional_unit_test_/0-fun-3- (legacy explicit fractional seconds still truncate)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T03:09:24.0628007Z         iso8601_tests:177: -final_second_normalization_test_/0-fun-3- (immediately lower represented sum does not carry)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T03:09:24.2577691Z         iso8601_tests:459: -calendar_arithmetic_floor_test_/0-fun-47- (month index cannot wrap to year zero)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T03:09:24.3178349Z         iso8601_tests:555: -calendar_arithmetic_floor_test_/0-fun-1- (duration-end interval resolves backward from fractional endpoint)...ok
+Erlang 28 build	EUnit Tests	2026-11-01T03:09:24.2247848Z         iso8601_tests:396: -format_fractional_carry_test_/0-fun-21- (carries rounded fractional second into the next minute)...ok
+
+OTP29 SUCCESS;statics3/3;EUnit=300;PropEr=4x100;coverage=100%module+total;job https://github.com/erlsci/iso8601/actions/runs/41267969674/job/124734654057
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9469280Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T03:08:53.0916395Z ##[group]Installing Erlang/OTP OTP-29.1.2 - built on amd64/ubuntu-22.04
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:31.0576470Z   All 300 tests passed.
+Erlang 29 build	PropEr Tests	2026-11-01T03:09:31.8536729Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T03:09:31.8564837Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T03:09:31.8595228Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T03:09:31.8614662Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	Test Coverage	2026-11-01T03:09:32.4579247Z   |               iso8601  |      100%  |
+Erlang 29 build	Test Coverage	2026-11-01T03:09:32.4580713Z   |                 total  |      100%  |
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:30.2630057Z         iso8601_tests:122: -parse_exact_fractional_unit_test_/0-fun-13- (retains fractional hour seconds)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:30.2780157Z         iso8601_tests:143: -parse_exact_fractional_unit_test_/0-fun-3- (legacy explicit fractional seconds still truncate)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:30.2960334Z         iso8601_tests:177: -final_second_normalization_test_/0-fun-3- (immediately lower represented sum does not carry)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:30.4910224Z         iso8601_tests:459: -calendar_arithmetic_floor_test_/0-fun-47- (month index cannot wrap to year zero)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:30.5510359Z         iso8601_tests:555: -calendar_arithmetic_floor_test_/0-fun-1- (duration-end interval resolves backward from fractional endpoint)...ok
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:30.4580424Z         iso8601_tests:396: -format_fractional_carry_test_/0-fun-21- (carries rounded fractional second into the next minute)...ok
+
+Warnings:6 renderings,4 upstream sites. rebar3_proper_prv.erl84/166 deprecated catch; proper_statem.erl770 deprecated catch; proper_erlang_abstract_code.erl2138 overridden is_record/1. PropEr source diagnostics each appear twice (annotation plus source-rendered diagnostic). No first-party diagnostic observed; not a blanket dependency-warning-free claim. Retain under P02 tooling watch, no suppressions/dep changes.
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9377287Z     ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9377904Z     │
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9378282Z  84 │                           Res <- [catch check(Mod, Fun, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9379059Z     │                                   ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9393893Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9398598Z      ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9399130Z      │
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9402250Z  166 │                           Result <- [catch retry(M, F, Args, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9403726Z      │                                      ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:08:57.9405244Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.3253164Z ===> Fetching proper v1.5.0
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.4242305Z ===> Analyzing applications...
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.4936131Z ===> Compiling proper
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8244893Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_statem.erl:770:46: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8253421Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8321033Z      ┌─ _build/test/lib/proper/src/proper_statem.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8321736Z      │
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8322400Z  770 │      [spawn_link_cp(fun() -> Parent ! {self(),catch {ok,F(X)}} end) || X <- L].
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8323403Z      │                                               ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8324322Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8324971Z warnings in selected modules.
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8325356Z 
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:28.8325525Z 
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:29.4306717Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_erlang_abstract_code.erl:2138:29: Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:29.4309031Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:29.4328000Z       ┌─ _build/test/lib/proper/src/proper_erlang_abstract_code.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:29.4328429Z       │
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:29.4328787Z  2138 │          lists:all(fun(R) -> is_record(R) end, Term)
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:29.4329498Z       │                              ╰── Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T03:09:29.4330367Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash
+
+Checkout provenance: run headSha associates bd67. Modern jobs log synthetic PR merge e5e5069 into base3a1cdfd; container jobs fetch GITHUB_SHA. Source tree equivalence independently checked by parent before final close (receipt linked in CDC verification).
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T03:08:52.7017724Z HEAD is now at e5e5069 Merge bd67bd0d4306f9377bf617f802616b342fd9ee77 into 3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828
+Erlang 27 build	Run actions/checkout@v6	2026-11-01T03:08:50.9080106Z HEAD is now at e5e5069 Merge bd67bd0d4306f9377bf617f802616b342fd9ee77 into 3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828
+Erlang 25 build	Run actions/checkout@v6	2026-11-01T03:08:52.3886862Z HEAD is now at e5e5069 Merge bd67bd0d4306f9377bf617f802616b342fd9ee77 into 3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828
+Erlang 26 build	Run actions/checkout@v6	2026-11-01T03:08:52.5849365Z HEAD is now at e5e5069 Merge bd67bd0d4306f9377bf617f802616b342fd9ee77 into 3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828
+Erlang 28 build	Run actions/checkout@v6	2026-11-01T03:08:51.5767014Z HEAD is now at e5e5069 Merge bd67bd0d4306f9377bf617f802616b342fd9ee77 into 3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828
+Erlang 24 build	Run actions/checkout@v6	2026-11-01T03:08:52.1776313Z HEAD is now at e5e5069 Merge bd67bd0d4306f9377bf617f802616b342fd9ee77 into 3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828
+
+PASS: all10 actual job/step checks; all9 tested OTP populations300/4x100/100; warning contexts reviewed. Last job completion 2026-11-01T03:10:13Z
+
+CDC main integration JSON inspection: https://github.com/erlsci/iso8601/actions/runs/41268179012
+headSha e332032561142bff6c620cd1e7b4a5bfe9929b0b
+JSONsha256 4c5e933a6c552f084579a3654ad10c18d317a7bce214c6215684aaec0f0ca23b
+Independent assertions: exact unique20..29 all10completed/success;all3staticsuccess;only20testtrioskipped;21..29testtriosuccess. No redundant full main logs fetched or populations re-counted; prior full PR populations retain applicability under identical complete source tree.
+Parent GH API independently reports synthetic merge e5e50690975c48c963ff4f42b908e8d223af4ba4 parents3a1cdfd/bd67, tree72efe0dc781ed31cdac78872670465b92940da80; main e332032 same tree. CDC local git tree comparison follows in verification.

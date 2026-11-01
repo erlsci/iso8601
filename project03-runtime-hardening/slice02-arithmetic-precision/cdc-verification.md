@@ -1,6 +1,6 @@
 # Slice02 CDC independent verification
 
-Status — 2026-11-01 UTC: **local technical prereview reproduced; approved for parent publication and actual OTP20–29 CI. Hosted acceptance and final CDC close remain open.** CDC is GPT-6.1 Sol High; implementation/self-review is CC GPT-6 Luna High. Parent composition and Operator merge are separate gates.
+Status — 2026-11-01 UTC: **CDC technical acceptance reproduced for all nine slice rows at bd67bd0; all ten hosted jobs passed. PR#78 subsequently merged by Operator; parent integration/composition record follows separately.** CDC is GPT-6.1 Sol High; implementation/self-review is CC GPT-6 Luna High. Parent composition and Operator merge are separate gates.
 
 ## Candidate and independent evidence
 
@@ -43,7 +43,7 @@ Independent annotation-normalized EPP comparison confirms unchanged15 function e
 
 ## Row walk and publication boundary
 
-Nine opening rows remain nine rows. S02-01 is reproduced as recovered intake/readback before resumed repair, with the original violation retained; this is not a claim of initial ordering compliance. S02-02/03/04/05/06/07 are locally done/reproduced by the independent evidence above. S02-08 remains open until actual final-head ten-job hosted logs are inspected; S02-09 remains open for final CDC acceptance/retrospective. The four project finding rows remain open pending that hosted gate. Parent P03-14 and Operator P03-15 are not accepted by this record.
+At publication prereview, nine opening rows remained nine rows. S02-01 was reproduced as recovered intake/readback before resumed repair, with the original violation retained; this is not a claim of initial ordering compliance. S02-02/03/04/05/06/07 are locally done/reproduced by the independent evidence above. S02-08 remains open until actual final-head ten-job hosted logs are inspected; S02-09 remains open for final CDC acceptance/retrospective. The four project finding rows remain open pending that hosted gate. Parent P03-14 and Operator P03-15 are not accepted by this record.
 
 Scope as specified and delivered is the same four-finding numeric checkpoint. The private carry provenance, four missing literal formatter controls, two private type-argument corrections and removal of an inaccurate new private spec complete that contract; they do not authorize parser validation or annotation cleanup. All five permitted refinements are consumed. Any further material blocker needs an explicit disposition rather than an unrecorded sixth iteration. Source ownership is released to parent for independent16-control composition and the authorized separate PR/ten-job CI; CDC retains this planning subtree for final evidence and close. No additional source changes are proposed.
 
@@ -60,3 +60,31 @@ Prereview metadata correction: the initial9c49742 prose mistakenly carried the o
 Parent published reviewed bd67bd0 and created [PR#78](https://github.com/erlsci/iso8601/pull/78), with [ten-job run41267969674](https://github.com/erlsci/iso8601/actions/runs/41267969674) underway. Parent reports independent16-control composition and external-declaration comparisons pass; these are attributable parent results, not CDC reruns.
 
 The authorized parent push unexpectedly reported remote advancement e64c20f→bd67bd0. Shared remote-tracking reflog independently shows e64 at2026-10-31 21:35:57-0500 and bd67 at22:08:20, each “update by push”; the original e64 local commit was21:31:01. Thus an earlier local Git push occurred. Its issuing context/tool is not established. CC reports no explicit push/publication command in her recorded activity; CDC likewise has no recorded push. Both currently find no core.hooksPath override or non-sample common hooks; this does not prove historical configuration. The earlier command/output sufficient to rule out a wrapper is unavailable. Blanket historical no-publication assertions are therefore not independently certified. Preserve this observed discrepancy and unknown provenance without blaming a contributor or inventing a cause. The reviewed final head and its test evidence are unaffected. No further forensic investigation or source changes are authorized through this observation.
+
+## Final hosted acceptance and row disposition — 2026-11-01 UTC
+
+CDC independently inspected the complete parent-fetched803469-byte log (SHA256 `e29eb6b64c49fe508bc1355662371b1e8fb595a41c7ca7af41be9a32a5d013fa`) and [complete ten-job/run JSON](artifacts/hosted-run-41267969674.json), not only the run conclusion. [Bounded raw receipt](artifacts/cdc-hosted-validation.log) preserves identities, each job URL, observed versions, every gate population, selected actual semantic test results, warning context and full-log hash/location. A one-off grouped-log inspection asserted unique exact majors20–29, all completed/success, compile/xref/Dialyzer success for all10, and only OTP20's three test skips. EACH21–29 job has one300-EUnit summary, four100-case PropEr summaries and module+total100% coverage rows. Run41267969674 completed2026-11-01T03:10:13Z associated with headbd67bd0. OTP28.5.0.8/ERTS16.4.0.7 and29.1.2/ERTS17.1.1 use rebar3.28.0; actual older pins remain3.15.2/3.22.1/3.25.1. Local final fmt/lint are independent of hosted gates; CI does not add those providers.
+
+Six warning renderings on OTP29 represent four upstream source sites: rebar3_proper_prv.erl84/166 deprecated catch, proper_statem.erl770 deprecated catch and proper_erlang_abstract_code.erl2138 overridden is_record/1. The latter two each render twice. No first-party warning was observed in the inspected final native/hosted output. This is not a warning-free dependency claim. Retain existing P02 tooling watch; no suppression/dependency update or extra audit is inferred.
+
+| Row | Final CDC disposition | Independent evidence |
+|---|---|---|
+| S02-01 | done/reproduced, recovered intake only | Actual post-draft readback and bounded read receipts reviewed; initial ordering breach retained. No retroactive compliance claim. |
+| S02-02 | done/reproduced | Fresh bounded floor replay, exact year0 controls, baseline red/final300 tests and actual21–29 execution. |
+| S02-03 | done/reproduced | Fine/large-year/float-zero/duration/backward-bound literal tests,10 integration controls, fresh replay and hosted300. |
+| S02-04 | done/reproduced | All10 exact-unit matches plus independently reviewed legacy, nonpositive-year and no-carry controls; native/hosted tests. |
+| S02-05 | done/reproduced | Exact formatter binaries through non-midnight and proleptic boundaries, parse/interval integration, baseline red and native/hosted300. |
+| S02-06 | done/reproduced | Full three-path diff, unchanged15/11/14/15 public declarations,80→86 forms/12 changed/six new private helpers, README review, all147 current applicability observations and four raw-clock comparisons. |
+| S02-07 | done/reproduced | Fresh final eight native gates,300 EUnit,4×100 PropEr,100% coverage; exact logs/exits above. |
+| S02-08 | done/reproduced | Actual ten-job PR run with all step/population checks and retained OTP20 skips; JSON and independent raw receipt above. |
+| S02-09 | done/reproduced | This independent row walk, source/diff/artifact review and [CDC retrospective](cdc-retrospective.md); parent/human-scale acceptance not inherited from it. |
+
+Nine opening rows/nine final dispositions; no dropped, deferred or no-op slice criterion. The four numeric finding rows are technically accepted at this candidate. Three parser finding rows and whole-project/P02 obligations remain open. Scope-as-delivered matches the specified four-finding checkpoint; release version remains1.4.0. The artifact inventory above is completed by the hosted JSON/receipt and retrospective; no supporting verifier product or new future-slice tree was created. All issued prompts and historical/failed/invalidated receipts remain intact.
+
+The Operator then explicitly said “merged!”; parent verified PR#78 merged by oubiwann2026-11-01T03:11:41Z into maine332032561142bff6c620cd1e7b4a5bfe9929b0b. Final candidate source pins remain immutable. Parent owns the independent synthetic-merge/final-main tree verification, automatic integration-run observation and P03-14/15 disposition; this child record does not prefill those checks. No next parser increment or release starts from the merge decision. Technical source implementation is complete; all source/planning ownership will be released to parent at the attributable final planning commit.
+
+### Integrated tree and main-run receipt
+
+Parent's GitHub API check identifies actual PR synthetic merge `e5e50690975c48c963ff4f42b908e8d223af4ba4`, parents3a1cdfd/bd67, tree `72efe0dc781ed31cdac78872670465b92940da80`. CDC independently read locally fetched origin/main and candidate tree IDs: both that exact tree; `git diff --quiet bd67bd0 origin/main` exits0. Thus PR checkout/source candidate/integrated main have identical complete contents despite different commits. Native/runtime/PR population evidence retains applicability without relabelling source pins.
+
+CDC independently inspected [main push-run41268179012 JSON](artifacts/hosted-main-run-41268179012.json): exact heade332032, completed/success, unique majors20–29, all10 jobs and intended steps successful, only20's test trio skipped; last job2026-11-01T03:13:09Z. [Hosted receipt](artifacts/cdc-hosted-validation.log) records the JSON hash and assertion limits. No redundant full main log was fetched and no separate main300/property/coverage populations were counted; the full PR log populations retain applicability by exact tree equality. Parent owns the final composition/human project-row dispositions; merged/integrated status is now verified, while next parser/release decisions remain open.

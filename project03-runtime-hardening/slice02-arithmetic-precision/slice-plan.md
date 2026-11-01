@@ -1,6 +1,6 @@
 # Slice02 — arithmetic and precision
 
-Version1.6 — 2026-11-01 UTC. Status: refinement05 returned at bd67bd0; independent local prereview reproduced, approved for parent publication; hosted/final-close gates open.
+Version1.7 — 2026-11-01 UTC. Status: final bd67bd0 accepted by CDC with all8 native gates and actual ten-job CI; PR78 merged by Operator, parent final composition/integration record separately owned.
 
 ## Outcome, authority and sizing
 
@@ -74,3 +74,5 @@ CDC inspected full827-line current module, relevant parser/arithmetic/formatter/
 - v1.5 — 2026-11-01 UTC: parent actual-version type review found the added calendar-only private decimal spec excludes existing negative inputs. Minimal removal avoids expanding old annotation backlog; all earlier attempts and independent/hosted gates remain explicit.
 
 - v1.6 — 2026-11-01 UTC: CDC independently reproduced final all8 native gates,300-case baseline/candidate comparator,147 fresh-beam observations, public declarations and10 integration controls. [Prereview](cdc-verification.md) releases source to parent for actual ten-job CI; final acceptance/retrospective and parent/human gates remain open.
+
+- v1.7 — 2026-11-01 UTC: all9 child criteria done/reproduced after independent actual ten-job inspection; [final verification](cdc-verification.md) and [retrospective](cdc-retrospective.md) preserve five refinements/process/provenance limits. Operator merged PR78; parent owns final integration/composition/P03-14/15 record, no next increment or release inferred.
