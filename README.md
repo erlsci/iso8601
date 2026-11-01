@@ -58,7 +58,8 @@ Thanks to Github's forwarding for project renames and moves, the following still
 * **Calendar arithmetic** preserves the fractional part of a datetime's seconds
   while applying integer time shifts and durations. Month and year changes clamp
   to the last valid day of the target month; targets before year zero raise
-  `badarg`.
+  `badarg`. For compatibility, `add_time/4` also rejects nonzero adjustments
+  when the input year is zero.
 
 ## Usage [&#x219F;](#contents)
 
