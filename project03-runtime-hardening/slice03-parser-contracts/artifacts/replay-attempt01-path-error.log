@@ -1,0 +1,10 @@
+Attempt 01 (date-probes.escript) exit=127.
+escript: exception error: no match of right hand side value {error,bad_directory}
+  in function 'date-probes_escript__escript__1793__505109__738937__1131':main/1 (/private/tmp/iso8601-slice03-candidate-replay/date-probes.escript:5)
+  in call from escript:run/2 (escript.erl:906)
+  in call from escript:start/1 (escript.erl:420)
+  in call from init:start_it/1
+  in call from init:start_em/1
+  in call from init:do_boot/3
+
+The first temporary copy's path replacement accidentally prefixed the repo root to the /private/tmp beam path. The immutable original was not changed. A fresh temporary copy with only its BeamDir line changed was executed successfully in the retained replay-date-probes.log.
