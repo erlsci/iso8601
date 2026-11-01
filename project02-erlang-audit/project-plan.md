@@ -1,11 +1,11 @@
 # Project02 — Erlang audit
 
 - project: `project02-erlang-audit`
-- status: Arc01 reviewed; first Project03 interval repair merged; OTP28/29 CI PR#77 published with ten-job validation running; Arc02 audit and seven runtime repairs remain open
+- status: Arc01 reviewed; first Project03 interval repair and OTP28/29 CI PR#77 merged; main3a1cdfd passes all ten jobs; Arc02 audit and seven runtime repairs remain open
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
 - blocks: any claim of a complete current audit; does not block the separately authorized Project03 repairs of accepted Arc01 findings
 - related: `project01-v1.4-maintenance`; `project03-runtime-hardening`; iso8601 v1.4.0
-- version: 1.7 — 2026-10-31
+- version: 1.8 — 2026-10-31
 
 ## Outcome and boundaries
 
@@ -126,3 +126,23 @@ Reviewed refinement01 `845b1830b5acbfaed0909430e1ff011617a06817` corrects only t
 [Run41262288775](https://github.com/erlsci/iso8601/actions/runs/41262288775) again completed9success/1failure on exact845b183. OTP29 compile/xref/Dialyzer all pass, establishing the first fix. Its EUnit reports236passed/2failed: `parse("2017-02-30")` returns March2 and `parse_expanded("-0001-W01-1")` succeeds, contrary to existing rejection tests. OTP29 PropEr/coverage remain skipped after that failure. The two PropEr dependency compiler warnings are distinct from these actual test failures. Existing20–28 jobs still pass.
 
 The next bounded compatibility refinement must preserve the two established rejection contracts explicitly across releases, with real positive/negative controls, affected runtime-audit applicability and unchanged public API/older support. It must not skip/version-condition tests or opportunistically fix all seven remaining runtime findings. Any actual overlap with a finding must be identified honestly. Source mutation awaits a preserved CDC refinement; publication awaits its independent prereview and another full exact-head ten-job run.
+
+## Final CI technical checkpoint — 2026-11-01 UTC
+
+After independent prereview `d4c6a91`, parent published source `43a37409bbca41ea835faffb7a77cb7087aa1b8c`, tree `3224b1e0da9285ab67349aadc3b59ffa11bfe8ab`, to [PR#77](https://github.com/erlsci/iso8601/pull/77). The four-path diff contains the CI/guidance expansion, one private integer-spec correction, two parser-boundary rejection checks and their regressions/valid controls. Positive raw calendar dates are validated before offsets; negative week dates reject explicitly. Valid expanded negative calendar dates, year-zero week behavior, public declarations, old toolchain selections and100%coverage floor remain preserved. Invalid forms now raise deliberate `badarg`, replacing incidental older-calendar reasons; no other runtime finding is claimed repaired.
+
+[Run41263433752](https://github.com/erlsci/iso8601/actions/runs/41263433752) passed all ten jobs on exact43a3740, last job completed2026-11-01T02:02:32Z. Parent independently inspected complete job JSON and logs: exactly20–29; compile/xref/Dialyzer all successful; only20 skips its existing three test gates. Each21–29 executes249 EUnit,4×100 PropEr and100%module/total coverage. Actual new substrates: OTP28.5.0.8/ERTS16.4.0.7 and29.1.2/ERTS17.1.1, both rebar3.28.0. The earlier two9/10 failed runs remain preserved rather than replaced by the final pass.
+
+CC and CDC independently ran all eight native gates and all147 bounded local28 audit observations on the runtime change. The observations retain the seven open findings; the deliberate positive-invalid-date reason change and stack/launcher metadata are disclosed. These are local28 applicability results, not a claim every prior observation has identical behavior on29. Parent source composition, complete scope/commit review and actual ten-job inspection are recorded in the slice closing report. P02-06 is now done/reproduced after the separately attributable human merge and exact-tree integration checks below. The complete audit and all seven remaining repairs stay open. No next audit/repair arc or release starts automatically.
+
+### Remaining tooling watch
+
+OTP29 emits upstream compiler warnings in PropEr1.5.0 (`proper_statem.erl` catch deprecation and `proper_erlang_abstract_code.erl` is_record/1 auto-import clash) and rebar3_proper (`rebar3_proper_prv.erl` catch deprecation). Final jobs pass, but this is not a warning-free toolchain claim. No suppression or dependency upgrade was made. These specific upstream sites carry into the already-open Arc02 tooling/dependency review; first-party compilation and actual test outcomes are distinct evidence.
+
+- v1.8 — 2026-10-31: final CI head passes all ten hosted jobs after two evidence-led refinements; records actual versions/populations, preserved failures, upstream warning carryover, user merge and independently verified main integration. Original audit/project acceptance and seven runtime repairs remain open.
+
+## Operator merge and main integration — 2026-11-01 UTC
+
+The Operator stated: “all passing! I've merged the PR :-D”. GitHub confirms PR#77 merged by `oubiwann` at2026-11-01T02:06:02Z into main `3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828`. Its tree `3224b1e0da9285ab67349aadc3b59ffa11bfe8ab` is exactly the reviewed43a3740 tree. Parent fast-forwarded clean local main and independently verified that tree. Rebased commits `dfb1924`, `69ddc49`, `3a1cdfd` retain both adjacent coauthor trailers.
+
+Automatic [main push run41263775940](https://github.com/erlsci/iso8601/actions/runs/41263775940) also completed successfully on exact3a1cdfd, last job2026-11-01T02:07:26Z. Parent inspected all ten job records and native step outcomes, including only20's intentional test skips. The prior final-PR full-log/version/population evidence remains applicable to the identical tree; no extra native or full-log replay was needed for a rebase that preserved every file. This dispositions the CI increment's human merge/integration checkpoint and closes P02-06. It does not accept the remaining audit, seven runtime repairs or a release, and no later increment has started.

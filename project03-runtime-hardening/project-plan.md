@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: first interval checkpoint merged via PR#76 into main1d85d0a; seven remaining repairs held while Project02 OTP28/29 CI takes priority
+- status: first interval checkpoint and Project02 CI priority checkpoint merged; main3a1cdfd passes all ten OTP20–29 jobs; seven runtime repairs remain open
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.5 — 2026-10-31
+- version: 1.6 — 2026-10-31
 
 ## Outcome, authority and endpoint
 
@@ -60,3 +60,9 @@ Completion requires all nine finding rows independently verified, final applicab
 - v1.4 — 2026-10-31: source7e93c5d pushed and PR#76 opened/attached; watched automatic run41260496064 to8/8 successful OTP20–27 jobs and verified matching PR/run head plus actual test-step skips/successes. No additional source changes, merge, release or later-increment authority. Earlier local-only/pending-hosted-CI observations remain historical.
 
 - v1.5 — 2026-10-31: Operator merged PR#76 (main1d85d0a, reviewed tree unchanged) and selected Project02 OTP28/29 CI before remaining source changes. P03-11 closes; all seven later repairs and final project gates remain open, with no automatic runtime advancement.
+
+## CI checkpoint handoff — 2026-11-01 UTC
+
+Project02 [PR#77](https://github.com/erlsci/iso8601/pull/77) at43a3740 passes all ten OTP20–29 jobs after the necessary private-spec and two parser-boundary compatibility fixes. Its249 tests/property/coverage results and147 local28 applicability observations preserve the two accepted interval repairs while all seven remaining finding rows stay open. The Operator merged it into main3a1cdfd with the exact reviewed tree; all ten automatic main-push jobs passed too. This related priority checkpoint is complete. No arithmetic/precision or parser-contract repair increment starts automatically.
+
+- v1.6 — 2026-10-31: related CI checkpoint passed and merged with verified main integration; no next repair increment started. Current ledger notes for the already-merged first interval checkpoint are reconciled with P03-11.

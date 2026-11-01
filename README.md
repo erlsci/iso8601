@@ -6,11 +6,11 @@
 
 ## Project02 — Erlang audit
 
-[project02-erlang-audit/project-plan.md](project02-erlang-audit/project-plan.md) opens the current diagnosis-only audit after historical preservation. Arc01 runtime contracts are independently verified and Operator-reviewed. Arc03 OTP28/29 CI is published as [PR#77](https://github.com/erlsci/iso8601/pull/77), with OTP29 Dialyzer repaired and two newly reached rejection-contract failures under bounded compatibility repair and the human merge checkpoint pending; Arc02 diagnostic synthesis remains open. Historical acceptance remains open.
+[project02-erlang-audit/project-plan.md](project02-erlang-audit/project-plan.md) opens the current diagnosis-only audit after historical preservation. Arc01 runtime contracts are independently verified and Operator-reviewed. Arc03 OTP28/29 CI is merged through [PR#77](https://github.com/erlsci/iso8601/pull/77); all ten OTP20–29 jobs pass on both the reviewed PR and merged main3a1cdfd. Arc02 diagnostic synthesis remains open. Historical acceptance remains open.
 
 ## Project03 — runtime hardening
 
-[project03-runtime-hardening/project-plan.md](project03-runtime-hardening/project-plan.md) tracks the Operator-authorized repairs for all nine accepted runtime findings. The first interval inheritance checkpoint is merged via PR#76. Seven remaining findings are grouped into arithmetic/precision and parser contracts, held while Project02 OTP28/29 CI takes priority. Existing Sol High CDC / Luna High CC roles and the stop after every repair arc remain in force.
+[project03-runtime-hardening/project-plan.md](project03-runtime-hardening/project-plan.md) tracks the Operator-authorized repairs for all nine accepted runtime findings. The first interval inheritance checkpoint is merged via PR#76. Seven remaining findings are grouped into arithmetic/precision and parser contracts, still open after the completed Project02 OTP28/29 CI priority checkpoint. Existing Sol High CDC / Luna High CC roles and the stop after every repair arc remain in force.
 
 ## Migration checks and limits
 
