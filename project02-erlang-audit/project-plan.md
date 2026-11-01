@@ -1,17 +1,17 @@
 # Project02 — Erlang audit
 
 - project: `project02-erlang-audit`
-- status: Arc01 independently verified and Operator-reviewed; known runtime remediation proceeds in Project03; Arc02/Arc03 remain open roadmap work
+- status: Arc01 reviewed; first Project03 interval repair merged; OTP28/29 CI selected as the next active increment ahead of remaining runtime repairs; Arc02 audit still open
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
 - blocks: any claim of a complete current audit; does not block the separately authorized Project03 repairs of accepted Arc01 findings
 - related: `project01-v1.4-maintenance`; `project03-runtime-hardening`; iso8601 v1.4.0
-- version: 1.5 — 2026-10-31
+- version: 1.6 — 2026-10-31
 
 ## Outcome and boundaries
 
 Deliver an evidence-based diagnosis of all first-party Erlang and its public, test, build and compatibility contracts. Findings have stable IDs, severity, precise source locations, expected/observed public behavior, concrete fix directions and independent reproduction. Final project delivery includes an Erlang report, complete audit index, historical-claim reconciliation, and evidence-backed modernization synthesis. Arc01/02 remain diagnosis-only. A narrow later implementation exception for OTP28/29 CI additions and compatibility fixes necessary for them was directly requested by the Operator on2026-10-31; Arc03 owns it. That diagnosis-only boundary remains in this project; the later Operator decision recorded below authorizes runtime remedies separately in Project03. This project does not certify a release.
 
-The Operator authorized historical migration first, the standard orphan planning layout, then a new indexed project and Autonomous Mode for **ONE ARC ONLY**. Arc01 stops review-ready for human review and merge discussion. Arc02/03 cannot start before the Arc01 checkpoint and subsequent execution decision. A diagnosis-only arc may have no source diff; its useful delivery is committed planning evidence. Source fixes outside the narrow later OTP28/29 compatibility exception belong to the separately authorized Project03 hardening plan. The original Arc01 stop was reached and its review was subsequently dispositioned below; it did not automatically authorize Arc02/03 execution. No push, PR, merge, publication, release, issue creation or external messages are authorized.
+The Operator authorized historical migration first, the standard orphan planning layout, then a new indexed project and Autonomous Mode for **ONE ARC ONLY**. Arc01 stops review-ready for human review and merge discussion. Arc02/03 cannot start before the Arc01 checkpoint and subsequent execution decision. A diagnosis-only arc may have no source diff; its useful delivery is committed planning evidence. Source fixes outside the narrow later OTP28/29 compatibility exception belong to the separately authorized Project03 hardening plan. The original Arc01 stop was reached and its review was subsequently dispositioned below; it did not automatically authorize Arc02/03 execution. The initial diagnosis-only authority excluded publication. The later dated CI-priority decision below authorizes the necessary source branch push/PR and automatic hosted checks for that CI increment; its merge/release and other external actions still require their own Operator decision.
 
 ## Audit architecture and complete map
 
@@ -42,6 +42,16 @@ There are 16 tracked entries including the symlink. Erlang is audited including 
 Direct Operator steering: “we're going to need to bump CI to support OTP28 and29 (we might need to provide fixes for those additions, too ...)”. This authorizes planning the narrow Arc03 implementation exception; the current one-arc execution endpoint remains intact. Current `.github/workflows/ci.yml` still configures20–27; neither28 nor29 has been added or validated as a project matrix job. Runtime findings unrelated to the additions remain diagnosis-only.
 
 Parent read primary documentation on2026-10-31: official [OTP29 downloads](https://www.erlang.org/downloads/29) points to OTP-29.1.2 and official `erlang:29` Docker; [OTP28 downloads](https://www.erlang.org/downloads/28) points to OTP-28.5.0.8 and `erlang:28`. [setup-beam README](https://github.com/erlef/setup-beam/blob/main/README.md) lists Ubuntu22.04 with OTP24.2–29. [rebar3 compatibility table](https://github.com/erlang/rebar3) lists3.28.0 forOTP27–29 and3.25.1 forOTP26–28. These support candidate future substrates, not tested installs/pins/matrix passes. In particular, review the current >=26→3.25 selection before adding29. No binary was installed by this documentation check.
+
+## Selected next increment: OTP28/29 CI — 2026-10-31
+
+The Operator explicitly prioritized OTP28/29 expansion as the next work so future changes run on those releases, then confirmed PR#76 was already merged. GitHub main is now1d85d0a98a21750f83355a855dcc8fb4728758b4, with the exact reviewed first-repair source tree90b1466fabc482ef45debc846bcd0657db625153. This is the CI implementation baseline; original diagnosisbcfd94a evidence remains historical and is not overwritten.
+
+Execution order is now completed Arc01 diagnosis → **roadmap Arc03 CI compatibility next** → later audit/runtime work by their recorded gates. Stable numbering does not define dependency order. Preserve OTP20–27 and its OTP20 test exclusions; add28/29 with source-grounded toolchain pins, unchanged coverage floors and only fixes proved necessary for those additions. The implementation fits one coherent checkpoint; detail lives directly in `slice03-otp-compat/` under canonical one-slice collapse rather than a ceremonial arc wrapper. A dedicated source worktree/branch `codex/project02-otp-28-29` starts at main1d85d0a.
+
+Continue existing Autonomous Mode with CDC GPT-6.1 Sol High and fresh CC GPT-6 Luna High. CDC prepares/independently reviews; parent retains integrated accountability and publishes a separately reviewed CI PR to obtain the required actual ten-job OTP20–29 hosted run. The selected public PR workflow and CI request authorize that scoped source push/PR and its automatic validation; the orphan planning branch stays local. Stop at this single CI checkpoint for Operator review/merge. Do not resume Project03's seven runtime repairs, broaden the remaining diagnosis, merge the new CI PR or release automatically. Any necessary compatibility source fix must preserve API and reconcile affected accepted contracts at the changed pin.
+
+This direct priority decision supersedes the earlier roadmap-only/no-Arc03-execution statements; it does not mark P02-06 done. Project02 Arc02 and project acceptance remain open. Primary toolchain compatibility must be freshly verified and all ten hosted job outcomes inspected; documentation or local OTP28 alone cannot satisfy the CI criterion.
 
 ## Workflow, models and ownership
 
@@ -96,3 +106,5 @@ See sibling `ledger.md`. Project completion requires all three arcs, complete ma
 - v1.4 — 2026-10-31: Operator reviewed Arc01 findings after parent composition and explicitly authorized all nine repairs; handoff to separate Project03 supersedes the former pending-review/repair-authorization status. Remaining diagnostic and OTP28/29 CI obligations remain open, with no automatic next-audit-arc execution.
 
 - v1.5 — 2026-10-31: Project03 replay surfaced an inherited denominator error; parent confirmed 42 initial calendar observations (38 ordinary +4 bounded), retained 64 refined observations, and documented full-run applicability without altering original reports/probes.
+
+- v1.6 — 2026-10-31: direct Operator priority selected OTP28/29 CI as next increment before future source changes; PR#76 merge supplies exact main1d85d0a baseline. CI roadmap Arc03 is advanced ahead of later audit/runtime work, with scoped public PR/automatic ten-job validation and one-checkpoint merge stop; older roadmap-only execution status is superseded.

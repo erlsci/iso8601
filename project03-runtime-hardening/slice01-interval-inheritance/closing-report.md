@@ -1,12 +1,18 @@
 # Slice01 CC close — interval inheritance repair
 
+## Merge and next-work decision — 2026-10-31
+
+The Operator reported “I've already merged it :-D”. GitHub confirms PR#76 MERGED at `2026-11-01T01:21:18Z`, resulting main `1d85d0a98a21750f83355a855dcc8fb4728758b4`. This repository enables rebase merges only; the main commit IDs changed, while its full source tree is exactly the independently tested `90b1466fabc482ef45debc846bcd0657db625153` from candidate7e93c5d. Clean local main was synchronized after verifying its sole guidance commit was already patch-equivalent upstream; original commits remain on the existing audit/repair branches. **P03-11 is done by attributable Operator merge and continuation decision.**
+
+The Operator explicitly prioritized OTP28/29 CI for the next work, before future runtime changes. Project02's CI compatibility increment now takes priority; the seven remaining Project03 fixes stay open and held until that checkpoint. No new runtime increment or release is authorized. The prior unmerged/next-work-pending statements below describe earlier stages and are superseded by this dated decision.
+
 ## Public PR delivery and hosted CI result
 
 [PR #76](https://github.com/erlsci/iso8601/pull/76) is OPEN, ready for review, against `main`, at reviewed source `7e93c5d89cb8b14e7a2f5f7a0219201ee1bcfc38`. The source branch is pushed and attached to this chat. [CI run 41260496064](https://github.com/erlsci/iso8601/actions/runs/41260496064) completed with **8/8 jobs successful**, final job completion `2026-11-01T01:19:30Z` (2026-10-31 locally). A final API check confirmed matching PR/run head hashes, all job conclusions, every compile/xref/Dialyzer step successful, and EUnit/PropEr/coverage successful on OTP21–27. OTP20's three test/coverage steps are explicitly skipped by the existing workflow; they are not reported as passed. PR merge state is CLEAN; it remains unmerged.
 
 | Hosted job | Terminal result |
 |---|---|
-+| [Erlang 20 build (Debian container)](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580641) | success |
+| [Erlang 20 build (Debian container)](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580641) | success |
 | [Erlang 21 build (Debian container)](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580471) | success |
 | [Erlang 22 build (Debian container)](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580523) | success |
 | [Erlang 23 build (Debian container)](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580515) | success |
