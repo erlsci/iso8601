@@ -129,32 +129,33 @@ format_expanded({{Y, Mo, D}, {H, Mn, S}}) ->
     list_to_binary(IsoStr).
 
 -spec parse(iodata()) -> calendar:datetime().
-%% @doc Convert an ISO 8601 formatted string to a `{date(), time()}'
-parse(Bin) when is_binary(Bin) ->
-    parse(binary_to_list(Bin));
-parse(Str) ->
+%% @doc Convert ISO 8601 byte iodata to a `{date(), time()}' tuple.
+parse(Input) ->
+    Str = iodata_to_list(Input),
     {{Date, {H, M, S}}, Subsecond} = year(Str, [{parser_mode, legacy}], positive_only),
     {Date, {H, M, S + trunc(Subsecond)}}.
 
 -spec parse_exact(iodata()) -> calendar:datetime().
-%% @doc Convert an ISO 8601 formatted string to a `{date(), time()}'
-%% tuple with seconds precision to 3 decimal places
-parse_exact(Bin) when is_binary(Bin) ->
-    parse_exact(binary_to_list(Bin));
-parse_exact(Str) ->
+%% @doc Convert ISO 8601 byte iodata to a `{date(), time()}' tuple with
+%% fractional-second precision.
+parse_exact(Input) ->
+    Str = iodata_to_list(Input),
     {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [{parser_mode, exact}], positive_only),
     combine_fraction({Date, {H, M, S}}, SecondsDecimal).
 
 -spec parse_expanded(iodata()) -> expanded_datetime().
-%% @doc Parse an ISO 8601 string with expanded year representation,
+%% @doc Parse ISO 8601 byte iodata with expanded year representation,
 %% including negative (astronomical) years. Preserves fractional seconds.
 %% Negative years are supported in UTC (`Z') or offset-free form; combining
 %% a negative year with a non-zero UTC offset or a week-date raises `badarg'.
-parse_expanded(Bin) when is_binary(Bin) ->
-    parse_expanded(binary_to_list(Bin));
-parse_expanded(Str) ->
+parse_expanded(Input) ->
+    Str = iodata_to_list(Input),
     {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [{parser_mode, exact}], allow_neg),
     combine_fraction({Date, {H, M, S}}, SecondsDecimal).
+
+-spec iodata_to_list(iodata()) -> [byte()].
+iodata_to_list(Input) ->
+    binary_to_list(iolist_to_binary(Input)).
 
 -spec gi(string()) -> integer().
 %% @doc Get the integer part of a string, or 0 for an empty capture.
@@ -205,10 +206,10 @@ apply_duration(Datetime, Duration) ->
     apply_duration_plist(Datetime, parse_duration(Duration), forward).
 
 -spec parse_interval(iodata()) -> interval().
-%% @doc Parse an ISO 8601 time interval string into its structured form.
-parse_interval(Bin) when is_binary(Bin) ->
-    parse_interval(binary_to_list(Bin));
-parse_interval(Str) ->
+%% @doc Parse ISO 8601 byte iodata containing a time interval into its
+%% structured form.
+parse_interval(Input) ->
+    Str = iodata_to_list(Input),
     case split_interval(Str) of
         {Left, Right} ->
             classify_interval(Left, Right);
@@ -477,9 +478,9 @@ make_date(Plist) ->
     make_date(Year, ?V(month, Plist, 1), ?V(week, Plist), Plist).
 
 -spec make_date(
-    non_neg_integer(),
-    undefined_or(pos_integer()),
-    undefined_or(pos_integer()),
+    integer(),
+    undefined_or(integer()),
+    undefined_or(integer()),
     parser_accumulator()
 ) ->
     {calendar:date(), non_neg_integer()}.
@@ -489,16 +490,53 @@ make_date(Plist) ->
 %% format is used (i.e., `Week' is undefined, `Month' is not), the offset will
 %% be zero.
 make_date(Year, Month, undefined, Plist) ->
-    Date = {Year, Month, ?V(month_day, Plist, 1)},
-    (Year =< 0 orelse calendar:valid_date(Date)) orelse error(badarg),
+    Day = ?V(month_day, Plist, 1),
+    valid_proleptic_date(Year, Month, Day) orelse error(badarg),
+    Date = {Year, Month, Day},
     {Date, 0};
 make_date(Year, _, Week, _) when Year < 0, Week =/= undefined ->
     error(badarg);
 make_date(Year, _, Week, Plist) ->
     Weekday = ?V(week_day, Plist, 1),
+    valid_week_date(Year, Week, Weekday) orelse error(badarg),
     % week/weekday offset in hours
     OffsetH = ((Week - 1) * 7 + (Weekday - 1)) * 24,
     {date_at_w01_1(Year), OffsetH}.
+
+-spec valid_proleptic_date(integer(), integer(), integer()) -> boolean().
+valid_proleptic_date(Year, Month, Day) when
+    Month >= 1,
+    Month =< 12,
+    Day >= 1
+->
+    Day =< lists:nth(Month, days_in_months_for_year(Year));
+valid_proleptic_date(_, _, _) ->
+    false.
+
+-spec valid_week_date(integer(), integer(), integer()) -> boolean().
+valid_week_date(Year, Week, Weekday) when
+    Year >= 0,
+    Week >= 1,
+    Weekday >= 1,
+    Weekday =< 7
+->
+    Week =< weeks_in_year(Year);
+valid_week_date(_, _, _) ->
+    false.
+
+-spec weeks_in_year(non_neg_integer()) -> 52 | 53.
+weeks_in_year(Year) ->
+    case calendar:day_of_the_week({Year, 1, 1}) of
+        4 ->
+            53;
+        3 ->
+            case is_leap_year(Year) of
+                true -> 53;
+                false -> 52
+            end;
+        _ ->
+            52
+    end.
 
 -spec date_at_w01_1(pos_integer()) -> calendar:date().
 %% @doc Calculate the `calendar:date()' at ISO week 1, day 1 in the supplied
