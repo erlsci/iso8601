@@ -1,0 +1,8 @@
+source_base_commit 163d4837f7a69a061821cc0d32dfc304e4ad5178
+source_sha256 6912aeb1c995ba948cd8c5d8ba6368b13d46dab00b1600050708785fcc519b04  /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic/src/iso8601.erl
+test_sha256 d2899469ae88b663a23663aed1ef4939e6458127493606e0f1519ae936d56bec  /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic/test/iso8601_tests.erl
+command: rebar3 as dev fmt --check
+Checking formatting...
+All matched files use erlfmt code style!
+
+exit_code 0

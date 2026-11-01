@@ -1,0 +1,3 @@
+Initial exact-reconstruction script stopped before compilation with `AssertionError`: its second pattern did not include the three preceding make_date/4 type parameters, so the expected snippet count was zero.
+
+No source or production check was performed by that attempt. The source edit remains exactly the two intended annotation substitutions; the corrected reconstruction includes the full make_date/4 signature context and is recorded separately.

@@ -1,0 +1,8 @@
+source_base_commit 163d4837f7a69a061821cc0d32dfc304e4ad5178
+base_sha256 d08a82d1bba9b320049194baae099d6cc557071449ddb6b731d6f0f501e440de  /private/tmp/iso8601-s02-r04-proof/base/iso8601.erl
+candidate_sha256 6912aeb1c995ba948cd8c5d8ba6368b13d46dab00b1600050708785fcc519b04  /private/tmp/iso8601-s02-r04-proof/candidate/iso8601.erl
+exact_replacements make_date/1 accumulator datetime_plist() -> parser_accumulator(); make_date/4 fourth argument datetime_plist() -> parser_accumulator()
+reconstruction cmp: identical
+baseline_disassembled_functions_sha256 116ABE248E87FECCF3E3E8BD006FD4D09B4AC4A6A6F0DA24F387B9BD73A00F28
+candidate_disassembled_functions_sha256 116ABE248E87FECCF3E3E8BD006FD4D09B4AC4A6A6F0DA24F387B9BD73A00F28
+disassembled_functions_equal true
