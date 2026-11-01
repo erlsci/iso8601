@@ -8,7 +8,7 @@ here; edit this file rather than maintaining a second set of instructions.
 iso8601 is a small Erlang library for ISO 8601 date formatting, parsing,
 durations, and intervals. Production code lives in `src/iso8601.erl`; the OTP
 application depends only on `kernel` and `stdlib`. Read `src/iso8601.app.src`
-for the current version (1.4.0 at this revision) and `README.md` for usage.
+for the current version and `README.md` for usage.
 
 Public functions are `format/1`, `parse/1`, `parse_exact/1`, `add_time/4`,
 `subtract_time/4`, `add_days/2`, `add_months/2`, `add_years/2`,
