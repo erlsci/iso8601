@@ -436,7 +436,6 @@ is_leap_year(Year) ->
         _ -> Year rem 4 =:= 0
     end.
 
--spec add_decimal(calendar:datetime(), parser_accumulator()) -> {calendar:datetime(), float()}.
 add_decimal(Datetime, Plist) ->
     HDecimal = ?V(hour_decimal, Plist, 0.0),
     MDecimal = ?V(minute_decimal, Plist, 0.0),
