@@ -1,6 +1,6 @@
 # Slice02 — arithmetic and precision
 
-Version1.4 — 2026-11-01 UTC. Status: refinement04 active for two private parser annotations; no acceptance claimed.
+Version1.5 — 2026-11-01 UTC. Status: final refinement05 active for new private-spec removal; no acceptance claimed.
 
 ## Outcome, authority and sizing
 
@@ -65,6 +65,10 @@ CDC inspected full827-line current module, relevant parser/arithmetic/formatter/
 
 - v1.3 — 2026-11-01 UTC: stable d3 runtime review supports narrow final test/comment/record refinement before independent reproduction. Exact non-midnight/year0 controls close a promised coverage gap; missing raw warning evidence must be recovered or candidly disclosed.
 
-- `cc-prompt-iteration04.md` — issued2026-11-01 UTC, predecessor iteration03; CURRENT ACTIVE. Exactly two private make_date parser-accumulator argument annotations complete the original recipe without widening public duration; fresh compiler/static/style evidence and executable-equivalence retention. Four refinements/max5.
+- `cc-prompt-iteration04.md` — issued2026-11-01 UTC, predecessor iteration03; returned at source7926049/planningd7a51dd, superseded by refinement05. Exactly two private make_date parser-accumulator argument annotations complete the original recipe without widening public duration; fresh compiler/static/style evidence and executable-equivalence retention. Four refinements/max5.
 
 - v1.4 — 2026-11-01 UTC: late source-call/spec review exposed incomplete private type propagation from the new mode tag. Parent/CDC chose two-annotation correction now; public contract and runtime remain unchanged, and the author/review miss remains explicit.
+
+- `cc-prompt-iteration05.md` — issued2026-11-01 UTC, predecessor iteration04; CURRENT ACTIVE. Remove only the new add_decimal spec that incorrectly excludes supported negative expanded dates; executable behavior/public contracts unchanged, fresh static/style and equality proof. Fifth/max5: any further material blocker must return for explicit decision rather than reset budget.
+
+- v1.5 — 2026-11-01 UTC: parent actual-version type review found the added calendar-only private decimal spec excludes existing negative inputs. Minimal removal avoids expanding old annotation backlog; all earlier attempts and independent/hosted gates remain explicit.
