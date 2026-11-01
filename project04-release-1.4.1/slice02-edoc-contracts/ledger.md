@@ -1,0 +1,13 @@
+# Slice02 ledger
+
+| ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
+|---|---|---|---|---|---|---|---|
+| S02-01 | Complete bounded intake/readback receives explicit CDC pre-edit clearance. | Read receipts/currentsource/contract readback and pristine diff at clearance. | correctness-grade | Operator EDoc pass | open | | No inherited acceptance. |
+| S02-02 | Exact three-path delta preserves all90 runtime forms,15exports,11typeexports,16type definitions; exactly five public specs corrected. | Normalized EPP AST comparison, exact spec delta, committed trailers and source diff. | correctness-grade | Operator EDoc pass | open | | No inherited acceptance. |
+| S02-03 | Module overview, all15public function descriptions/examples and all11exportedtype descriptions accurately state actual contracts. | Full source/prose review plus actual docs_v1 public-entry coverage and rendered content. | correctness-grade | Operator EDoc pass | open | | No inherited acceptance. |
+| S02-04 | Actual EDoc examples execute and reject bad expectations/malformed blocks in ordinary EUnit/CI. | Red missing-example baseline; parsed15export coverage, same-runner negative controls and fresh-bindings execution. | correctness-grade | Operator EDoc pass | open | | No inherited acceptance. |
+| S02-05 | README covers all15APIs with accurate deterministic teaching and repaired badge/backlink rendering. | Literal newly added example assertions; actual HTML all5badge img/link/alt and headings/anchors/teaching. | correctness-grade | Operator EDoc pass | open | | No inherited acceptance. |
+| S02-06 | Final eight native gates pass with100%runtimecoverage and explicit actual documentation-test population. | Sequential compile/xref/Dialyzer/EUnit/PropEr/cover/fmt/lint command logs. | correctness-grade | Operator EDoc pass | open | | No inherited acceptance. |
+| S02-07 | Current package AND docs archive plus fresh real-rebar archive consumer are correct. | Actual archives/version/inventory/appsemantic/docs coverage/links; freshconsumercompile/load1.4.1/path/literals. | correctness-grade | Operator EDoc pass | open | | No inherited acceptance. |
+| S02-08 | Actual final-tree PR80 matrix succeeds on all10configured majors20–29. | Parent publication and independent raw job/step/population/synthetic-tree review;20staticonly retained. | correctness-grade | Operator EDoc pass | open | | No inherited acceptance. |
+| S02-09 | Independent CDC all-row close, retrospective and bubble-up account for every scope item. | Actual source/examples/native/package/consumer/hosted reproduction and nine-row walk; parent/human distinct. | correctness-grade | Operator EDoc pass | open | | No inherited acceptance. |
