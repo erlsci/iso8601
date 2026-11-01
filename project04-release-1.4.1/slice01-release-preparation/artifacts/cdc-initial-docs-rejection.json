@@ -1,0 +1,39 @@
+{
+  "source_commit": "d999c8d132e8f7669cc18bb023bb87122b1b20ab",
+  "source_tree": "136685ed2ba00ccae9d786fa1998031bbc391133",
+  "initial_docs_sha256": "4f664d461a3f290e6e83bee9dc4a12acda0f34533ddbc0be8ab94b974c419d51",
+  "members": [
+    ".build",
+    ".build.epub",
+    "404.html",
+    "api-reference.html",
+    "dist/html-Y2MUTVIN.js",
+    "dist/html-erlang-KCHZLXSC.css",
+    "dist/lato-latin-400-normal-W7754I4D.woff2",
+    "dist/lato-latin-700-normal-2XVSBPG4.woff2",
+    "dist/lato-latin-ext-400-normal-N27NCBWW.woff2",
+    "dist/lato-latin-ext-700-normal-Q2L5DVMW.woff2",
+    "dist/remixicon-ZWU5GQ4X.woff2",
+    "dist/search_data-055EF39E.js",
+    "dist/sidebar_items-C3E55ADD.js",
+    "index.html",
+    "iso8601.epub",
+    "iso8601.html",
+    "readme.html",
+    "search.html"
+  ],
+  "missing_readme_fragment_targets": [
+    "about-",
+    "contents",
+    "known-deficiencies-",
+    "license-",
+    "new-in-14-",
+    "usage-"
+  ],
+  "local_image_reference": "priv/images/logo.png",
+  "local_link_reference": "priv/images/logo-large.png",
+  "both_absent": true,
+  "verdict": "S01-05 not accepted; real initial docs defect despite successful command/both archives. New discovered release-artifact correction, not missing original three edits.",
+  "new_contract_primary_source": "https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#custom-anchors",
+  "parent_concurrence": "Two raw main-logo URLs plus six explicit a[name] anchors; no map syntax or copying assets. Runtime/teaching unchanged."
+}
