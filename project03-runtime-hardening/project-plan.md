@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: first interval checkpoint independently verified; Operator authorized GitHub PR delivery; merge/continuation pending; seven remaining repairs held
+- status: PR #76 open with eight OTP20–27 CI jobs passed at7e93c5d; merge/continuation pending; seven remaining repairs held
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.3 — 2026-10-31
+- version: 1.4 — 2026-10-31
 
 ## Outcome, authority and endpoint
 
@@ -17,7 +17,7 @@ Project02 remains incomplete: its Arc02 tests/escript/tooling/type/historical/sy
 
 ## PR delivery authorization — 2026-10-31
 
-After reviewing the first checkpoint, the Operator said: “Since this is a publicly consumed project, let's do a PR”. This authorizes pushing the reviewed source candidate `7e93c5d89cb8b14e7a2f5f7a0219201ee1bcfc38` on `codex/project03-arc01-intervals` to GitHub origin and opening a reviewable PR against `main`, including its automatic CI runs and monitoring their terminal result. GitHub main was refreshed and verified at `c594869`; there is no base drift. Consequently the PR also contains the previously authorized guidance cleanup `bcfd94a`, not yet published upstream. Source API/behavior/test evidence remains applicable at the exact reviewed tree. The orphan planning branch stays local. No merge, release, or next increment is inferred. Record the actual PR URL and hosted CI outcome in the existing closing report and gate notes.
+After reviewing the first checkpoint, the Operator said: “Since this is a publicly consumed project, let's do a PR”. This authorizes pushing the reviewed source candidate `7e93c5d89cb8b14e7a2f5f7a0219201ee1bcfc38` on `codex/project03-arc01-intervals` to GitHub origin and opening a reviewable PR against `main`, including its automatic CI runs and monitoring their terminal result. GitHub main was refreshed and verified at `c594869`; there is no base drift. Consequently the PR also contains the previously authorized guidance cleanup `bcfd94a`, not yet published upstream. Source API/behavior/test evidence remains applicable at the exact reviewed tree. The orphan planning branch stays local. No merge, release, or next increment is inferred. Delivery completed: [PR #76](https://github.com/erlsci/iso8601/pull/76), against main, head7e93c5d. [Hosted CI run41260496064](https://github.com/erlsci/iso8601/actions/runs/41260496064) completed successfully in all8 OTP20–27 jobs; OTP20 test/coverage steps remain intentionally skipped, OTP21–27 execute them. Exact job URLs, steps, head identity and inspection commands are in the slice closing report. Source required no further correction. Merge/continuation is still pending.
 
 ## Full remediation roadmap
 
@@ -52,3 +52,5 @@ Completion requires all nine finding rows independently verified, final applicab
 - v1.2 — 2026-10-31: parent independently reviewed the accepted slice and composed the interval repair with19 exact controls, actual formatter composition, final238 EUnit and unchanged15/11 export/type sets. P03-10 closes; P03-11 and all seven later repairs/project gates remain open. Prior pending-parent status is superseded; no merge or next increment is inferred.
 
 - v1.3 — 2026-10-31: direct Operator request authorized publishing the reviewed source branch as a GitHub PR against main and following hosted CI; refreshed basec594869 means previously authorized guidance cleanup is included. Parent composition is already accepted; merge/continuation and later repairs remain pending.
+
+- v1.4 — 2026-10-31: source7e93c5d pushed and PR#76 opened/attached; watched automatic run41260496064 to8/8 successful OTP20–27 jobs and verified matching PR/run head plus actual test-step skips/successes. No additional source changes, merge, release or later-increment authority. Earlier local-only/pending-hosted-CI observations remain historical.

@@ -1,5 +1,22 @@
 # Slice01 CC close — interval inheritance repair
 
+## Public PR delivery and hosted CI result
+
+[PR #76](https://github.com/erlsci/iso8601/pull/76) is OPEN, ready for review, against `main`, at reviewed source `7e93c5d89cb8b14e7a2f5f7a0219201ee1bcfc38`. The source branch is pushed and attached to this chat. [CI run 41260496064](https://github.com/erlsci/iso8601/actions/runs/41260496064) completed with **8/8 jobs successful**, final job completion `2026-11-01T01:19:30Z` (2026-10-31 locally). A final API check confirmed matching PR/run head hashes, all job conclusions, every compile/xref/Dialyzer step successful, and EUnit/PropEr/coverage successful on OTP21–27. OTP20's three test/coverage steps are explicitly skipped by the existing workflow; they are not reported as passed. PR merge state is CLEAN; it remains unmerged.
+
+| Hosted job | Terminal result |
+|---|---|
++| [Erlang 20 build (Debian container)](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580641) | success |
+| [Erlang 21 build (Debian container)](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580471) | success |
+| [Erlang 22 build (Debian container)](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580523) | success |
+| [Erlang 23 build (Debian container)](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580515) | success |
+| [Erlang 24 build](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580552) | success |
+| [Erlang 25 build](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580336) | success |
+| [Erlang 26 build](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580511) | success |
+| [Erlang 27 build](https://github.com/erlsci/iso8601/actions/runs/41260496064/job/124712580477) | success |
+
+Evidence was inspected with `gh run view 41260496064 --repo erlsci/iso8601 --json databaseId,url,status,conclusion,headSha,event,jobs` and `gh pr view 76 --repo erlsci/iso8601 --json url,title,state,isDraft,baseRefName,headRefOid,mergeStateStatus,files`, both exit0, after `gh run watch ... --exit-status --interval 30` exited0. This supersedes the initially queued CI observation recorded later in the chronological history. Local OTP28 evidence remains additional; OTP28/29 CI expansion and R15B03 proof remain pending. No source correction was required for this run. Seven runtime repairs, human merge/continuation and project completion remain open; the orphan planning branch stays local.
+
 **Current checkpoint: independently verified at source `7e93c5d`; Operator review/merge remains open.** Earlier CC and CDC stages are preserved below; the final parent composition entry supplies the current integrated review verdict.
 
 Date: 2026-10-31. CC disposition: **proposed complete for implementation and evidence; CDC verification, parent composition, and Operator checkpoint remain open.**
@@ -74,3 +91,9 @@ Parent separately called `format_expanded({{2007,2,15},{0,0,0}})`, appended `/03
 Parent used `epp:parse_file/3` to compare sorted `export` and `export_type` attributes against main `bcfd94a`: all15 function name/arity pairs and11 exported type pairs are exactly equal. Actual diff contains only module/test/README paths; `git diff --check bcfd94a` passed. All three reachable source commits have contiguous required coauthors. Project01 is unchanged since `213bfc7`; both original Project02 audit-slice subtrees are unchanged since `cfbf539`. The later count corrections do not alter those original payloads.
 
 CDC independently reproduced the eight native gates, final affected EUnit238/100%cover/fmt/lint, actual formatter-focused baseline failure and all147 original observations (31+10+42+64). Parent checked the corresponding disposition and retained-versus-fresh boundaries rather than relabeling CDC commands as its own. Only CAL003/CAL004 are repaired; CAL001/CAL002/DATE001–005 remain applicable and open. Coverage/read-timing/failed-attempt qualifications in the CDC review and retrospective remain binding. This evidence establishes a local OTP28 candidate, with OTP20–27/R15B03/hosted CI and requested OTP28/29 CI work still unverified or pending as specified in Project02. No next repair increment, push, merge, PR or release occurred.
+
+## Requested public pull request — 2026-10-31
+
+The Operator explicitly requested a PR for this publicly consumed library. Source candidate `7e93c5d89cb8b14e7a2f5f7a0219201ee1bcfc38` was pushed to GitHub origin as `codex/project03-arc01-intervals`; [PR #76 — Fix expanded-year and timezone inheritance in intervals](https://github.com/erlsci/iso8601/pull/76) is open, ready for review, against `main`. The PR is attached to this Codex chat. Remote base was refreshed at `c594869`; the public diff consequently includes the earlier authorized `AGENTS.md`/`CLAUDE.md` guidance cleanup as well as module/tests/README changes. There is no base drift and no source payload change from the independently accepted candidate.
+
+Creation triggered [GitHub CI run 41260496064](https://github.com/erlsci/iso8601/actions/runs/41260496064), eight OTP20–27 jobs, initially all queued. This is an observed initial state, not a CI pass; append the terminal result below after monitoring. The configured OTP20 tier omits EUnit/PropEr/coverage, as already documented. OTP28/29 CI expansion remains a separate Project02 obligation. The planning branch stays local. P03-11 merge/continuation is still open; opening this PR does not merge, release or authorize the next increment.
