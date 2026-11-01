@@ -1,0 +1,23 @@
+======================== EUnit ========================
+iso8601_tests: interval_formatter_produced_signed_year_inheritance_test...*failed*
+in function iso8601_tests:interval_formatter_produced_signed_year_inheritance_test/0 (test/iso8601_tests.erl, line 983)
+in call from eunit_test:'-mf_wrapper/2-fun-0-'/2 (eunit_test.erl, line 285)
+in call from eunit_test:run_testfun/1 (eunit_test.erl, line 83)
+in call from eunit_proc:run_test/1 (eunit_proc.erl, line 554)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 379)
+in call from eunit_proc:handle_test/2 (eunit_proc.erl, line 537)
+in call from eunit_proc:tests_inorder/3 (eunit_proc.erl, line 479)
+in call from eunit_proc:with_timeout/3 (eunit_proc.erl, line 369)
+**error:{assertEqual,[{module,iso8601_tests},
+              {line,983},
+              {expression,"Interval"},
+              {expected,{interval,start_end,
+                                  {{2007,2,15},{0,0,0}},
+                                  {{2007,3,14},{0,0,0}}}},
+              {value,{interval,start_end,
+                               {{2007,2,15},{0,0,0}},
+                               {{200,3,14},{0,0,0}}}}]}
+  output:<<"">>
+
+=======================================================
+  Failed: 1.  Skipped: 0.  Passed: 0.
