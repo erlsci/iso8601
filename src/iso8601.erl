@@ -526,7 +526,7 @@ apply_days_offset(Datetime, AD) ->
     DaysTotal = calendar:date_to_gregorian_days({Y, M, D}) + AD,
     {calendar:gregorian_days_to_date(DaysTotal), {H, MM, S}}.
 
--spec apply_years_offset(datetime(), number()) -> datetime().
+-spec apply_years_offset(datetime(), integer()) -> datetime().
 %% @doc Add the specified years to `Datetime'.
 apply_years_offset(Datetime, AY) ->
     {{Y, M, D}, {H, MM, S}} = Datetime,
