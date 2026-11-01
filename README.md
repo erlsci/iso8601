@@ -6,7 +6,11 @@
 
 ## Project02 — Erlang audit
 
-[project02-erlang-audit/project-plan.md](project02-erlang-audit/project-plan.md) opens the current diagnosis-only audit after historical preservation. Autonomous execution is authorized for Arc01 runtime contracts only; stop for Operator review before any next arc. Historical acceptance remains open.
+[project02-erlang-audit/project-plan.md](project02-erlang-audit/project-plan.md) opens the current diagnosis-only audit after historical preservation. Arc01 runtime contracts are independently verified and Operator-reviewed. Arc02 diagnostic synthesis and Arc03 OTP28/29 CI work remain open and unexecuted. Historical acceptance remains open.
+
+## Project03 — runtime hardening
+
+[project03-runtime-hardening/project-plan.md](project03-runtime-hardening/project-plan.md) tracks the Operator-authorized repairs for all nine accepted runtime findings. Start with interval inheritance correctness, then arithmetic/precision and parser contracts. Existing Sol High CDC / Luna High CC roles and the stop after every repair arc remain in force.
 
 ## Migration checks and limits
 

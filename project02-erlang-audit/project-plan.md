@@ -1,17 +1,17 @@
 # Project02 — Erlang audit
 
 - project: `project02-erlang-audit`
-- status: Arc01 review-ready after slice acceptance; independent composition/Operator gate pending; Arc02/Arc03 roadmap only
+- status: Arc01 independently verified and Operator-reviewed; known runtime remediation proceeds in Project03; Arc02/Arc03 remain open roadmap work
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
-- blocks: any claim of a complete current audit or a later hardening plan
-- related: `project01-v1.4-maintenance`; iso8601 v1.4.0
-- version: 1.3 — 2026-10-31
+- blocks: any claim of a complete current audit; does not block the separately authorized Project03 repairs of accepted Arc01 findings
+- related: `project01-v1.4-maintenance`; `project03-runtime-hardening`; iso8601 v1.4.0
+- version: 1.4 — 2026-10-31
 
 ## Outcome and boundaries
 
-Deliver an evidence-based diagnosis of all first-party Erlang and its public, test, build and compatibility contracts. Findings have stable IDs, severity, precise source locations, expected/observed public behavior, concrete fix directions and independent reproduction. Final project delivery includes an Erlang report, complete audit index, historical-claim reconciliation, and evidence-backed modernization synthesis. Arc01/02 remain diagnosis-only. A narrow later implementation exception for OTP28/29 CI additions and compatibility fixes necessary for them was directly requested by the Operator on2026-10-31; Arc03 owns it. Other runtime remedies still require a later authorized hardening decision. This project does not certify a release.
+Deliver an evidence-based diagnosis of all first-party Erlang and its public, test, build and compatibility contracts. Findings have stable IDs, severity, precise source locations, expected/observed public behavior, concrete fix directions and independent reproduction. Final project delivery includes an Erlang report, complete audit index, historical-claim reconciliation, and evidence-backed modernization synthesis. Arc01/02 remain diagnosis-only. A narrow later implementation exception for OTP28/29 CI additions and compatibility fixes necessary for them was directly requested by the Operator on2026-10-31; Arc03 owns it. That diagnosis-only boundary remains in this project; the later Operator decision recorded below authorizes runtime remedies separately in Project03. This project does not certify a release.
 
-The Operator authorized historical migration first, the standard orphan planning layout, then a new indexed project and Autonomous Mode for **ONE ARC ONLY**. Arc01 stops review-ready for human review and merge discussion. Arc02/03 cannot start before the Arc01 checkpoint and subsequent execution decision. A diagnosis-only arc may have no source diff; its useful delivery is committed planning evidence. Source fixes outside the narrow later OTP28/29 compatibility exception need a later authorized hardening plan. No push, PR, merge, publication, release, issue creation or external messages are authorized.
+The Operator authorized historical migration first, the standard orphan planning layout, then a new indexed project and Autonomous Mode for **ONE ARC ONLY**. Arc01 stops review-ready for human review and merge discussion. Arc02/03 cannot start before the Arc01 checkpoint and subsequent execution decision. A diagnosis-only arc may have no source diff; its useful delivery is committed planning evidence. Source fixes outside the narrow later OTP28/29 compatibility exception belong to the separately authorized Project03 hardening plan. The original Arc01 stop was reached and its review was subsequently dispositioned below; it did not automatically authorize Arc02/03 execution. No push, PR, merge, publication, release, issue creation or external messages are authorized.
 
 ## Audit architecture and complete map
 
@@ -65,7 +65,13 @@ Arc02 owns public-type/tooling reconciliation, including `parse_exact/1` src129 
 
 Slice02 explicitly leaves the reduced-precision zoned-start contract question uncleared for Arc02 public-contract/test reconciliation: `parse_interval("2007-12-14T13:30+02:00/15:30:00")` raisesbadarg before inheritance, while fullseconds succeeds (source299–387). Current README/tests do not separately promise this form; observed rejection is not a confirmed defect or standards conclusion. Arc02 must disposition that evidence rather than silently clear it. Zero-duration bareP serialization, by contrast, was reviewed against historical omission/always-P design and is not counted as a defect.
 
-Arc01 now has9 stable findings (3High/5Medium/1Low) at unchangedbcfd94a; both slices independently accepted, exact15-export/74-form helper map assembled. This is runtime-only delivery; independent parent composition and Operator decision remain open. The v1.2 CI exception superseded the original all-project repair prohibition only for later OTP28/29 compatibility, without extending current execution.
+Arc01 now has9 stable findings (3High/5Medium/1Low) at unchangedbcfd94a; both slices independently accepted, exact15-export/74-form helper map assembled. This is runtime-only delivery. The earlier v1.3 statement that parent composition and Operator decision were pending is superseded: parent composition was independently reproduced at `cfbf539`; the Operator reviewed the findings and chose remediation first as recorded below. The v1.2 CI exception superseded the original all-project repair prohibition only for later OTP28/29 compatibility, without extending current execution.
+
+## Operator review and hardening handoff — 2026-10-31
+
+After the independent parent composition at `cfbf539`, the Operator stated: “I've looked at the findings — I want us to fix them all :-D” and asked how to start. This dispositions Arc01's human checkpoint: the runtime diagnosis is reviewed, and all nine accepted findings are authorized for repair. There is no audit source diff to merge; this decision does not perform or authorize a source merge, push or release.
+
+[Project03 — runtime hardening](../project03-runtime-hardening/project-plan.md) consumes the two accepted Arc01 reports at source `bcfd94a`. It starts with the two High interval corruption findings, followed by arithmetic/precision and parser contracts, using the existing Sol High CDC / Luna High CC arrangement and stopping after each repair arc for human review. This is a bounded handoff from accepted runtime findings, not a claim that the entire diagnostic audit is complete. Arc02's remaining test/tooling/public-spec/historical-claim audit and Arc03's requested OTP28/29 CI work stay open here; neither has begun. Any changed-source audit applicability must distinguish the original `bcfd94a` observations from later regression evidence.
 
 ## Definition of done
 
@@ -80,3 +86,5 @@ See sibling `ledger.md`. Project completion requires all three arcs, complete ma
 - v1.2 — 2026-10-31: direct Operator request added roadmap Arc03 for OTP28/29 CI and only necessary compatibility fixes, preserving existing support and the current Arc01 stop gate. Parent primary-document provenance retained above; no current configuration change.
 
 - v1.3 — 2026-10-31: Arc01/Slice02 close surfaced the explicit reduced-precision-zone contract obligation, retained zero-duration intent disposition and runtime delivery status. No new execution or repair scope; parent/human gates stay open.
+
+- v1.4 — 2026-10-31: Operator reviewed Arc01 findings after parent composition and explicitly authorized all nine repairs; handoff to separate Project03 supersedes the former pending-review/repair-authorization status. Remaining diagnostic and OTP28/29 CI obligations remain open, with no automatic next-audit-arc execution.

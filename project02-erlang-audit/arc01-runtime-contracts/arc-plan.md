@@ -1,6 +1,6 @@
 # Arc01 — runtime contracts
 
-Version1.3 — 2026-10-31. Status: both slices and independent composition accepted; Operator review/merge/next-arc gate pending. Stop here. Priorv1.2 status had both composition and Operator pending; the parent gate below resolves only composition.
+Version1.4 — 2026-10-31. Status: both slices and independent composition accepted; Operator reviewed findings and authorized separate Project03 remediation. Priorv1.3 left the human gate pending; the dated review below supersedes that status. Arc02/03 audit execution remains held.
 
 ## Capability
 
@@ -17,7 +17,7 @@ Together these slices cover every public runtime entrypoint and production helpe
 
 Governing project plan supplies complete audit map, explicit models/authority, artifact-home override and source checkout. Each slice needs concrete boundary/positive/negative probes through public APIs, actual output/expected output, severity reasoning, limitations and at least five concrete clean checks. Follow all17 Erlang chapters while applying old-OTP/EDoc/public-type exceptions from AGENTS. No style modernization is a repair assignment.
 
-CDC independently inspects reports/source and reruns claimed observations; no summary-only acceptance. CC completion is proposed-done. Every slice closes with its ledger walk, bubble-up, CDC verification and retrospective. CDC then assembles a runtime index and arc close in the final slice artifacts/arc root; parent independently reproduces composition over all15 functions and report links. Operator review/merge remains open and Arc02/03 are held. Any unavailable native gates remain explicitly blocked/unrun with re-entry conditions; fresh local probes cannot imply an OTP matrix pass.
+CDC independently inspects reports/source and reruns claimed observations; no summary-only acceptance. CC completion is proposed-done. Every slice closes with its ledger walk, bubble-up, CDC verification and retrospective. CDC then assembles a runtime index and arc close in the final slice artifacts/arc root; parent independently reproduces composition over all15 functions and report links. The original stop for Operator review was honored; the dated review below dispositions it, while Arc02/03 execution stays held. Any unavailable native gates remain explicitly blocked/unrun with re-entry conditions; fresh local probes cannot imply an OTP matrix pass.
 
 ## Current status and carryover
 
@@ -32,3 +32,5 @@ Slice01 independently accepted after2 refinements: DATE001–005 (4Medium,1Low).
 - v1.2 — 2026-10-31: Slice02 close completed runtime/helper diagnosis, corrected semanticgi ownership and surfaced an explicit reduced-precision-zone contract carryover. Both slices accepted; parent composition/human gate remain pending, current scope unchanged.
 
 - v1.3 — 2026-10-31: parent independently reviewed assembly1f77e98, reproduced all four probe transcripts with a fresh source beam, passed15/15 separate positive controls and verified complete export/helper/source scope. A01-03 is done/reproduced; humanA01-05 remains open. Scope/source/next-arc authority unchanged.
+
+- v1.4 — 2026-10-31: Operator reviewed the findings after the parent composition gate and authorized all nine repairs. Human A01-05 is dispositioned: no audit source diff to merge; continue with Project03 remediation, preserving separate unexecuted Arc02/03 audit and CI scope.
