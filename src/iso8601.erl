@@ -568,7 +568,7 @@ apply_years_offset(Datetime, AY) ->
     find_last_valid_date({{TargetYear, M, D}, {H, MM, S}}).
 
 -spec find_last_valid_date(datetime()) -> datetime().
-%% @doc Decrease days until found valid date'.
+%% @doc Clamp the day to the last valid day of the target month.
 find_last_valid_date(Datetime) ->
     {{Y, M, D}, {H, MM, S}} = Datetime,
     (Y >= 0 andalso M >= 1 andalso M =< 12 andalso D > 0) orelse error(badarg),

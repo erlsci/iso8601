@@ -392,6 +392,26 @@ format_fractional_carry_test_() ->
                 <<"2017-01-01T00:00:00.000000Z">>,
                 iso8601:format({{2016, 12, 31}, {23, 59, 59.9999999}})
             )},
+        {"carries rounded fractional second into the next minute",
+            ?_assertEqual(
+                <<"2017-04-30T12:35:00.000000Z">>,
+                iso8601:format({{2017, 4, 30}, {12, 34, 59.9999999}})
+            )},
+        {"carries rounded fractional second into the next hour",
+            ?_assertEqual(
+                <<"2017-04-30T13:00:00.000000Z">>,
+                iso8601:format({{2017, 4, 30}, {12, 59, 59.9999999}})
+            )},
+        {"carries rounded fractional second into the next month",
+            ?_assertEqual(
+                <<"2017-05-01T00:00:00.000000Z">>,
+                iso8601:format({{2017, 4, 30}, {23, 59, 59.9999999}})
+            )},
+        {"carries expanded year zero into year one",
+            ?_assertEqual(
+                <<"+0001-01-01T00:00:00.000000Z">>,
+                iso8601:format_expanded({{0, 12, 31}, {23, 59, 59.9999999}})
+            )},
         {"carries leap day in expanded formatter",
             ?_assertEqual(
                 <<"-0004-02-29T00:00:00.000000Z">>,
