@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: active final parser checkpoint at integratede332032; prior interval/numeric/CI checkpoints merged; three parser finding rows and final-project gates remain open
+- status: all nine finding criteria technically repaired; final parser checkpoint independently accepted after ten-job PR79CI and Operator merge10a182; parent composition/integration and whole-project gates remain separate
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.11 — 2026-11-01 UTC
+- version: 1.12 — 2026-11-01 UTC
 
 ## Outcome, authority and endpoint
 
@@ -106,3 +106,11 @@ Operator: “let's dive into the next arc!” CDC/parent concurred on one direct
 New P03-16 composition and P03-17 human review/merge/next-work rows apply to this checkpoint. P03-12/13 final-project gates remain open even after all nine findings are technically repaired. This does not automatically close the remediation project, complete wider P02 audit/type/tooling work or open eventual1.4.1 release preparation. Previous checkpoint originals/retrospectives and unknown earlier remote-draft provenance remain preserved, with no new forensic inquiry.
 
 - v1.11 — 2026-11-01 UTC: direct next-arc authorization opens coherent Slice03 for the last three parser findings; source-grounded four-boundary design, explicit pre-edit intake stop and separate third-checkpoint/project/release gates recorded before CC dispatch.
+
+## Parser checkpoint technical acceptance — 2026-11-01 UTC
+
+[Slice03 independent verification](slice03-parser-contracts/cdc-verification.md) accepts DATE001/DATE002/DATE004 at22b92d1/tree643ed335: raw date/week validation and FOUR byte-iodata boundaries, all16 baseline type declarations/15 public specs/15exports/11exportedtypes unchanged. Independent eight native gates pass430EUnit/4×100PropEr/100%coverage; current430tests fail88 against unchanged e332 (85 target-behavior failures plus3 outside-contract invalid-interval reason changes). CC's earlier421-test87/334 red remains true at its own pin. All147 immutable observations were freshly replayed with current nine-finding applicability; six prior repairs retain their expected results. Actual PR79run41271243883 passes ten OTP20–29 jobs,20staticonly and21–29each430/4×100/100. Upstream dependency warnings and wider P02 type/tooling/audit obligations remain open. The [retrospective](slice03-parser-contracts/cdc-retrospective.md) retains intake/oracle/citation/provider-interruption chronology without a model or methodology effectiveness claim.
+
+The Operator explicitly said “merged!”; parent verifies PR79 merged by oubiwann04:01:43Z into main10a182be1bf4f5cd532592558e87789b83edb96f. Parent owns final exact-tree/mainCI/independent composition and P03-16/17 records. P03-07/08/09 are technically done/reproduced; all nine finding criteria now have repair evidence. Whole-projectP03-12/13 remain OPEN even after the child findings and human merge: project-scale synthesis/acceptance is a distinct later decision. No automatic next work or release preparation; sourceversion1.4.0 and separate future1.4.1 preparation boundary remain.
+
+- v1.12 — 2026-11-01 UTC: the final three parser finding criteria close after independent native/hosted validation; attributable human merge acknowledged while parent final composition/integration and whole-project gates stay separately owned.

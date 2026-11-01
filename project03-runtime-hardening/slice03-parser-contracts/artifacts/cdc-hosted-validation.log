@@ -1,0 +1,120 @@
+Bounded actual raw-log excerpts: runtime pins, each test/property/coverage population and warning contexts. Full1,013,049-byte raw fetched log remains in parent scratch; its SHA256 is recorded in cdc-hosted-receipt.json.
+Erlang 20 build (Debian container)	Initialize containers	2026-11-01T03:59:02.4272590Z OTP_VERSION=20.3.8.26
+Erlang 20 build (Debian container)	Check rebar3 Version	2026-11-01T03:59:05.5836494Z rebar 3.15.2 on Erlang/OTP 20 Erts 9.3.3.15
+Erlang 21 build (Debian container)	Initialize containers	2026-11-01T03:59:00.9513947Z OTP_VERSION=21.3.8.24
+Erlang 21 build (Debian container)	Check rebar3 Version	2026-11-01T03:59:03.4731774Z rebar 3.15.2 on Erlang/OTP 21 Erts 10.3.5.19
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T04:00:00.6408182Z   All 430 tests passed.
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T04:00:01.4363696Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T04:00:01.4400524Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T04:00:01.4541995Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T04:00:01.4636508Z [01;32mOK: Passed 100 test(s).
+Erlang 21 build (Debian container)	Test Coverage	2026-11-01T04:00:02.3041932Z   |               iso8601  |      100%  |
+Erlang 21 build (Debian container)	Test Coverage	2026-11-01T04:00:02.3042665Z   |                 total  |      100%  |
+Erlang 22 build (Debian container)	Initialize containers	2026-11-01T03:59:00.3094487Z OTP_VERSION=22.3.4.27
+Erlang 22 build (Debian container)	Check rebar3 Version	2026-11-01T03:59:02.1460565Z rebar 3.15.2 on Erlang/OTP 22 Erts 10.7.2.19
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T03:59:54.5910613Z   All 430 tests passed.
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T03:59:55.8808217Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T03:59:55.8811079Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T03:59:55.8878332Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T03:59:55.8947181Z [01;32mOK: Passed 100 test(s).
+Erlang 22 build (Debian container)	Test Coverage	2026-11-01T03:59:56.9709165Z   |               iso8601  |      100%  |
+Erlang 22 build (Debian container)	Test Coverage	2026-11-01T03:59:56.9710343Z   |                 total  |      100%  |
+Erlang 23 build (Debian container)	Initialize containers	2026-11-01T03:59:14.7035233Z OTP_VERSION=23.3.4.20
+Erlang 23 build (Debian container)	Check rebar3 Version	2026-11-01T03:59:17.3346460Z rebar 3.15.2 on Erlang/OTP 23 Erts 11.2.2.18
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T03:59:59.6827937Z   All 430 tests passed.
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T04:00:00.6773997Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T04:00:00.6775761Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T04:00:00.6808986Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T04:00:00.6842591Z [01;32mOK: Passed 100 test(s).
+Erlang 23 build (Debian container)	Test Coverage	2026-11-01T04:00:01.5922815Z   |               iso8601  |      100%  |
+Erlang 23 build (Debian container)	Test Coverage	2026-11-01T04:00:01.5923383Z   |                 total  |      100%  |
+Erlang 24 build	Run erlef/setup-beam@v1	2026-11-01T03:58:48.7563302Z ##[group]Installing Erlang/OTP OTP-24.3.4.17 - built on amd64/ubuntu-22.04
+Erlang 24 build	Run erlef/setup-beam@v1	2026-11-01T03:58:53.9644413Z rebar 3.22.1 on Erlang/OTP 24 Erts 12.3.2.17
+Erlang 24 build	Check rebar3 Version	2026-11-01T03:58:55.3380388Z rebar 3.22.1 on Erlang/OTP 24 Erts 12.3.2.17
+Erlang 24 build	EUnit Tests	2026-11-01T03:59:34.5421995Z   All 430 tests passed.
+Erlang 24 build	PropEr Tests	2026-11-01T03:59:35.9038472Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T03:59:35.9079470Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T03:59:35.9127477Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T03:59:35.9150471Z [01;32mOK: Passed 100 test(s).
+Erlang 24 build	Test Coverage	2026-11-01T03:59:36.9786863Z   |               iso8601  |      100%  |
+Erlang 24 build	Test Coverage	2026-11-01T03:59:36.9787843Z   |                 total  |      100%  |
+Erlang 25 build	Run erlef/setup-beam@v1	2026-11-01T03:58:49.4142042Z ##[group]Installing Erlang/OTP OTP-25.3.2.21 - built on amd64/ubuntu-22.04
+Erlang 25 build	Run erlef/setup-beam@v1	2026-11-01T03:58:54.4247862Z rebar 3.22.1 on Erlang/OTP 25 Erts 13.2.2.16
+Erlang 25 build	Check rebar3 Version	2026-11-01T03:58:56.0132982Z rebar 3.22.1 on Erlang/OTP 25 Erts 13.2.2.16
+Erlang 25 build	EUnit Tests	2026-11-01T03:59:30.1146948Z   All 430 tests passed.
+Erlang 25 build	PropEr Tests	2026-11-01T03:59:31.4025270Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T03:59:31.4080924Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T03:59:31.4137726Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T03:59:31.4175464Z [01;32mOK: Passed 100 test(s).
+Erlang 25 build	Test Coverage	2026-11-01T03:59:32.6930329Z   |               iso8601  |      100%  |
+Erlang 25 build	Test Coverage	2026-11-01T03:59:32.6932313Z   |                 total  |      100%  |
+Erlang 26 build	Run erlef/setup-beam@v1	2026-11-01T03:58:48.0873833Z ##[group]Installing Erlang/OTP OTP-26.2.5.21 - built on amd64/ubuntu-22.04
+Erlang 26 build	Run erlef/setup-beam@v1	2026-11-01T03:58:52.8715484Z rebar 3.25.1 on Erlang/OTP 26 Erts 14.2.5.15
+Erlang 26 build	Check rebar3 Version	2026-11-01T03:58:54.2384453Z rebar 3.25.1 on Erlang/OTP 26 Erts 14.2.5.15
+Erlang 26 build	EUnit Tests	2026-11-01T03:59:28.8632633Z   All 430 tests passed.
+Erlang 26 build	PropEr Tests	2026-11-01T03:59:30.0920000Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T03:59:30.0977704Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T03:59:30.1023610Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T03:59:30.1058335Z [01;32mOK: Passed 100 test(s).
+Erlang 26 build	Test Coverage	2026-11-01T03:59:31.3437579Z   |               iso8601  |      100%  |
+Erlang 26 build	Test Coverage	2026-11-01T03:59:31.3438336Z   |                 total  |      100%  |
+Erlang 27 build	Run erlef/setup-beam@v1	2026-11-01T03:58:47.4956666Z ##[group]Installing Erlang/OTP OTP-27.3.4.19 - built on amd64/ubuntu-22.04
+Erlang 27 build	Run erlef/setup-beam@v1	2026-11-01T03:58:51.7891424Z rebar 3.25.1 on Erlang/OTP 27 Erts 15.2.7.14
+Erlang 27 build	Check rebar3 Version	2026-11-01T03:58:52.7798567Z rebar 3.25.1 on Erlang/OTP 27 Erts 15.2.7.14
+Erlang 27 build	EUnit Tests	2026-11-01T03:59:28.1551371Z   All 430 tests passed.
+Erlang 27 build	PropEr Tests	2026-11-01T03:59:28.9593629Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T03:59:28.9637844Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T03:59:28.9687332Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T03:59:28.9716884Z [01;32mOK: Passed 100 test(s).
+Erlang 27 build	Test Coverage	2026-11-01T03:59:29.7545489Z   |               iso8601  |      100%  |
+Erlang 27 build	Test Coverage	2026-11-01T03:59:29.7546876Z   |                 total  |      100%  |
+Erlang 28 build	Run erlef/setup-beam@v1	2026-11-01T03:58:59.2845360Z ##[group]Installing Erlang/OTP OTP-28.5.0.8 - built on amd64/ubuntu-22.04
+Erlang 28 build	Run erlef/setup-beam@v1	2026-11-01T03:59:03.6186459Z rebar 3.28.0 on Erlang/OTP 28 Erts 16.4.0.7
+Erlang 28 build	Check rebar3 Version	2026-11-01T03:59:04.6768716Z rebar 3.28.0 on Erlang/OTP 28 Erts 16.4.0.7
+Erlang 28 build	EUnit Tests	2026-11-01T03:59:42.3104427Z   All 430 tests passed.
+Erlang 28 build	PropEr Tests	2026-11-01T03:59:43.0822416Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T03:59:43.0861593Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T03:59:43.0909633Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T03:59:43.0943052Z [01;32mOK: Passed 100 test(s).
+Erlang 28 build	Test Coverage	2026-11-01T03:59:43.9088515Z   |               iso8601  |      100%  |
+Erlang 28 build	Test Coverage	2026-11-01T03:59:43.9089751Z   |                 total  |      100%  |
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T03:58:47.0169526Z ##[group]Installing Erlang/OTP OTP-29.1.2 - built on amd64/ubuntu-22.04
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T03:58:52.3836643Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2147806Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:25.6116861Z   All 430 tests passed.
+Erlang 29 build	PropEr Tests	2026-11-01T03:59:26.2142798Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T03:59:26.2168538Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T03:59:26.2193232Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T03:59:26.2211517Z [01;32mOK: Passed 100 test(s).
+Erlang 29 build	Test Coverage	2026-11-01T03:59:26.8022223Z   |               iso8601  |      100%  |
+Erlang 29 build	Test Coverage	2026-11-01T03:59:26.8022923Z   |                 total  |      100%  |
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2069821Z     ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2070526Z     │
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2070900Z  84 │                           Res <- [catch check(Mod, Fun, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2071566Z     │                                   ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2072210Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2073237Z      ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2073672Z      │
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2074023Z  166 │                           Result <- [catch retry(M, F, Args, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2074760Z      │                                      ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T03:58:53.2075926Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.4771084Z ===> Fetching proper v1.5.0
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.5352608Z ===> Analyzing applications...
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.6021627Z ===> Compiling proper
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9028765Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_statem.erl:770:46: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9037392Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9158053Z      ┌─ _build/test/lib/proper/src/proper_statem.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9187563Z      │
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9188314Z  770 │      [spawn_link_cp(fun() -> Parent ! {self(),catch {ok,F(X)}} end) || X <- L].
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9214571Z      │                                               ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9216698Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9217527Z warnings in selected modules.
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9218121Z 
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:22.9218337Z 
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:23.5126291Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_erlang_abstract_code.erl:2138:29: Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:23.5128536Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:23.5145272Z       ┌─ _build/test/lib/proper/src/proper_erlang_abstract_code.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:23.5145731Z       │
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:23.5146087Z  2138 │          lists:all(fun(R) -> is_record(R) end, Term)
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:23.5146747Z       │                              ╰── Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T03:59:23.5147588Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash

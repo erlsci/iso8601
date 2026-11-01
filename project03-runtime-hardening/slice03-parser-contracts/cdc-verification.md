@@ -1,6 +1,6 @@
 # Slice03 independent CDC verification
 
-Version1.0 — 2026-11-01 UTC. Publication prereview; hosted and final close remain open. Reviewer: actual GPT-6.1 Sol High, independent of actual GPT-6 Luna High implementer.
+Version1.1 — 2026-11-01 UTC. Technical acceptance after actual hosted validation; chronological publication prereview retained below. Reviewer: actual GPT-6.1 Sol High, independent of actual GPT-6 Luna High implementer.
 
 ## Candidate and decision
 
@@ -30,3 +30,13 @@ CDC freshly compiled the candidate to a separate beam and reran unchanged origin
 | S03-08 | open | Final hosted review, final row walk and CDC retrospective remain to complete. |
 
 Scope matches the original three-finding checkpoint. Source mutation ownership now returns to parent for publication; no further local source changes are needed. CDC retains the child/P03 records until hosted close, then returns them for parent composition. P03-07/08/09 remain open until native AND hosted technical acceptance. ParentP03-16, Operator17 and whole-project12/13 remain distinct/open. No release, merge or subsequent increment is accepted by this local prereview; future1.4.1 preparation and wider P02 audit/type/tooling obligations remain unstarted/open as applicable.
+
+## Final hosted technical acceptance — 2026-11-01 UTC
+
+The publication prereview above remains the local decision at06b2446; this section supersedes its hosted/final-close pending states. Parent published exact22b92d1 in [PR79](https://github.com/erlsci/iso8601/pull/79). [Run41271243883](https://github.com/erlsci/iso8601/actions/runs/41271243883) completed all10jobs successful, last04:00:05Z. CDC independently parsed the complete parent-fetched raw run JSON and full1,013,049-byte log, checked each job/step conclusion and actual per-major output populations. [All-ten-job JSON](artifacts/hosted-run-41271243883.json), [independent receipt](artifacts/cdc-hosted-receipt.json), and [bounded actual excerpts](artifacts/cdc-hosted-validation.log) retain the proof and full-log SHA. Exact majors20..29, compile/xref/Dialyzer success all10; only20 skips the existing EUnit/PropEr/cover trio; EACH21..29 has430 EUnit, four100-case properties and100% module/total coverage. Actual28.5.0.8/ERTS16.4.0.7 and29.1.2/17.1.1 use rebar3.28.0; other actual patches/pins are in the receipt. This is actual matrix proof rather than local extrapolation.
+
+The workflow checks out synthetic PR commit85875ece261296a7744310595021dc2710e17166, not literally the feature commit. Parent-fetched GitHub API JSON inspected by CDC gives parents[e332032,22b92d1] and the exact reviewed tree643ed335. This explicitly connects hosted checkout to the reviewed whole source tree; no claim that run.headSha alone proves checkout bytes. Six Warning renderings refer to four upstream dependency sites: rebar3_proper_prv.erl84/166, proper_statem.erl770 and proper_erlang_abstract_code.erl2138. No first-party warning observed. Green jobs do not clear that P02 tooling watch, the parse_exact public return-spec mismatch, reduced-precision zoned START or wider audit scope.
+
+Final eight-row disposition: S03-01..06 retain their reproduced local evidence above; S03-07 is done/reproduced by the exact actual ten-job receipt; S03-08 is done/reproduced by this independent complete review/row walk and [CDC retrospective](cdc-retrospective.md). All8 rows are accounted for, no deferred/no-op row and no weakening of the original100% gate. DATE001/DATE002/DATE004 meet their assigned repair criteria; all nine stable IDs now have technical repair evidence on this candidate, with the six prior fixes retained by fresh147 and source-composed controls. No unexpected replay difference or additional repair is claimed.
+
+The Operator subsequently said “merged!”; parent reports PR79 merged by oubiwann at04:01:43Z into main10a182be1bf4f5cd532592558e87789b83edb96f. This is an attributable human decision, not CDC granting merge. Parent owns independent checkpoint composition and exact integrated-tree/main-CI confirmation/P03-16/17 records. Whole-projectP03-12/13 remain OPEN; no automatic project acceptance, next increment or release preparation. Sourceversion1.4.0 remains; future1.4.1 release prep is separate. Child/P03 ownership will return to parent after this final technical packet is committed.

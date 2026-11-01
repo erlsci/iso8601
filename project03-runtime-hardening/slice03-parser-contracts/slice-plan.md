@@ -1,6 +1,6 @@
 # Slice03 — parser contracts
 
-Version1.0 — 2026-11-01 UTC. Status: open; parent concurred with design; initial CC intake/readback gate must complete before edits.
+Version1.1 — 2026-11-01 UTC. Status: all8 child technical rows independently done/reproduced at22b92d1 after actual ten-job PR79 CI. Operator merge is acknowledged; parent composition/integration and whole-project gates remain separately owned.
 
 ## Outcome, authority and sizing
 
@@ -44,3 +44,5 @@ CDC inspected complete current913-line source/callers/types, full README262, rel
 - cc-prompt.md — initial assignment,2026-11-01 UTC; predecessor none; CURRENT, intake-only until explicit CDC clearance. After clearance, same immutable assignment continues through tests/red-before-production, implementation and proposed-done; this planned transition is not a new refinement. Any corrective assignment uses next preserved iterationNN, max5, without overwriting this prompt.
 
 - v1.0 — 2026-11-01 UTC: parent/CDC concurred on shared proleptic/week boundary validation, four byte-iodata entrypoints and explicit intake stop before all source/test/doc edits; remaining project and release gates retained.
+
+- v1.1 — 2026-11-01 UTC: native8/430/4×100/100%, final430-test baseline red88/342, fresh147 and actual ten-job hosted review accept the three parser repairs. Operator merge10a182 acknowledged without pre-filling parent composition/project acceptance. Initial prompt/readback/corrections and all prior attempts remain preserved.
