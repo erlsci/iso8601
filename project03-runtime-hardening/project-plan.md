@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: first repair increment active; remaining roadmap held
+- status: first interval slice CDC accepted; parent composition and Operator checkpoint pending; remaining roadmap held
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.0 — 2026-10-31
+- version: 1.1 — 2026-10-31
 
 ## Outcome, authority and endpoint
 
@@ -19,7 +19,7 @@ Project02 remains incomplete: its Arc02 tests/escript/tooling/type/historical/sy
 
 | Increment | Capability, findings and destination | Dependency / current state |
 |---|---|---|
-| First repair checkpoint — collapsed Slice01 | Correct interval signed positive-year classification/inheritance (ERL-CAL-003) and omitted-zone inheritance (ERL-CAL-004); source module, public regression tests and README | Accepted diagnosis atbcfd94a suffices; active, one coherent slice |
+| First repair checkpoint — collapsed Slice01 | Correct interval signed positive-year classification/inheritance (ERL-CAL-003) and omitted-zone inheritance (ERL-CAL-004); source module, public regression tests and README | CDC accepted source7e93c5d; parent/human checkpoint pending, one coherent slice |
 | Later arithmetic/precision arc | Bounded arithmetic floor behavior CAL001, float-anchor composition CAL002, formatter carry DATE003 and exact fractional-unit retention DATE005 | Plan in detail after first checkpoint. Preserve parse/1 legacy rounding; exact APIs retain fractions. A bounded badarg floor policy is the likely design but needs actual source/contract grounding before assignment. Four findings remain open. |
 | Later parser-contract arc | Validate week boundaries DATE001 and non-positive-year dates DATE002; make declared iodata inputs work consistently DATE004 | Plan in detail after prior repairs. Keep intended negative-year/nonzero-offset restrictions and stable public error contracts; support declared iodata rather than narrowing it without authorization. Three findings remain open. |
 
@@ -42,3 +42,5 @@ Completion requires all nine finding rows independently verified, final applicab
 ## Version history
 
 - v1.0 — 2026-10-31: direct Operator all-findings repair decision opened three-increment roadmap; the first two interval findings form one collapsed slice and the authorized first checkpoint only.
+
+- v1.1 — 2026-10-31: first interval slice independently accepted for CAL003/CAL004 at7e93c5d. [Verification](slice01-interval-inheritance/cdc-verification.md) and [retrospective](slice01-interval-inheritance/cdc-retrospective.md) carry current receipts, preserved147-observation audit applicability and producer-path/population/reading watch items. Only these two finding rows close; seven repairs, parent composition, human merge/continuation and all project/P02 obligations remain open.
