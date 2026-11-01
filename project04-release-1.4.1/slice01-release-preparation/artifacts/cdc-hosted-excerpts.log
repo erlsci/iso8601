@@ -1,0 +1,112 @@
+Source: parent complete ci-full.log; exact full-log SHA256 ef1f3beb0e3a9edab9c9b98a61cf910611135a6d537cef5a433c2fa24b77eea9
+
+Erlang 20 build (Debian container)	Check rebar3 Version	2026-11-01T04:51:24.4491289Z rebar 3.15.2 on Erlang/OTP 20 Erts 9.3.3.15
+Erlang 28 build	Check rebar3 Version	2026-11-01T04:51:05.7724806Z rebar 3.28.0 on Erlang/OTP 28 Erts 16.4.0.7
+Erlang 28 build	EUnit Tests	2026-11-01T04:51:44.8707138Z   All 430 tests passed.
+Erlang 28 build	PropEr Tests	2026-11-01T04:51:45.6631399Z OK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T04:51:45.6670297Z OK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T04:51:45.6710567Z OK: Passed 100 test(s).
+Erlang 28 build	PropEr Tests	2026-11-01T04:51:45.6744429Z OK: Passed 100 test(s).
+Erlang 28 build	Test Coverage	2026-11-01T04:51:46.4408315Z   |               iso8601  |      100%  |
+Erlang 28 build	Test Coverage	2026-11-01T04:51:46.4409520Z   |                 total  |      100%  |
+Erlang 23 build (Debian container)	Check rebar3 Version	2026-11-01T04:51:17.4314191Z rebar 3.15.2 on Erlang/OTP 23 Erts 11.2.2.18
+Erlang 23 build (Debian container)	EUnit Tests	2026-11-01T04:51:56.9046361Z   All 430 tests passed.
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T04:51:57.7774446Z OK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T04:51:57.7775684Z OK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T04:51:57.7785914Z OK: Passed 100 test(s).
+Erlang 23 build (Debian container)	PropEr Tests	2026-11-01T04:51:57.7813920Z OK: Passed 100 test(s).
+Erlang 23 build (Debian container)	Test Coverage	2026-11-01T04:51:58.5358294Z   |               iso8601  |      100%  |
+Erlang 23 build (Debian container)	Test Coverage	2026-11-01T04:51:58.5359288Z   |                 total  |      100%  |
+Erlang 24 build	Check rebar3 Version	2026-11-01T04:51:06.1415402Z rebar 3.22.1 on Erlang/OTP 24 Erts 12.3.2.17
+Erlang 24 build	EUnit Tests	2026-11-01T04:51:42.4566984Z   All 430 tests passed.
+Erlang 24 build	PropEr Tests	2026-11-01T04:51:43.5920278Z OK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T04:51:43.5968162Z OK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T04:51:43.6032828Z OK: Passed 100 test(s).
+Erlang 24 build	PropEr Tests	2026-11-01T04:51:43.6063294Z OK: Passed 100 test(s).
+Erlang 24 build	Test Coverage	2026-11-01T04:51:44.5602406Z   |               iso8601  |      100%  |
+Erlang 24 build	Test Coverage	2026-11-01T04:51:44.5603344Z   |                 total  |      100%  |
+Erlang 22 build (Debian container)	Check rebar3 Version	2026-11-01T04:51:20.6368746Z rebar 3.15.2 on Erlang/OTP 22 Erts 10.7.2.19
+Erlang 22 build (Debian container)	EUnit Tests	2026-11-01T04:52:00.0249822Z   All 430 tests passed.
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T04:52:00.8116098Z OK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T04:52:00.8117297Z OK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T04:52:00.8146605Z OK: Passed 100 test(s).
+Erlang 22 build (Debian container)	PropEr Tests	2026-11-01T04:52:00.8172633Z OK: Passed 100 test(s).
+Erlang 22 build (Debian container)	Test Coverage	2026-11-01T04:52:01.6001318Z   |               iso8601  |      100%  |
+Erlang 22 build (Debian container)	Test Coverage	2026-11-01T04:52:01.6001896Z   |                 total  |      100%  |
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6640872Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:44.7415885Z   All 430 tests passed.
+Erlang 29 build	PropEr Tests	2026-11-01T04:51:45.4836752Z OK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T04:51:45.4874519Z OK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T04:51:45.4922219Z OK: Passed 100 test(s).
+Erlang 29 build	PropEr Tests	2026-11-01T04:51:45.4955668Z OK: Passed 100 test(s).
+Erlang 29 build	Test Coverage	2026-11-01T04:51:46.2475643Z   |               iso8601  |      100%  |
+Erlang 29 build	Test Coverage	2026-11-01T04:51:46.2476642Z   |                 total  |      100%  |
+Erlang 25 build	Check rebar3 Version	2026-11-01T04:51:07.1779497Z rebar 3.22.1 on Erlang/OTP 25 Erts 13.2.2.16
+Erlang 25 build	EUnit Tests	2026-11-01T04:51:33.2669752Z   All 430 tests passed.
+Erlang 25 build	PropEr Tests	2026-11-01T04:51:34.2834546Z OK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T04:51:34.2870641Z OK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T04:51:34.2906835Z OK: Passed 100 test(s).
+Erlang 25 build	PropEr Tests	2026-11-01T04:51:34.2932166Z OK: Passed 100 test(s).
+Erlang 25 build	Test Coverage	2026-11-01T04:51:35.2819223Z   |               iso8601  |      100%  |
+Erlang 25 build	Test Coverage	2026-11-01T04:51:35.2820127Z   |                 total  |      100%  |
+Erlang 21 build (Debian container)	Check rebar3 Version	2026-11-01T04:51:16.4664596Z rebar 3.15.2 on Erlang/OTP 21 Erts 10.3.5.19
+Erlang 21 build (Debian container)	EUnit Tests	2026-11-01T04:51:54.1202345Z   All 430 tests passed.
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T04:51:54.6056567Z OK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T04:51:54.6072124Z OK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T04:51:54.6139145Z OK: Passed 100 test(s).
+Erlang 21 build (Debian container)	PropEr Tests	2026-11-01T04:51:54.6198533Z OK: Passed 100 test(s).
+Erlang 21 build (Debian container)	Test Coverage	2026-11-01T04:51:55.1288335Z   |               iso8601  |      100%  |
+Erlang 21 build (Debian container)	Test Coverage	2026-11-01T04:51:55.1288751Z   |                 total  |      100%  |
+Erlang 27 build	Check rebar3 Version	2026-11-01T04:51:05.8917505Z rebar 3.25.1 on Erlang/OTP 27 Erts 15.2.7.14
+Erlang 27 build	EUnit Tests	2026-11-01T04:51:40.2863099Z   All 430 tests passed.
+Erlang 27 build	PropEr Tests	2026-11-01T04:51:41.1049707Z OK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T04:51:41.1093587Z OK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T04:51:41.1143785Z OK: Passed 100 test(s).
+Erlang 27 build	PropEr Tests	2026-11-01T04:51:41.1173058Z OK: Passed 100 test(s).
+Erlang 27 build	Test Coverage	2026-11-01T04:51:41.9046338Z   |               iso8601  |      100%  |
+Erlang 27 build	Test Coverage	2026-11-01T04:51:41.9047395Z   |                 total  |      100%  |
+Erlang 26 build	Check rebar3 Version	2026-11-01T04:51:07.5644872Z rebar 3.25.1 on Erlang/OTP 26 Erts 14.2.5.15
+Erlang 26 build	EUnit Tests	2026-11-01T04:51:41.6544190Z   All 430 tests passed.
+Erlang 26 build	PropEr Tests	2026-11-01T04:51:42.8556121Z OK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T04:51:42.8620518Z OK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T04:51:42.8684160Z OK: Passed 100 test(s).
+Erlang 26 build	PropEr Tests	2026-11-01T04:51:42.8723209Z OK: Passed 100 test(s).
+Erlang 26 build	Test Coverage	2026-11-01T04:51:44.0319517Z   |               iso8601  |      100%  |
+Erlang 26 build	Test Coverage	2026-11-01T04:51:44.0320501Z   |                 total  |      100%  |
+
+WARNINGS (all6renderings)
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6541689Z     ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6542433Z     │
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6543026Z  84 │                           Res <- [catch check(Mod, Fun, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6544126Z     │                                   ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6545160Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6546678Z      ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6547332Z      │
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6547905Z  166 │                           Result <- [catch retry(M, F, Args, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6549021Z      │                                      ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T04:51:04.6550022Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.0920814Z ===> Fetching proper v1.5.0
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.1653479Z ===> Analyzing applications...
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.2640590Z ===> Compiling proper
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7018493Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_statem.erl:770:46: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7029151Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7159880Z      ┌─ _build/test/lib/proper/src/proper_statem.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7160924Z      │
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7162260Z  770 │      [spawn_link_cp(fun() -> Parent ! {self(),catch {ok,F(X)}} end) || X <- L].
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7163809Z      │                                               ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7165182Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7166186Z warnings in selected modules.
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7166808Z 
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:41.7167123Z 
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:42.4565317Z ##[warning]/home/runner/work/iso8601/iso8601/_build/test/lib/proper/src/proper_erlang_abstract_code.erl:2138:29: Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:42.4567527Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash
+
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:42.4586822Z       ┌─ _build/test/lib/proper/src/proper_erlang_abstract_code.erl:
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:42.4594705Z       │
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:42.4600598Z  2138 │          lists:all(fun(R) -> is_record(R) end, Term)
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:42.4601843Z       │                              ╰── Warning: ambiguous call of overridden auto-imported BIF is_record/1 --
+Erlang 29 build	EUnit Tests	2026-11-01T04:51:42.4602516Z use erlang:is_record/1 or "-compile({no_auto_import,[is_record/1]})." to resolve name clash
