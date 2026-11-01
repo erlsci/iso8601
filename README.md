@@ -43,6 +43,12 @@ Thanks to Github's forwarding for project renames and moves, the following still
   geological timescales — are available through the opt-in `parse_expanded/1` and
   `format_expanded/1`, which return an `expanded_datetime()` with an `integer()`
   year, leaving `parse/1`'s contract unchanged.
+* **Parser input and date validation.** `parse/1`, `parse_exact/1`,
+  `parse_expanded/1`, and `parse_interval/1` accept nested byte iodata. Calendar
+  month/day fields are checked using proleptic Gregorian rules, including for
+  year zero and negative years. ISO week dates require a valid weekday and a
+  week that exists in that ISO week-year; week 53 occurs only when January 1 is
+  Thursday, or when it is Wednesday in a leap year.
 * **Correctness fixes.** `apply_duration/2` now honors a negative sign (a
   duration like `-P1Y` is subtracted rather than added); year arithmetic on a
   leap day (e.g. adding a year to Feb 29) now clamps to a valid date instead of
@@ -85,6 +91,16 @@ Parse a date string or binary:
 {{2012,2,16},{1,6,48}}
 4> iso8601:parse("2012-02-16T01:06:48Z").
 {{2012,2,16},{1,6,48}}
+```
+
+The four date and interval parsers accept byte iodata, so nested lists and
+binary fragments can be combined directly. Non-byte or otherwise invalid
+iodata raises `badarg`; `parse_duration/1` retains its separate string input
+contract.
+
+```erlang
+4a> iso8601:parse([<<"2012-">>, ["02", <<"-03">>]]).
+{{2012,2,3},{0,0,0}}
 ```
 
 Add 1 hour, 2 minutes and 3 seconds to a datetime tuple:

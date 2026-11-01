@@ -1625,3 +1625,301 @@ parse_expanded_negative_offset_test_() ->
                 iso8601:parse_expanded("-0001-01-01")
             )}
     ].
+
+%%---------------------------------------------------------------------
+%% DATE001: reject raw ISO week fields before offset normalization
+%%---------------------------------------------------------------------
+
+invalid_iso_week_fields_test_() ->
+    ParseFunctions = [
+        {parse, fun iso8601:parse/1},
+        {parse_exact, fun iso8601:parse_exact/1},
+        {parse_expanded, fun iso8601:parse_expanded/1}
+    ],
+    InvalidWeeks = [
+        "2014-W00-1",
+        "2014W001",
+        "2014-W54-1",
+        "2014W541",
+        "2014-W99-1",
+        "2014W991",
+        "2014-W01-0",
+        "2014W010",
+        "2014-W01-8",
+        "2014W018",
+        "2014-W53",
+        "2014W53",
+        "2016-W53-1",
+        "2016W531"
+    ],
+    [
+        {
+            lists:flatten(io_lib:format("~p rejects ~s", [Name, Input])),
+            ?_assertError(badarg, Parse(Input))
+        }
+     || {Name, Parse} <- ParseFunctions,
+        Input <- InvalidWeeks
+    ].
+
+iso_week_year_boundary_controls_test_() ->
+    [
+        {"2009-W53-7 crosses into 2010",
+            ?_assertEqual({{2010, 1, 3}, {0, 0, 0}}, iso8601:parse("2009-W53-7"))},
+        {"2004-W53-7 is valid in a Thursday-start leap year",
+            ?_assertEqual({{2005, 1, 2}, {0, 0, 0}}, iso8601:parse("2004-W53-7"))},
+        {"2020-W53-7 is valid in a leap Wednesday-start year",
+            ?_assertEqual({{2021, 1, 3}, {0, 0, 0}}, iso8601:parse("2020-W53-7"))},
+        {"2015-W01-1 crosses into 2014",
+            ?_assertEqual({{2014, 12, 29}, {0, 0, 0}}, iso8601:parse("2015-W01-1"))},
+        {"2015W011 retains the basic valid form",
+            ?_assertEqual({{2014, 12, 29}, {0, 0, 0}}, iso8601:parse("2015W011"))},
+        {"2014-W53 is rejected in a common Wednesday-start year",
+            ?_assertError(badarg, iso8601:parse("2014-W53"))},
+        {"2016-W53 is rejected in a leap Friday-start year",
+            ?_assertError(badarg, iso8601:parse("2016-W53"))},
+        {"the omitted weekday remains day one",
+            ?_assertEqual({{2014, 12, 29}, {0, 0, 0}}, iso8601:parse("2015-W01"))},
+        {"year-zero W01-1 remains valid",
+            ?_assertEqual({{0, 1, 3}, {0, 0, 0.0}}, iso8601:parse_expanded("0000-W01-1"))},
+        {"negative week dates remain unsupported",
+            ?_assertError(badarg, iso8601:parse_expanded("-0001-W01-1"))},
+        {"week fields in an interval endpoint use the shared validator",
+            ?_assertError(badarg, iso8601:parse_interval("2014-W53-1/2015-01-01"))}
+    ].
+
+%%---------------------------------------------------------------------
+%% DATE002: validate raw Gregorian dates for all proleptic years
+%%---------------------------------------------------------------------
+
+invalid_proleptic_calendar_fields_test_() ->
+    NonPositiveFunctions = [
+        {parse_expanded, fun iso8601:parse_expanded/1},
+        {parse, fun iso8601:parse/1},
+        {parse_exact, fun iso8601:parse_exact/1}
+    ],
+    InvalidExpandedDates = [
+        "-0001-02-29",
+        "-0001-02-30",
+        "-0100-02-29",
+        "-0001-00-01",
+        "-0001-13-01",
+        "-0001-01-00",
+        "-0001-04-31",
+        "-0000-02-30"
+    ],
+    InvalidYearZeroDates = [
+        "0000-02-30",
+        "+0000-02-30",
+        "0000-00-01",
+        "+0000-13-01",
+        "0000-04-31",
+        "+0000-01-00"
+    ],
+    ExpandedAssertions = [
+        {
+            lists:flatten(io_lib:format("~p rejects ~s", [Name, Input])),
+            ?_assertError(badarg, Parse(Input))
+        }
+     || {Name, Parse} <- [{parse_expanded, fun iso8601:parse_expanded/1}],
+        Input <- InvalidExpandedDates
+    ],
+    YearZeroAssertions = [
+        {
+            lists:flatten(io_lib:format("~p rejects ~s", [Name, Input])),
+            ?_assertError(badarg, Parse(Input))
+        }
+     || {Name, Parse} <- NonPositiveFunctions,
+        Input <- InvalidYearZeroDates
+    ],
+    ExpandedAssertions ++ YearZeroAssertions.
+
+valid_proleptic_calendar_controls_test_() ->
+    [
+        {"negative year -4 is a leap year",
+            ?_assertEqual({{-4, 2, 29}, {0, 0, 0.0}}, iso8601:parse_expanded("-0004-02-29"))},
+        {"negative leap century -400 is a leap year",
+            ?_assertEqual({{-400, 2, 29}, {0, 0, 0.0}}, iso8601:parse_expanded("-0400-02-29"))},
+        {"year zero is a leap year",
+            ?_assertEqual({{0, 2, 29}, {0, 0, 0.0}}, iso8601:parse_expanded("-0000-02-29"))},
+        {"negative year -100 is not a leap year",
+            ?_assertEqual({{-100, 3, 1}, {0, 0, 0.0}}, iso8601:parse_expanded("-0100-03-01"))},
+        {"negative year-only input retains January default",
+            ?_assertEqual({{-1, 1, 1}, {0, 0, 0.0}}, iso8601:parse_expanded("-0001"))},
+        {"negative year-month input retains day default",
+            ?_assertEqual({{-1, 2, 1}, {0, 0, 0.0}}, iso8601:parse_expanded("-0001-02"))},
+        {"negative ordinal leap-day input remains valid",
+            ?_assertEqual({{-4, 2, 29}, {0, 0, 0.0}}, iso8601:parse_expanded("-0004-060"))},
+        {"UTC negative leap date remains valid",
+            ?_assertEqual(
+                {{-4, 2, 29}, {0, 0, 0.0}}, iso8601:parse_expanded("-0004-02-29T00:00:00Z")
+            )},
+        {"offset-free negative leap date remains valid",
+            ?_assertEqual({{-4, 2, 29}, {0, 0, 0.0}}, iso8601:parse_expanded("-0004-02-29"))},
+        {"positive raw-invalid date remains rejected before offset normalization",
+            ?_assertError(badarg, iso8601:parse("2017-02-30T00:30:00+02:00"))},
+        {"year zero still rejects a nonzero timezone offset",
+            ?_assertError(badarg, iso8601:parse_expanded("+0000-02-29T00:00:00+00:01"))}
+    ].
+
+%%---------------------------------------------------------------------
+%% DATE004: honor the declared byte-iodata contract at all four boundaries
+%%---------------------------------------------------------------------
+
+iodata_parser_boundary_test_() ->
+    ImproperDate = [$2, $0, $1, $2 | <<"-02-03">>],
+    [
+        {"parse/1 accepts nested mixed byte iodata",
+            ?_assertEqual(
+                {{2012, 2, 3}, {4, 5, 6}},
+                iso8601:parse([<<"2012-">>, ["02", [$-, $0, $3]], <<"T04:05:06Z">>])
+            )},
+        {"parse/1 accepts an improper binary tail",
+            ?_assertEqual({{2012, 2, 3}, {0, 0, 0}}, iso8601:parse(ImproperDate))},
+        {"parse_exact/1 accepts nested mixed byte iodata",
+            ?_assertEqual(
+                {{2012, 2, 3}, {4, 5, 6.5}},
+                iso8601:parse_exact(["2012-", [<<"02">>, "-03T04:"], [$0, $5, ":06.5Z"]])
+            )},
+        {"parse_exact/1 accepts an improper binary tail",
+            ?_assertEqual(
+                {{2012, 2, 3}, {4, 5, 6.5}},
+                iso8601:parse_exact([$2, $0, $1, $2 | <<"-02-03T04:05:06.5Z">>])
+            )},
+        {"parse_expanded/1 accepts nested signed-year byte iodata",
+            ?_assertEqual(
+                {{-4, 2, 29}, {0, 0, 0.0}},
+                iso8601:parse_expanded(["-", [<<"0004-">>, [$0, $2]], <<"-29T00:00:00Z">>])
+            )},
+        {"parse_expanded/1 accepts an improper binary tail",
+            ?_assertEqual(
+                {{-4, 2, 29}, {0, 0, 0.0}},
+                iso8601:parse_expanded([$- | <<"0004-02-29T00:00:00Z">>])
+            )},
+        {"parse_interval/1 accepts nested iodata for start/end",
+            ?_assertEqual(
+                {interval, start_end, {{2017, 1, 1}, {0, 0, 0}}, {{2017, 1, 2}, {0, 0, 0}}},
+                iso8601:parse_interval([<<"2017-01-01">>, [$/, <<"2017-01-02">>]])
+            )},
+        {"parse_interval/1 accepts an improper binary tail",
+            ?_assertEqual(
+                {interval, start_end, {{2017, 1, 1}, {0, 0, 0}}, {{2017, 1, 2}, {0, 0, 0}}},
+                iso8601:parse_interval([$2, $0, $1, $7 | <<"-01-01/2017-01-02">>])
+            )},
+        {"parse_interval/1 normalizes nested iodata before the double-hyphen split",
+            ?_assertEqual(
+                {interval, start_end, {{2017, 1, 1}, {0, 0, 0}}, {{2017, 1, 2}, {0, 0, 0}}},
+                iso8601:parse_interval(["2017-01-01T00:00:00Z--", [<<"2017-01-02T00:00:00Z">>]])
+            )},
+        {"parse_interval/1 preserves start/duration structure from nested iodata",
+            ?_assertEqual(
+                {interval, start_duration, {{2017, 1, 1}, {0, 0, 0}}, [
+                    {sign, []},
+                    {years, 0},
+                    {months, 0},
+                    {days, 1},
+                    {hours, 0},
+                    {minutes, 0},
+                    {seconds, 0}
+                ]},
+                iso8601:parse_interval([<<"2017-01-01/">>, ["P", <<"1D">>]])
+            )},
+        {"parse_interval/1 preserves duration/end structure from binary-tailed iodata",
+            ?_assertEqual(
+                {interval, duration_end,
+                    [
+                        {sign, []},
+                        {years, 0},
+                        {months, 0},
+                        {days, 1},
+                        {hours, 0},
+                        {minutes, 0},
+                        {seconds, 0}
+                    ],
+                    {{2017, 1, 2}, {0, 0, 0}}},
+                iso8601:parse_interval([$P, $1 | <<"D/2017-01-02">>])
+            )},
+        {"parse_interval/1 preserves duration-only structure from nested iodata",
+            ?_assertEqual(
+                {interval, duration, [
+                    {sign, []},
+                    {years, 0},
+                    {months, 0},
+                    {days, 1},
+                    {hours, 0},
+                    {minutes, 0},
+                    {seconds, 0}
+                ]},
+                iso8601:parse_interval(["P", [<<"1">>, "D"]])
+            )},
+        {"signed-year zoned fractional abbreviated end composes through interval iodata",
+            ?_assertEqual(
+                {interval, start_end, {{10001, 1, 1}, {2, 0, 0}}, {{10001, 1, 1}, {2, 15, 0.25}}},
+                iso8601:parse_interval([
+                    <<"+10000-12-31T23:30:00-02:30/">>, ["T23:45:00.", <<"25">>]
+                ])
+            )},
+        {"exact fractional unit survives duration and formatting composition",
+            ?_assertEqual(
+                <<"2012-02-03T00:00:00.360000Z">>,
+                iso8601:format(
+                    iso8601:apply_duration(
+                        iso8601:parse_exact([<<"2012-02-03T00.">>, [<<"0001">>]]), "PT0S"
+                    )
+                )
+            )},
+        {"proper iodata still rejects an invalid week endpoint",
+            ?_assertError(badarg, iso8601:parse([<<"2014-W">>, "53-1"]))},
+        {"proper iodata still rejects an invalid interval date endpoint",
+            ?_assertError(badarg, iso8601:parse_interval([<<"2017-02-30/">>, "2017-03-01"]))}
+    ].
+
+invalid_iodata_parser_inputs_test_() ->
+    InvalidInputs = [
+        [<<"2012">>, 256],
+        [$2, $0, $1, $2 | invalid_tail],
+        {"2012", "-01-01"},
+        <<1:1>>
+    ],
+    ParseFunctions = [
+        {parse, fun iso8601:parse/1},
+        {parse_exact, fun iso8601:parse_exact/1},
+        {parse_expanded, fun iso8601:parse_expanded/1},
+        {parse_interval, fun iso8601:parse_interval/1}
+    ],
+    [
+        {
+            lists:flatten(io_lib:format("~p rejects invalid iodata ~p", [Name, Input])),
+            ?_assertError(badarg, Parse(Input))
+        }
+     || {Name, Parse} <- ParseFunctions,
+        Input <- InvalidInputs
+    ].
+
+malformed_iodata_parser_inputs_test_() ->
+    DateParsers = [
+        {parse, fun iso8601:parse/1},
+        {parse_exact, fun iso8601:parse_exact/1},
+        {parse_expanded, fun iso8601:parse_expanded/1}
+    ],
+    EmptyOrMalformedDates = [[], ["20", [<<"12-">>, ""]]],
+    DateAssertions = [
+        {
+            lists:flatten(
+                io_lib:format("~p rejects empty or malformed byte iodata ~p", [Name, Input])
+            ),
+            ?_assertError(badarg, Parse(Input))
+        }
+     || {Name, Parse} <- DateParsers,
+        Input <- EmptyOrMalformedDates
+    ],
+    IntervalInputs = [[], ["2007/", [<<>>]]],
+    IntervalAssertions = [
+        {
+            lists:flatten(
+                io_lib:format("parse_interval/1 rejects empty or malformed byte iodata ~p", [Input])
+            ),
+            ?_assertError(badarg, iso8601:parse_interval(Input))
+        }
+     || Input <- IntervalInputs
+    ],
+    DateAssertions ++ IntervalAssertions.
