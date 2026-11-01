@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: first interval slice CDC accepted; parent composition and Operator checkpoint pending; remaining roadmap held
+- status: first interval checkpoint independently verified; Operator review/merge pending; seven remaining repairs held
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.1 — 2026-10-31
+- version: 1.2 — 2026-10-31
 
 ## Outcome, authority and endpoint
 
@@ -44,3 +44,5 @@ Completion requires all nine finding rows independently verified, final applicab
 - v1.0 — 2026-10-31: direct Operator all-findings repair decision opened three-increment roadmap; the first two interval findings form one collapsed slice and the authorized first checkpoint only.
 
 - v1.1 — 2026-10-31: first interval slice independently accepted for CAL003/CAL004 at7e93c5d. [Verification](slice01-interval-inheritance/cdc-verification.md) and [retrospective](slice01-interval-inheritance/cdc-retrospective.md) carry current receipts, preserved147-observation audit applicability and producer-path/population/reading watch items. Only these two finding rows close; seven repairs, parent composition, human merge/continuation and all project/P02 obligations remain open.
+
+- v1.2 — 2026-10-31: parent independently reviewed the accepted slice and composed the interval repair with19 exact controls, actual formatter composition, final238 EUnit and unchanged15/11 export/type sets. P03-10 closes; P03-11 and all seven later repairs/project gates remain open. Prior pending-parent status is superseded; no merge or next increment is inferred.

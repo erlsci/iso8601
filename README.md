@@ -10,7 +10,7 @@
 
 ## Project03 — runtime hardening
 
-[project03-runtime-hardening/project-plan.md](project03-runtime-hardening/project-plan.md) tracks the Operator-authorized repairs for all nine accepted runtime findings. Start with interval inheritance correctness, then arithmetic/precision and parser contracts. Existing Sol High CDC / Luna High CC roles and the stop after every repair arc remain in force.
+[project03-runtime-hardening/project-plan.md](project03-runtime-hardening/project-plan.md) tracks the Operator-authorized repairs for all nine accepted runtime findings. The first interval inheritance checkpoint is independently verified and awaiting Operator review/merge; seven remaining findings are grouped into arithmetic/precision and parser contracts. Existing Sol High CDC / Luna High CC roles and the stop after every repair arc remain in force.
 
 ## Migration checks and limits
 
