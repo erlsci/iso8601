@@ -6,7 +6,7 @@
 
 ## Project02 — Erlang audit
 
-[project02-erlang-audit/project-plan.md](project02-erlang-audit/project-plan.md) opens the current diagnosis-only audit after historical preservation. Arc01 runtime contracts are independently verified and Operator-reviewed. Arc03 OTP28/29 CI is published as [PR#77](https://github.com/erlsci/iso8601/pull/77), with its ten-job matrix running and the human merge checkpoint pending; Arc02 diagnostic synthesis remains open. Historical acceptance remains open.
+[project02-erlang-audit/project-plan.md](project02-erlang-audit/project-plan.md) opens the current diagnosis-only audit after historical preservation. Arc01 runtime contracts are independently verified and Operator-reviewed. Arc03 OTP28/29 CI is published as [PR#77](https://github.com/erlsci/iso8601/pull/77), with a reproduced OTP29 Dialyzer blocker under bounded compatibility repair and the human merge checkpoint pending; Arc02 diagnostic synthesis remains open. Historical acceptance remains open.
 
 ## Project03 — runtime hardening
 
