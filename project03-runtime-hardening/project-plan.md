@@ -5,7 +5,7 @@
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims of completed remediation-project acceptance or release readiness
-- version: 1.13 — 2026-11-01 UTC
+- version: 1.14 — 2026-11-01 UTC
 
 ## Outcome, authority and endpoint
 
@@ -124,3 +124,9 @@ Parent [independent composition](slice03-parser-contracts/closing-report.md#pare
 The Operator's “merged!” and attributable GitHub PR79 receipt complete this checkpoint's human merge gate. P03-16/17 are done/reproduced and supersede the preceding parent-pending observations. All nine finding rows are repaired and integrated; P03-12/13 final project-scale synthesis/acceptance remain OPEN. Wider Project02 audit/type/tooling work and eventual separate1.4.1 release preparation remain open/unstarted as applicable. Sourceversion1.4.0 is unchanged; no automatic next increment, release or whole-project acceptance follows.
 
 - v1.13 — 2026-11-01 UTC: parent independently composes the final parser repair and verifies user merge/main CI, closingP03-16/17 while retaining final project, wider audit and release boundaries.
+
+## Separate release-preparation authorization — 2026-11-01 UTC
+
+After all nine runtime repairs landed, the Operator said “let's go ahead and do the prep for release!” [Project04](../project04-release-1.4.1/project-plan.md) now owns that separate1.4.1 preparation PR and its native/package/docs/consumer/hosted validation. This supersedes the earlier release-preparation-unstarted observation without adding release work to this remediation project. The existing README already teaches the fixes and its ~>1.4 dependency remains appropriate; generated documentation source links require matching the repository's unprefixed tag convention. Preparation does not imply merge/tag/Hex/GitHub/GitLab publication or completed wider audit/project acceptance. P03-12/13 remain OPEN.
+
+- v1.14 — 2026-11-01 UTC: records the direct separate release-preparation go-ahead and Project04 ownership while preserving this project's final acceptance boundary.
