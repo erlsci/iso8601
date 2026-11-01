@@ -4,7 +4,7 @@
 
 This report closes the CC implementation pass for the original `cc-prompt.md` at planning commit `e5652e53e74c413f7d0ef8b566010d195285857a`, under the existing Slice03 plan. Source began at `e332032561142bff6c620cd1e7b4a5bfe9929b0b` (tree `72efe0dc781ed31cdac78872670465b92940da80`) and is now committed on `codex/project03-arc03-parsers` as `22b92d10b496ab541d3b8c369c4a081309bf0134` (tree `643ed3352b66b1d19035b6fd61b7e975d869d985`). The source worktree is clean. The commit changes only `README.md`, `src/iso8601.erl`, and `test/iso8601_tests.erl`; it preserves the required adjacent coauthor trailers. No push, PR, merge, release, or publication occurred.
 
-The planning packet is committed on the orphan `planning` branch. Its exact commit and tree are in the follow-up metadata entry at the end of `artifacts/runlog.md` and are supplied with this report to CDC.
+The planning packet is committed on the orphan `planning` branch as `610d8fea82b363f62e7af45fe0227eeb687b12a7` (tree `63bcf4208221fc1fe0b519ec74c8c17308333d7e`), parent `e5652e53e74c413f7d0ef8b566010d195285857a`. The pin is recorded in the follow-up metadata entry at the end of `artifacts/runlog.md` and supplied with this report to CDC.
 
 ## Delivered behavior and evidence
 

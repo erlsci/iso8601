@@ -102,6 +102,8 @@ CC proposes S03-01 through S03-06 as attested based on the row-specific evidence
 
 Planning close packet is being committed on the assigned orphan `planning` branch from `e5652e53e74c413f7d0ef8b566010d195285857a`. Its exact commit/tree pin is recorded in a follow-up metadata note after that commit is created; this preserves the immutable packet and its provenance.
 
+Planning packet commit is `610d8fea82b363f62e7af45fe0227eeb687b12a7`, tree `63bcf4208221fc1fe0b519ec74c8c17308333d7e`, parent `e5652e53e74c413f7d0ef8b566010d195285857a`. It contains the slice ledger, closing report, runlog, and 46 retained evidence logs (49 files total) with the required adjacent coauthor trailers. This pin is added in a follow-up metadata commit so the packet commit can be identified without rewriting it. The follow-up commit is identified in the CC handoff.
+
 ## Receipt correction retained
 
 The earlier 86-failure count represented a weakened partial-bitstring oracle and omitted the interval invalid-input reason differences. The corrected exact-oracle baseline is the authoritative red: 87 failures, partitioned as 45 DATE001, 26 DATE002, 13 valid DATE004 iodata-acceptance cases, and 3 DATE004 invalid-iodata reason clarifications at `parse_interval/1`. These three baseline `badmatch` reasons are out-of-contract details; the required final natural `badarg` behavior is retained and tested. Earlier attempt logs and their interpretations remain above rather than being rewritten.
