@@ -1,0 +1,15 @@
+===> Verifying dependencies...
+===> Analyzing applications...
+===> Compiling iso8601
+===> Performing cover analysis...
+  |------------------------|------------|
+  |                module  |  coverage  |
+  |------------------------|------------|
+  |               iso8601  |      100%  |
+  |------------------------|------------|
+  |                 total  |      100%  |
+  |------------------------|------------|
+  coverage calculated from:
+    /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic/_build/test/cover/eunit.coverdata
+    /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic/_build/test/cover/proper.coverdata
+  cover summary written to: /Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic/_build/test/cover/index.html

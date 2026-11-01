@@ -1,0 +1,45 @@
+hour_dot_0001 expected={{2012,2,3},{4,0,0.36000000000000004}} actual={return,
+                                                                      {{2012,
+                                                                        2,3},
+                                                                       {4,0,
+                                                                        0.36000000000000004}}} matches_with_tolerance=true tolerance=1.0e-12
+hour_dot_0002 expected={{2012,2,3},{4,0,0.7200000000000001}} actual={return,
+                                                                     {{2012,2,
+                                                                       3},
+                                                                      {4,0,
+                                                                       0.7200000000000001}}} matches_with_tolerance=true tolerance=1.0e-12
+minute_dot_001 expected={{2012,2,3},{4,5,0.06}} actual={return,
+                                                        {{2012,2,3},
+                                                         {4,5,0.06}}} matches_with_tolerance=true tolerance=1.0e-12
+hour_comma expected={{2012,2,3},{4,0,0.36000000000000004}} actual={return,
+                                                                   {{2012,2,3},
+                                                                    {4,0,
+                                                                     0.36000000000000004}}} matches_with_tolerance=true tolerance=1.0e-12
+basic_binary_hour_comma expected={{2012,2,3},{4,0,0.36000000000000004}} actual={return,
+                                                                                {{2012,
+                                                                                  2,
+                                                                                  3},
+                                                                                 {4,
+                                                                                  0,
+                                                                                  0.36000000000000004}}} matches_with_tolerance=true tolerance=1.0e-12
+minute_comma expected={{2012,2,3},{4,5,0.06}} actual={return,
+                                                      {{2012,2,3},{4,5,0.06}}} matches_with_tolerance=true tolerance=1.0e-12
+expanded_hour_fraction expected={{2012,2,3},{4,0,0.36000000000000004}} actual={return,
+                                                                               {{2012,
+                                                                                 2,
+                                                                                 3},
+                                                                                {4,
+                                                                                 0,
+                                                                                 0.36000000000000004}}} matches_with_tolerance=true tolerance=1.0e-12
+hour_whole_second_control expected={{2012,2,3},{4,15,0.0}} actual={return,
+                                                                   {{2012,2,3},
+                                                                    {4,15,
+                                                                     0.0}}} matches_with_tolerance=true tolerance=1.0e-12
+explicit_second_control expected={{2012,2,3},{4,5,0.36}} actual={return,
+                                                                 {{2012,2,3},
+                                                                  {4,5,0.36}}} matches_with_tolerance=true tolerance=1.0e-12
+explicit_second_comma_control expected={{2012,2,3},{4,5,0.36}} actual={return,
+                                                                       {{2012,
+                                                                         2,3},
+                                                                        {4,5,
+                                                                         0.36}}} matches_with_tolerance=true tolerance=1.0e-12
