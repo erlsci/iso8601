@@ -79,7 +79,8 @@
 %% duration/end, or unanchored duration. Bounds require a concrete anchor.
 
 -type expanded_year() :: integer().
-%% Astronomical year integer, including negative years.
+%% Astronomical year integer, including negative years; year 0 is 1 BCE and
+%% year -1 is 2 BCE.
 -type expanded_datetime() ::
     {{expanded_year(), month(), day()}, {hour(), minute(), second() | float()}}.
 %% Expanded calendar datetime; seconds may be floating point to retain a
@@ -135,7 +136,8 @@ add_months(Datetime, M) ->
 -spec add_years(datetime() | timestamp(), integer()) -> datetime().
 %% @doc Add an integer number of years to a calendar datetime or timestamp.
 %% The day is clamped to the last valid day of the target month; year zero is
-%% a valid result and time/fractional seconds are preserved.
+%% a valid result and time/fractional seconds are preserved. A target before
+%% year zero raises `badarg'.
 %%
 %% ```
 %% {{2017, 2, 28}, {12, 0, 0.25}} =
@@ -217,6 +219,8 @@ format_expanded({{Y, Mo, D}, {H, Mn, S}}) ->
 %% but truncates explicit fractional seconds. Date/week fields are validated,
 %% though this is not a complete ISO grammar or strict clock validator.
 %% Invalid byte iodata and specific invalid date/week values raise `badarg'.
+%% Explicit positive expanded years with a leading `+' are accepted; negative
+%% years raise `badarg'.
 %%
 %% ```
 %% {{2012, 2, 3}, {0, 0, 0}} = iso8601:parse([<<"2012-">>, ["02", <<"-03">>]]).
@@ -338,7 +342,8 @@ apply_duration(Datetime, Duration) ->
 
 -spec parse_interval(iodata()) -> interval().
 %% @doc Parse byte iodata into one of four interval shapes: start/end,
-%% start/duration, duration/end, or duration-only. `/` and `--` separators,
+%% start/duration, duration/end, or duration-only. <code>/</code> and
+%% <code>--</code> separators,
 %% signed durations and implemented abbreviated endpoints are supported.
 %% Complete endpoints are independent; omitted end-zone inheritance completes
 %% the end's raw local date/time before applying the start zone; an explicit
