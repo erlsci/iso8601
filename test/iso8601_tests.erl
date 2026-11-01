@@ -116,6 +116,39 @@ parse_exact_fractional_second_test_() ->
             ?_assertMatch({{2012, 2, 3}, {4, 5, 6.50}}, F("2012-02-03T040506,50"))}
     ].
 
+parse_exact_fractional_unit_test_() ->
+    [
+        {"retains fractional hour seconds",
+            ?_assert(
+                assert_datetime_close(
+                    {{2012, 2, 3}, {0, 0, 0.36}}, iso8601:parse_exact("2012-02-03T00.0001")
+                )
+            )},
+        {"retains fractional minute seconds",
+            ?_assert(
+                assert_datetime_close(
+                    {{2012, 2, 3}, {0, 0, 0.06}}, iso8601:parse_exact("2012-02-03T00:00.001")
+                )
+            )},
+        {"normalizes exact fraction across timezone date boundary",
+            ?_assertEqual(
+                {{2012, 2, 2}, {22, 0, 0.06}},
+                iso8601:parse_exact("2012-02-03T00:00.001+02:00")
+            )},
+        {"legacy fractional hour still rounds",
+            ?_assertEqual({{2012, 2, 3}, {0, 0, 0}}, iso8601:parse("2012-02-03T00.0001"))},
+        {"legacy fractional hour still rounds up",
+            ?_assertEqual({{2012, 2, 3}, {0, 0, 1}}, iso8601:parse("2012-02-03T00.0002"))},
+        {"legacy explicit fractional seconds still truncate",
+            ?_assertEqual({{2012, 2, 3}, {0, 0, 6}}, iso8601:parse("2012-02-03T00:00:06.50"))},
+        {"fractional unit can normalize through a minute",
+            ?_assert(
+                assert_datetime_close(
+                    {{2012, 2, 3}, {0, 1, 0.3}}, iso8601:parse_exact("2012-02-03T00.01675")
+                )
+            )}
+    ].
+
 parse_fractional_fail_test_() ->
     F = fun iso8601:parse/1,
     % disallowed by spec
@@ -307,6 +340,157 @@ format_test_() ->
             ?_assertEqual(<<"2012-02-03T04:05:06.500000Z">>, F({{2012, 2, 3}, {4, 5, 6.5}}))},
         {"formats timestamp tuple", ?_assertEqual(<<"1970-01-01T00:00:00Z">>, F({0, 0, 0}))}
     ].
+
+format_fractional_carry_test_() ->
+    [
+        {"rounds below the microsecond without carrying",
+            ?_assertEqual(
+                <<"2016-12-31T23:59:59.999999Z">>,
+                iso8601:format({{2016, 12, 31}, {23, 59, 59.9999994}})
+            )},
+        {"carries rounded fractional second through year",
+            ?_assertEqual(
+                <<"2017-01-01T00:00:00.000000Z">>,
+                iso8601:format({{2016, 12, 31}, {23, 59, 59.9999999}})
+            )},
+        {"carries leap day in expanded formatter",
+            ?_assertEqual(
+                <<"-0004-02-29T00:00:00.000000Z">>,
+                iso8601:format_expanded({{-4, 2, 28}, {23, 59, 59.9999999}})
+            )},
+        {"proleptic century year -100 is not a leap year",
+            ?_assertEqual(
+                <<"-0100-03-01T00:00:00.000000Z">>,
+                iso8601:format_expanded({{-100, 2, 28}, {23, 59, 59.9999999}})
+            )},
+        {"astronomical year zero is a leap year",
+            ?_assertEqual(
+                <<"+0000-02-29T00:00:00.000000Z">>,
+                iso8601:format_expanded({{0, 2, 28}, {23, 59, 59.9999999}})
+            )},
+        {"carries expanded year zero",
+            ?_assertEqual(
+                <<"+0000-01-01T00:00:00.000000Z">>,
+                iso8601:format_expanded({{-1, 12, 31}, {23, 59, 59.9999999}})
+            )},
+        {"carries positive expanded year boundary",
+            ?_assertEqual(
+                <<"+10000-01-01T00:00:00.000000Z">>,
+                iso8601:format({{9999, 12, 31}, {23, 59, 59.9999999}})
+            )},
+        {"interval formatting uses normalized formatter",
+            ?_assertEqual(
+                <<"2017-01-01T00:00:00.000000Z/2017-01-01T00:00:00.000000Z">>,
+                iso8601:format_interval(
+                    {interval, start_end, {{2016, 12, 31}, {23, 59, 59.9999999}}, {
+                        {2016, 12, 31}, {23, 59, 59.9999999}
+                    }}
+                )
+            )}
+    ].
+
+calendar_arithmetic_floor_test_() ->
+    [
+        {"month index cannot wrap to year zero",
+            ?_assertEqual(
+                badarg, bounded_result(fun() -> iso8601:add_months({{0, 1, 1}, {0, 0, 0}}, -1) end)
+            )},
+        {"month index cannot wrap to negative year",
+            ?_assertEqual(
+                badarg, bounded_result(fun() -> iso8601:add_months({{1, 1, 1}, {0, 0, 0}}, -13) end)
+            )},
+        {"large month decrement fails promptly",
+            ?_assertEqual(
+                badarg,
+                bounded_result(fun() -> iso8601:add_months({{1, 1, 1}, {0, 0, 0}}, -24000000) end)
+            )},
+        {"year zero remains a valid month target",
+            ?_assertEqual({{0, 1, 1}, {0, 0, 0}}, iso8601:add_months({{1, 1, 1}, {0, 0, 0}}, -12))},
+        {"year zero remains a valid year target",
+            ?_assertEqual({{0, 1, 1}, {0, 0, 0}}, iso8601:add_years({{1, 1, 1}, {0, 0, 0}}, -1))},
+        {"day target below zero is badarg",
+            ?_assertEqual(
+                badarg, bounded_result(fun() -> iso8601:add_days({{1, 1, 1}, {0, 0, 0}}, -367) end)
+            )},
+        {"day target year zero is valid",
+            ?_assertEqual({{0, 1, 1}, {0, 0, 0}}, iso8601:add_days({{1, 1, 1}, {0, 0, 0}}, -366))},
+        {"time target below zero is badarg",
+            ?_assertEqual(
+                badarg,
+                bounded_result(fun() ->
+                    iso8601:subtract_time({{1, 1, 1}, {0, 0, 0}}, 0, 0, 31622401)
+                end)
+            )},
+        {"time target year zero is valid",
+            ?_assertEqual(
+                {{0, 1, 1}, {0, 0, 0}},
+                iso8601:subtract_time({{1, 1, 1}, {0, 0, 0}}, 0, 0, 31622400)
+            )},
+        {"year target below zero is badarg",
+            ?_assertEqual(
+                badarg, bounded_result(fun() -> iso8601:add_years({{1, 1, 1}, {0, 0, 0}}, -2) end)
+            )},
+        {"integer epoch math preserves a small fraction in 2017",
+            ?_assert(
+                assert_datetime_close(
+                    {{2017, 1, 1}, {0, 0, 1.000001}},
+                    iso8601:add_time({{2017, 1, 1}, {0, 0, 0.000001}}, 0, 0, 1)
+                )
+            )},
+        {"integer epoch math preserves a small fraction in year 10000",
+            ?_assert(
+                assert_datetime_close(
+                    {{10000, 1, 1}, {0, 0, 1.000001}},
+                    iso8601:add_time({{10000, 1, 1}, {0, 0, 0.000001}}, 0, 0, 1)
+                )
+            )},
+        {"backward time shifts preserve anchor fraction",
+            ?_assert(
+                assert_datetime_close(
+                    {{2016, 12, 31}, {23, 59, 59.25}},
+                    iso8601:subtract_time({{2017, 1, 1}, {0, 0, 0.25}}, 0, 0, 1)
+                )
+            )},
+        {"zero time shift preserves float zero shape",
+            ?_assertEqual(
+                {{2017, 1, 1}, {0, 0, 0.0}}, iso8601:add_time({{2017, 1, 1}, {0, 0, 0.0}}, 0, 0, 0)
+            )},
+        {"duration days preserve anchor fraction",
+            ?_assert(
+                assert_datetime_close(
+                    {{2017, 1, 2}, {0, 0, 0.25}},
+                    iso8601:apply_duration({{2017, 1, 1}, {0, 0, 0.25}}, "P1D")
+                )
+            )}
+    ].
+
+bounded_result(Fun) ->
+    Parent = self(),
+    {Pid, Ref} = spawn_monitor(fun() -> Parent ! {bounded_result, self(), caught_result(Fun)} end),
+    receive
+        {bounded_result, Pid, Result} ->
+            receive
+                {'DOWN', Ref, process, Pid, normal} -> Result
+            end
+    after 500 ->
+        exit(Pid, kill),
+        receive
+            {'DOWN', Ref, process, Pid, killed} -> timeout
+        end
+    end.
+
+assert_datetime_close({Date, {Hour, Minute, Expected}}, {Date, {Hour, Minute, Actual}}) ->
+    is_number(Actual) andalso abs(Expected - Actual) =< 1.0e-12;
+assert_datetime_close(_, _) ->
+    false.
+
+caught_result(Fun) ->
+    try Fun() of
+        _ -> returned
+    catch
+        error:badarg -> badarg;
+        Class:Reason -> {Class, Reason}
+    end.
 
 %%----------------------------------------------------------------------
 %% Binary input dispatch

@@ -48,10 +48,17 @@ Thanks to Github's forwarding for project renames and moves, the following still
   leap day (e.g. adding a year to Feb 29) now clamps to a valid date instead of
   producing an impossible one; and stray debug output during ordinal-date
   parsing has been removed.
-* **Microsecond precision** is available via `parse_exact/1`, which preserves
-  fractional seconds as a float. Note that floats cannot represent every decimal
-  fraction exactly, so values are reliable to microsecond precision via rounding
-  rather than being bit-exact.
+* **Fractional precision** is available via `parse_exact/1`, which preserves
+  fractional seconds from fractional hours, minutes, or seconds as a float. For
+  example, `parse_exact("2012-02-03T00.0001")` returns about `0.36` seconds.
+  `parse/1` keeps its legacy behavior: fractional hours and minutes round to the
+  nearest whole second, while an explicit fractional-seconds field is truncated.
+  Float values cannot represent every decimal exactly; formatting rounds to
+  microseconds and carries a rounded second into the next minute or date.
+* **Calendar arithmetic** preserves the fractional part of a datetime's seconds
+  while applying integer time shifts and durations. Month and year changes clamp
+  to the last valid day of the target month; targets before year zero raise
+  `badarg`.
 
 ## Usage [&#x219F;](#contents)
 
@@ -101,7 +108,7 @@ Fractional times:
 
 ```erlang
 7> iso8601:parse("20120203T040506.50").
-{{2012,2,3},{4,5,7}}
+{{2012,2,3},{4,5,6}}
 8> iso8601:parse_exact("20120203T040506.50").
 {{2012,2,3},{4,5,6.50}}
 ```

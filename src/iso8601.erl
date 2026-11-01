@@ -39,6 +39,8 @@
 
 -type datetime() :: {calendar:date(), {hour(), minute(), second() | float()}}.
 -type datetime_plist() :: list({atom(), integer() | string()}).
+-type parser_mode() :: legacy | exact.
+-type parser_accumulator() :: list({atom(), integer() | float() | string() | parser_mode()}).
 -type undefined_or(A) :: undefined | A.
 -type timestamp() :: {MegaSecs :: integer(), Secs :: integer(), MicroSecs :: integer() | float()}.
 
@@ -99,8 +101,12 @@ subtract_time(Datetime, H, M, S) ->
 format({_, _, _} = Timestamp) ->
     format(calendar:now_to_datetime(Timestamp));
 format({{Y, Mo, D}, {H, Mn, S}}) when is_float(S) ->
-    FmtStr = "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~9.6.0fZ",
-    IsoStr = io_lib:format(FmtStr, [format_year(Y), Mo, D, H, Mn, S]),
+    {Date, Hour, Minute, WholeSecond, Microsecond} = normalize_float_time({{Y, Mo, D}, {H, Mn, S}}),
+    {Year, Month, Day} = Date,
+    IsoStr = io_lib:format(
+        "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~2.10.0B.~6.10.0BZ",
+        [format_year(Year), Month, Day, Hour, Minute, WholeSecond, Microsecond]
+    ),
     list_to_binary(IsoStr);
 format({{Y, Mo, D}, {H, Mn, S}}) ->
     FmtStr = "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~2.10.0BZ",
@@ -110,8 +116,12 @@ format({{Y, Mo, D}, {H, Mn, S}}) ->
 -spec format_expanded(expanded_datetime()) -> binary().
 %% @doc Format an expanded datetime (including negative years) as ISO 8601.
 format_expanded({{Y, Mo, D}, {H, Mn, S}}) when is_float(S) ->
-    FmtStr = "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~9.6.0fZ",
-    IsoStr = io_lib:format(FmtStr, [format_expanded_year(Y), Mo, D, H, Mn, S]),
+    {Date, Hour, Minute, WholeSecond, Microsecond} = normalize_float_time({{Y, Mo, D}, {H, Mn, S}}),
+    {Year, Month, Day} = Date,
+    IsoStr = io_lib:format(
+        "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~2.10.0B.~6.10.0BZ",
+        [format_expanded_year(Year), Month, Day, Hour, Minute, WholeSecond, Microsecond]
+    ),
     list_to_binary(IsoStr);
 format_expanded({{Y, Mo, D}, {H, Mn, S}}) ->
     FmtStr = "~s-~2.10.0B-~2.10.0BT~2.10.0B:~2.10.0B:~2.10.0BZ",
@@ -123,7 +133,7 @@ format_expanded({{Y, Mo, D}, {H, Mn, S}}) ->
 parse(Bin) when is_binary(Bin) ->
     parse(binary_to_list(Bin));
 parse(Str) ->
-    {{Date, {H, M, S}}, Subsecond} = year(Str, [], positive_only),
+    {{Date, {H, M, S}}, Subsecond} = year(Str, [{parser_mode, legacy}], positive_only),
     {Date, {H, M, S + trunc(Subsecond)}}.
 
 -spec parse_exact(iodata()) -> calendar:datetime().
@@ -132,7 +142,7 @@ parse(Str) ->
 parse_exact(Bin) when is_binary(Bin) ->
     parse_exact(binary_to_list(Bin));
 parse_exact(Str) ->
-    {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [], positive_only),
+    {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [{parser_mode, exact}], positive_only),
     {Date, {H, M, S + SecondsDecimal}}.
 
 -spec parse_expanded(iodata()) -> expanded_datetime().
@@ -143,7 +153,7 @@ parse_exact(Str) ->
 parse_expanded(Bin) when is_binary(Bin) ->
     parse_expanded(binary_to_list(Bin));
 parse_expanded(Str) ->
-    {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [], allow_neg),
+    {{Date, {H, M, S}}, SecondsDecimal} = year(Str, [{parser_mode, exact}], allow_neg),
     {Date, {H, M, S + SecondsDecimal}}.
 
 -spec gi(string()) -> integer().
@@ -426,19 +436,34 @@ is_leap_year(Year) ->
         _ -> Year rem 4 =:= 0
     end.
 
+-spec add_decimal(calendar:datetime(), parser_accumulator()) -> {calendar:datetime(), float()}.
 add_decimal(Datetime, Plist) ->
     HDecimal = ?V(hour_decimal, Plist, 0.0),
     MDecimal = ?V(minute_decimal, Plist, 0.0),
-    apply_offset(Datetime, HDecimal, MDecimal, 0.0).
+    case ?V(parser_mode, Plist, legacy) of
+        legacy ->
+            {apply_offset(Datetime, HDecimal, MDecimal, 0.0), 0.0};
+        exact ->
+            DecimalSeconds = HDecimal * 3600 + MDecimal * 60,
+            WholeSeconds = trunc(DecimalSeconds),
+            Fraction = DecimalSeconds - WholeSeconds,
+            {{Year, _, _}, _} = Datetime,
+            case Year < 1 andalso round(DecimalSeconds) =/= 0 of
+                true -> error(badarg);
+                false -> {apply_offset(Datetime, 0, 0, WholeSeconds), Fraction}
+            end
+    end.
 
+-spec datetime(parser_accumulator()) -> {calendar:datetime(), float()}.
 datetime(Plist) ->
     {Date, WeekOffsetH} = make_date(Plist),
     Time = {?V(hour, Plist, 0), ?V(minute, Plist, 0), ?V(second, Plist, 0)},
-    Datetime = add_decimal({Date, Time}, Plist),
+    {Datetime, UnitFraction} = add_decimal({Date, Time}, Plist),
     OffsetSign = ?V(offset_sign, Plist, 1),
     OffsetH = -1 * OffsetSign * ?V(offset_hour, Plist, 0),
     OffsetM = -1 * OffsetSign * ?V(offset_minute, Plist, 0),
-    {apply_offset(Datetime, WeekOffsetH + OffsetH, OffsetM, 0), ?V(second_decimal, Plist, 0.0)}.
+    OffsetDatetime = apply_offset(Datetime, WeekOffsetH + OffsetH, OffsetM, 0),
+    {OffsetDatetime, ?V(second_decimal, Plist, 0.0) + UnitFraction}.
 
 datetime(_, Plist) ->
     datetime(Plist).
@@ -499,8 +524,16 @@ apply_offset({{Y, _, _}, _} = Datetime, H, M, S) ->
     Rounded = round(OffsetS),
     case {Y < 1, Rounded} of
         {false, _} ->
-            Gs = Rounded + calendar:datetime_to_gregorian_seconds(Datetime),
-            calendar:gregorian_seconds_to_datetime(Gs);
+            {{Year, Month, Day}, {Hour, Minute, Second}} = Datetime,
+            IntegerSecond = trunc(Second),
+            Fraction = Second - IntegerSecond,
+            Base = calendar:datetime_to_gregorian_seconds(
+                {{Year, Month, Day}, {Hour, Minute, IntegerSecond}}
+            ),
+            Target = Base + Rounded,
+            Target >= 0 orelse error(badarg),
+            Result = calendar:gregorian_seconds_to_datetime(Target),
+            reattach_fraction(Result, Fraction, is_float(Second));
         {true, 0} ->
             Datetime;
         {true, _} ->
@@ -514,12 +547,9 @@ apply_months_offset(Datetime, 0) ->
 apply_months_offset(Datetime, AM) ->
     {{Y, M, D}, {H, MM, S}} = Datetime,
     AY = (Y * 12) + M + AM,
-    Year = ((AY - 1) div 12),
-    Month =
-        case (AY rem 12) of
-            0 -> 12;
-            Result -> Result
-        end,
+    AY >= 1 orelse error(badarg),
+    Year = (AY - 1) div 12,
+    Month = ((AY - 1) rem 12) + 1,
     find_last_valid_date({{Year, Month, D}, {H, MM, S}}).
 
 -spec apply_days_offset(datetime(), number()) -> datetime().
@@ -527,21 +557,53 @@ apply_months_offset(Datetime, AM) ->
 apply_days_offset(Datetime, AD) ->
     {{Y, M, D}, {H, MM, S}} = Datetime,
     DaysTotal = calendar:date_to_gregorian_days({Y, M, D}) + AD,
+    DaysTotal >= 0 orelse error(badarg),
     {calendar:gregorian_days_to_date(DaysTotal), {H, MM, S}}.
 
 -spec apply_years_offset(datetime(), integer()) -> datetime().
 %% @doc Add the specified years to `Datetime'.
 apply_years_offset(Datetime, AY) ->
     {{Y, M, D}, {H, MM, S}} = Datetime,
-    find_last_valid_date({{Y + AY, M, D}, {H, MM, S}}).
+    TargetYear = Y + AY,
+    TargetYear >= 0 orelse error(badarg),
+    find_last_valid_date({{TargetYear, M, D}, {H, MM, S}}).
 
 -spec find_last_valid_date(datetime()) -> datetime().
 %% @doc Decrease days until found valid date'.
 find_last_valid_date(Datetime) ->
     {{Y, M, D}, {H, MM, S}} = Datetime,
-    case calendar:valid_date({Y, M, D}) of
-        true -> Datetime;
-        false -> find_last_valid_date({{Y, M, D - 1}, {H, MM, S}})
+    (Y >= 0 andalso M >= 1 andalso M =< 12 andalso D > 0) orelse error(badarg),
+    [LastDay | _] = lists:nthtail(M - 1, days_in_months_for_year(Y)),
+    {{Y, M, erlang:min(D, LastDay)}, {H, MM, S}}.
+
+reattach_fraction({Date, {Hour, Minute, Second}}, Fraction, WasFloat) ->
+    ResultSecond = Second + Fraction,
+    case WasFloat orelse Fraction =/= 0 of
+        true -> {Date, {Hour, Minute, float(ResultSecond)}};
+        false -> {Date, {Hour, Minute, ResultSecond}}
+    end.
+
+normalize_float_time({{Y, Month, Day}, {Hour, Minute, Second}}) ->
+    TotalMicroseconds = round(Second * 1000000),
+    WholeSeconds = TotalMicroseconds div 1000000,
+    Microsecond = TotalMicroseconds rem 1000000,
+    TotalMinutes = Hour * 60 + Minute + (WholeSeconds div 60),
+    NormalizedHour = TotalMinutes div 60,
+    NormalizedMinute = TotalMinutes rem 60,
+    NormalizedDate =
+        case NormalizedHour >= 24 of
+            true -> next_proleptic_date({Y, Month, Day});
+            false -> {Y, Month, Day}
+        end,
+    FinalHour = NormalizedHour rem 24,
+    {NormalizedDate, FinalHour, NormalizedMinute, WholeSeconds rem 60, Microsecond}.
+
+next_proleptic_date({Y, Month, Day}) ->
+    DaysThisMonth = lists:nth(Month, days_in_months_for_year(Y)),
+    case Day < DaysThisMonth of
+        true -> {Y, Month, Day + 1};
+        false when Month < 12 -> {Y, Month + 1, 1};
+        false -> {Y + 1, 1, 1}
     end.
 
 format_year(Y) when Y >= 0, Y =< 9999 ->
