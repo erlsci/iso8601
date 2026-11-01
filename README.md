@@ -1,13 +1,9 @@
 # iso8601
 
 [![Build Status][gh-actions-badge]][gh-actions]
-
 [![Coverage][coverage-badge]][project]
-
 [![Tag][tag-badge]][tag]
-
 [![Erlang Version][erl-badge]][erl]
-
 [![Downloads][hex downloads]][hex package]
 
 *An ISO 8601 date formatting and parsing library for Erlang*
