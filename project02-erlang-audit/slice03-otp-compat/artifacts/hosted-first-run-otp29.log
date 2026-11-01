@@ -1,0 +1,282 @@
+Erlang 29 build	Set up job	﻿2026-11-01T01:34:22.1165925Z Current runner version: '2.338.2'
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1190292Z ##[group]Runner Image Provisioner
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1191250Z Hosted Compute Agent
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1191806Z Version: 20261021.618
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1192400Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1193144Z Build Date: 2026-10-21T00:45:21Z
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1194179Z Worker ID: {8ae60fd9-9c98-4d84-8ee0-785649f57185}
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1194890Z Region: centralus
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1195427Z Cloud: Azure
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1195943Z ##[endgroup]
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1197664Z ##[group]Operating System
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1198265Z Ubuntu
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1198934Z 22.04.5
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1199521Z LTS
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1200197Z ##[endgroup]
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1200996Z ##[group]Runner Image
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1201618Z Image: ubuntu-22.04
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1202192Z Version: 20261025.340.1
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1203734Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20261025.340/images/ubuntu/Ubuntu2204-Readme.md
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1205475Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20261025.340
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1206425Z ##[endgroup]
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1209457Z ##[group]GITHUB_TOKEN Permissions
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1212168Z Actions: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1212768Z ArtifactMetadata: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1213558Z Attestations: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1214274Z Checks: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1214850Z CodeQuality: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1215396Z Contents: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1215901Z CopilotRequests: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1216544Z Deployments: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1217066Z Discussions: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1217650Z Drives: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1218196Z Issues: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1218777Z Metadata: read
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1219350Z Models: read
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1219894Z Packages: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1220452Z Pages: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1220991Z PullRequests: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1221657Z RepositoryProjects: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1222316Z SecurityEvents: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1222857Z Statuses: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1223579Z VulnerabilityAlerts: read
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1224188Z ##[endgroup]
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1226447Z Secret source: Actions
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1227386Z Cache mode: write
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1228461Z Prepare workflow directory
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1544845Z Prepare all required actions
+Erlang 29 build	Set up job	2026-11-01T01:34:22.1596206Z Getting action download info
+Erlang 29 build	Set up job	2026-11-01T01:34:22.4786084Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+Erlang 29 build	Set up job	2026-11-01T01:34:23.4797401Z Download action repository 'erlef/setup-beam@v1' (SHA:54075bcc5e249e4758d363f27d099f55d843f124)
+Erlang 29 build	Set up job	2026-11-01T01:34:24.0122608Z Complete job name: Erlang 29 build
+Erlang 29 build	Run actions/checkout@v6	﻿2026-11-01T01:34:24.1020483Z ##[group]Run actions/checkout@v6
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1021845Z with:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1022702Z   repository: erlsci/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1028192Z   token: ***
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1029138Z   ssh-strict: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1029952Z   ssh-user: git
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1030846Z   persist-credentials: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1031748Z   clean: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1032599Z   sparse-checkout-cone-mode: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1033733Z   fetch-depth: 1
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1034969Z   fetch-tags: false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1035896Z   show-progress: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1036760Z   lfs: false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1037565Z   submodules: false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1038503Z   set-safe-directory: true
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1039433Z   allow-unsafe-pr-checkout: false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:24.1040783Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.1662987Z Syncing repository: erlsci/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.1665733Z ##[group]Getting Git version info
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.1666669Z Working directory is '/home/runner/work/iso8601/iso8601'
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.1668414Z [command]/usr/bin/git version
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.2984197Z git version 2.56.0
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3006500Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3023093Z Temporarily overriding HOME='/home/runner/work/_temp/0ded148a-c5c5-40d5-bf37-7e876886d38f' before making global git config changes
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3027502Z Adding repository directory to the temporary git global config as a safe directory
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3030155Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/iso8601/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3166071Z Deleting the contents of '/home/runner/work/iso8601/iso8601'
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3175286Z ##[group]Determining repository object format
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3178423Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3180389Z ##[group]Initializing the repository
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3182421Z [command]/usr/bin/git init /home/runner/work/iso8601/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3678342Z hint: Using 'master' as the name for the initial branch. This default branch name
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3680388Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3682042Z hint: to use in all of your new repositories, which will suppress this warning,
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3683573Z hint: call:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3684219Z hint:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3685043Z hint: 	git config --global init.defaultBranch <name>
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3686053Z hint:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3687011Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3688838Z hint: 'development'. The just-created branch can be renamed via this command:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3690252Z hint:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3690912Z hint: 	git branch -m <name>
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3691737Z hint:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3692861Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3768098Z Initialized empty Git repository in /home/runner/work/iso8601/iso8601/.git/
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3781014Z [command]/usr/bin/git remote add origin https://github.com/erlsci/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3873548Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3875885Z ##[group]Disabling automatic garbage collection
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3877905Z [command]/usr/bin/git config --local gc.auto 0
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3912808Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3914375Z ##[group]Setting up auth
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3915247Z Removing SSH command configuration
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3919861Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.3951561Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6156716Z Removing HTTP extra header
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6163044Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6195437Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6388445Z Removing includeIf entries pointing to credentials config files
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6393679Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6424956Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6622352Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6660728Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/iso8601/iso8601/.git.path /home/runner/work/_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6701534Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/iso8601/iso8601/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6761920Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6796173Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6825732Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6826933Z ##[group]Fetching the repository
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:26.6834651Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a004094d347b0a25d99330599f4d45c060eb5057:refs/remotes/pull/77/merge
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4381354Z From https://github.com/erlsci/iso8601
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4383315Z  * [new ref]         a004094d347b0a25d99330599f4d45c060eb5057 -> pull/77/merge
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4387366Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4387987Z ##[group]Determining the checkout info
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4388820Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4395174Z [command]/usr/bin/git sparse-checkout disable
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4506521Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4540313Z ##[group]Checking out the ref
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4543891Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/77/merge
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4801732Z Note: switching to 'refs/remotes/pull/77/merge'.
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4802284Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4802583Z You are in 'detached HEAD' state. You can look around, make experimental
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4803144Z changes and commit them, and you can discard any commits you make in this
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4804096Z state without impacting any branches by switching back to a branch.
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4804582Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4804878Z If you want to create a new branch to retain commits you create, you may
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4805416Z do so (now or later) by using -c with the switch command. Example:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4805725Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4805887Z   git switch -c <new-branch-name>
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4806146Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4806315Z Or undo this operation with:
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4806539Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4806710Z   git switch -
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4806941Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4807209Z Turn off this advice by setting config variable advice.detachedHead to false
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4807546Z 
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4807880Z HEAD is now at a004094 Merge fcc1fe22e1651e133e20b7eb798dece82969e348 into 1d85d0a98a21750f83355a855dcc8fb4728758b4
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4809320Z ##[endgroup]
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4841462Z [command]/usr/bin/git log -1 --format=%H
+Erlang 29 build	Run actions/checkout@v6	2026-11-01T01:34:27.4865926Z a004094d347b0a25d99330599f4d45c060eb5057
+Erlang 29 build	Run erlef/setup-beam@v1	﻿2026-11-01T01:34:27.5194793Z ##[group]Run erlef/setup-beam@v1
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5195208Z with:
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5195514Z   otp-version: 29
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5195807Z   rebar3-version: 3.28.0
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5198084Z   github-token: ***
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5198398Z   otp-architecture: 64
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5198725Z   install-hex: true
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5199095Z   install-rebar: true
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5199395Z   version-type: loose
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5199752Z   disable_problem_matchers: false
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5200132Z   hexpm-mirrors: https://builds.hex.pm
+Erlang 29 build	Run erlef/setup-beam@v1	
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.5200485Z ##[endgroup]
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:27.9209579Z ##[group]Installing Erlang/OTP OTP-29.1.2 - built on amd64/ubuntu-22.04
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:28.4250366Z [command]/usr/bin/tar zx --strip-components=1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/7c371a06-fd8f-4947-855a-1165a6aa1fef -f /home/runner/work/_temp/a723d076-c5dc-4f09-a2fc-1214feccd17c
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:31.3892944Z [command]/home/runner/work/_temp/.setup-beam/otp/Install -minimal /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:31.4186889Z Installed Erlang/OTP version
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:31.4200993Z [command]/home/runner/work/_temp/.setup-beam/otp/bin/erl -version
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:31.4304537Z Erlang (SMP,ASYNC_THREADS) (BEAM) emulator version 17.1.1
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:31.4343439Z ##[endgroup]
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:31.9805430Z ##[group]Installing rebar3 3.28.0
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:32.3104735Z Installed Rebar3 version
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:32.3119651Z [command]/home/runner/work/_temp/.setup-beam/rebar3/bin/rebar3 version
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:32.5785510Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	Run erlef/setup-beam@v1	2026-11-01T01:34:32.5817004Z ##[endgroup]
+Erlang 29 build	Check rebar3 Version	﻿2026-11-01T01:34:32.5970278Z ##[group]Run rebar3 --version
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:32.5970775Z [36;1mrebar3 --version[0m
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:32.6022957Z shell: /usr/bin/bash -e {0}
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:32.6023654Z env:
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:32.6024080Z   INSTALL_DIR_FOR_OTP: /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:32.6024621Z   INSTALL_DIR_FOR_REBAR3: /home/runner/work/_temp/.setup-beam/rebar3
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:32.6025091Z ##[endgroup]
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.2691928Z ===> Fetching rebar3_proper v0.12.1
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.3244875Z ===> Analyzing applications...
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.3384459Z ===> Compiling rebar3_proper
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4647862Z     ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4649110Z     │
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4650163Z  84 │                           Res <- [catch check(Mod, Fun, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4668212Z     │                                   ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4669423Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4670341Z warnings in selected modules.
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4670771Z 
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4671340Z      ┌─ _build/default/plugins/rebar3_proper/src/rebar3_proper_prv.erl:
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4671912Z      │
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4672435Z  166 │                           Result <- [catch retry(M, F, Args, ProperOpts)],
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4673566Z      │                                      ╰── Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4674356Z Compile directive 'nowarn_deprecated_catch' can be used to suppress
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4674998Z warnings in selected modules.
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4675250Z 
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4675309Z 
+Erlang 29 build	Check rebar3 Version	2026-11-01T01:34:33.4752149Z rebar 3.28.0 on Erlang/OTP 29 Erts 17.1.1
+Erlang 29 build	Compile	﻿2026-11-01T01:34:33.4850901Z ##[group]Run rebar3 compile
+Erlang 29 build	Compile	2026-11-01T01:34:33.4851289Z [36;1mrebar3 compile[0m
+Erlang 29 build	Compile	2026-11-01T01:34:33.4888426Z shell: /usr/bin/bash -e {0}
+Erlang 29 build	Compile	2026-11-01T01:34:33.4888904Z env:
+Erlang 29 build	Compile	2026-11-01T01:34:33.4889277Z   INSTALL_DIR_FOR_OTP: /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Compile	2026-11-01T01:34:33.4889777Z   INSTALL_DIR_FOR_REBAR3: /home/runner/work/_temp/.setup-beam/rebar3
+Erlang 29 build	Compile	2026-11-01T01:34:33.4890240Z ##[endgroup]
+Erlang 29 build	Compile	2026-11-01T01:34:33.8961466Z ===> Verifying dependencies...
+Erlang 29 build	Compile	2026-11-01T01:34:33.8996163Z ===> Analyzing applications...
+Erlang 29 build	Compile	2026-11-01T01:34:33.9162807Z ===> Compiling iso8601
+Erlang 29 build	Xref Checks	﻿2026-11-01T01:34:34.0448708Z ##[group]Run rebar3 xref
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.0449090Z [36;1mrebar3 xref[0m
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.0485450Z shell: /usr/bin/bash -e {0}
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.0485928Z env:
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.0486335Z   INSTALL_DIR_FOR_OTP: /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.0486876Z   INSTALL_DIR_FOR_REBAR3: /home/runner/work/_temp/.setup-beam/rebar3
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.0487317Z ##[endgroup]
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.4711109Z ===> Verifying dependencies...
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.4762887Z ===> Analyzing applications...
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.4874048Z ===> Compiling iso8601
+Erlang 29 build	Xref Checks	2026-11-01T01:34:34.5323499Z ===> Running cross reference analysis...
+Erlang 29 build	Dialyzer	﻿2026-11-01T01:34:34.5524087Z ##[group]Run rebar3 dialyzer
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.5524504Z [36;1mrebar3 dialyzer[0m
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.5560631Z shell: /usr/bin/bash -e {0}
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.5561027Z env:
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.5561398Z   INSTALL_DIR_FOR_OTP: /home/runner/work/_temp/.setup-beam/otp
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.5561941Z   INSTALL_DIR_FOR_REBAR3: /home/runner/work/_temp/.setup-beam/rebar3
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.5562362Z ##[endgroup]
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9540284Z ===> Verifying dependencies...
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9590343Z ===> Analyzing applications...
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9692793Z ===> Compiling iso8601
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9727258Z ===> Dialyzer starting, this may take a while...
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9750530Z ===> Add debug_info to compiler options (erl_opts) if Dialyzer fails to load Core Erlang.
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9751281Z ===> Updating plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9759234Z ===> Resolving project files...
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9813632Z ===> Updating base plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9814995Z ===> Resolving base files...
+Erlang 29 build	Dialyzer	2026-11-01T01:34:34.9832167Z ===> Building with 226 files in /home/runner/.cache/rebar3/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:35:04.6785637Z ===> Copying /home/runner/.cache/rebar3/rebar3_29.1.2_plt to /home/runner/work/iso8601/iso8601/_build/default/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:35:04.6812861Z ===> Checking 226 files in _build/default/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:35:05.6583856Z ===> Doing success typing analysis...
+Erlang 29 build	Dialyzer	2026-11-01T01:35:05.6584531Z ===> Resolving project warning files...
+Erlang 29 build	Dialyzer	2026-11-01T01:35:05.6589576Z ===> Analyzing 1 files with _build/default/rebar3_29.1.2_plt...
+Erlang 29 build	Dialyzer	2026-11-01T01:35:06.7639861Z 
+Erlang 29 build	Dialyzer	2026-11-01T01:35:06.7640511Z src/iso8601.erl
+Erlang 29 build	Dialyzer	2026-11-01T01:35:06.7642075Z Line 529 Column 2: Type specification iso8601:apply_years_offset(datetime(),number()) -> datetime() is a supertype of the success typing: iso8601:apply_years_offset({{integer(),1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12,1..255},{byte(),byte(),number()}},integer()) -> {{integer(),1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12,1..255},{byte(),byte(),number()}}
+Erlang 29 build	Dialyzer	2026-11-01T01:35:06.7675592Z ===> Warnings written to _build/default/29.1.2.dialyzer_warnings
+Erlang 29 build	Dialyzer	2026-11-01T01:35:06.7689082Z ===> Warnings occurred running dialyzer: 1
+Erlang 29 build	Dialyzer	2026-11-01T01:35:06.7812709Z ##[error]Process completed with exit code 1.
+Erlang 29 build	Post Run actions/checkout@v6	﻿2026-11-01T01:35:06.7975998Z Post job cleanup.
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.8829064Z [command]/usr/bin/git version
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.8866149Z git version 2.56.0
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.8903338Z Temporarily overriding HOME='/home/runner/work/_temp/b44e9fbe-cb18-4da0-b316-495fd12eefbe' before making global git config changes
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.8905374Z Adding repository directory to the temporary git global config as a safe directory
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.8909168Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/iso8601/iso8601
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.8941512Z Removing SSH command configuration
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.8948145Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.8982494Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9194352Z Removing HTTP extra header
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9200259Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9232168Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9435299Z Removing includeIf entries pointing to credentials config files
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9442390Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9465353Z includeif.gitdir:/home/runner/work/iso8601/iso8601/.git.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9466252Z includeif.gitdir:/home/runner/work/iso8601/iso8601/.git/worktrees/*.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9466916Z includeif.gitdir:/github/workspace/.git.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9467564Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9474325Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/iso8601/iso8601/.git.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9498053Z /home/runner/work/_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9526903Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/iso8601/iso8601/.git.path /home/runner/work/_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9589077Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/iso8601/iso8601/.git/worktrees/*.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9610898Z /home/runner/work/_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9620433Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/iso8601/iso8601/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9657817Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9677928Z /github/runner_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9686683Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9734739Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9757573Z /github/runner_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9766587Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:06.9800294Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Erlang 29 build	Post Run actions/checkout@v6	2026-11-01T01:35:07.0083821Z Removing credentials config '/home/runner/work/_temp/git-credentials-1c7f6714-0a74-4cbe-bd35-8ae12066e602.config'
+Erlang 29 build	Complete job	﻿2026-11-01T01:35:07.0257981Z Cleaning up orphan processes
