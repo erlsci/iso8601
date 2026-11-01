@@ -1,0 +1,223 @@
+{
+  "author": "CDC GPT-6.1 Sol High; independent of CC implementer",
+  "utc": "2026-11-01T03:57:58.879565+00:00",
+  "source_commit": "22b92d10b496ab541d3b8c369c4a081309bf0134",
+  "source_tree": "643ed3352b66b1d19035b6fd61b7e975d869d985",
+  "source_status": "",
+  "module_sha256": "77b77957a5ca524f5dc9e1451f25be701e1375225b0a7b36c58977a079a706cd",
+  "candidate_beam_sha256": "b38fe532879bde7ffba5446d29a9fb69a7eec99ce1c1812cfc99cebef4068aa0",
+  "toolchain": "rebar 3.27.0 on Erlang/OTP 28 Erts 16.1.1",
+  "native": [
+    {
+      "args": [
+        "rebar3",
+        "compile"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.557,
+      "utc": "2026-11-01T03:56:16.896064+00:00"
+    },
+    {
+      "args": [
+        "rebar3",
+        "xref"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.702,
+      "utc": "2026-11-01T03:56:17.453201+00:00"
+    },
+    {
+      "args": [
+        "rebar3",
+        "dialyzer"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.931,
+      "utc": "2026-11-01T03:56:19.154975+00:00"
+    },
+    {
+      "args": [
+        "rebar3",
+        "eunit",
+        "-c",
+        "-v"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 2.395,
+      "utc": "2026-11-01T03:56:21.086401+00:00"
+    },
+    {
+      "args": [
+        "rebar3",
+        "proper",
+        "-c"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.725,
+      "utc": "2026-11-01T03:56:23.481775+00:00"
+    },
+    {
+      "args": [
+        "rebar3",
+        "as",
+        "test",
+        "cover",
+        "-v",
+        "--min_coverage=100"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.686,
+      "utc": "2026-11-01T03:56:24.207005+00:00"
+    },
+    {
+      "args": [
+        "rebar3",
+        "as",
+        "dev",
+        "fmt",
+        "--check"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.698,
+      "utc": "2026-11-01T03:56:24.892683+00:00"
+    },
+    {
+      "args": [
+        "rebar3",
+        "as",
+        "dev",
+        "lint"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 2.196,
+      "utc": "2026-11-01T03:56:25.590534+00:00"
+    }
+  ],
+  "baseline_commands": [
+    {
+      "name": "baseline-compile",
+      "args": [
+        "erlc",
+        "-o",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/baseline",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/baseline/iso8601.erl"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "candidate-compile",
+      "args": [
+        "erlc",
+        "-o",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/candidate",
+        "src/iso8601.erl"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "current-test-compile",
+      "args": [
+        "erlc",
+        "-o",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/tests",
+        "-pa",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/baseline",
+        "test/iso8601_tests.erl"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "current-tests-on-baseline",
+      "args": [
+        "erl",
+        "-noshell",
+        "-pa",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/baseline",
+        "-pa",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/tests",
+        "-eval",
+        "case eunit:test(iso8601_tests,[verbose]) of ok -> halt(0); error -> halt(1) end."
+      ],
+      "exit": 1
+    }
+  ],
+  "baseline_current_suite": {
+    "total": 430,
+    "passed": 342,
+    "failed": 88,
+    "skipped": 0,
+    "partition": {
+      "week": 45,
+      "calendar": 26,
+      "valid_iodata_and_composition": 14,
+      "out_of_contract_interval_error_reason": 3
+    }
+  },
+  "replay": [
+    {
+      "name": "date31",
+      "args": [
+        "escript",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/runners/date-probes.escript"
+      ],
+      "exit": 0,
+      "original_sha256": "e3ee17e072e223fecdf4fd8fda67d40081907395fe38fbe652c86477055a105c",
+      "stdout_sha256": "cb34c417f23f50d4774876e771da6e61b6080cc7ad6aa46da0280dec54066f1d",
+      "byte_identical_to_CC": true,
+      "observations": 31
+    },
+    {
+      "name": "fraction10",
+      "args": [
+        "escript",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/runners/fractional-unit-probes-iteration01.escript"
+      ],
+      "exit": 0,
+      "original_sha256": "2ac497c4b06d41488d07f86e490e64021ae5460e6f1a27efeb4c2b3843d5aed4",
+      "stdout_sha256": "bab3962a74ae96b507aa92667f7f54ecd9b0f078fd4015cfb482995d8b41b695",
+      "byte_identical_to_CC": true,
+      "observations": 10
+    },
+    {
+      "name": "calendar42",
+      "args": [
+        "erl",
+        "-noshell",
+        "-pa",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/candidate",
+        "-pa",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/runners",
+        "-eval",
+        "calendar_interval_probes:run(),halt()."
+      ],
+      "exit": 0,
+      "original_sha256": "5b376de635c5f1d90e61c47e2bbe50e9909011a507d2ebe249bb58433db25e49",
+      "stdout_sha256": "3b829d7c66fa12ce53b9ea3f7bdad47914898ae06409e8c2421dfe2311fddc7a",
+      "byte_identical_to_CC": true,
+      "observations": 42
+    },
+    {
+      "name": "refined64",
+      "args": [
+        "erl",
+        "-noshell",
+        "-pa",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/candidate",
+        "-pa",
+        "/private/tmp/iso8601-parser-cdc-nwoywpd_/runners",
+        "-eval",
+        "calendar_interval_probes_iteration01:run(),halt()."
+      ],
+      "exit": 0,
+      "original_sha256": "0f521402907de588ecb398ba08d2a1cfc20e3291ef11a43f38fe731071af6695",
+      "stdout_sha256": "0d0588d58663aab3e71d1b0777f0952c2807ead0b620e52954dee3350ffe1d03",
+      "byte_identical_to_CC": true,
+      "observations": 64
+    }
+  ],
+  "declarations": "exports 15 exact; exported_types 11 exact; all_types 16 exact; public_specs 15 exact\nfunction forms baseline 86 candidate 90\nPrivate validator domains inspected: make_date/4 raw integer inputs, valid_proleptic_date/3 raw integers, valid_week_date/3 raw integers, weeks_in_year/1 nonnegative, byte normalizer [byte()].\n",
+  "raw_logs": {
+    "cdc-native.log": "5fd485e30a4e0078899376a98838c9badfb30dd933fbbce40041c2c536e37d6a",
+    "cdc-current-tests-on-baseline.log": "64cf934c811f9ce3ff222f7187e2e119120d0847ff1923d7770e965cba338cdd"
+  }
+}
