@@ -1,11 +1,11 @@
 # Project02 — Erlang audit
 
 - project: `project02-erlang-audit`
-- status: Arc01 reviewed; first Project03 interval repair merged; OTP28/29 CI selected as the next active increment ahead of remaining runtime repairs; Arc02 audit still open
+- status: Arc01 reviewed; first Project03 interval repair merged; OTP28/29 CI PR#77 published with ten-job validation running; Arc02 audit and seven runtime repairs remain open
 - depends-on: historical preservation completed at planning `213bfc7`; source baseline `bcfd94a`
 - blocks: any claim of a complete current audit; does not block the separately authorized Project03 repairs of accepted Arc01 findings
 - related: `project01-v1.4-maintenance`; `project03-runtime-hardening`; iso8601 v1.4.0
-- version: 1.6 — 2026-10-31
+- version: 1.7 — 2026-10-31
 
 ## Outcome and boundaries
 
@@ -108,3 +108,9 @@ See sibling `ledger.md`. Project completion requires all three arcs, complete ma
 - v1.5 — 2026-10-31: Project03 replay surfaced an inherited denominator error; parent confirmed 42 initial calendar observations (38 ordinary +4 bounded), retained 64 refined observations, and documented full-run applicability without altering original reports/probes.
 
 - v1.6 — 2026-10-31: direct Operator priority selected OTP28/29 CI as next increment before future source changes; PR#76 merge supplies exact main1d85d0a baseline. CI roadmap Arc03 is advanced ahead of later audit/runtime work, with scoped public PR/automatic ten-job validation and one-checkpoint merge stop; older roadmap-only execution status is superseded.
+
+## CI publication checkpoint — 2026-11-01 UTC
+
+After CDC independent prereview at planning `f5b0579`, parent published exact source `fcc1fe22e1651e133e20b7eb798dece82969e348` and created [PR#77](https://github.com/erlsci/iso8601/pull/77), targeting main `1d85d0a`. The two-file candidate adds28/29 with rebar3 3.28.0 and updates AGENTS ranges; production/tests/build inputs remain unchanged. [Run41261632042](https://github.com/erlsci/iso8601/actions/runs/41261632042) has scheduled all ten intended jobs. This is publication and scheduling evidence, not a passing matrix or integration claim. S03-05/06, parent composition and Operator merge checkpoint remain pending; no later runtime or audit increment begins.
+
+- v1.7 — 2026-10-31: scoped CI candidate independently prereviewed and published as PR#77; all ten hosted jobs scheduled on exact fcc1fe2, with acceptance and merge gates retained. Hosted events use their actual UTC date,2026-11-01.
