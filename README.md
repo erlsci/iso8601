@@ -183,9 +183,9 @@ and any number of digits, e.g. years beyond `9999`) work with `parse/1`, which
 stays `calendar`-compatible:
 
 ```erlang
-19> iso8601:parse("+0002007-01-01").
+22> iso8601:parse("+0002007-01-01").
 {{2007,1,1},{0,0,0}}
-20> iso8601:parse("+10000-01-01").
+23> iso8601:parse("+10000-01-01").
 {{10000,1,1},{0,0,0}}
 ```
 
@@ -195,9 +195,9 @@ Negative (astronomical) years — where year `0` is 1 BCE, `-1` is 2 BCE, and so
 so its `calendar`-compatible contract is preserved:
 
 ```erlang
-21> iso8601:parse_expanded("-0001-01-01").
+24> iso8601:parse_expanded("-0001-01-01").
 {{-1,1,1},{0,0,0.0}}
-22> iso8601:format_expanded({{-44,3,15},{0,0,0}}).
+25> iso8601:format_expanded({{-44,3,15},{0,0,0}}).
 <<"-0044-03-15T00:00:00Z">>
 ```
 

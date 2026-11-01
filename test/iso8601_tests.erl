@@ -960,13 +960,6 @@ interval_signed_year_inheritance_test_() ->
                 {{10000, 1, 15}, {0, 0, 0}},
                 interval_end("+10000-01-13/15")
             )},
-        {"formatter-produced signed year roundtrips through abbreviation",
-            ?_assertEqual(
-                iso8601:parse_interval("+2007-02-15/03-14"),
-                iso8601:parse_interval(
-                    iso8601:format_interval(iso8601:parse_interval("+2007-02-15/03-14"))
-                )
-            )},
         {"bare four digits remain a complete year endpoint",
             ?_assertEqual(
                 {{1530, 1, 1}, {0, 0, 0}},
@@ -979,6 +972,16 @@ interval_signed_year_inheritance_test_() ->
         {"non-date suffix after signed year remains rejected",
             ?_assertError(badarg, iso8601:parse_interval("2007-12-14/+10000x"))}
     ].
+
+interval_formatter_produced_signed_year_inheritance_test() ->
+    Start = iso8601:format_expanded({{2007, 2, 15}, {0, 0, 0}}),
+    ?assertEqual(<<"+2007-02-15T00:00:00Z">>, Start),
+    IntervalText = <<Start/binary, "/03-14">>,
+    Expected =
+        {interval, start_end, {{2007, 2, 15}, {0, 0, 0}}, {{2007, 3, 14}, {0, 0, 0}}},
+    Interval = iso8601:parse_interval(IntervalText),
+    ?assertEqual(Expected, Interval),
+    ?assertEqual(Expected, iso8601:parse_interval(iso8601:format_interval(Interval))).
 
 interval_raw_zone_inheritance_test_() ->
     [
