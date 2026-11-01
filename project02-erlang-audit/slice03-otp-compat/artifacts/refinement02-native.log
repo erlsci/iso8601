@@ -316,7 +316,7 @@ EXIT=0
 [00m===> Testing prop_iso8601:prop_expanded_roundtrip()
 ....................................................................................................
 [01;32mOK: Passed 100 test(s).
-[00m===> 
+[00m===>
 4/4 properties passed
 
 EXIT=0
