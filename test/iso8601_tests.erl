@@ -924,6 +924,180 @@ interval_month_day_time_end_test_() ->
 %% Expanded year representation (positive)
 %%----------------------------------------------------------------------
 
+%%---------------------------------------------------------------------
+%% CAL003/CAL004: signed-year and raw-zone interval inheritance
+%%---------------------------------------------------------------------
+
+interval_signed_year_inheritance_test_() ->
+    [
+        {"short signed positive year is retained",
+            ?_assertEqual(
+                {interval, start_end, {{2007, 11, 13}, {0, 0, 0}}, {{2007, 11, 15}, {0, 0, 0}}},
+                iso8601:parse_interval("+2007-11-13/15")
+            )},
+        {"padded signed positive year is retained",
+            ?_assertEqual(
+                {{2007, 3, 14}, {0, 0, 0}},
+                interval_end("+0002007-02-15/03-14")
+            )},
+        {"signed year below four digits is retained",
+            ?_assertEqual(
+                {{9, 11, 15}, {0, 0, 0}},
+                interval_end("+9-11-13/15")
+            )},
+        {"signed full endpoint beyond year 9999 is parsed independently",
+            ?_assertEqual(
+                {{10000, 12, 15}, {0, 0, 0}},
+                interval_end("2007-12-14/+10000-12-15")
+            )},
+        {"signed year-month prefix is inherited with its full token",
+            ?_assertEqual(
+                {{10000, 1, 15}, {0, 0, 0}},
+                interval_end("+10000-01-13/15")
+            )},
+        {"formatter-produced signed year roundtrips through abbreviation",
+            ?_assertEqual(
+                iso8601:parse_interval("+2007-02-15/03-14"),
+                iso8601:parse_interval(
+                    iso8601:format_interval(iso8601:parse_interval("+2007-02-15/03-14"))
+                )
+            )},
+        {"bare four digits remain a complete year endpoint",
+            ?_assertEqual(
+                {{1530, 1, 1}, {0, 0, 0}},
+                interval_end("2007-12-14T13:30:00+02:00/1530")
+            )},
+        {"negative full-year interval endpoint remains rejected",
+            ?_assertError(badarg, iso8601:parse_interval("2007-12-14/-0001-12-15"))}
+    ].
+
+interval_raw_zone_inheritance_test_() ->
+    [
+        {"positive start zone is inherited by a time-only end",
+            ?_assertEqual(
+                {{{2007, 12, 14}, {11, 30, 0}}, {{2007, 12, 14}, {13, 30, 0}}},
+                iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30:00")
+                )
+            )},
+        {"negative start zone is inherited by a time-only end",
+            ?_assertEqual(
+                {{2007, 12, 14}, {17, 30, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00-02:00/15:30:00")
+                ))
+            )},
+        {"explicit Z end overrides the inherited start zone",
+            ?_assertEqual(
+                {{2007, 12, 14}, {15, 30, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30:00Z")
+                ))
+            )},
+        {"explicit negative end zone overrides the inherited start zone",
+            ?_assertEqual(
+                {{2007, 12, 14}, {18, 30, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30:00-03:00")
+                ))
+            )},
+        {"complete endpoint without zone remains independently UTC-parsed",
+            ?_assertEqual(
+                {{2007, 12, 15}, {15, 30, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/2007-12-15T15:30:00")
+                ))
+            )},
+        {"raw local date supplies midnight before inherited zone normalization",
+            ?_assertEqual(
+                {{2007, 12, 14}, {22, 0, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15")
+                ))
+            )},
+        {"month-day midnight inherits raw year and zone",
+            ?_assertEqual(
+                {{2007, 12, 14}, {22, 0, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/12-15")
+                ))
+            )},
+        {"day-and-time end inherits raw date and zone",
+            ?_assertEqual(
+                {{2007, 12, 15}, {15, 0, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15T17:00:00")
+                ))
+            )},
+        {"minute time gets seconds before inherited zone is appended",
+            ?_assertEqual(
+                {{2007, 12, 14}, {13, 30, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30")
+                ))
+            )},
+        {"T-prefixed hour time inherits the start zone",
+            ?_assertEqual(
+                {{2007, 12, 14}, {13, 0, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/T15")
+                ))
+            )},
+        {"T-prefixed basic HHMM time inherits the start zone",
+            ?_assertEqual(
+                {{2007, 12, 14}, {13, 30, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/T1530")
+                ))
+            )},
+        {"fractional seconds survive inherited zone normalization",
+            ?_assertEqual(
+                {{2007, 12, 14}, {13, 30, 0.125}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30:00.125")
+                ))
+            )},
+        {"comma fractional seconds survive inherited zone normalization",
+            ?_assertEqual(
+                {{2007, 12, 14}, {13, 30, 0.125}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30:00,125")
+                ))
+            )},
+        {"submicrosecond end fraction remains literal through inheritance",
+            ?_assertEqual(
+                {{2007, 12, 14}, {13, 30, 0.0000001}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30:00.0000001")
+                ))
+            )},
+        {"year-10000 raw date controls the inherited end across midnight",
+            ?_assertEqual(
+                {{9999, 12, 31}, {22, 45, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("+10000-01-01T00:30:00+02:00/T00:45:00")
+                ))
+            )},
+        {"large signed year and negative zone cross the year boundary",
+            ?_assertEqual(
+                {{10001, 1, 1}, {2, 15, 0}},
+                element(2, iso8601:interval_bounds(
+                    iso8601:parse_interval("+10000-12-31T23:30:00-02:30/T23:45")
+                ))
+            )},
+        {"inherited interval has a semantic format-parse roundtrip",
+            ?_assertEqual(
+                iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30:00.125"),
+                iso8601:parse_interval(iso8601:format_interval(
+                    iso8601:parse_interval("2007-12-14T13:30:00+02:00/15:30:00.125")
+                ))
+            )}
+    ].
+
+interval_end(Str) ->
+    {interval, start_end, _Start, End} = iso8601:parse_interval(Str),
+    End.
+
 expanded_year_test_() ->
     [
         {"explicit + sign with leading zeros",
