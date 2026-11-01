@@ -1,0 +1,19 @@
+# Project03 ledger
+
+Every accepted audit ID remains individually tracked; proposed CC completion is not independent acceptance.
+
+| ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
+|---|---|---|---|---|---|---|---|
+| P03-01 | ERL-CAL-003 signed positive-year interval context retains the complete year. | Red/green public endpoint and round-trip witnesses; independent review | correctness-grade | Operator repair decision / Project02 | open | | First checkpoint; no inherited acceptance. |
+| P03-02 | ERL-CAL-004 omitted end zone inherits raw start context with explicit end override. | Exact UTC/date-boundary/fraction/precision controls; independent review | correctness-grade | Operator repair decision / Project02 | open | | First checkpoint; no inherited acceptance. |
+| P03-03 | ERL-CAL-001 below-floor arithmetic terminates without silent wrap. | Future bounded rejection and valid-floor controls | correctness-grade | Operator repair decision / Project02 | open | | Later arithmetic/precision; no inherited acceptance. |
+| P03-04 | ERL-CAL-002 float anchors compose with durations. | Future ordinary exact0.0/fraction and integer controls | correctness-grade | Operator repair decision / Project02 | open | | Later arithmetic/precision; no inherited acceptance. |
+| P03-05 | ERL-DATE-003 formatter fractional carry remains a valid datetime. | Future carry/no-carry exact format/parse checks | correctness-grade | Operator repair decision / Project02 | open | | Later arithmetic/precision; no inherited acceptance. |
+| P03-06 | ERL-DATE-005 exact fractional-unit parsing retains subsecond value. | Future independent unit arithmetic/legacy parse controls | correctness-grade | Operator repair decision / Project02 | open | | Later arithmetic/precision; no inherited acceptance. |
+| P03-07 | ERL-DATE-001 invalid week components reject without normalization. | Future week-year/calendar boundary checks | correctness-grade | Operator repair decision / Project02 | open | | Later parser contracts; no inherited acceptance. |
+| P03-08 | ERL-DATE-002 non-positive-year impossible dates reject. | Future valid/invalid proleptic dates and offset restrictions | correctness-grade | Operator repair decision / Project02 | open | | Later parser contracts; no inherited acceptance. |
+| P03-09 | ERL-DATE-004 declared iodata forms work consistently. | Future nested/list/binary/improper-tail inputs and negatives | correctness-grade | Operator repair decision / Project02 | open | | Later parser contracts; no inherited acceptance. |
+| P03-10 | First checkpoint independently composes into usable interval repair. | Parent source diff/replay/negative controls on final candidate | correctness-grade | Operator repair decision / Project02 | open | | Parent gate; no inherited acceptance. |
+| P03-11 | Operator reviews first checkpoint and dispositions merge/next work. | Attributable human decision | correctness-grade | Operator repair decision / Project02 | open | | Operator gate; no inherited acceptance. |
+| P03-12 | All fixes compose with candidate-specific validation and preserved audit applicability. | Independent final project-scale review and supported limits | correctness-grade | Operator repair decision / Project02 | open | | Project completion; no inherited acceptance. |
+| P03-13 | Operator accepts completed remediation project. | Attributable human acceptance | correctness-grade | Operator repair decision / Project02 | open | | Project completion; no inherited acceptance. |
