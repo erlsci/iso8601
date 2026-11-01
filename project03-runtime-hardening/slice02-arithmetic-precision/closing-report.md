@@ -42,3 +42,7 @@ Only the allowlisted `src/iso8601.erl`, `test/iso8601_tests.erl`, and `README.md
 ## Remaining authority and handoff
 
 S02-01 through S02-07 are CC proposed-done only. S02-08 remains open for parent-owned publication and actual OTP20–29 hosted jobs; S02-09 remains open for CDC independent all8-gate/147-observation reproduction, row disposition, and retrospective. Parent P03-14 and Operator P03-15 remain separate. No hosted CI, push, PR, merge, release, or later parser work was initiated. The refinement05 source message/tree and single-file diff were read back; both trailers are adjacent and the source worktree is clean. Planning evidence/ledger/report/runlog commit `d3e219fbe699d7b0818d4f476da7515af8a98a72`, tree `2a776be01be630f2094e06e5020895ff024547fa`, was read back with adjacent required trailers. A final closeout-pin commit records this exact planning state; mutation ownership is released to CDC/parent. This is the fifth and final refinement; any further material finding returns for explicit Operator direction.
+
+## CDC local publication prereview — 2026-11-01 UTC
+
+[Independent verification](cdc-verification.md) reproduces final bd67bd0 all8 gates,300 EUnit,4×100 PropEr,100% coverage,147 fresh-beam observations and10 additional integration controls. S02-01–07 are locally done/reproduced with the original intake violation explicitly retained; S02-08/09 and parent/human gates remain open. Source is approved for parent publication, not merge/release or whole-project acceptance. This section does not replace the CC chronology above.

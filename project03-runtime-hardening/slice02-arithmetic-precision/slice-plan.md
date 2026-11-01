@@ -1,6 +1,6 @@
 # Slice02 — arithmetic and precision
 
-Version1.5 — 2026-11-01 UTC. Status: final refinement05 active for new private-spec removal; no acceptance claimed.
+Version1.6 — 2026-11-01 UTC. Status: refinement05 returned at bd67bd0; independent local prereview reproduced, approved for parent publication; hosted/final-close gates open.
 
 ## Outcome, authority and sizing
 
@@ -69,6 +69,8 @@ CDC inspected full827-line current module, relevant parser/arithmetic/formatter/
 
 - v1.4 — 2026-11-01 UTC: late source-call/spec review exposed incomplete private type propagation from the new mode tag. Parent/CDC chose two-annotation correction now; public contract and runtime remain unchanged, and the author/review miss remains explicit.
 
-- `cc-prompt-iteration05.md` — issued2026-11-01 UTC, predecessor iteration04; CURRENT ACTIVE. Remove only the new add_decimal spec that incorrectly excludes supported negative expanded dates; executable behavior/public contracts unchanged, fresh static/style and equality proof. Fifth/max5: any further material blocker must return for explicit decision rather than reset budget.
+- `cc-prompt-iteration05.md` — issued2026-11-01 UTC, predecessor iteration04; returned at sourcebd67bd0/planningf2edd25. Remove only the new add_decimal spec that incorrectly excludes supported negative expanded dates; executable behavior/public contracts unchanged, fresh static/style and equality proof. Fifth/max5: any further material blocker must return for explicit decision rather than reset budget.
 
 - v1.5 — 2026-11-01 UTC: parent actual-version type review found the added calendar-only private decimal spec excludes existing negative inputs. Minimal removal avoids expanding old annotation backlog; all earlier attempts and independent/hosted gates remain explicit.
+
+- v1.6 — 2026-11-01 UTC: CDC independently reproduced final all8 native gates,300-case baseline/candidate comparator,147 fresh-beam observations, public declarations and10 integration controls. [Prereview](cdc-verification.md) releases source to parent for actual ten-job CI; final acceptance/retrospective and parent/human gates remain open.
