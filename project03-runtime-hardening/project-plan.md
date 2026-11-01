@@ -1,11 +1,11 @@
 # Project03 — runtime hardening
 
 - project: `project03-runtime-hardening`
-- status: first interval checkpoint and Project02 CI priority checkpoint merged; main3a1cdfd passes all ten OTP20–29 jobs; seven runtime repairs remain open
+- status: active arithmetic/precision checkpoint at main3a1cdfd; first interval and Project02 CI checkpoints merged; seven runtime repairs open pending current work
 - depends-on: accepted Project02 Arc01 diagnosis at planningcfbf539; sourcebcfd94a v1.4.0
 - related: `project02-erlang-audit`; historical `project01-v1.4-maintenance`
 - blocks: claims that the nine accepted runtime findings are repaired
-- version: 1.6 — 2026-10-31
+- version: 1.7 — 2026-11-01 UTC
 
 ## Outcome, authority and endpoint
 
@@ -28,7 +28,7 @@ The Operator merged PR#76 and explicitly selected OTP28/29 CI as the next work s
 | Increment | Capability, findings and destination | Dependency / current state |
 |---|---|---|
 | First repair checkpoint — collapsed Slice01 | Correct interval signed positive-year classification/inheritance (ERL-CAL-003) and omitted-zone inheritance (ERL-CAL-004); source module, public regression tests and README | Integrated via PR#76 at main1d85d0a (tree equals reviewed7e93c5d); human merge/next-priority decision complete |
-| Later arithmetic/precision arc | Bounded arithmetic floor behavior CAL001, float-anchor composition CAL002, formatter carry DATE003 and exact fractional-unit retention DATE005 | Plan in detail after the prioritized Project02 OTP28/29 CI checkpoint. Preserve parse/1 legacy rounding; exact APIs retain fractions. A bounded badarg floor policy is the likely design but needs actual source/contract grounding before assignment. Four findings remain open. |
+| Active second repair checkpoint — collapsed Slice02 | Bounded arithmetic floor behavior CAL001, float-anchor composition CAL002, formatter carry DATE003 and exact fractional-unit retention DATE005 | [Slice02](slice02-arithmetic-precision/slice-plan.md) at source3a1cdfd; bounded badarg below year0, fractional-anchor/exact-unit retention and formatter carry, preserving both actual parse/1 legacy rules. Four finding rows remain open until independent validation. Stop after this checkpoint for actual ten-job CI, parent composition and human review/merge; parser increment remains roadmap-only. |
 | Later parser-contract arc | Validate week boundaries DATE001 and non-positive-year dates DATE002; make declared iodata inputs work consistently DATE004 | Plan in detail after prior repairs. Keep intended negative-year/nonzero-offset restrictions and stable public error contracts; support declared iodata rather than narrowing it without authorization. Three findings remain open. |
 
 The [project ledger](ledger.md) tracks every stable ID individually. Future decomposition can refine dependencies from real source evidence, with versioned decisions; no future arc/slice directories are opened now. All current source surfaces are the existing one-module library; this increment changes only `src/iso8601.erl`, `test/iso8601_tests.erl` and `README.md`. Existing `test/prop_iso8601.erl`, app manifest, Make/rebar/CI/elvis and guidance are context, not repair targets. No new dependencies, syntax floor, record/API representation, exported helpers or version bump.
@@ -66,3 +66,11 @@ Completion requires all nine finding rows independently verified, final applicab
 Project02 [PR#77](https://github.com/erlsci/iso8601/pull/77) at43a3740 passes all ten OTP20–29 jobs after the necessary private-spec and two parser-boundary compatibility fixes. Its249 tests/property/coverage results and147 local28 applicability observations preserve the two accepted interval repairs while all seven remaining finding rows stay open. The Operator merged it into main3a1cdfd with the exact reviewed tree; all ten automatic main-push jobs passed too. This related priority checkpoint is complete. No arithmetic/precision or parser-contract repair increment starts automatically.
 
 - v1.6 — 2026-10-31: related CI checkpoint passed and merged with verified main integration; no next repair increment started. Current ledger notes for the already-merged first interval checkpoint are reconciled with P03-11.
+
+## Next arithmetic/precision authorization — 2026-11-01 UTC
+
+Operator: “nice! Let's jump into the next arc!” This directly authorizes the four-finding arithmetic/precision checkpoint, now sized as one coherent direct [Slice02](slice02-arithmetic-precision/slice-plan.md); no arc wrapper is needed. It supersedes the preceding no-next-increment state only for CAL001/CAL002/DATE003/DATE005. CDC gpt-6.1-sol High and fresh CC gpt-6-luna High continue in Autonomous Mode, one implementer plus independent CDC review and parent composition. Parent concurred with nonnegative arithmetic target floor/badarg, retained year0 target controls and original nonpositive parser offset/unit gate, fraction-preserving integer calendar path, separate private parser type and proleptic formatter carry. Public declarations/types/aliases remain unchanged. The source base is clean merged3a1cdfd/tree3224b1e, with the expanded OTP20–29 matrix already integrated; source worktree `.worktrees/project03-arc02-arithmetic`, branch `codex/project03-arc02-arithmetic`. Allowed source paths remain module/EUnit/README only. The exact active implementation recipe, reading/intake contract and validation are in Slice02; earlier first-slice worktree/toolchain descriptions remain historical.
+
+The standing separate-PR workflow applies: parent publishes the independently prereviewed candidate and watches all ten exact-head jobs; CC does not push/PR/merge/release. Current four finding rows may close only after technical verification. New P03-14 independent parent composition and P03-15 human review/merge/next-work gates remain separate and open. P03-12/13 are whole-project gates; DATE001/002/004, known P02 type/tooling questions and all release decisions remain open. Durable new evidence lives only in Slice02 artifacts, preserving all original audit and first-checkpoint evidence.
+
+- v1.7 — 2026-11-01 UTC: direct next-arc authorization activates collapsed Slice02 arithmetic/precision at integrated3a1cdfd; source-grounded four-finding policy and separate parent/human gates recorded before fresh CC dispatch.
