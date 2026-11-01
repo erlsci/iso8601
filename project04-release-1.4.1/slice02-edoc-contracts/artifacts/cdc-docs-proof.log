@@ -1,0 +1,132 @@
+COMMAND ["escript", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project04-release-1.4.1/slice02-edoc-contracts/artifacts/audit-docs-v1.escript", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/src/iso8601.erl", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/_build/dev/lib/iso8601/doc/chunks/iso8601.chunk"]
+module_overview=1
+public_exports=15
+function_docs=15
+function_examples=[{{add_time,4},1},
+                   {{add_days,2},1},
+                   {{add_months,2},1},
+                   {{add_years,2},1},
+                   {{subtract_time,4},1},
+                   {{format,1},1},
+                   {{parse,1},1},
+                   {{parse_exact,1},1},
+                   {{parse_duration,1},1},
+                   {{apply_duration,2},1},
+                   {{parse_interval,1},1},
+                   {{interval_bounds,1},1},
+                   {{format_interval,1},1},
+                   {{parse_expanded,1},1},
+                   {{format_expanded,1},1}]
+missing_function_docs=[]
+missing_function_examples=[]
+exported_types=11
+type_docs=11
+missing_type_docs=[]
+EXIT 0
+COMMAND ["escript", "/private/tmp/iso8601-edoc-cdc-tb3pups2/doc-controls.escript", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/_build/dev/lib/iso8601/doc/chunks/iso8601.chunk"]
+ACTUAL {type,expanded_year,0} [{p,[],
+                                  [<<"Astronomical year integer, including negative years; year 0 is 1 BCE and year -1 is 2 BCE.">>]}]
+ACTUAL {function,add_years,2} [{p,[],
+                                  [<<"Add an integer number of years to a calendar datetime or timestamp. The day is clamped to the last valid day of the target month; year zero is a valid result and time/fractional seconds are preserved. A target before year zero raises ">>,
+                                   {code,[],[<<"badarg">>]},
+                                   <<".">>]},
+                               {pre,[],
+                                    [<<"  {{2017, 2, 28}, {12, 0, 0.25}} =\n      iso8601:add_years({{2016, 2, 29}, {12, 0, 0.25}}, 1).">>]}]
+ACTUAL {function,parse,1} [{p,[],
+                              [<<"Parse byte iodata in the implemented calendar, ordinal, week and reduced-date/time forms, returning a calendar-style datetime. Recognized offsets normalize to UTC; missing calendar fields default to month/day 1 and time 0. Legacy parsing rounds fractional hours/minutes to whole seconds but truncates explicit fractional seconds. Date/week fields are validated, though this is not a complete ISO grammar or strict clock validator. Invalid byte iodata and specific invalid date/week values raise ">>,
+                               {code,[],[<<"badarg">>]},
+                               <<". Explicit positive expanded years with a leading ">>,
+                               {code,[],[<<"+">>]},
+                               <<" are accepted; negative years raise ">>,
+                               {code,[],[<<"badarg">>]},
+                               <<".">>]},
+                           {pre,[],
+                                [<<"  {{2012, 2, 3}, {0, 0, 0}} = iso8601:parse([<<\"2012-\">>, [\"02\", <<\"-03\">>]]).\n  {{2012, 2, 3}, {4, 5, 6}} = iso8601:parse(\"2012-02-03T04:05:06.50\").">>]}]
+ACTUAL {function,parse_interval,1} [{p,[],
+                                     [<<"Parse byte iodata into one of four interval shapes: start/end, start/duration, duration/end, or duration-only. ">>,
+                                      {code,[],[<<"/">>]},
+                                      <<" and ">>,
+                                      {code,[],[<<"--">>]},
+                                      <<" separators, signed durations and implemented abbreviated endpoints are supported. Complete endpoints are independent; omitted end-zone inheritance completes the end's raw local date/time before applying the start zone; an explicit end zone takes precedence. Negative endpoints, repeating intervals and unsupported/ambiguous fragments are rejected. No general endpoint-order validation is promised.">>]},
+                                    {pre,[],
+                                     [<<"  {interval, start_end, {{2007, 2, 15}, {0, 0, 0}},\n   {{2007, 3, 14}, {0, 0, 0}}} = iso8601:parse_interval(\"+2007-02-15/03-14\").">>]}]
+four corrected actual doc entries PASS; interval code nodes [<<"/">>,<<"--">>]
+EXIT 0
+COMMAND ["python3", "/private/tmp/iso8601-edoc-parent-taxmpy9i/inspect-docs.py", "/private/tmp/iso8601-edoc-cdc-tb3pups2", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/_build/dev/lib/iso8601/hex/iso8601-1.4.1-docs.tar"]
+{"function_prose_examples": 15, "exported_type_prose": 11, "badge_count": 5, "source_url_counts": {"iso8601.html": 32, "readme.html": 1, "api-reference.html": 0}, "fragments": 17}
+EXIT 0
+
+Exact private supporting control source (no repository product change):
+#!/usr/bin/env escript
+main([Chunk]) ->
+ {ok,B}=file:read_file(Chunk),{docs_v1,_,_,_,ModuleDoc,_,Entries}=binary_to_term(B),
+ true=maps:get(<<"en">>,ModuleDoc)=/=[],
+ Keys=[{type,expanded_year,0},{function,add_years,2},{function,parse,1},{function,parse_interval,1}],
+ lists:foreach(fun(K)->{K,_,_,D,_}=lists:keyfind(K,1,Entries),io:format("ACTUAL ~tp ~tp~n",[K,maps:get(<<"en">>,D)]) end,Keys),
+ Expanded=doc({type,expanded_year,0},Entries),true=has(Expanded,<<"year 0 is 1 BCE">>),true=has(Expanded,<<"year -1 is 2 BCE">>),
+ Years=doc({function,add_years,2},Entries),true=has(Years,<<"before year zero">>),true=has(Years,<<"badarg">>),
+ Parse=doc({function,parse,1},Entries),true=has(Parse,<<"positive expanded years">>),true=has(Parse,<<"negative years">>),true=has(Parse,<<"badarg">>),
+ {_,_,_,IntervalDoc,_}=lists:keyfind({function,parse_interval,1},1,Entries),
+ Codes=codes(maps:get(<<"en">>,IntervalDoc)),true=lists:member(<<"/">>,Codes),true=lists:member(<<"--">>,Codes),
+ io:format("four corrected actual doc entries PASS; interval code nodes ~tp~n",[Codes]).
+doc(K,E)->{K,_,_,D,_}=lists:keyfind(K,1,E),re:replace(iolist_to_binary(text(maps:get(<<"en">>,D))), "\\s+", " ", [global,{return,binary}]).
+has(B,P)->binary:match(B,P)=/=nomatch.
+text(B) when is_binary(B)->B;
+text({_,_,C})->text(C);
+text(L) when is_list(L)->[text(X)||X<-L];
+text(_)->[].
+codes({code,_,C})->[iolist_to_binary(text(C))];
+codes({_,_,C})->codes(C);
+codes(L) when is_list(L)->lists:append([codes(X)||X<-L]);
+codes(_)->[].
+
+Exact reused parent-authored supporting HTML inspector, independently inspected and executed by CDC (not a new product tool):
+import pathlib,tarfile,re,json,hashlib
+from html.parser import HTMLParser
+from urllib.parse import unquote
+import sys
+p=pathlib.Path(sys.argv[1]); archive=pathlib.Path(sys.argv[2])
+functions=['add_time/4','add_days/2','add_months/2','add_years/2','subtract_time/4','format/1','parse/1','parse_exact/1','parse_duration/1','apply_duration/2','parse_interval/1','interval_bounds/1','format_interval/1','parse_expanded/1','format_expanded/1']
+types=['timestamp','year','month','day','hour','minute','second','interval','duration','expanded_year','expanded_datetime']
+class Page(HTMLParser):
+ def __init__(self,s):
+  super().__init__();self.ids=[];self.links=[];self.images=[];self.data=[];self.anchors=[];self.feed(s)
+ def handle_starttag(self,t,a):
+  d=dict(a)
+  if d.get('id'):self.ids.append(d['id'])
+  if d.get('name'):self.ids.append(d['name'])
+  if t=='a':self.links.append(d.get('href',''));self.anchors.append(d.get('href',''))
+  if t=='img':self.images.append({'src':d.get('src'),'alt':d.get('alt'),'enclosing_link':self.anchors[-1] if self.anchors else None})
+ def handle_endtag(self,t):
+  if t=='a' and self.anchors:self.anchors.pop()
+ def handle_data(self,d):self.data.append(d)
+with tarfile.open(archive) as t:
+ members=t.getnames();html={n:t.extractfile(n).read().decode() for n in ['iso8601.html','readme.html','api-reference.html']}
+module=html['iso8601.html'];readme=html['readme.html'];pages={n:Page(s) for n,s in html.items()}
+sections=dict(re.findall(r'<section class="detail" id="([^"]+)">(.*?)(?=<section class="detail"|\Z)',module,re.S))
+assert len(sections)>=26,len(sections)
+fd={};td={}
+for f in functions:
+ s=sections[f]; paragraphs=re.findall(r'<p>(.*?)</p>',s,re.S); pres=re.findall(r'<pre[^>]*>(.*?)</pre>',s,re.S)
+ assert paragraphs and len(pres)>=2,(f,len(paragraphs),len(pres))
+ fd[f]={'paragraphs':len(paragraphs),'preformatted_sections':len(pres)}
+for n in types:
+ s=sections['t:'+n+'/0'];paragraphs=re.findall(r'<p>(.*?)</p>',s,re.S);assert paragraphs,n;td[n]=Page(' '.join(paragraphs)).data
+assert 'Parse and format ISO 8601 dates, times, durations and intervals.' in ''.join(pages['iso8601.html'].data)
+expected_labels=['Build Status','Coverage','Tag','Erlang Version','Downloads']
+badges=[x for x in pages['readme.html'].images if x['alt'] in expected_labels]
+assert sorted(x['alt'] for x in badges)==sorted(expected_labels),badges
+assert all(x['src'] and x['enclosing_link'] and '\n' not in x['alt'] for x in badges)
+assert all(x['src']!='http://www.erlang.org/downloads' for x in badges)
+assert len([x for x in pages['readme.html'].images if x['alt']=='iso8601 project logo'])==1
+fragments=[unquote(x[1:]) for x in pages['readme.html'].links if x.startswith('#')]
+assert all(x in pages['readme.html'].ids for x in fragments),fragments
+assert all(x in pages['readme.html'].ids for x in ['contents','about-','new-in-14-','usage-','known-deficiencies-','license-'])
+assert '&amp;#x219F;' not in readme and '&#x219F;' not in ''.join(pages['readme.html'].data)
+source_urls={n:[x for x in page.links if 'github.com/erlsci/iso8601/blob/' in x] for n,page in pages.items()}
+assert source_urls['iso8601.html'] and source_urls['readme.html'],source_urls
+assert all('/blob/1.4.1/' in x for xs in source_urls.values() for x in xs),source_urls
+assert all('1.4.1' in html[n] for n in html)
+out={'docs_archive_sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),'members':members,'function_sections':fd,'exported_type_prose':td,'linked_badges':badges,'readme_fragment_count':len(fragments),'source_urls':source_urls,'source_url_counts':{n:len(xs) for n,xs in source_urls.items()}}
+(p/'parent-docs-inspection.json').write_text(json.dumps(out,indent=2)+'\n')
+print(json.dumps({'function_prose_examples':len(fd),'exported_type_prose':len(td),'badge_count':len(badges),'source_url_counts':out['source_url_counts'],'fragments':len(fragments)}))

@@ -1,0 +1,62 @@
+COMMAND ["erlc", "-o", "/private/tmp/iso8601-edoc-cdc-tb3pups2/baseline-lib/iso8601/ebin", "/private/tmp/iso8601-edoc-cdc-tb3pups2/baseline-lib/iso8601/src/iso8601.erl"]
+EXIT 0
+COMMAND ["escript", "/private/tmp/iso8601-edoc-cdc-tb3pups2/runner-controls.escript", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/test/iso8601_doc_tests.erl", "/private/tmp/iso8601-edoc-cdc-tb3pups2/baseline-lib/iso8601/ebin", "baseline"]
+same-runner wrong actual-API expected literal rejected {error,
+                                                        {badmatch,
+                                                         {{1970,1,1},
+                                                          {1,0,0}}}}
+same-runner malformed expression rejected {error,
+                                           {example_parse_error,
+                                            {1,erl_parse,
+                                             ["syntax error before: ","is"]},
+                                            "this is not Erlang."}}
+same-runner unclosed block rejected unclosed_documentation_example
+later independent pristine e70 source has0blocks; actual full gate rejects {raised,
+                                                                            error,
+                                                                            {assert,
+                                                                             [{module,
+                                                                               iso8601_doc_tests},
+                                                                              {line,
+                                                                               14},
+                                                                              {expression,
+                                                                               "Blocks =/= [ ]"},
+                                                                              {expected,
+                                                                               true},
+                                                                              {value,
+                                                                               false}]}}
+EXIT 0
+COMMAND ["escript", "/private/tmp/iso8601-edoc-cdc-tb3pups2/runner-controls.escript", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/test/iso8601_doc_tests.erl", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/_build/default/lib/iso8601/ebin", "final"]
+same-runner wrong actual-API expected literal rejected {error,
+                                                        {badmatch,
+                                                         {{1970,1,1},
+                                                          {1,0,0}}}}
+same-runner malformed expression rejected {error,
+                                           {example_parse_error,
+                                            {1,erl_parse,
+                                             ["syntax error before: ","is"]},
+                                            "this is not Erlang."}}
+same-runner unclosed block rejected unclosed_documentation_example
+actual final source full15 export pairs and all blocks PASS
+EXIT 0
+
+Exact private supporting control source (no repository product change):
+#!/usr/bin/env escript
+main([Runner, BeamDir, Mode]) ->
+ true=code:add_patha(BeamDir),
+ {ok,iso8601_doc_tests,Bin}=compile:file(Runner,[binary,export_all]),
+ {module,iso8601_doc_tests}=code:load_binary(iso8601_doc_tests,Runner,Bin),
+ Wrong="{{1970, 1, 1}, {9, 0, 0}} = iso8601:add_time({0, 0, 0}, 1, 0, 0).",
+ {error,WrongReason}=iso8601_doc_tests:try_block(Wrong),
+ io:format("same-runner wrong actual-API expected literal rejected ~tp~n",[WrongReason]),
+ {error,Malformed}=iso8601_doc_tests:try_block("this is not Erlang."),
+ io:format("same-runner malformed expression rejected ~tp~n",[Malformed]),
+ Unclosed=try iso8601_doc_tests:extract_blocks("%% ```\n%% ok = ok.\n") of V->{unexpected_success,V} catch error:unclosed_documentation_example->unclosed_documentation_example end,
+ unclosed_documentation_example=Unclosed,io:format("same-runner unclosed block rejected ~tp~n",[Unclosed]),
+ case Mode of
+  "final"->ok=iso8601_doc_tests:doc_examples_cover_public_api_test(),io:format("actual final source full15 export pairs and all blocks PASS~n");
+  "baseline"->
+   {ok,Source}=file:read_file(iso8601_doc_tests:source_path()),
+   []=iso8601_doc_tests:extract_blocks(binary_to_list(Source)),
+   Result=try iso8601_doc_tests:doc_examples_cover_public_api_test() of V2->{unexpected_success,V2} catch C:R->{raised,C,R} end,
+   {raised,error,_}=Result,io:format("later independent pristine e70 source has0blocks; actual full gate rejects ~tp~n",[Result])
+ end.

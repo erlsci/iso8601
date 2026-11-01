@@ -4,6 +4,14 @@ audit-docs-v1.escript
 audit-iteration02-doc-nodes.escript
 audit-iteration02-preservation.escript
 audit-source-preservation.escript
+cdc-consumer.log
+cdc-docs-proof.log
+cdc-hex-build.log
+cdc-native.log
+cdc-package-receipt.json
+cdc-rendered-proof.json
+cdc-runner-controls.log
+cdc-source-proof.log
 check-readme-examples.escript
 doc-runner-recheck.log
 docs-v1-audit-final.log

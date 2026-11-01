@@ -1,0 +1,24 @@
+{
+  "source_head": "34d42f41d93ac68427775eb50f51194d38cc2a3b",
+  "source_tree": "557983bc6507b99106957e9d7e393cb3bb8bec0d",
+  "package_sha256": "a59ffeb6cc3d33bc80ad4f11d710c3e72842076095048803f3aa2867738d8aca",
+  "docs_sha256": "dc854a93d8cbdf2895892d7908801f15de99368f69c9b7f3330bcd99670d0d04",
+  "outer_files": [
+    "VERSION",
+    "CHECKSUM",
+    "metadata.config",
+    "contents.tar.gz"
+  ],
+  "package_files": [
+    "LICENSE",
+    "README.md",
+    "rebar.config",
+    "rebar.lock",
+    "src/iso8601.app.src",
+    "src/iso8601.erl"
+  ],
+  "metadata": "{<<\"app\">>,<<\"iso8601\">>}.\n{<<\"build_tools\">>,[<<\"rebar3\">>]}.\n{<<\"description\">>,\n <<\"An ISO 8601 date formatting and parsing library for Erlang\">>}.\n{<<\"files\">>,\n [<<\"LICENSE\">>,<<\"README.md\">>,<<\"rebar.config\">>,<<\"rebar.lock\">>,<<\"src\">>,\n  <<\"src/iso8601.app.src\">>,<<\"src/iso8601.erl\">>]}.\n{<<\"licenses\">>,[<<\"MIT\">>]}.\n{<<\"links\">>,\n [{<<\"GitHub\">>,<<\"https://github.com/erlsci/iso8601\">>},\n  {<<\"Gitlab\">>,<<\"https://gitlab.com/erlsci/iso8601\">>},\n  {<<\"Hex\">>,<<\"https://hex.pm/packages/iso8601\">>}]}.\n{<<\"name\">>,<<\"iso8601\">>}.\n{<<\"requirements\">>,[]}.\n{<<\"version\">>,<<\"1.4.1\">>}.\n",
+  "consumer": "/private/tmp/iso8601-edoc-cdc-consumer-es8h3o9z",
+  "fresh_no_build_before_compile": true,
+  "payload_identity": "all five non-app files byte identical; app term check follows"
+}

@@ -1,0 +1,210 @@
+{
+  "docs_archive_sha256": "dc854a93d8cbdf2895892d7908801f15de99368f69c9b7f3330bcd99670d0d04",
+  "members": [
+    ".build",
+    ".build.epub",
+    "404.html",
+    "api-reference.html",
+    "dist/html-Y2MUTVIN.js",
+    "dist/html-erlang-KCHZLXSC.css",
+    "dist/lato-latin-400-normal-W7754I4D.woff2",
+    "dist/lato-latin-700-normal-2XVSBPG4.woff2",
+    "dist/lato-latin-ext-400-normal-N27NCBWW.woff2",
+    "dist/lato-latin-ext-700-normal-Q2L5DVMW.woff2",
+    "dist/remixicon-ZWU5GQ4X.woff2",
+    "dist/search_data-604A58A0.js",
+    "dist/sidebar_items-653B476F.js",
+    "index.html",
+    "iso8601.epub",
+    "iso8601.html",
+    "readme.html",
+    "search.html"
+  ],
+  "function_sections": {
+    "add_time/4": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "add_days/2": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "add_months/2": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "add_years/2": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "subtract_time/4": {
+      "paragraphs": 2,
+      "preformatted_sections": 2
+    },
+    "format/1": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "parse/1": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "parse_exact/1": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "parse_duration/1": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "apply_duration/2": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "parse_interval/1": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "interval_bounds/1": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "format_interval/1": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "parse_expanded/1": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    },
+    "format_expanded/1": {
+      "paragraphs": 1,
+      "preformatted_sections": 2
+    }
+  },
+  "exported_type_prose": {
+    "timestamp": [
+      "calendar:now_to_datetime/1",
+      "-style timestamp. Conversion to calendar datetime drops the timestamp's microsecond component."
+    ],
+    "year": [
+      "Calendar-style year component; expanded negative years use ",
+      "expanded_year()",
+      "."
+    ],
+    "month": [
+      "Calendar-style month component."
+    ],
+    "day": [
+      "Calendar-style day component; validity depends on the selected month/year."
+    ],
+    "hour": [
+      "Calendar-style hour component."
+    ],
+    "minute": [
+      "Calendar-style minute component."
+    ],
+    "second": [
+      "Calendar-style whole-second component. Datetime tuples separately permit floating-point seconds for fractional precision."
+    ],
+    "interval": [
+      "One of four parsed interval shapes: concrete start/end, start/duration, duration/end, or unanchored duration. Bounds require a concrete anchor."
+    ],
+    "duration": [
+      "Fixed-order duration fields: sign, years, months, days, hours, minutes and seconds. Values default to zero; sign is ",
+      "[]",
+      ", ",
+      "\"+\"",
+      " or ",
+      "\"-\"",
+      "."
+    ],
+    "expanded_year": [
+      "Astronomical year integer, including negative years; year 0 is 1 BCE and year -1 is 2 BCE."
+    ],
+    "expanded_datetime": [
+      "Expanded calendar datetime; seconds may be floating point to retain a fractional part."
+    ]
+  },
+  "linked_badges": [
+    {
+      "src": "https://github.com/erlsci/iso8601/workflows/ci/badge.svg",
+      "alt": "Build Status",
+      "enclosing_link": "https://github.com/erlsci/iso8601/actions"
+    },
+    {
+      "src": "https://img.shields.io/badge/coverage-100%25-brightgreen",
+      "alt": "Coverage",
+      "enclosing_link": "https://github.com/erlsci/iso8601"
+    },
+    {
+      "src": "https://img.shields.io/github/tag/erlsci/iso8601.svg",
+      "alt": "Tag",
+      "enclosing_link": "https://github.com/erlsci/iso8601/releases/latest"
+    },
+    {
+      "src": "https://img.shields.io/badge/erlang-%E2%89%A520-blue.svg",
+      "alt": "Erlang Version",
+      "enclosing_link": "http://www.erlang.org/downloads"
+    },
+    {
+      "src": "https://img.shields.io/hexpm/dt/iso8601.svg",
+      "alt": "Downloads",
+      "enclosing_link": "https://hex.pm/packages/iso8601"
+    }
+  ],
+  "readme_fragment_count": 17,
+  "source_urls": {
+    "iso8601.html": [
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L15",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L61",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L62",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L51",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L70",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L84",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L81",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L53",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L73",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L55",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L49",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L64",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L63",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L57",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L66",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L65",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L47",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L117",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L131",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L104",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L146",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L340",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L176",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L201",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L398",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L379",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L229",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L299",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L249",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L266",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L358",
+      "https://github.com/erlsci/iso8601/blob/1.4.1/src/iso8601.erl#L162"
+    ],
+    "readme.html": [
+      "https://github.com/erlsci/iso8601/blob/1.4.1/README.md#L1"
+    ],
+    "api-reference.html": []
+  },
+  "source_url_counts": {
+    "iso8601.html": 32,
+    "readme.html": 1,
+    "api-reference.html": 0
+  },
+  "all5_badge_triples_exact": true,
+  "both_logo_destinations_exact": true,
+  "plain_backlinks": 5,
+  "interval_code_nodes": [
+    "/",
+    "--",
+    "  {interval, start_end, {{2007, 2, 15}, {0, 0, 0}},\n   {{2007, 3, 14}, {0, 0, 0}}} = iso8601:parse_interval(\"+2007-02-15/03-14\")."
+  ]
+}

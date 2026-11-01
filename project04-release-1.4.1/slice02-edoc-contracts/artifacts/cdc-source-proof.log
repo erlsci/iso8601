@@ -1,0 +1,31 @@
+COMMAND ["git", "diff", "--stat", "e70b4a0..HEAD"]
+ README.md                  |  70 ++++++++++----
+ src/iso8601.erl            | 235 +++++++++++++++++++++++++++++++++++++++------
+ test/iso8601_doc_tests.erl | 119 +++++++++++++++++++++++
+ 3 files changed, 374 insertions(+), 50 deletions(-)
+EXIT 0
+COMMAND ["git", "diff", "--check", "e70b4a0..HEAD"]
+EXIT 0
+COMMAND ["git", "show", "-s", "--format=%H %T%n%B"]
+34d42f41d93ac68427775eb50f51194d38cc2a3b 557983bc6507b99106957e9d7e393cb3bb8bec0d
+Correct four EDoc contract comments
+
+Clarify expanded-year era numbering, the add_years pre-zero failure, and
+parse/1 expanded-year signs. Render interval separators as separate EDoc code
+nodes without changing runtime behavior.
+
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Billo AI <ai-engineering@billo.systems>
+
+EXIT 0
+COMMAND ["escript", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project04-release-1.4.1/slice02-edoc-contracts/artifacts/audit-source-preservation.escript", "/private/tmp/iso8601-edoc-cdc-tb3pups2/baseline.erl", "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project04-release-1.4.1/src/iso8601.erl"]
+spec {add_time,4}: -specadd_time(datetime()|timestamp(),number(),number(),number())->datetime().
+spec {subtract_time,4}: -specsubtract_time(datetime(),number(),number(),number())->datetime().
+spec {parse_exact,1}: -specparse_exact(iodata())->datetime().
+spec {parse_duration,1}: -specparse_duration(iodata())->duration().
+spec {apply_duration,2}: -specapply_duration(datetime(),iodata())->datetime().
+runtime_function_forms=90 identical exports=15 identical type_exports=11 identical type_definitions=16 identical specs=29 five corrected others unchanged
+EXIT 0
+module_sha256 05879cc7e26f8566698b242e168beeb023e8c11f0ea8441623ea6bd5e7beb7eb
+
+Actual local tools: rebar3 3.27.0; OTP_VERSION 28.1.1; ERTS16.1.1.
