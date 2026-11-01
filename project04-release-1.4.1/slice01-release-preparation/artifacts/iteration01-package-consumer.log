@@ -1,0 +1,19 @@
+    30	    receive
+    31	        {worker_result, Result} ->
+    32	            receive {'DOWN', Ref, process, Pid, normal} -> ok after 1000 -> erlang:error(worker_not_down) end,
+    33	            {'EXIT', {badarg, _}} = Result,
+    34	            io:format("8 bounded below-year-zero badarg and worker DOWN: ok~n", [])
+    35	        after 2000 ->
+    36	            exit(Pid, kill),
+    37	            receive {'DOWN', Ref, process, Pid, killed} -> ok after 1000 -> erlang:error(worker_kill_not_confirmed) end,
+    38	            erlang:error(below_year_zero_worker_timeout)
+1 app load/version/dependencies/code path: ok (/private/tmp/iso8601-1.4.1-iteration01-consumer.0c4u3N/_build/default/lib/iso8601/ebin)
+2 invalid ISO week rejection: ok
+3 valid ISO week 53: ok
+4 nested byte iodata: ok
+5 exact fraction + duration + format: ok
+6 signed expanded interval inheritance: ok
+7 omitted endpoint timezone bounds: ok
+8 bounded below-year-zero badarg and worker DOWN: ok
+9 valid arithmetic reaches year zero: ok
+all nine current-archive consumer controls passed

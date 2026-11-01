@@ -4,7 +4,7 @@ Draft release notes for the nine runtime repairs already integrated on `main`.
 
 ## Fixes
 
-- Preserve the full POSITIVE expanded year when an abbreviated interval endpoint inherits its year or month from the start.
+- Preserve the full positive expanded year when an abbreviated interval endpoint inherits its year or month from the start.
 - Inherit an omitted endpoint timezone from the start after the end's abbreviated date and time have been completed in their local context. A complete endpoint remains independent, and an explicit end timezone takes precedence.
 - Reject arithmetic targets below year zero with `badarg`, avoiding silent wraparound and nontermination; valid arithmetic can still reach year zero.
 - Preserve fractional seconds when applying durations to fractional datetime anchors.

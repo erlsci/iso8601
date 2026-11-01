@@ -1,0 +1,42 @@
+package archive sha256 24daee8dc21c65fb1511ad6c8f0d645bb3f59651d6c63ca0529387ed3392900d
+outer VERSION 1 sha256 4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce
+outer CHECKSUM 64 sha256 b81fcc9ae6d763bfed589dbf32d393002c790dd2a975076e670cb8b4a2d1e59d
+outer metadata.config 594 sha256 11d597e190c429db176bcf1f56db4a41e58e1e8d710a4d7e1d34072855f1cbfa
+outer contents.tar.gz 12919 sha256 786ab1894791eb93c09cb1575610b4d399f8e5de05541b97d0b0c8186662fc23
+metadata.config:
+{<<"app">>,<<"iso8601">>}.
+{<<"build_tools">>,[<<"rebar3">>]}.
+{<<"description">>,
+ <<"An ISO 8601 date formatting and parsing library for Erlang">>}.
+{<<"files">>,
+ [<<"LICENSE">>,<<"README.md">>,<<"rebar.config">>,<<"rebar.lock">>,<<"src">>,
+  <<"src/iso8601.app.src">>,<<"src/iso8601.erl">>]}.
+{<<"licenses">>,[<<"MIT">>]}.
+{<<"links">>,
+ [{<<"GitHub">>,<<"https://github.com/erlsci/iso8601">>},
+  {<<"Gitlab">>,<<"https://gitlab.com/erlsci/iso8601">>},
+  {<<"Hex">>,<<"https://hex.pm/packages/iso8601">>}]}.
+{<<"name">>,<<"iso8601">>}.
+{<<"requirements">>,[]}.
+{<<"version">>,<<"1.4.1">>}.
+
+package actual files: [('LICENSE', 1152), ('README.md', 10892), ('rebar.config', 2176), ('rebar.lock', 4), ('src/iso8601.app.src', 594), ('src/iso8601.erl', 32434)]
+exact source payload README.md True sha256 e88f305b531640b95b2fd32226bf44faf5725a5832ae1138fba4c8d7208cd451
+exact source payload rebar.config True sha256 1d3db4006b3b475f5d76395373898291c997afc0a6506ba14c7459e8ccaf9ce3
+exact source payload src/iso8601.erl True sha256 77b77957a5ca524f5dc9e1451f25be701e1375225b0a7b36c58977a079a706cd
+metadata app/name/version/licenses/requirements: iso8601/1.4.1/MIT/[]
+docs archive sha256 b78154bde3078b3b9d50a3e48c06ebc4569b4e91ab08a87ce393a36d7a062644 member_count 18 members ['.build', '.build.epub', '404.html', 'api-reference.html', 'dist/html-Y2MUTVIN.js', 'dist/html-erlang-KCHZLXSC.css', 'dist/lato-latin-400-normal-W7754I4D.woff2', 'dist/lato-latin-700-normal-2XVSBPG4.woff2', 'dist/lato-latin-ext-400-normal-N27NCBWW.woff2', 'dist/lato-latin-ext-700-normal-Q2L5DVMW.woff2', 'dist/remixicon-ZWU5GQ4X.woff2', 'dist/search_data-2973B03B.js', 'dist/sidebar_items-C3E55ADD.js', 'index.html', 'iso8601.epub', 'iso8601.html', 'readme.html', 'search.html']
+docs page index.html chars 256 contains 1.4.1 True
+docs page readme.html chars 60161 contains 1.4.1 True
+docs page iso8601.html chars 45159 contains 1.4.1 True
+docs page api-reference.html chars 5631 contains 1.4.1 True
+docs page search.html chars 5170 contains 1.4.1 True
+same-document href fragments: 17 distinct: 12 unresolved: []
+six requested anchors: [('contents', True), ('about-', True), ('new-in-14-', True), ('usage-', True), ('known-deficiencies-', True), ('license-', True)]
+logo image target exact: True ['http://www.erlang.org/downloads', 'https://img.shields.io/hexpm/dt/iso8601.svg', 'https://raw.githubusercontent.com/erlsci/iso8601/main/priv/images/logo.png']
+logo large link exact: True ['https://raw.githubusercontent.com/erlsci/iso8601/main/priv/images/logo-large.png']
+source links /blob/1.4.1: 33 prefixed: 0
+visible teaching markers: [('~> 1.4', True), ('iso8601:parse_interval', True), ('iso8601:format_interval', True), ('parse_expanded/1', True), ('Known Deficiencies', True), ('Does not support repeating intervals', True), ('P1Y2M10DT2H30M', True), ('apply_duration/2', True)]
+all same-document README fragments resolve to id/name targets
+all six repaired anchors present, and visible dependency/API/examples/deficiency markers retained
+CURRENT PACKAGE/DOC INSPECTION: PASS

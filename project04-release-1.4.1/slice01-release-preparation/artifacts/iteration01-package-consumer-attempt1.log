@@ -1,0 +1,16 @@
+fresh_consumer=/tmp/iso8601-1.4.1-iteration01-consumer.0c4u3N
+===> Fetching rebar3_proper v0.12.1
+===> Download error, using cached file at /Users/oubiwann/.cache/rebar3/hex/hexpm/packages/rebar3_proper-0.12.1.tar
+===> Analyzing applications...
+===> Compiling rebar3_proper
+===> Verifying dependencies...
+===> Analyzing applications...
+===> Compiling iso8601
+consumer_smoke.erl:35:9: syntax error before: 'after'
+%   35|         after 2000 ->
+%     |         ^
+
+consumer_smoke.erl:2:2: function main/0 undefined
+%    2| -export([main/0]).
+%     |  ^
+
