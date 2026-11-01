@@ -1,6 +1,6 @@
 # Slice03 — OTP28/29 CI compatibility
 
-Version1.4 — 2026-10-31. Status: second actual run9/10; runtime compatibility refinement02 active, final10-job validation pending. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
+Version1.5 — 2026-10-31. Status: runtime compatibility43a3740 independently prereviewed; third actual matrix run pending. Project02's former Arc03 roadmap is one coherent slice under canonical collapse; this direct slice has no ceremonial arc wrapper. Parent owns existing project plans/ledgers; this new subtree is CDC-owned.
 
 ## Outcome, authority and endpoint
 
@@ -61,3 +61,5 @@ The executable recipe and exact rejected alternatives are above; static checks d
 
 - v1.4 — 2026-10-31: second run41262288775 verifies29static gates but exposes two existing rejection-contract failures from changed calendar conversions/negative-year support. Parent/CDC authorise narrow make_date/4 rawpositive-Date validation and negative-week guard, explicitbadarg clarification; preserveYear<=0plain/Year0week, all seven runtime findings remain open. Runtime delta requires fresh affected public controls/all147 local28 applicability; prior byte-identical-runtime proof no longer suffices.
 - `cc-prompt-iteration02.md` — issued2026-10-31, predecessor `cc-prompt-iteration01.md`; current actual29 EUnit rejection repair. Refinement01 returned/accepted at845b183; one executed/max5 before this assignment. Parent owns future push/rerun after CDC prereview.
+
+- v1.5 — 2026-10-31: refinement02 returned43a3740/063fa951, independently reproduced all8 native gates,249tests,147 runtime observations and10 extra controls; exact make_date4 delta/public contract preservation supported. Two refinements executed/max5; parent may publish third full matrix, no further increment or acceptance inferred.

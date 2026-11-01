@@ -73,3 +73,10 @@ CC proposes S03-01, S03-02, S03-03 and S03-04 done/reproduced. S03-05 stays open
 ### Metadata-only commit correction
 
 The source commit was reworded from `3071050f501a9651356061d5c9da859cb9da862b` to `43a37409bbca41ea835faffb7a77cb7087aa1b8c`; tree `3224b1e0da9285ab67349aadc3b59ffa11bfe8ab` is unchanged. This repairs the blank line between required co-author trailers. The two unpublished planning commits were reworded from `2e49d5f662113675e7a34e5b9ca7be0f0ddae7c1` to `ee1d7ff25d4b10f9c2c5b0ad47ca48afea94488d` (same tree `0d22a8663a9b1839b8e117cff86593f8c6397b49`) and from `81072a04abfbf47883f2d0544b3bc1f48e46c742` to `5519228413aa597ddb099ea5f3dc5b1a8d656596` (same tree `145a70cfb9bab763f233355ae58b552c368dcc50`). Literal message readback confirmed each trailer pair is contiguous. This metadata correction changes no runtime source and requires no validation rerun.
+
+
+## CDC refinement02 prereview / third-run handoff
+
+Current source43a3740/tree3224b1e preserves the tested3071050 tree with corrected contiguous commit trailers; CC planning return063fa951 retains metadata old/new pins. Independent [review](cdc-verification.md) supports the two parser boundaries, unchanged public contracts,249EUnit/4×100PropEr/100%coverage/all8 local gates, fresh147 original runtime observations and10 additional controls. Only the named invalid-positive reason changes in original local28 date outputs; stack location/launcher differences are qualified. Full source byte-identity claims from earlier configuration/spec-only stages no longer apply.
+
+Two failed actual matrix runs remain preserved. S03-05 actual final-head10/10 and S03-06 final close/retro remain open; parent publishes reviewed correction for third run. Dependency compiler warnings (PropEr/rebar3_proper) remain P02 Arc02 watch items, distinct from first-party gate status; no suppression/bump. Seven runtime findings remain open, no future repair started, no merge/release authorised.

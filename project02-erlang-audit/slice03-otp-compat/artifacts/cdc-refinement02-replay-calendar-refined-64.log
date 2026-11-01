@@ -1,0 +1,291 @@
+add_time day-boundary => {return,{{2018,1,1},{0,0,0}}}
+subtract_time control => {return,{{2018,1,1},{0,0,0}}}
+add_days leap transition => {return,{{2016,2,29},{12,0,0}}}
+add_months month-end clamp => {return,{{2017,2,28},{12,0,0}}}
+add_years leap-day clamp => {return,{{2017,2,28},{12,0,0}}}
+parse_duration signed ordered fields => {return,
+                                         [{sign,"-"},
+                                          {years,1},
+                                          {months,2},
+                                          {days,3},
+                                          {hours,4},
+                                          {minutes,5},
+                                          {seconds,6}]}
+apply_duration negative sign => {return,{{2016,5,24},{1,2,3}}}
+apply_duration component-order witness => {return,{{2020,3,1},{0,0,0}}}
+parse_interval start/end slash => {return,
+                                   {interval,start_end,
+                                    {{2007,3,1},{13,0,0}},
+                                    {{2008,5,11},{15,30,0}}}}
+parse_interval start/duration => {return,
+                                  {interval,start_duration,
+                                   {{2007,3,1},{13,0,0}},
+                                   [{sign,[]},
+                                    {years,1},
+                                    {months,2},
+                                    {days,0},
+                                    {hours,0},
+                                    {minutes,0},
+                                    {seconds,0}]}}
+parse_interval duration/end => {return,
+                                   {interval,duration_end,
+                                       [{sign,"-"},
+                                        {years,1},
+                                        {months,0},
+                                        {days,0},
+                                        {hours,0},
+                                        {minutes,0},
+                                        {seconds,0}],
+                                       {{2008,5,11},{15,30,0}}}}
+parse_interval duration-only => {return,
+                                 {interval,duration,
+                                  [{sign,[]},
+                                   {years,1},
+                                   {months,0},
+                                   {days,0},
+                                   {hours,0},
+                                   {minutes,0},
+                                   {seconds,0}]}}
+interval_bounds start+duration => {return,
+                                      {{{2007,3,1},{13,0,0}},
+                                       {{2008,5,11},{15,30,0}}}}
+interval_bounds negative duration/end => {return,
+                                          {{{2009,5,11},{15,30,0}},
+                                           {{2008,5,11},{15,30,0}}}}
+interval_bounds duration-only policy => {exception,error,badarg}
+format_interval canonical start/duration => {return,
+                                             <<"2007-03-01T13:00:00Z/P1Y2M">>}
+format_interval duration/end => {return,<<"P1Y/2008-05-11T15:30:00Z">>}
+format_interval duration-only => {return,<<"P1Y">>}
+parse_interval legacy double-hyphen => {return,
+                                        {interval,start_end,
+                                         {{2000,1,1},{0,0,0}},
+                                         {{2002,1,1},{0,0,0}}}}
+parse_interval inherited day => {return,
+                                 {interval,start_end,
+                                  {{2007,11,13},{0,0,0}},
+                                  {{2007,11,15},{0,0,0}}}}
+parse_interval inherited time UTC start => {return,
+                                            {{{2007,12,14},{13,30,0}},
+                                             {{2007,12,14},{15,30,0}}}}
+parse_interval zoned full-second start and unzoned inherited time => {return,
+                                                                      {{{2007,
+                                                                         12,
+                                                                         14},
+                                                                        {11,
+                                                                         30,
+                                                                         0}},
+                                                                       {{2007,
+                                                                         12,
+                                                                         14},
+                                                                        {13,
+                                                                         30,
+                                                                         0}}}}
+parse_interval zoned full-second start and explicitly zoned end => {return,
+                                                                    {{{2007,
+                                                                       12,14},
+                                                                      {11,30,
+                                                                       0}},
+                                                                     {{2007,
+                                                                       12,14},
+                                                                      {13,30,
+                                                                       0}}}}
+parse_interval zoned minute-precision start candidate => {exception,error,
+                                                          badarg}
+format_expanded positive four-digit year => {return,
+                                             <<"+2007-02-15T00:00:00Z">>}
+parse_interval formatter-produced +2007 inherited end => {return,
+                                                          {<<"+2007-02-15T00:00:00Z">>,
+                                                           {{2007,2,15},
+                                                            {0,0,0}},
+                                                           {interval,
+                                                            start_end,
+                                                            {{2007,2,15},
+                                                             {0,0,0}},
+                                                            {{2007,3,14},
+                                                             {0,0,0}}}}}
+parse_interval formatter-produced +2007 explicit end => {return,
+                                                         {interval,start_end,
+                                                          {{2007,2,15},
+                                                           {0,0,0}},
+                                                          {{2007,3,14},
+                                                           {0,0,0}}}}
+parse_interval valid positive expanded inherited year => {return,
+                                                          {interval,
+                                                           start_end,
+                                                           {{2007,2,15},
+                                                            {0,0,0}},
+                                                           {{2007,3,14},
+                                                            {0,0,0}}}}
+parse_interval valid positive expanded explicit-end control => {return,
+                                                                {interval,
+                                                                 start_end,
+                                                                 {{2007,2,15},
+                                                                  {0,0,0}},
+                                                                 {{2007,3,14},
+                                                                  {0,0,0}}}}
+parse positive expanded standalone control => {return,{{2007,2,15},{0,0,0}}}
+parse_interval unsigned positive-year control => {return,
+                                                  {interval,start_end,
+                                                   {{2007,2,15},{0,0,0}},
+                                                   {{2007,3,14},{0,0,0}}}}
+parse positive year control => {return,{{2007,2,15},{0,0,0}}}
+add_days fractional-second anchor => {return,{{2017,1,2},{0,0,0.5}}}
+parse_exact ordinary zero-fraction anchor => {return,{{2017,1,1},{0,0,0.0}}}
+apply_duration ordinary parse_exact anchor stack => {exception,error,function_clause,[{calendar,
+                                                                                       time_to_seconds,
+                                                                                       [{0,
+                                                                                         0,
+                                                                                         0.0}],
+                                                                                       [{file,
+                                                                                         "calendar.erl"},
+                                                                                        {line,
+                                                                                         817}]},
+                                                                                      {calendar,
+                                                                                       datetime_to_gregorian_seconds,
+                                                                                       1,
+                                                                                       [{file,
+                                                                                         "calendar.erl"},
+                                                                                        {line,
+                                                                                         259}]},
+                                                                                      {iso8601,
+                                                                                       apply_offset,
+                                                                                       4,
+                                                                                       [{file,
+                                                                                         "src/iso8601.erl"},
+                                                                                        {line,
+                                                                                         502}]},
+                                                                                      {calendar_interval_probes_iteration01,
+                                                                                       probe_stack,
+                                                                                       2,
+                                                                                       [{file,
+                                                                                         "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project02-erlang-audit/arc01-runtime-contracts/slice02-calendar-interval-contracts/artifacts/calendar_interval_probes_iteration01.erl"},
+                                                                                        {line,
+                                                                                         87}]},
+                                                                                      {calendar_interval_probes_iteration01,
+                                                                                       run,
+                                                                                       0,
+                                                                                       [{file,
+                                                                                         "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project02-erlang-audit/arc01-runtime-contracts/slice02-calendar-interval-contracts/artifacts/calendar_interval_probes_iteration01.erl"},
+                                                                                        {line,
+                                                                                         46}]},
+                                                                                      {init,
+                                                                                       start_it,
+                                                                                       1,
+                                                                                       []},
+                                                                                      {init,
+                                                                                       start_em,
+                                                                                       1,
+                                                                                       []},
+                                                                                      {init,
+                                                                                       do_boot,
+                                                                                       3,
+                                                                                       []}]}
+apply_duration integer-second matched control => {return,{{2017,1,2},{0,0,0}}}
+apply_duration explicit fractional-second anchor => {exception,error,
+                                                     function_clause}
+interval_bounds ordinary parse_exact anchor stack => {exception,error,function_clause,[{calendar,
+                                                                                        time_to_seconds,
+                                                                                        [{0,
+                                                                                          0,
+                                                                                          0.0}],
+                                                                                        [{file,
+                                                                                          "calendar.erl"},
+                                                                                         {line,
+                                                                                          817}]},
+                                                                                       {calendar,
+                                                                                        datetime_to_gregorian_seconds,
+                                                                                        1,
+                                                                                        [{file,
+                                                                                          "calendar.erl"},
+                                                                                         {line,
+                                                                                          259}]},
+                                                                                       {iso8601,
+                                                                                        apply_offset,
+                                                                                        4,
+                                                                                        [{file,
+                                                                                          "src/iso8601.erl"},
+                                                                                         {line,
+                                                                                          502}]},
+                                                                                       {iso8601,
+                                                                                        interval_bounds,
+                                                                                        1,
+                                                                                        [{file,
+                                                                                          "src/iso8601.erl"},
+                                                                                         {line,
+                                                                                          217}]},
+                                                                                       {calendar_interval_probes_iteration01,
+                                                                                        probe_stack,
+                                                                                        2,
+                                                                                        [{file,
+                                                                                          "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project02-erlang-audit/arc01-runtime-contracts/slice02-calendar-interval-contracts/artifacts/calendar_interval_probes_iteration01.erl"},
+                                                                                         {line,
+                                                                                          87}]},
+                                                                                       {calendar_interval_probes_iteration01,
+                                                                                        run,
+                                                                                        0,
+                                                                                        [{file,
+                                                                                          "/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning/project02-erlang-audit/arc01-runtime-contracts/slice02-calendar-interval-contracts/artifacts/calendar_interval_probes_iteration01.erl"},
+                                                                                         {line,
+                                                                                          51}]},
+                                                                                       {init,
+                                                                                        start_it,
+                                                                                        1,
+                                                                                        []},
+                                                                                       {init,
+                                                                                        start_em,
+                                                                                        1,
+                                                                                        []}]}
+interval_bounds fractional-second parsed interval => {exception,error,
+                                                      function_clause}
+parse zero day duration => {return,[{sign,[]},
+                                    {years,0},
+                                    {months,0},
+                                    {days,0},
+                                    {hours,0},
+                                    {minutes,0},
+                                    {seconds,0}]}
+parse zero second duration => {return,[{sign,[]},
+                                       {years,0},
+                                       {months,0},
+                                       {days,0},
+                                       {hours,0},
+                                       {minutes,0},
+                                       {seconds,0}]}
+parse bare zero duration => {return,[{sign,[]},
+                                     {years,0},
+                                     {months,0},
+                                     {days,0},
+                                     {hours,0},
+                                     {minutes,0},
+                                     {seconds,0}]}
+apply zero day duration => {return,{{2017,1,1},{0,0,0}}}
+apply zero second duration => {return,{{2017,1,1},{0,0,0}}}
+apply bare zero duration => {return,{{2017,1,1},{0,0,0}}}
+zero day interval bounds => {return,{{{2017,1,1},{0,0,0}},
+                                     {{2017,1,1},{0,0,0}}}}
+zero second interval bounds => {return,
+                                   {{{2017,1,1},{0,0,0}},
+                                    {{2017,1,1},{0,0,0}}}}
+bare P interval bounds => {return,{{{2017,1,1},{0,0,0}},{{2017,1,1},{0,0,0}}}}
+zero day interval format => {return,<<"2017-01-01T00:00:00Z/P">>}
+zero second interval format => {return,<<"2017-01-01T00:00:00Z/P">>}
+bare P interval format => {return,<<"2017-01-01T00:00:00Z/P">>}
+duration-only bare P format => {return,<<"P">>}
+parse_interval malformed two durations => {exception,error,badarg}
+parse_interval malformed three pieces => {exception,error,badarg}
+ordinary negative-year add_years control => {return,{{3,2,28},{0,0,0}}}
+calendar year-zero lower-bound control => {return,{{0,1,1},{0,0,0}}}
+month underflow year-zero January minus one => {return,{{0,12,1},{0,0,0}}}
+month underflow year-one January minus thirteen => {return,{{0,12,1},{0,0,0}}}
+month floor valid year-one January minus twelve => {return,{{0,1,1},{0,0,0}}}
+installed calendar validity lower-bound control => {return,{true,false,false}}
+add_years underflow recursion hypothesis => {timeout,250,killed,
+                                             down_confirmed}
+add_months underflow recursion hypothesis => {timeout,250,killed,
+                                              down_confirmed}
+interval_bounds underflow recursion hypothesis => {timeout,250,killed,
+                                                   down_confirmed}
+apply_duration large negative-year recursion hypothesis => {timeout,250,
+                                                            killed,
+                                                            down_confirmed}

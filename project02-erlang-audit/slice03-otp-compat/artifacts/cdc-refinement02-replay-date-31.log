@@ -1,0 +1,33 @@
+parse_baseline => {return,{{2012,2,16},{1,6,48}}}
+parse_exact_baseline => {return,{{2012,2,3},{4,5,6.5}}}
+parse_positive_expanded => {return,{{10000,1,1},{0,0,0}}}
+parse_expanded_negative_control => {return,{{-1,1,1},{0,0,0.0}}}
+parse_rejects_negative_control => {exception,error,badarg}
+ordinal_leap_control => {return,{{2016,2,29},{0,0,0}}}
+week_boundary_control => {return,{{2008,12,29},{0,0,0}}}
+week_last_valid_control => {return,{{2010,1,3},{0,0,0}}}
+week_2015_w01_control => {return,{{2014,12,29},{0,0,0}}}
+week_zero_invalid => {return,{{2013,12,23},{0,0,0}}}
+week_53_invalid_for_2014 => {return,{{2014,12,29},{0,0,0}}}
+week_day_8_invalid => {return,{{2014,1,6},{0,0,0}}}
+flat_list => {return,{{2012,2,16},{0,0,0}}}
+binary => {return,{{2012,2,16},{0,0,0}}}
+nested_iodata_parse => {exception,error,badarg}
+nested_iodata_exact => {exception,error,badarg}
+nested_iodata_expanded => {exception,error,badarg}
+format_epoch_control => {return,<<"1970-01-01T00:00:00Z">>}
+format_fraction_control => {return,<<"2012-02-03T04:05:06.500000Z">>}
+parse_regular_invalid_calendar_control => {exception,error,badarg}
+parse_expanded_invalid_nonleap_feb29 => {return,{{-1,2,29},{0,0,0.0}}}
+parse_expanded_year_zero_valid_leap_control => {return,{{0,2,29},{0,0,0.0}}}
+parse_expanded_year_zero_invalid_feb30 => {return,{{0,2,30},{0,0,0.0}}}
+parse_expanded_invalid_feb30 => {return,{{-1,2,30},{0,0,0.0}}}
+parse_expanded_invalid_month => {return,{{-1,13,1},{0,0,0.0}}}
+parse_expanded_invalid_day_zero => {return,{{-1,1,0},{0,0,0.0}}}
+parse_expanded_valid_negative_leap_control => {return,{{-4,2,29},{0,0,0.0}}}
+format_float_below_roundover => {return,<<"2012-12-30T23:59:59.999999Z">>}
+format_float_roundover_nonleap_day => {return,
+                                       <<"2012-12-30T23:59:60.000000Z">>}
+parse_format_roundover_nonleap_day => {return,{{2012,12,31},{0,0,0}}}
+format_expanded_float_roundover_nonleap_day => {return,
+                                                <<"-0001-12-30T23:59:60.000000Z">>}
