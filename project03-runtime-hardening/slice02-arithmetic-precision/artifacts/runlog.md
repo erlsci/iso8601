@@ -1,15 +1,15 @@
 # Slice02 CC runlog
 
-Status: refinement04 proposed complete: the two private `make_date` accumulator annotations are corrected and affected gates pass. The remaining independent CDC all8-gate/147-replay reproduction and higher-level acceptance remain open. This log records events in actual order.
+Status: final permitted refinement05 proposed complete: only the newly added private `add_decimal/2` spec was removed; exact reconstruction and executable equality pass, as do the four fresh static/style gates. CDC final all8/147 reproduction and higher-level acceptance remain open.
 
 ## Pins and current state
 
-- Current assignment executed: `cc-prompt-iteration04.md`, read from planning commit `ceff1c56e21e5c5489a3babcc7536bc5860daeac`; current plan v1.4. Four refinements of max5 have been issued. Initial through refinement03 assignments remain historical below.
-- Current source commit/tree: `7926049a5a0093f9ffe5cc2dc5b77c5e560629f4` / `67266fc36ae8ab7731af95d1bc9d6f786d382751`, branch `codex/project03-arc02-arithmetic`; source worktree clean.
+- Current assignment executed: `cc-prompt-iteration05.md`, read from planning commit `16c0248a96c997a347b8551cf2a0669e98030391`; current plan v1.5. Five refinements of max5 have been issued. Initial through refinement04 assignments remain historical below.
+- Current source commit/tree: `bd67bd0d4306f9377bf617f802616b342fd9ee77` / `72efe0dc781ed31cdac78872670465b92940da80`, branch `codex/project03-arc02-arithmetic`; source worktree clean.
 - Source worktree: `/Users/oubiwann/lab/erlsci/iso8601/.worktrees/project03-arc02-arithmetic`, branch `codex/project03-arc02-arithmetic`.
 - Baseline: commit `3a1cdfd17bd4dfaf36c9eaa34c5102944a3e0828`, tree `3224b1e0da9285ab67349aadc3b59ffa11bfe8ab`.
 - Initial draft checkpoint: commit `e64c20f9d718f012c451bcc3af96fce108368c5c`, tree `3f3d45a98abb5c00f3e31d4efd25271f5de91c48`. Its committed subject/body explicitly labels the three-path source draft unvalidated; it is preservation only, not a completion or test claim. Commit bytes contain the required adjacent Codex and Billo trailers.
-- Planning worktree: `/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning`, branch `planning`, refinement04 prompt/plan revision `ceff1c56e21e5c5489a3babcc7536bc5860daeac`. CDC owns plans and issued prompts.
+- Planning worktree: `/Users/oubiwann/lab/erlsci/iso8601/.worktrees/planning`, branch `planning`, refinement05 prompt/plan revision `16c0248a96c997a347b8551cf2a0669e98030391`. CDC owns plans and issued prompts.
 - At checkpoint, source worktree was clean; all other worktrees were read-only. `git worktree list --porcelain` showed main, planning, two P02 worktrees, P03 Arc01, and this source worktree.
 
 ## Intake chronology and deviation
@@ -128,3 +128,13 @@ For exact replacement proof, source at `163d483` was reconstructed by replacing 
 Fresh sequential candidate gates at OTP28.1.1/rebar3 3.27.0 passed: `rebar3 compile`, `rebar3 dialyzer`, `rebar3 as dev fmt --check`, and `rebar3 as dev lint`, all exit0. Exact logs are `refinement04-native-{compile,dialyzer,format,lint}.log`. No new runtime red or fresh EUnit/PropEr/cover/replay is claimed for this type-only change. Refinement03's EUnit300/300, PropEr4/4×100, cover100%, and d3's xref plus final147 replay remain at their actual pins; identical disassembled functions support retaining their runtime applicability. CDC will independently run the final all8 gates and all147 observations on the final candidate.
 
 The unavailable original local Dialyzer warning for private `datetime(parser_accumulator())` remains a recorded preservation gap; no new or unrelated warning is represented as that original output. Public exports, all public specs, `datetime_plist()`/`duration()` alias, existing year/return annotations, and version1.4.0 are unchanged. Source commit `7926049a5a0093f9ffe5cc2dc5b77c5e560629f4`, tree `67266fc36ae8ab7731af95d1bc9d6f786d382751`, contains only `src/iso8601.erl`, with adjacent required trailers and clean status. S02-08/09, parent P03-14, and human P03-15 remain open; no publication or external action occurred.
+
+## Refinement05 execution and final permitted handoff
+
+Read `cc-prompt-iteration05.md`, current v1.5 plan, ledger, closing report, and complete runlog from planning commit `16c0248a96c997a347b8551cf2a0669e98030391`. Source started clean at `7926049a5a0093f9ffe5cc2dc5b77c5e560629f4`, tree `67266fc36ae8ab7731af95d1bc9d6f786d382751`. The sole source change is removal of the newly added line `-spec add_decimal(calendar:datetime(), parser_accumulator()) -> {calendar:datetime(), float()}.`; no replacement spec or other cleanup was made. New source SHA-256 `2d890dfa99466a41d523f8fe6d3c6326b621f83ee5cce22308429452462b8655`; test source remains byte-identical to r03/r04 at `d2899469ae88b663a23663aed1ef4939e6458127493606e0f1519ae936d56bec`.
+
+Exact reconstruction from `7926049` removed only that one complete spec line; `cmp` against the candidate was identical. Separate fresh `erlc +debug_info -o` builds and `beam_disasm:file/1` comparison show identical complete function lists. The shared SHA-256 over `term_to_binary(FunctionList)` is `116ABE248E87FECCF3E3E8BD006FD4D09B4AC4A6A6F0DA24F387B9BD73A00F28`. Receipt: `refinement05-executable-equality.log`.
+
+Fresh sequential OTP28.1.1/rebar3 3.27.0 gates all exited0: compile, Dialyzer, formatter check, lint. Logs: `refinement05-native-{compile,dialyzer,format,lint}.log`. The r03 300-case EUnit, 4×100 PropEr, and 100% coverage receipts, r02 xref, and final147 replay retain their own source pins; exact executable equality supports runtime applicability but these are not relabelled as fresh r05 runs. CDC owns final all8/147 independent reproduction. The original private `datetime(parser_accumulator())` Dialyzer warning output remains unavailable as previously recorded; no substitute output is asserted.
+
+Source commit `bd67bd0d4306f9377bf617f802616b342fd9ee77`, tree `72efe0dc781ed31cdac78872670465b92940da80`, changes only `src/iso8601.erl`; committed bytes contain the required adjacent trailers and source status is clean. This is refinement05/max5; no further iteration is authorized by the prompt. All9 slice rows remain, including open S02-08 hosted10 jobs and S02-09 CDC review/retrospective; P03-14 and P03-15 are separate. No push, PR, merge, release, or later parser work occurred. Mutation ownership is released to CDC/parent at the exact final pins.

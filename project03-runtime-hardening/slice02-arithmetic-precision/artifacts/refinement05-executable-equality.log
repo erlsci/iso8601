@@ -1,0 +1,8 @@
+source_base_commit 7926049a5a0093f9ffe5cc2dc5b77c5e560629f4
+base_sha256 6912aeb1c995ba948cd8c5d8ba6368b13d46dab00b1600050708785fcc519b04  /private/tmp/iso8601-s02-r05-proof/base/iso8601.erl
+candidate_sha256 2d890dfa99466a41d523f8fe6d3c6326b621f83ee5cce22308429452462b8655  /private/tmp/iso8601-s02-r05-proof/candidate/iso8601.erl
+removed_only_line -spec add_decimal(calendar:datetime(), parser_accumulator()) -> {calendar:datetime(), float()}.
+reconstruction cmp: identical
+baseline_disassembled_functions_sha256 116ABE248E87FECCF3E3E8BD006FD4D09B4AC4A6A6F0DA24F387B9BD73A00F28
+candidate_disassembled_functions_sha256 116ABE248E87FECCF3E3E8BD006FD4D09B4AC4A6A6F0DA24F387B9BD73A00F28
+disassembled_functions_equal true
