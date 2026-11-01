@@ -10,6 +10,8 @@
 
 [![iso8601 project logo][logo]][logo-large]
 
+<a name="contents"></a>
+
 #### Contents
 
 * [About](#about-)
@@ -17,6 +19,8 @@
 * [Usage](#usage-)
 * [Known Deficiencies](#known-deficiencies-)
 * [License](#license-)
+
+<a name="about-"></a>
 
 ## About [&#x219F;](#contents)
 
@@ -28,6 +32,8 @@ Thanks to Github's forwarding for project renames and moves, the following still
 
 * ``git clone https://github.com/seansawyer/erlang_iso8601.git``
 * ``git clone https://github.com/erlsci/erlang_iso8601.git``
+
+<a name="new-in-14-"></a>
 
 ## New in 1.4 [&#x219F;](#contents)
 
@@ -66,6 +72,8 @@ Thanks to Github's forwarding for project renames and moves, the following still
   to the last valid day of the target month; targets before year zero raise
   `badarg`. For compatibility, `add_time/4` also rejects nonzero adjustments
   when the input year is zero.
+
+<a name="usage-"></a>
 
 ## Usage [&#x219F;](#contents)
 
@@ -230,6 +238,8 @@ seconds field comes back as a float. Negative years are supported in UTC (`Z`) o
 offset-free form; combining a negative year with a non-zero UTC offset or a
 week-date raises `badarg`.
 
+<a name="known-deficiencies-"></a>
+
 ## Known Deficiencies [&#x219F;](#contents)
 
 * Does not support repeating intervals (`Rn/...`).
@@ -252,6 +262,8 @@ service's ["About" page][libera-about].
 [libera-wiki]: https://en.wikipedia.org/wiki/Liberapay
 [libera-about]: https://liberapay.com/about/
 
+<a name="license-"></a>
+
 ## License [&#x219F;](#contents)
 
 ```
@@ -272,7 +284,7 @@ Copyright © 2016-2026, Erlang-Aided Enrichment Center
 [tag-badge]: https://img.shields.io/github/tag/erlsci/iso8601.svg
 [erl]: http://www.erlang.org/downloads
 [erl-badge]: https://img.shields.io/badge/erlang-%E2%89%A520-blue.svg
-[logo]: priv/images/logo.png
-[logo-large]: priv/images/logo-large.png
+[logo]: https://raw.githubusercontent.com/erlsci/iso8601/main/priv/images/logo.png
+[logo-large]: https://raw.githubusercontent.com/erlsci/iso8601/main/priv/images/logo-large.png
 [hex package]: https://hex.pm/packages/iso8601
 [hex downloads]: https://img.shields.io/hexpm/dt/iso8601.svg
